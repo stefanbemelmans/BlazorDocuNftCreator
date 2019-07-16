@@ -15,6 +15,8 @@
   using Nethereum.Web3;
   using Nethereum.Contracts;
   using nt.Shared.Constants;
+  using nt.Server.Services.Web3.Web3Instance;
+  using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
 
   public class Startup
   {
@@ -70,8 +72,8 @@
           }
       );
       // gotta build the web3 class;
-      aServiceCollection.AddSingleton(new Web3(TestEthAccounts.TesterAcct, Web3Endpoints.RinkebyEndpoint));
-      aServiceCollection.AddSingleton<Contract>( new Services.WebThree.Contracts.NftCreator.ContractInstance.NftCreatorInstance());
+      aServiceCollection.AddSingleton<NethWeb3Instance>();
+      aServiceCollection.AddSingleton<NftCreatorInstance>();
       new Client.Startup().ConfigureServices(aServiceCollection);
 
       aServiceCollection.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);

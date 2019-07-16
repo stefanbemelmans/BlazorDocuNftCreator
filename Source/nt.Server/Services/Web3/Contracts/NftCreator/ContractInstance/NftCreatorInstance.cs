@@ -1,22 +1,23 @@
-﻿using System.IO;
-using nt.Shared.Constants;
-using Microsoft.AspNetCore.Components;
-using Nethereum.Contracts;
-using Nethereum.Web3;
-
-namespace nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance
+﻿namespace nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance
 {
-    public class NftCreatorInstance
+  using System.IO;
+  using nt.Shared.Constants;
+  using Microsoft.AspNetCore.Components;
+  using Nethereum.Contracts;
+  using Nethereum.Web3;
+  using nt.Server.Services.Web3.Web3Instance;
+
+  public class NftCreatorInstance
     {
-        public NftCreatorInstance(Web3 aWeb3Instance)
+        public NftCreatorInstance(NethWeb3Instance aNethWeb3Instance)
         {
-            Web3 = aWeb3Instance;
-            Contract NftCreatorContractInstance = Web3.Eth.GetContract(NftCreatorAbi, NftCreatorAddresses.NftCreatorRinkebyAddress); 
+            NethWeb3Instance = aNethWeb3Instance;
+            Contract NftCreatorContractInstance = NethWeb3Instance.instance.Eth.GetContract(NftCreatorAbi, NftCreatorAddresses.NftCreatorRinkebyAddress); 
 
         }
         string NftCreatorAbi = File.ReadAllText(@"C:\mv\nt\nt.Shared\Constants\ContractConstants\NftCreator\Abi.json;");
-     
-       Web3 Web3 { get; set; }
+
+      NethWeb3Instance NethWeb3Instance { get; set; }
      public Contract NftCreatorContractInstance { get; set; }
     }
 
