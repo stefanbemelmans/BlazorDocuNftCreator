@@ -1,7 +1,6 @@
 ﻿@page "/AssetNft"
 @layout AssetNftLayout;
 @using nt.Client.Nft.Components;
-@inject IJSRuntime JsRuntime;
 @*<NavLink class="nav-link" href="/">
         <span class="oi oi-home" aria-hidden="true"></span>Home
     </NavLink>*@
@@ -27,11 +26,9 @@
 <div id="YourAddressContainer" class="pl-2 w-50 mx-auto">
     Your Address
     <div id="YourAddress" class="text-left m-2 p-3">
-        @Address
+        GettingAddressFromEdge
     </div>
-    <button type="button" class="btn btn-primary">
-        GetAddress
-    </button>
+   
     <button type="button" class="btn btn-primary">
         Get Total Nft types, hopefully
     </button>
@@ -43,9 +40,7 @@
     </button>
 
 </div>
-<div id="PurchaseHercButtonContainer" class="w-25 mx-auto">
-    <h2>Purchase Herc Tokens</h2>
-</div>
+
 <div id="CertificateListContainer" class="h-50 bg-light text-dark text-center">
     <h1>No Certificates</h1>
     <h1>@TotalNfts</h1>
@@ -56,49 +51,4 @@
 
 
 
-@code {
-int HercBalance = 300;
 
-string Address;
-int NftType;
-int TotalNfts;
-
-NftTemplate NftTemplate = new NftTemplate();
-@*private async void GetAddress()
-{
-    Address = await JsRuntime.InvokeAsync<string>("getAddress");
-
-    StateHasChanged();
-}
-
-
-
-public async Task GetNftByType()
-{
-    Console.WriteLine("GetNFT by Type function is hit.");
-    var web3 = new Web3(RopstenWeb3.RinkebyEndpoint);
-
-    Console.WriteLine(web3);
-
-    Contract NftCreatorContract = web3.Eth.GetContract(NftCreator.Abi, NftCreator.NftCreatorRinkebyAddress);
-
-    Console.WriteLine(NftCreatorContract.Address);
-
-    var GetNftDataFunction = NftCreatorContract.GetFunction("getNFTData");
-
-    Console.WriteLine(GetNftDataFunction);
-
-    var result = await GetNftDataFunction.CallDeserializingToObjectAsync<GetNftByIdFunctionOutputDTO>(NftType);
-
-    Console.WriteLine($"TokenName: {result.TokenName}, TokenSymbol: {result.TokenSymbol}, TokenMintLimit: {result.TokenMintLimit}, Token AttachedTokens: {result.TokenAttachedTokens} NFTData?");
-    NftTemplate.Name = result.TokenName;
-    NftTemplate.Symbol = result.TokenSymbol;
-    NftTemplate.MintLimit = result.TokenMintLimit;
-    NftTemplate.AttachedTokens = result.TokenAttachedTokens;
-    }
-
-    }*@
-
-}
-
-}

@@ -11,6 +11,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Nft\Components\NewNftTemplateForm.razor.cs" />
+    <Compile Remove="Pages\AssetNtfPage.razor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Features\Nft\Components\NewNftTemplateForm.razor.cs" />
+    <Content Include="Pages\AssetNtfPage.razor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Blazor-State" Version="$(BlazorStateVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="$(MicrosoftAspNetCoreBlazorVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="$(MicrosoftAspNetCoreBlazorVersion)" PrivateAssets="all" />
@@ -30,5 +40,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\nt.Shared\nt.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Components">
+      <HintPath>..\..\..\..\..\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\3.0.0-preview6.19307.2\ref\netcoreapp3.0\Microsoft.AspNetCore.Components.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

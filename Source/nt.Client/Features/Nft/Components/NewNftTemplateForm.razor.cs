@@ -1,33 +1,19 @@
-﻿<div id="CreateNewNftFormContainer" class="container-fluid justify-content-around row align-items-center pt-3">
+﻿namespace nt.Client.Features.Nft 
+{
 
-    <label for="NewNftTemplateName">NFT Template Name: </label>
-    <Input id="NewNftTemplateName" @bind="@NewNftTemplateName" />
+    public class NewFtTemplateFormModel : BaseComponent
+    {
+      NftTemplate newNftTemplate = new NftTemplate();
 
-    <label for="NewNftTemplateSymbol">NFT Template Symbol: </label>
-    <Input id="NewNftTemplateSymbol" @bind="@NewNftTemplateSymbol" />
+      string NewNftTemplateName { get; set; }
 
-    <label for="NewNftTemplateMintLimit">NFT Template Mint Limit: </label>
-    <Input id="NewNftTemplateMintLimit" @bind="@NewNftTemplateMintLimit" />
+      string NewNftTemplateSymbol { get; set; }
 
-    <label for="NewNftTemplateAttachedTokens">NFT Template Attached Token Amount: </label>
-    <Input id="NewNftTemplateAttachedTokens" @bind="@NewNftTemplateAttachedTokens" />
+      int NewNftTemplateMintLimit { get; set; }
 
-    @*<button type="button" class="btn btn-primary" @onclick="@AddNewNft">
-        Create New NFT
-    </button>*@
+      int NewNftTemplateAttachedTokens { get; set; }
 
-</div>
-
-@code {
-
-NftTemplate newNftTemplate = new NftTemplate();
-string NewNftTemplateName { get; set; }
-
-string NewNftTemplateSymbol { get; set; }
-
-int NewNftTemplateMintLimit { get; set; }
-
-int NewNftTemplateAttachedTokens { get; set; }
+    }
 
 
 //public async Task AddNewNft()
@@ -66,4 +52,4 @@ int NewNftTemplateAttachedTokens { get; set; }
 //    Console.WriteLine($"{transactionReceipt.TransactionHash}");
 
 //   }
-    }
+}
