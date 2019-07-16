@@ -1,0 +1,32 @@
+﻿
+#AssetNft {
+    background-color: #0b0e59;
+    color: white;
+}
+
+#NftHeader {
+    background-color: #0b0e59;
+    
+}
+#NftHeaderTitle {
+    color: #ffc107;
+}
+
+#HercBalanceContainer {
+    background-color: #0b0e59;
+    color: white;
+}
+
+#HercBalance {
+    background-color: hsla(0,0%,100%,.07)
+}
+
+#YourAddress {
+    background-color: hsla(0,0%,100%,.07)
+}
+
+.nav-link:hover #NftHeaderTitle {
+    color: #f4c736;
+}
+
+
