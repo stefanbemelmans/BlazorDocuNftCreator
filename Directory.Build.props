@@ -45,6 +45,6 @@
     <SeleniumWebDriverVersion>3.141.0</SeleniumWebDriverVersion>
     <ShouldlyVersion>3.0.2</ShouldlyVersion>
     <NethereumVersion>3.3.0</NethereumVersion>
-    <NewtonsoftJsonVersion>12.0.2</NewtonsoftJsonVersion/>
+    <NewtonsoftJsonVersion>12.0.2</NewtonsoftJsonVersion>
   </PropertyGroup>
 </Project>
