@@ -15,7 +15,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="$(MicrosoftAspNetCoreBlazorVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="$(MicrosoftAspNetCoreBlazorVersion)" PrivateAssets="all" />
     <PackageReference Include="Nethereum.Web3" Version="$(NethereumVersion)" />
-    <PackageReference Include="Newtonsoft.Json" Version="$(NetwonsoftJsonVersion)" />
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'Nethereum.Web3'">
