@@ -1,29 +1,29 @@
 ﻿namespace nt.Client.Integration.Tests.Features.WeatherForecast
 {
-  using System;
-  using System.Threading.Tasks;
   using nt.Client.Features.WeatherForecast;
   using nt.Client.Integration.Tests.Infrastructure;
   using BlazorState;
   using MediatR;
   using Microsoft.Extensions.DependencyInjection;
   using Shouldly;
+  using System;
+  using System.Threading.Tasks;
 
   internal class FetchWeatherForecastTests
   {
+    private IMediator Mediator { get; }
+    private IServiceProvider ServiceProvider { get; }
+    private IStore Store { get; }
+    private WeatherForecastsState WeatherForecastsState { get; set; }
+
     public FetchWeatherForecastTests(
-      TestFixture aTestFixture)
+                      TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
       Mediator = ServiceProvider.GetService<IMediator>();
       Store = ServiceProvider.GetService<IStore>();
       WeatherForecastsState = Store.GetState<WeatherForecastsState>();
     }
-
-    private IMediator Mediator { get; }
-    private IServiceProvider ServiceProvider { get; }
-    private IStore Store { get; }
-    private WeatherForecastsState WeatherForecastsState { get; set; }
 
     public async Task Should_Fetch_WeatherForecasts()
     {

@@ -6,7 +6,7 @@ using BlazorState;
 
 namespace nt.Client.Features.Nft
 {
-  internal partial class NftState :State<NftState>
+  internal partial class NftState : State<NftState>
   {
     public int TotalNftTypes { get; set; }
 

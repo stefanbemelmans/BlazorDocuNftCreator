@@ -5,7 +5,7 @@
   using nt.Client.Features.Counter;
   using nt.Client.Features.WeatherForecast;
   using nt.Client.Features.EventStream;
-  using nt.Client.Features.Nft;
+    using nt.Client.Features.Nft;
 
   /// <summary>
   /// Makes access to the State a little easier and by inheriting from

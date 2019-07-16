@@ -71,9 +71,10 @@
             typeof(Client.Startup).GetTypeInfo().Assembly
           }
       );
-      // gotta build the web3 class;
+     
       aServiceCollection.AddSingleton<NethWeb3Instance>();
       aServiceCollection.AddSingleton<NftCreatorInstance>();
+	  
       new Client.Startup().ConfigureServices(aServiceCollection);
 
       aServiceCollection.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);

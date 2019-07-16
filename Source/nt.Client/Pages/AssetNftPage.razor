@@ -1,6 +1,7 @@
 ﻿@page "/AssetNft"
 @layout AssetNftLayout;
 @inherits AssetNftPageModel;
+
 @*<NavLink class="nav-link" href="/">
         <span class="oi oi-home" aria-hidden="true"></span>Home
     </NavLink>*@
@@ -33,7 +34,7 @@
         Get Total Nft types, hopefully
     </button>
 
-    <input id="GetNftTypeInput" @bind="NftType" />
+    <input id="GetNftTypeInput" @bind="@NftTypeToGet" />
    
     <button type="button" class="btn btn-primary">
         Get Nft by type, hopefully
