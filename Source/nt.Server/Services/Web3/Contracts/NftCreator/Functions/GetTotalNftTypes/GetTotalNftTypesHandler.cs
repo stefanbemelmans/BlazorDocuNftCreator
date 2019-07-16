@@ -6,22 +6,23 @@
   using Nethereum.Web3;
   using Nethereum.Contracts;
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
-  using nt.Client.Server.Services.WebThree.Contracts;
+  using nt.Server.Services.WebThree.Instance;
 
   public class GetTotalNftTypesHandler
     {
-    static Web3 Web3 { get; set; }
+    static NethWeb3 NethWeb3 { get; set; }
 
-    NftCreatorInstance NftCreatorInstance = new NftCreatorInstance(Web3);
+    NftCreatorInstance NftCreatorInstance { get; set; }
 
-    public GetTotalNftTypesHandler(Web3 aWeb3)
+    public GetTotalNftTypesHandler(NethWeb3 aNethWeb3, NftCreatorInstance aNftCreatorInstance)
     {
-      Web3 = aWeb3;
+      NethWeb3 = aNethWeb3;
+      NftCreatorInstance = aNftCreatorInstance;
     }
 
     public async Task<GetTotalNftTypesResponse> Handle(GetTotalNftTypesRequest aGetTotalNftTypesRequest, CancellationToken aCancellationToken)
     {
-      Function TotalNftsFunction = NftCreatorInstance.NftCreatorContractInstance.GetFunction("totalNFTs");
+      Function TotalNftsFunction = NftCreatorInstance.Instance.GetFunction("totalNFTs");
 
       var TotalNftTypes = new GetTotalNftTypesResponse();
 

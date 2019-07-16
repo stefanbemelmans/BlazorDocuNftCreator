@@ -5,20 +5,20 @@
   using Microsoft.AspNetCore.Components;
   using Nethereum.Contracts;
   using Nethereum.Web3;
-  using nt.Server.Services.Web3.Web3Instance;
+  using nt.Server.Services.WebThree.Instance;
 
   public class NftCreatorInstance
     {
-        public NftCreatorInstance(NethWeb3Instance aNethWeb3Instance)
+        public NftCreatorInstance(NethWeb3 aNethWeb3)
         {
-            NethWeb3Instance = aNethWeb3Instance;
-            Contract NftCreatorContractInstance = NethWeb3Instance.instance.Eth.GetContract(NftCreatorAbi, NftCreatorAddresses.NftCreatorRinkebyAddress); 
+            NethWeb3 = aNethWeb3;
+            Instance = NethWeb3.Instance.Eth.GetContract(NftCreatorAbi, NftCreatorAddresses.NftCreatorRinkebyAddress); 
 
         }
         string NftCreatorAbi = File.ReadAllText(@"C:\mv\nt\nt.Shared\Constants\ContractConstants\NftCreator\Abi.json;");
 
-      NethWeb3Instance NethWeb3Instance { get; set; }
-     public Contract NftCreatorContractInstance { get; set; }
+      NethWeb3 NethWeb3 { get; set; }
+     public Contract Instance { get; set; }
     }
 
 }
