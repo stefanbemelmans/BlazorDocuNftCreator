@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace nt.Shared.Constants.WebThree
+﻿namespace nt.Shared.Constants.WebThree
 {
-    public static class Web3Endpoints
+  using System;
+  using System.Collections.Generic;
+  using System.Text;
+
+  public static class Web3Endpoints
     {
         public static string RopstenEndpoint = "https://ropsten.infura.io/v3/92ffd0e0fb6e484198387a5fabf31954";
 
