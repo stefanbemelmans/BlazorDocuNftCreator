@@ -6,6 +6,7 @@
   using Nethereum.Contracts;
   using Nethereum.Web3;
   using nt.Server.Services.WebThree.Instance;
+  using nt.Shared.Constants.ContractConstants.NftCreator;
 
   public class NftCreatorInstance
     {
