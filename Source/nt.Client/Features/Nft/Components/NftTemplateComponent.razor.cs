@@ -1,9 +1,8 @@
-﻿namespace nt.Client.Features.Nft
+﻿namespace nt.Client.Features.Nft.Components
 {
-  using Microsoft.AspNetCore.Components;
   using nt.Client.Features.Base.Components;
 
-  public class NftTemplateComponentModel : ComponentBase
+  public class NftTemplateComponentModel : BaseComponent
   {
 
      public NftTemplate NftTemplate { get; set; }

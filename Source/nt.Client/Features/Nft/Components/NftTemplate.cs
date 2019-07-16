@@ -1,8 +1,9 @@
-﻿namespace nt.Client.Features.Nft
+﻿namespace nt.Client.Features.Nft.Components
 {
-    public class NftTemplate
+  public class NftTemplate
     {
-
+        string OwnerEthAddress { get; set; }
+        public int Type { get; set; }
         public string Name { get; set; }
 
         public string Symbol { get; set; }
