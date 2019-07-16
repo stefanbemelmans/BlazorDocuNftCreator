@@ -15,7 +15,8 @@
             Instance = NethWeb3.Instance.Eth.GetContract(NftCreatorAbi, NftCreatorAddresses.NftCreatorRinkebyAddress); 
 
         }
-        string NftCreatorAbi = File.ReadAllText(@"C:\mv\nt\nt.Shared\Constants\ContractConstants\NftCreator\Abi.json;");
+
+    readonly string NftCreatorAbi = File.ReadAllText(@"C:\mv\nt\nt.Shared\Constants\ContractConstants\NftCreator\Abi.json;");
 
       NethWeb3 NethWeb3 { get; set; }
      public Contract Instance { get; set; }
