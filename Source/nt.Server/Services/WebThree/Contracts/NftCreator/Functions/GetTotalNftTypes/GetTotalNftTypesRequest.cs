@@ -4,6 +4,7 @@
 
   public class GetTotalNftTypesRequest : IRequest<GetTotalNftTypesResponse>
     {
+
       // An empty request as the function it is calling is a Call function on the Contract with no passed params.
     }
 }

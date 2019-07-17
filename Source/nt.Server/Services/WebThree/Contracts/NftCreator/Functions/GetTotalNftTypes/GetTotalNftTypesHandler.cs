@@ -7,12 +7,13 @@
   using Nethereum.Contracts;
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
   using nt.Server.Services.WebThree.Instance;
+  using MediatR;
 
-  public class GetTotalNftTypesHandler
+  public class GetTotalNftTypesHandler : IRequestHandler<GetTotalNftTypesRequest, GetTotalNftTypesResponse>
     {
-    static NethWeb3 NethWeb3 { get; set; }
-
     NftCreatorInstance NftCreatorInstance { get; set; }
+
+    NethWeb3 NethWeb3 { get; set; }
 
     public GetTotalNftTypesHandler(NethWeb3 aNethWeb3, NftCreatorInstance aNftCreatorInstance)
     {
@@ -32,12 +33,8 @@
       TotalNftTypes.TotalNftTemplateTypes = Nfts;
       return TotalNftTypes;
 
-      }
-
-
-
     }
+  }
+}
 
-
-    }
 
