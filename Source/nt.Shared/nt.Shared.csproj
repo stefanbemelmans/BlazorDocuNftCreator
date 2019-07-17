@@ -2,12 +2,6 @@
   <PropertyGroup>
     <Description>Blazor Hosted Shared Library</Description>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Constants\ContractConstants\NftCreator\Abi.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Constants\ContractConstants\NftCreator\Abi.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="$(MediatrVersion)" />
