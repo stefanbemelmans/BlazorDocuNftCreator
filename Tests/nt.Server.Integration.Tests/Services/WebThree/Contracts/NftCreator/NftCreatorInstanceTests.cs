@@ -15,12 +15,10 @@ namespace nt.Server.Integration.Tests.Services.WebThree
     public NftCreatorInstanceTests(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
-      Mediator = ServiceProvider.GetService<IMediator>();
       NftCreatorInstance = ServiceProvider.GetService<NftCreatorInstance>();
     }
 
     private IServiceProvider ServiceProvider { get; }
-    private IMediator Mediator { get; }
     private NftCreatorInstance NftCreatorInstance { get; set; }
 
     public void NftCreatorInstanceIsNotNullTests() => NftCreatorInstance.Instance.ShouldNotBe(null);

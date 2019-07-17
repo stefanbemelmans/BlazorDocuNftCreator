@@ -4,7 +4,7 @@
   using nt.Shared.Constants.AccountAddresses;
   class AccountInstanceTests
   {
-    TestEthAccounts tester = new TestEthAccounts();
+    readonly TestEthAccounts tester = new TestEthAccounts();
 
     public void AcctInstanceTests() => tester.TesterAcct.ShouldNotBe(null);
   }

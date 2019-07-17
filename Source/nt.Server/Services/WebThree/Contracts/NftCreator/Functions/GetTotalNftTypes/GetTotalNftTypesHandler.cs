@@ -13,25 +13,22 @@
     {
     NftCreatorInstance NftCreatorInstance { get; set; }
 
-    NethWeb3 NethWeb3 { get; set; }
-
-    public GetTotalNftTypesHandler(NethWeb3 aNethWeb3, NftCreatorInstance aNftCreatorInstance)
+    public GetTotalNftTypesHandler(NftCreatorInstance aNftCreatorInstance)
     {
-      NethWeb3 = aNethWeb3;
       NftCreatorInstance = aNftCreatorInstance;
     }
 
     public async Task<GetTotalNftTypesResponse> Handle(GetTotalNftTypesRequest aGetTotalNftTypesRequest, CancellationToken aCancellationToken)
     {
-      Function TotalNftsFunction = NftCreatorInstance.Instance.GetFunction("totalNFTs");
+      Function totalNftsFunction = NftCreatorInstance.Instance.GetFunction("totalNFTs");
 
-      var TotalNftTypes = new GetTotalNftTypesResponse();
+      var totalNftTypes = new GetTotalNftTypesResponse();
 
-      int Nfts =  await TotalNftsFunction.CallAsync<int>();
+      int nfts =  await totalNftsFunction.CallAsync<int>();
 
 
-      TotalNftTypes.TotalNftTemplateTypes = Nfts;
-      return TotalNftTypes;
+      totalNftTypes.TotalNftTemplateTypes = nfts;
+      return totalNftTypes;
 
     }
   }

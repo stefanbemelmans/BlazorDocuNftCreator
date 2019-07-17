@@ -25,10 +25,10 @@
     public async Task ShouldGetTotalNftTemplateTypes()
     { 
       // Arrange
-      var GetNftRequest = new GetTotalNftTypesRequest();
+      var getNftRequest = new GetTotalNftTypesRequest();
 
       // Act
-      GetTotalNftTypesResponse response = await Mediator.Send(GetNftRequest);
+      GetTotalNftTypesResponse response = await Mediator.Send(getNftRequest);
 
       //Assert
       response.TotalNftTemplateTypes.ShouldNotBeNull();

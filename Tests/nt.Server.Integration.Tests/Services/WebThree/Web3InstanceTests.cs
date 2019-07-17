@@ -12,12 +12,10 @@ namespace nt.Server.Integration.Tests.Services.WebThree
     public Web3InstanceTests(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
-      Mediator = ServiceProvider.GetService<IMediator>();
       NethInstance = ServiceProvider.GetService<NethWeb3>();
     }
 
     private IServiceProvider ServiceProvider { get; }
-    private IMediator Mediator { get; }
     private NethWeb3 NethInstance { get; set; }
 
     public void Web3ShouldNotBeNull() => NethInstance.Instance.ShouldNotBeNull();
