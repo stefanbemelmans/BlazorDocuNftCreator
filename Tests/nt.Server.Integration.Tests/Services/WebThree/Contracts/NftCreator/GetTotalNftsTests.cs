@@ -8,7 +8,7 @@
   using Microsoft.Extensions.DependencyInjection;
   using Shouldly;
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
-  using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetTotalNftTypes;
+  using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftTypes;
   using System.Threading.Tasks;
 
   class GetTotalNftsTests
@@ -25,14 +25,14 @@
     public async Task ShouldGetTotalNftTemplateTypes()
     { 
       // Arrange
-      var getNftRequest = new GetTotalNftTypesRequest();
+      var getNftRequest = new GetNftTypesRequest();
 
       // Act
-      GetTotalNftTypesResponse response = await Mediator.Send(getNftRequest);
+      GetNftTypesResponse response = await Mediator.Send(getNftRequest);
 
       //Assert
-      response.TotalNftTemplateTypes.ShouldNotBeNull();
-      response.TotalNftTemplateTypes.ShouldBe(2);
+      response.TotalNfts.ShouldBe(2);
+      response.TotalNfts.ShouldNotBeNull();
 
     }
   }
