@@ -1,0 +1,21 @@
+﻿@inherits NewNftTemplateFormModel;
+
+<div id="CreateNewNftFormContainer" class="container-fluid justify-content-around row align-items-center pt-3">
+
+    <label for="NewNftTemplateName">NFT Template Name: </label>
+    <Input id="NewNftTemplateName" @bind="@NewNftTemplateName" />
+
+    <label for="NewNftTemplateSymbol">NFT Template Symbol: </label>
+    <Input id="NewNftTemplateSymbol" @bind="@NewNftTemplateSymbol" />
+
+    <label for="NewNftTemplateMintLimit">NFT Template Mint Limit: </label>
+    <Input id="NewNftTemplateMintLimit" @bind="@NewNftTemplateMintLimit" />
+
+    <label for="NewNftTemplateAttachedTokens">NFT Template Attached Token Amount: </label>
+    <Input id="NewNftTemplateAttachedTokens" @bind="@NewNftTemplateAttachedTokens" />
+
+    @*<button type="button" class="btn btn-primary" @onclick="">
+        Create New NFT
+    </button>*@
+
+</div>
