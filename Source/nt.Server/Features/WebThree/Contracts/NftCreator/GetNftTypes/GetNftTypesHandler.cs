@@ -7,16 +7,21 @@
 
   public class GetNftTypesHandler : IRequestHandler<GetNftTypesRequest, GetNftTypesResponse>
   {
-    IMediator Mediator { get; set; }
+    IMediator Mediator { get; }
+    public GetNftTypesHandler(IMediator aMediator)
+    {
+      Mediator = aMediator;
+    }
+
     public async Task<GetNftTypesResponse> Handle
     (
       GetNftTypesRequest aGetNftTypesRequest,
       CancellationToken aCancellationToken
     )
     {
-      var response = new GetNftTypesResponse(aGetNftTypesRequest.Id);
+      GetNftTypesResponse response = await Mediator.Send(aGetNftTypesRequest);
 
-      return await Task.Run(() => response);
+      return response;
       
     }
   }

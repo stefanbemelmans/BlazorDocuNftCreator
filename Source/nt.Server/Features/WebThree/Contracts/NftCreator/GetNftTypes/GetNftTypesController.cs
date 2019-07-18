@@ -8,6 +8,7 @@
   [Route(GetNftTypesRequest.Route)]
   public class GetNftTypesController : BaseController<GetNftTypesRequest, GetNftTypesResponse> 
   {
+    [HttpGet]
     public async Task<IActionResult> Get(GetNftTypesRequest aRequest) => await Send(aRequest);
   }
 }
