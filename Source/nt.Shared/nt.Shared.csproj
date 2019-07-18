@@ -5,6 +5,8 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="$(MediatrVersion)" />
+    <PackageReference Include="Nethereum.Web3" Version="$(NethereumVersion)" />
+    
   </ItemGroup>
 
 </Project>

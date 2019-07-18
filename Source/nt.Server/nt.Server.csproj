@@ -15,6 +15,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Server" Version="$(MicrosoftAspNetCoreBlazorVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="$(MicrosoftAspNetCoreMvcNewtonsoftJsonVersion)" />
     <PackageReference Include="Scrutor" Version="$(ScrutorVersion)" />
+    <PackageReference Include="Nethereum.Web3" Version="$(NethereumVersion)" />
   </ItemGroup>
 
   <ItemGroup>
