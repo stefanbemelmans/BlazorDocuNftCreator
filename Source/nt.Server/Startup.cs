@@ -73,7 +73,7 @@
       );
      
       aServiceCollection.AddSingleton<NethWeb3>();
-      aServiceCollection.AddSingleton<NftCreatorInstance>();
+      aServiceCollection.AddScoped<NftCreatorInstance>();
 	  
       new Client.Startup().ConfigureServices(aServiceCollection);
 
