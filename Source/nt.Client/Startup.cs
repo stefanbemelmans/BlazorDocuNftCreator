@@ -11,6 +11,7 @@
   using Microsoft.Extensions.DependencyInjection;
   using System.Reflection;
   using System.Text.Json.Serialization;
+  using nt.Client.Features.WebThree;
 
   public class Startup
   {
@@ -44,6 +45,7 @@
       aServiceCollection.AddTransient<CounterState>();
       aServiceCollection.AddTransient<EventStreamState>();
       aServiceCollection.AddTransient<WeatherForecastsState>();
+      aServiceCollection.AddTransient<WebThreeState>();
     }
   }
 }
