@@ -15,9 +15,13 @@
     {
      GetNftTypesRequest GetNftTypesRequest = aGetNftTypesRequest;
 
-      GetNftTypesResponse Response = await  Mediator.Send(GetNftTypesRequest);
+      GetNftTypesResponse Response = await  Mediator.Send(new GetNftTypesRequest());
 
-      return Response;
+
+      return new GetNftTypesResponse
+      {
+        TotalNfts = Response.TotalNfts
+      };
     }
   }
 }
