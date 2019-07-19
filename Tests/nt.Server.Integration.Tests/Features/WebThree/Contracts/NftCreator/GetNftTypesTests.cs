@@ -17,7 +17,7 @@
 
     private IServiceProvider ServiceProvider { get; }
     private IMediator Mediator { get; }
-
+    // this test is not working either
     public async Task GetNftTemplatesShouldBeTwo()
     {
       var getNftTypeRequest = new GetNftTypesRequest();
