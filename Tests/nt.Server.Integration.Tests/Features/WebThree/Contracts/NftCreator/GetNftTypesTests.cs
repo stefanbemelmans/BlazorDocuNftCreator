@@ -6,6 +6,7 @@
   using Shouldly;
   using MediatR;
   using System.Threading.Tasks;
+  using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftTypes;
 
   class GetNftTypesTests
   {
@@ -20,9 +21,9 @@
     // this test is not working either
     public async Task GetNftTemplatesShouldBeTwo()
     {
-      var getNftTypeRequest = new GetNftTypesRequest();
+      var getNftTypeRequest = new GetNftTypesSharedRequest();
 
-      GetNftTypesResponse response = await Mediator.Send(getNftTypeRequest);
+      GetNftTypesSharedResponse response = await Mediator.Send(getNftTypeRequest);
 
       response.TotalNfts.ShouldBe(2);
     }

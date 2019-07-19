@@ -3,11 +3,11 @@ namespace nt.Shared.Features.WebThree
   using System;
   using nt.Shared.Features.Base;
 
-  public class GetNftTypesResponse : BaseResponse
+  public class GetNftTypesSharedResponse : BaseResponse
   {
-    public GetNftTypesResponse() { }
+    public GetNftTypesSharedResponse() { }
 
-    public GetNftTypesResponse(Guid aRequestId)
+    public GetNftTypesSharedResponse(Guid aRequestId)
     {
       
       RequestId = aRequestId;

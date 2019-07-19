@@ -6,20 +6,20 @@
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
   using MediatR;
 
-  public class GetNftTypesHandler : IRequestHandler<GetNftTypesRequest, GetNftTypesResponse>
+  public class GetNftTypesServerServiceHandler : IRequestHandler<GetNftTypesServiceRequest, GetNftTypesServiceResponse>
     {
     NftCreatorInstance NftCreatorInstance { get; set; }
 
-    public GetNftTypesHandler(NftCreatorInstance aNftCreatorInstance)
+    public GetNftTypesServerServiceHandler(NftCreatorInstance aNftCreatorInstance)
     {
       NftCreatorInstance = aNftCreatorInstance;
     }
 
-    public async Task<GetNftTypesResponse> Handle(GetNftTypesRequest aGetNftTypesRequest, CancellationToken aCancellationToken)
+    public async Task<GetNftTypesServiceResponse> Handle(GetNftTypesServiceRequest aGetNftTypesServiceRequest, CancellationToken aCancellationToken)
     {
       Function totalNftsFunction = NftCreatorInstance.Instance.GetFunction("totalNFTs");
 
-      var totalNfts = new GetNftTypesResponse();
+      var totalNfts = new GetNftTypesServiceResponse();
 
       int nfts =  await totalNftsFunction.CallAsync<int>();
 
