@@ -2,7 +2,7 @@
 {
   using MediatR;
 
-  public class GetNftTypesRequest : IRequest<GetNftTypesResponse>
+  public class GetNftTypesServiceRequest : IRequest<GetNftTypesServiceResponse>
     {
     
     }

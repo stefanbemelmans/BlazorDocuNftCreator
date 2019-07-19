@@ -2,7 +2,7 @@
 {
   using nt.Shared.Features.Base;
   using nt.Shared.Features.WebThree;
-    public class GetNftTypesResponse : BaseResponse
+    public class GetNftTypesServiceResponse : BaseResponse
     {
     public int TotalNfts { get; set; }
     }

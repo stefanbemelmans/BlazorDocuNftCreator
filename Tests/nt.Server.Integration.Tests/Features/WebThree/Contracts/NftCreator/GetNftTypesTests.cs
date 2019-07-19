@@ -1,11 +1,12 @@
 ﻿namespace nt.Server.Integration.Tests.Features.WebThree.Contracts.NftCreator
 {
-  using MediatR;
-  using Microsoft.Extensions.DependencyInjection;
-  using nt.Shared.Features.WebThree;
-  using Shouldly;
   using System;
+  using nt.Shared.Features.WebThree;
+  using Microsoft.Extensions.DependencyInjection;
+  using Shouldly;
+  using MediatR;
   using System.Threading.Tasks;
+  using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftTypes;
 
   class GetNftTypesTests
   {
@@ -17,14 +18,13 @@
 
     private IServiceProvider ServiceProvider { get; }
     private IMediator Mediator { get; }
-    // This is the test that's not passing
+    // this test is not working either
     public async Task GetNftTemplatesShouldBeTwo()
     {
-      var getNftRequest = new GetNftTypesRequest();
+      var getNftTypeRequest = new GetNftTypesSharedRequest();
 
-      GetNftTypesResponse response = await Mediator.Send(getNftRequest);
+      GetNftTypesSharedResponse response = await Mediator.Send(getNftTypeRequest);
 
-      response.ShouldNotBeNull();
       response.TotalNfts.ShouldBe(2);
     }
   }

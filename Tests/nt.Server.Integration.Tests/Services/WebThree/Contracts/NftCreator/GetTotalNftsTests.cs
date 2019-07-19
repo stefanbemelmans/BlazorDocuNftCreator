@@ -1,11 +1,12 @@
 ﻿namespace nt.Server.Integration.Tests.Services.WebThree.Contracts.NftCreator
 {
+  using System;
   using MediatR;
   using Microsoft.Extensions.DependencyInjection;
-  using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftTypes;
   using Shouldly;
-  using System;
+  using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftTypes;
   using System.Threading.Tasks;
+  using nt.Shared.Features.WebThree;
 
   class GetTotalNftsTests
   {
@@ -21,10 +22,10 @@
     public async Task ShouldGetTotalNftTemplateTypes()
     { 
       // Arrange
-      var getNftRequest = new GetNftTypesRequest();
+      var getNftRequest = new GetNftTypesServiceRequest();
 
       // Act
-      GetNftTypesResponse response = await Mediator.Send(getNftRequest);
+      GetNftTypesServiceResponse response = await Mediator.Send(getNftRequest);
 
       //Assert
       response.TotalNfts.ShouldBe(2);
