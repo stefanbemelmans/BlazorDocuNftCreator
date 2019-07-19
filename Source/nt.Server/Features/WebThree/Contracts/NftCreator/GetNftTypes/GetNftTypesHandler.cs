@@ -6,18 +6,18 @@
   using MediatR;
 
   public class GetNftTypesHandler : IRequestHandler<GetNftTypesRequest, GetNftTypesResponse>
-  {
-    IMediator Mediator { get; set; }
+  {  IMediator Mediator { get; set; }
     public async Task<GetNftTypesResponse> Handle
     (
       GetNftTypesRequest aGetNftTypesRequest,
       CancellationToken aCancellationToken
     )
     {
-      var response = new GetNftTypesResponse(aGetNftTypesRequest.Id);
+     GetNftTypesRequest GetNftTypesRequest = aGetNftTypesRequest;
 
-      return await Task.Run(() => response);
-      
+      GetNftTypesResponse Response = await  Mediator.Send(GetNftTypesRequest);
+
+      return Response;
     }
   }
 }
