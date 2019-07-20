@@ -1,25 +1,32 @@
 ﻿namespace nt.Client.Features.WebThree
 {
   using BlazorState;
-  //using MediatR;
-  //using Microsoft.AspNetCore.Components;
+  using MediatR;
+  using nt.Shared.Features.WebThree;
+  using Microsoft.Extensions.DependencyInjection;
+  using System.Threading.Tasks;
 
   internal partial class WebThreeState : State<WebThreeState>
   {
-    public int TotalNftTypes { get; set; } 
-    public WebThreeState()
+    public int TotalNftTypes { get; set; }
+    public IMediator Mediator{ get; set; }
+    public GetNftTypesSharedResponse Response { get; set; }
+
+   public  WebThreeState(IMediator aMediator)
     {
-      TotalNftTypes = 5;
+      Mediator = aMediator;  
     }
     //public int CurrentNftType { get; set; } = 5;
 
-    //[Inject]
-    //IMediator Mediator { get; set; }
-    //public WebThreeState() { }
 
 
+    protected override async void Initialize()
+    {
+      WebThreeState Nfts = await Mediator.Send(new GetNftTypesClientFeaturesAction());
 
-    protected override void Initialize() { }
+      TotalNftTypes = Response.TotalNftTypes; 
+
+    }
 
 
   }

@@ -6,26 +6,29 @@
   using BlazorState;
   using nt.Shared.Features.WebThree;
   using System.Text.Json.Serialization;
+  using MediatR;
 
 
   internal partial class WebThreeState
   {
 
-  public class GetNftTypesClientFeaturesHandler : RequestHandler<GetNftTypesClientFeaturesAction, WebThreeState>
+  public class GetNftTypesClientFeaturesHandler : BlazorState.RequestHandler<GetNftTypesClientFeaturesAction, WebThreeState>
   {
-      private readonly JsonSerializerOptions JsonSerializerOptions;
+      //private readonly JsonSerializerOptions JsonSerializerOptions;
       public GetNftTypesClientFeaturesHandler
         (
           IStore aStore,
-          HttpClient aHttpClient,
-          JsonSerializerOptions aJsonSerializerOptions
+          IMediator aMediator
+          //HttpClient aHttpClient,
+          //JsonSerializerOptions aJsonSerializerOptions
         ) : base(aStore)
       {
-        HttpClient = aHttpClient;
-        JsonSerializerOptions = aJsonSerializerOptions;
+        Mediator = aMediator;
+        //HttpClient = aHttpClient;
+        //JsonSerializerOptions = aJsonSerializerOptions;
       }
-
-      private HttpClient HttpClient { get; }
+      public IMediator Mediator { get; }
+      //private HttpClient HttpClient { get; }
 
       private WebThreeState WebThreeState => Store.GetState<WebThreeState>();
 
@@ -35,19 +38,21 @@
           CancellationToken aCancellationToken
         )
       {
-        var aGetNftTypesSharedRequest = new GetNftTypesSharedRequest();
 
-        using HttpResponseMessage httpResponseMessage = await HttpClient.GetAsync(GetNftTypesSharedRequest.Route);
 
-        string content = await httpResponseMessage.Content.ReadAsStringAsync();
+        GetNftTypesSharedResponse SharedResponse = await Mediator.Send(new GetNftTypesSharedRequest());
 
-        GetNftTypesSharedResponse getNftTypesSharedResponse =
-          JsonSerializer.Parse<GetNftTypesSharedResponse>(content, JsonSerializerOptions);
-
-        WebThreeState.TotalNftTypes = getNftTypesSharedResponse.TotalNftTypes;
+        WebThreeState.TotalNftTypes = SharedResponse.TotalNftTypes;
 
         return WebThreeState;
       }
+        //using HttpResponseMessage httpResponseMessage = await HttpClient.GetAsync(GetNftTypesSharedRequest.Route);
+
+        //string content = await httpResponseMessage.Content.ReadAsStringAsync();
+
+        //GetNftTypesSharedResponse getNftTypesSharedResponse =
+        //  JsonSerializer.Parse<GetNftTypesSharedResponse>(content, JsonSerializerOptions);
+
 
 
   }
