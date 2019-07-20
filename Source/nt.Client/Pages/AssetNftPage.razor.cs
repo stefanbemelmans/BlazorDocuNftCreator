@@ -1,7 +1,7 @@
 ﻿namespace nt.Client.Pages
 {
-    using nt.Client.Features.Base.Components;
-    using nt.Client.Features.Nft.Components;
+  using nt.Client.Features.Base.Components;
+  using nt.Client.Features.WebThree.Components;
 
   public class AssetNftPageModel : BaseComponent
   {

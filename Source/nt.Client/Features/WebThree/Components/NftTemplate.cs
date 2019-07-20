@@ -1,4 +1,4 @@
-﻿namespace nt.Client.Features.Nft.Components
+﻿namespace nt.Client.Features.WebThree.Components
 {
   public class NftTemplate
     {

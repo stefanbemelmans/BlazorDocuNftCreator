@@ -13,6 +13,6 @@ namespace nt.Shared.Features.WebThree
       RequestId = aRequestId;
     }
 
-    public int TotalNfts { get; set; }
+    public int TotalNftTypes { get; set; }
   }
 }

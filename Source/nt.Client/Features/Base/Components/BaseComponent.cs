@@ -5,7 +5,7 @@
   using nt.Client.Features.Counter;
   using nt.Client.Features.WeatherForecast;
   using nt.Client.Features.EventStream;
-    using nt.Client.Features.Nft;
+  using nt.Client.Features.WebThree;
 
   /// <summary>
   /// Makes access to the State a little easier and by inheriting from
@@ -22,6 +22,6 @@
     internal CounterState CounterState => GetState<CounterState>();
     internal EventStreamState EventStreamState => GetState<EventStreamState>();
     internal WeatherForecastsState WeatherForecastsState => GetState<WeatherForecastsState>();
-    internal NftState NftState => GetState<NftState>();
+    internal WebThreeState NftState => GetState<WebThreeState>();
   }
 }

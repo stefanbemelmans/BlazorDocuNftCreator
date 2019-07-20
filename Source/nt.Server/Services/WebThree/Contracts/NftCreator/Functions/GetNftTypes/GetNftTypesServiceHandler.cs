@@ -24,7 +24,7 @@
       int nfts =  await totalNftsFunction.CallAsync<int>();
 
 
-      totalNfts.TotalNfts = nfts;
+      totalNfts.TotalNftTypes = nfts;
       return totalNfts;
 
     }

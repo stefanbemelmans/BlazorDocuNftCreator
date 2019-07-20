@@ -12,6 +12,7 @@
   using System;
   using System.Reflection;
   using System.Text.Json.Serialization;
+  using nt.Client.Features.WebThree;
 
   /// <summary>
   /// A known starting state(baseline) for all tests.
@@ -61,6 +62,7 @@
       aServiceCollection.AddTransient<CounterState>();
       aServiceCollection.AddTransient<EventStreamState>();
       aServiceCollection.AddTransient<WeatherForecastsState>();
+      aServiceCollection.AddTransient<WebThreeState>();
     }
   }
 }
