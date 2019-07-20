@@ -2,7 +2,6 @@
 {
   using System;
   using Shouldly;
-  using BlazorState;
   using nt.Client.Features.WebThree;
   using nt.Client.Integration.Tests.Infrastructure;
   using Microsoft.Extensions.DependencyInjection;
@@ -34,25 +33,6 @@
 
     }
 
-   
-    
-
-
-
-    //public async Task Should_GetJsonFromRouteAsync()
-    //{
-    //  using HttpResponseMessage httpResponseMessage = await HttpClient.GetAsync(GetNftTypesSharedRequest.Route);
-    //  string content = await httpResponseMessage.Content.ReadAsStringAsync();
-
-    //  var getNftTypesSharedResponse = new GetNftTypesSharedResponse();
-
-    //  GetNftTypesSharedResponse response = JsonSerializer.Parse<GetNftTypesSharedResponse>(content);
-
-    //  getNftTypesSharedResponse.TotalNftTypes = response.TotalNftTypes;
-
-    //  getNftTypesSharedResponse.TotalNftTypes.ShouldBe(2);
-
-    //}
     public async Task Should_Fetch_NftTypes()
     {
       var fetchNftTypes = new GetNftTypesClientFeaturesAction();
