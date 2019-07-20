@@ -44,7 +44,7 @@
         GetNftTypesSharedResponse getNftTypesSharedResponse =
           JsonSerializer.Parse<GetNftTypesSharedResponse>(content, JsonSerializerOptions);
 
-        WebThreeState.TotalNftTypes = getNftTypesSharedResponse.TotalNfts;
+        WebThreeState.TotalNftTypes = getNftTypesSharedResponse.TotalNftTypes;
 
         return WebThreeState;
       }

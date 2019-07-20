@@ -4,32 +4,48 @@
   using Shouldly;
   using nt.Client.Features.WebThree;
   using nt.Client.Integration.Tests.Infrastructure;
+  using nt.Shared.Features.WebThree;
   using Microsoft.Extensions.DependencyInjection;
   using BlazorState;
   using MediatR;
   using System.Threading.Tasks;
+  using System.Net.Http;
+  using System.Text.Json.Serialization;
+
   internal class FetchNftTypesTests
   {
     private IMediator Mediator { get; }
     private IServiceProvider ServiceProvider { get; }
-    private IStore Store { get; }
-    private WebThreeState WebThreeState { get; set; }
-
+    private HttpClient HttpClient { get; }
     public FetchNftTypesTests(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
       Mediator = ServiceProvider.GetService<IMediator>();
-      Store = ServiceProvider.GetService<IStore>();
-      WebThreeState = Store.GetState<WebThreeState>();
+      HttpClient = ServiceProvider.GetService<HttpClient>();
     }
 
+
+    public async Task Should_GetJsonFromRouteAsync()
+    {
+      using HttpResponseMessage httpResponseMessage = await HttpClient.GetAsync(GetNftTypesSharedRequest.Route);
+      string content = await httpResponseMessage.Content.ReadAsStringAsync();
+
+      var getNftTypesSharedResponse = new GetNftTypesSharedResponse();
+
+      GetNftTypesSharedResponse response = JsonSerializer.Parse<GetNftTypesSharedResponse>(content);
+
+      getNftTypesSharedResponse.TotalNftTypes = response.TotalNftTypes;
+
+      getNftTypesSharedResponse.TotalNftTypes.ShouldBe(2);
+
+    }
     public async Task Should_Fetch_NftTypes()
     {
       var fetchNftTypes = new GetNftTypesClientFeaturesAction();
 
-      WebThreeState = await Mediator.Send(fetchNftTypes);
+      WebThreeState response = await Mediator.Send(fetchNftTypes);
 
-      WebThreeState.TotalNftTypes.ShouldBe(2);
+      response.TotalNftTypes.ShouldBe(2);
     }
 
   }

@@ -25,7 +25,7 @@
 
       GetNftTypesSharedResponse response = await Mediator.Send(getNftTypeRequest);
 
-      response.TotalNfts.ShouldBe(2);
+      response.TotalNftTypes.ShouldBe(2);
     }
   }
 }

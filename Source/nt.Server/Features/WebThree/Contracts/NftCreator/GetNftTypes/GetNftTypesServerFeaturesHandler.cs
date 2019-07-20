@@ -27,7 +27,7 @@
 
       return new GetNftTypesSharedResponse
       {
-        TotalNfts = response.TotalNfts
+        TotalNftTypes = response.TotalNftTypes
       };
     }
   }
