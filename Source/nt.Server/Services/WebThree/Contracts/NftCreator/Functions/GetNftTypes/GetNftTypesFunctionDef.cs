@@ -4,7 +4,7 @@
     using Nethereum.Contracts;
 
     [Function(name: "totalNFTs", returnType: "uint")]
-    public class GetNftTypesFunction : FunctionMessage
+    public class GetNftTypesFunctionFunctionDef : FunctionMessage
     {
         // This is a call function on the Contract Variable "totalNFTs"
     }
