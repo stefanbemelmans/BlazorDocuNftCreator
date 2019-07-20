@@ -4,16 +4,15 @@
 
   internal partial class WebThreeState : State<WebThreeState>
   {
-    public int TotalNftTypes { get; set; }
+    public int TotalNftTypes { get; set; } = 5;
 
-    public int CurrentNftType { get; set; }
+    public int CurrentNftType { get; set; } = 5;
 
     //public WebThreeState() { }
 
     protected override void Initialize()
     {
-      // Get TotalNftTypesAction
-      TotalNftTypes = 5;
+      
     }
   }
 }
