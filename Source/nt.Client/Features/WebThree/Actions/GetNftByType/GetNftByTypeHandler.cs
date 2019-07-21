@@ -8,7 +8,6 @@
   using Microsoft.AspNetCore.Components;
   using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
   using System;
-  using Microsoft.AspNetCore.WebUtilities;
 
   internal partial class WebThreeState
   {
@@ -35,8 +34,8 @@
 
         int getNftId = aGetNftByTypeClientRequest.GetNftType;
 
-        string requestUri = QueryHelpers.AddQueryString(GetNftByTypeSharedRequest.Route, "GetNftType", getNftId.ToString());
-
+        //string requestUri = QueryHelpers.AddQueryString(GetNftByTypeSharedRequest.Route, "GetNftType", getNftId.ToString());
+        string requestUri = GetNftByTypeSharedRequest.RouteFactory(getNftId);
         GetNftByTypeSharedResponse aNftTemplate = await HttpClient.GetJsonAsync<GetNftByTypeSharedResponse>(requestUri);
 
         return new WebThreeState
