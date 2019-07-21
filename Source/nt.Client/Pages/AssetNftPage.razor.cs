@@ -9,12 +9,10 @@
 
     public string Address { get; set; }
 
-    public int NftTypes { get; set; }
-
     public int TotalNfts { get; set; }
     public int NftTypeToGet { get; set; }
 
-      NftTemplate NftTemplate = new NftTemplate();
+    NftTemplate CurrentNftTemplate = new NftTemplate();
 
      
     }

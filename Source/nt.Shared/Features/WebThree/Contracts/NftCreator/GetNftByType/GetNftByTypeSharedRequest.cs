@@ -7,7 +7,7 @@ public class GetNftByTypeSharedRequest : BaseRequest, IRequest<GetNftByTypeShare
   {
     public const string Route = "api/getNftByType";
 
-    GetNftByTypeFunctionDef GetNftOfType { get; set; }
+    public int GetNftType { get; set; }
   }
 
 }
