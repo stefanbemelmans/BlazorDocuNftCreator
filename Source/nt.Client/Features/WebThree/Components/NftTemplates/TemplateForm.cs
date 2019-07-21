@@ -11,5 +11,6 @@ namespace nt.Client.Features.WebThree.Components.NftTemplates
 
     public string TemplateFormName { get; set; } 
     public Dictionary<string,string> TemplateFormData { get; set; }
+    public Dictionary<string, string> ItemFormData { get; set; }
   }
 }
