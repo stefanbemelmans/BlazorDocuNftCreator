@@ -2,12 +2,17 @@
 
   <div id="NftTemplateComponent" class="container-fluid justify-content-around row align-items-center pt-3">
 
+    <h1> @RfpTemplate.TemplateFormName</h1>
 
-    NFT Template Name: @NftTemplate.Name
+    @foreach(var key in RfpTemplate.TemplateFormData.Keys)
+    {
+      <h3>@key</h3>
+      <input id="" @bind="@RfpTemplate.TemplateFormData[key]" />
+    }
+    @*NFT Template Name: @RfpTemplate
     NFT Template Symbol: @NftTemplate.Symbol
     NFT Template Mint Limit: @NftTemplate.MintLimit
-    NFT Template Attached Token Amount:@NftTemplate.AttachedTokens
-
+    NFT Template Attached Token Amount:@NftTemplate.AttachedTokens*@
 
     <button type="button" class="btn btn-primary" @onclick="">
       Mint NFT's

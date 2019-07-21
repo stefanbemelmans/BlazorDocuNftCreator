@@ -12,7 +12,6 @@
     public int TotalNfts { get; set; }
     public int NftTypeToGet { get; set; }
 
-    NftTemplate CurrentNftTemplate = new NftTemplate();
 
      
     }

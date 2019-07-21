@@ -5,26 +5,28 @@ using System.Threading.Tasks;
 
 namespace nt.Client.Features.WebThree.Components.NftTemplates
 {
-  public class BillOfLadingTemplate
+  public class BillOfLadingTemplate : TemplateForm
   {
-    public int NftId = 6;
-    struct Bill_Of_Lading
+    public BillOfLadingTemplate()
     {
-      string Lading;
-      string Order;
-      string PO;
-      string date;
-      string Carrier;
-      string Shipper;
-      string Consignee;
-      string Instructions;
-    }
-    struct Item
-    {
-      string ItemCode;
-      string Quantity;
-      string Weight;
-      string Details;
+      NftId = 6;
+      TemplateFormName = "Bill of Lading";
+
+      TemplateFormData = new Dictionary<string, string>()
+      {
+        {"Lading", ""},
+        {"Order", ""},
+        {"PO", ""},
+        {"date", ""},
+        {"Carrier", ""},
+        {"Shipper", ""},
+        {"Consignee", ""},
+        {"Instructions", "" },
+        {"ItemCode", ""},
+        {"Quantity", ""},
+        {"Weight", ""},
+        {"Details", ""}
+      };
     }
   }
 }

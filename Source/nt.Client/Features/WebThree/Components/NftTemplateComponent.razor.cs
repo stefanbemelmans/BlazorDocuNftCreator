@@ -1,13 +1,11 @@
 ﻿namespace nt.Client.Features.WebThree.Components
 {
   using nt.Client.Features.Base.Components;
-  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
+  using nt.Client.Features.WebThree.Components.NftTemplates;
   public class NftTemplateComponentModel : BaseComponent
   {
 
-     public NftTemplate NftTemplate { get; set; }
-
-   
+    public RequestForProposalTemplate RfpTemplate = new RequestForProposalTemplate();
 
 
     //AddNewNftTemplateFunction AddNewNftFunction = NftCreatorContract.GetFunction("NFTTemplates");
