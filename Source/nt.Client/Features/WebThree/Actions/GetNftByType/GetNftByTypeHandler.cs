@@ -37,11 +37,11 @@
 
         string requestUri = QueryHelpers.AddQueryString(GetNftByTypeSharedRequest.Route, "GetNftType", getNftId.ToString());
 
-        GetNftByTypeSharedResponse NftTemplate = await HttpClient.GetJsonAsync<GetNftByTypeSharedResponse>(requestUri);
+        GetNftByTypeSharedResponse aNftTemplate = await HttpClient.GetJsonAsync<GetNftByTypeSharedResponse>(requestUri);
 
         return new WebThreeState
         {
-          CurrentNftType = NftTemplate.NftTypeData
+          CurrentNftType = aNftTemplate.NftTypeData
         };
       }
     }
