@@ -3,7 +3,7 @@
   
     public class NftTemplate
     {
-      public int Type { get; set; }
+      public int Id { get; set; }
       public string Name { get; set; }
 
       public string Symbol { get; set; }
