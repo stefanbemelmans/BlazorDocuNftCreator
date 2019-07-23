@@ -23,10 +23,10 @@
       
       // The Solidity uses "uints" 
 
-      uint TokenId = (uint)aGetAllTokensOfTypeServiceRequest.GetAllTokensOfType;
-      var aGetAllTokensOfTypeFunctionMessage = new GetAllTokensOfTypeFunctionDef { GetAllTokensOfType = TokenId };
+      uint aTokenId = (uint)aGetAllTokensOfTypeServiceRequest.GetAllTokensOfType;
+      //var aGetAllTokensOfTypeFunctionMessage = new GetAllTokensOfTypeFunctionDef { GetAllTokensOfType = aTokenId };
 
-      GetAllTokensOfTypeOutputDto aTokenList = await aGetAllTokensOfTypeFunction.CallDeserializingToObjectAsync<GetAllTokensOfTypeOutputDto>(aGetAllTokensOfTypeFunctionMessage.GetAllTokensOfType);
+      GetAllTokensOfTypeOutputDto aTokenList = await aGetAllTokensOfTypeFunction.CallDeserializingToObjectAsync<GetAllTokensOfTypeOutputDto>(aTokenId);
 
       var tokenList = new List<int>();
       foreach(uint token in aTokenList.TokenList)

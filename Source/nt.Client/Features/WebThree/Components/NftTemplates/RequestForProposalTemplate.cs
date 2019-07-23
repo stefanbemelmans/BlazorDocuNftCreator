@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace nt.Client.Features.WebThree.Components.NftTemplates
+﻿namespace nt.Client.Features.WebThree.Components.NftTemplates
 {
+  using System.Collections.Generic;
+
   public class RequestForProposalTemplate : TemplateForm
   {
     public RequestForProposalTemplate()

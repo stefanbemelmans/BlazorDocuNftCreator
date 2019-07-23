@@ -10,7 +10,6 @@
   using System.Threading.Tasks;
   internal class WebThreeStateTests
   {
-    private IMediator Mediator { get; }
     private IServiceProvider ServiceProvider { get; }
     private IStore Store { get; }
     private WebThreeState webThreeState { get; set; }
@@ -18,7 +17,6 @@
     public WebThreeStateTests(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
-      Mediator = ServiceProvider.GetService<IMediator>();
       Store = ServiceProvider.GetService<IStore>();
     }
 

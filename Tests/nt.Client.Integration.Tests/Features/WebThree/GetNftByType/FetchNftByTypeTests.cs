@@ -21,16 +21,19 @@
 
     public async Task ClientActionTest()
     {
-      
-      var Action = new GetNftByTypeClientFeaturesAction();
-      Action.GetNftType = 1;
 
-      WebThreeState ActionResponse = await Mediator.Send(Action);
+      var aGetNftByTypeAction = 
+        new GetNftByTypeClientFeaturesAction
+      {
+        GetNftType = 1
+      };
 
-      ActionResponse.ShouldNotBe(null);
-      ActionResponse.CurrentNftType.ShouldNotBe(null);
+      WebThreeState aGetNftByTypeResponse = await Mediator.Send(aGetNftByTypeAction);
 
-      ActionResponse.CurrentNftType.Name.ShouldBeOfType<string>();
+      aGetNftByTypeResponse.ShouldNotBe(null);
+      aGetNftByTypeResponse.CurrentNftType.ShouldNotBe(null);
+
+      aGetNftByTypeResponse.CurrentNftType.Name.ShouldBeOfType<string>();
     }
 
     //public async Task Should_Fetch_NftTypes()
