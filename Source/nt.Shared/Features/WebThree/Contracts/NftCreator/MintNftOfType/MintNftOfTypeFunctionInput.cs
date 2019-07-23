@@ -6,7 +6,7 @@
   // Mints the selected NFT template
   // Triggers Herc1155 Transfer Single Event
   [Function("mintNFT")]
-  public class MintNftOfTypeFunctionDef : FunctionMessage
+  public class MintNftOfTypeFunctionInput : FunctionMessage
   {
     [Parameter(type: "uint", name: "type", 1)]
     public int Type { get; set; }

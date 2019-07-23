@@ -20,7 +20,7 @@
     {
       Function aGetNftByTypeFunction = NftCreatorInstance.Instance.GetFunction("getNFTData");
 
-      var aGetNftByTypeFunctionMessage = new GetNftByTypeFunctionDef { NftId = aGetNftByTypeServiceRequest.GetNftId };
+      var aGetNftByTypeFunctionMessage = new GetNftByTypeFunctionInput { NftId = aGetNftByTypeServiceRequest.GetNftId };
 
       GetNftByTypeOutputDto aTemplate = await aGetNftByTypeFunction.CallDeserializingToObjectAsync<GetNftByTypeOutputDto>(aGetNftByTypeFunctionMessage.NftId);
 

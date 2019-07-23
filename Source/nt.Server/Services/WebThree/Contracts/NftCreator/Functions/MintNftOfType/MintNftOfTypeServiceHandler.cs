@@ -24,9 +24,9 @@
     {
       Function aMintNftOfTypeFunction = NftCreatorInstance.Instance.GetFunction("mintNFT");
 
-      Nethereum.Contracts.ContractHandlers.IContractTransactionHandler<MintNftOfTypeFunctionDef> mintingHandler = NethWeb3.Instance.Eth.GetContractTransactionHandler<MintNftOfTypeFunctionDef>();
+      Nethereum.Contracts.ContractHandlers.IContractTransactionHandler<MintNftOfTypeFunctionInput> mintingHandler = NethWeb3.Instance.Eth.GetContractTransactionHandler<MintNftOfTypeFunctionInput>();
 
-      var aMintNftOfTypeFunctionMessage = new MintNftOfTypeFunctionDef {
+      var aMintNftOfTypeFunctionMessage = new MintNftOfTypeFunctionInput {
         Type = aMintNftOfTypeServiceRequest.MintNftId,
         ImmutableData = aMintNftOfTypeServiceRequest.ImmutableData.ToString(),
         MutableData = aMintNftOfTypeServiceRequest.MutableData.ToString()

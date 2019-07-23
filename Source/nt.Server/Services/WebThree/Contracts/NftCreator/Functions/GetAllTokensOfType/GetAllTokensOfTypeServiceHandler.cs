@@ -20,15 +20,15 @@
 
     public async Task<GetAllTokensOfTypeServiceResponse> Handle(GetAllTokensOfTypeServiceRequest aGetAllTokensOfTypeServiceRequest, CancellationToken aCancellationToken)
     {
-      Function<GetAllTokensOfTypeFunctionDef> aGetAllTokensOfTypeFunction = NftCreatorInstance.Instance.GetFunction<GetAllTokensOfTypeFunctionDef>();
+      Function<GetAllTokensOfTypeFunctionInput> aGetAllTokensOfTypeFunction = NftCreatorInstance.Instance.GetFunction<GetAllTokensOfTypeFunctionInput>();
       
       // The Solidity uses "uints" 
 
       uint aTokenId = (uint)aGetAllTokensOfTypeServiceRequest.GetAllTokensOfType;
-      //var aGetAllTokensOfTypeFunctionMessage = new GetAllTokensOfTypeFunctionDef { GetAllTokensOfType = aTokenId };
+      //var aGetAllTokensOfTypeFunctionMessage = new GetAllTokensOfTypeFunctionInput { GetAllTokensOfType = aTokenId };
 
       GetAllTokensOfTypeOutputDto aTokenList = await aGetAllTokensOfTypeFunction.CallDeserializingToObjectAsync<GetAllTokensOfTypeOutputDto>(
-      new GetAllTokensOfTypeFunctionDef
+      new GetAllTokensOfTypeFunctionInput
       {
         GetAllTokensOfType = aGetAllTokensOfTypeServiceRequest.GetAllTokensOfType
       }
