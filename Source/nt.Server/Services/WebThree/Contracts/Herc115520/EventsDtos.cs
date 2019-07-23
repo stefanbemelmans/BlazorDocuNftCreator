@@ -8,7 +8,7 @@
     [Event("TransferSingle")]
     public class TransferEventDto : IEventDTO
     {
-        [Parameter("address", "_operater", 1, true)]
+        [Parameter(type: "address", name: "_operater", order: 1, indexed: true)]
         public string Operator { get; set; }
 
         [Parameter("address", "_from", 2, true)]
