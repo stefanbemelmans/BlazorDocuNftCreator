@@ -3,7 +3,7 @@
   using MediatR;
   public class GetAllTokensOfTypeServiceRequest : IRequest<GetAllTokensOfTypeServiceResponse>
     {
-      public int GetAllTokensOfType { get; set; }
+      public uint GetAllTokensOfType { get; set; }
     
     }
 }

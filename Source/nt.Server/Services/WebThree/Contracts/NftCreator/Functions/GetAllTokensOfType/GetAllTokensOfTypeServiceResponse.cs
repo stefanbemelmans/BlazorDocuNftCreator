@@ -5,6 +5,6 @@
 
   public class GetAllTokensOfTypeServiceResponse : BaseResponse
     {
-    public List<int> TokenList { get; set; }
+    public List<uint> TokenList { get; set; }
     }
 }

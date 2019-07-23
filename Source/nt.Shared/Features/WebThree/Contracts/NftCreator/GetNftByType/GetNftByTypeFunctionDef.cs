@@ -6,7 +6,7 @@
   [Function(name: "getNFTData")] // This works
   public class GetNftByTypeFunctionDef : FunctionMessage
   {
-    [Parameter("uint", "id", 1)]
+    [Parameter(type: "uint", name:"id", order: 1)]
     public int NftId { get; set; }
   }
 }

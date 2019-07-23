@@ -8,7 +8,7 @@
   [Function("mintNFT")]
   public class MintNftOfTypeFunctionDef : FunctionMessage
   {
-    [Parameter("uint", "type", 1)]
+    [Parameter(type: "uint", name: "type", 1)]
     public int Type { get; set; }
 
     [Parameter("string", "data", 2)]

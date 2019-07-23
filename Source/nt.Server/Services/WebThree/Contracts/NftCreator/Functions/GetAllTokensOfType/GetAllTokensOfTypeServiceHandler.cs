@@ -7,6 +7,7 @@
   using nt.Shared.Features.WebThree.Contracts.NftCreator.GetAllTokensOfType;
   using MediatR;
   using System.Collections.Generic;
+  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
 
   public class GetAllTokensOfTypeServerServiceHandler : IRequestHandler<GetAllTokensOfTypeServiceRequest, GetAllTokensOfTypeServiceResponse>
     {
@@ -19,20 +20,23 @@
 
     public async Task<GetAllTokensOfTypeServiceResponse> Handle(GetAllTokensOfTypeServiceRequest aGetAllTokensOfTypeServiceRequest, CancellationToken aCancellationToken)
     {
-      Function aGetAllTokensOfTypeFunction = NftCreatorInstance.Instance.GetFunction("getAllTokensofType");
+      Function<GetAllTokensOfTypeFunctionDef> aGetAllTokensOfTypeFunction = NftCreatorInstance.Instance.GetFunction<GetAllTokensOfTypeFunctionDef>();
       
       // The Solidity uses "uints" 
 
       uint aTokenId = (uint)aGetAllTokensOfTypeServiceRequest.GetAllTokensOfType;
       //var aGetAllTokensOfTypeFunctionMessage = new GetAllTokensOfTypeFunctionDef { GetAllTokensOfType = aTokenId };
 
-      GetAllTokensOfTypeOutputDto aTokenList = await aGetAllTokensOfTypeFunction.CallDeserializingToObjectAsync<GetAllTokensOfTypeOutputDto>(aTokenId);
-
-      var tokenList = new List<int>();
-      foreach(uint token in aTokenList.TokenList)
+      GetAllTokensOfTypeOutputDto aTokenList = await aGetAllTokensOfTypeFunction.CallDeserializingToObjectAsync<GetAllTokensOfTypeOutputDto>(
+      new GetAllTokensOfTypeFunctionDef
       {
-        tokenList.Add((int)token);
+        GetAllTokensOfType = aGetAllTokensOfTypeServiceRequest.GetAllTokensOfType
       }
+      );
+
+      var tokenList = new List<uint>();
+
+      tokenList.AddRange(aTokenList.TokenList);
 
       return new GetAllTokensOfTypeServiceResponse { TokenList = tokenList };
     }
