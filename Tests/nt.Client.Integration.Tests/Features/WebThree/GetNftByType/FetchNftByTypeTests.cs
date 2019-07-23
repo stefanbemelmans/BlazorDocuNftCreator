@@ -13,12 +13,10 @@
   {
     private IMediator Mediator { get; }
     private IServiceProvider ServiceProvider { get; }
-    private HttpClient HttpClient { get; }
     public FetchNftByTypeTests(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
       Mediator = ServiceProvider.GetService<IMediator>();
-      HttpClient = ServiceProvider.GetService<HttpClient>();
     }
 
     public async Task ClientActionTest()
