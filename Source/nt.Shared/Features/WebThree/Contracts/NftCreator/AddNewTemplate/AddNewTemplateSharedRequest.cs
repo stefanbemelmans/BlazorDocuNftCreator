@@ -8,14 +8,9 @@
   {
     public const string Route = "api/AddNewTemplate";
 
-    public static string RouteFactory(int aId) => $"api/AddNewTemplate?MintNftType={aId}";
-    public string NewTemplateName { get; set; }
+    //public static string RouteFactory(int aId) => $"api/AddNewTemplate?MintNftType={aId}";
 
-    public string NewTemplateSymbol { get; set; }
-
-    public int NewTemplateMintLimit { get; set; }
-
-    public int NewTemplateAttachedTokens { get; set; }
+    public NftTemplate NewNftTemplate { get; set; }
   }
 
 }

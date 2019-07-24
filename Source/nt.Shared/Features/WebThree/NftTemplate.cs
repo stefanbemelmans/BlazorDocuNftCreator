@@ -1,4 +1,4 @@
-﻿namespace nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType
+﻿namespace nt.Shared.Features.WebThree
 {
   
     public class NftTemplate

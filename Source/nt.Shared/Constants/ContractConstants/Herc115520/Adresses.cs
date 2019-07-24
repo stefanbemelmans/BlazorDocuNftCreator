@@ -1,6 +1,6 @@
-﻿namespace nt.Shared.Constants.ContractConstants.Herc115520
+﻿namespace nt.Shared.Constants.ContractConstants.Herc1155
 {
-  public static class Herc115520Adresses
+  public static class Herc1155Adresses
   {
     public static string RopstenAddress = "0x3393b382f834be5F01095197CBDb0dbe66573222";
 

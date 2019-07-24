@@ -1,10 +1,10 @@
 
-namespace nt.Shared.Constants.ContractConstants.Herc115520
+namespace nt.Shared.Constants.ContractConstants.Herc1155
 {
-    public class ContractAbi
-    {
+  public class ContractAbi
+  {
 
-        public static string Abi = @"[
+    public static string Abi = @"[
     {
       ""constant"": true,
       ""inputs"": [
@@ -1205,7 +1205,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc115520
       ""signature"": ""0xdd62ed3e""
     }
   ]";
-    };
+  };
 };
 
 

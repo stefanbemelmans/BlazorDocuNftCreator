@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\WebThree\Contracts\Herc115520\Functions\EditMutableData\" />
-    <Folder Include="Services\WebThree\Contracts\Herc115520\Functions\ViewTokenData\" />
-    <Folder Include="Services\WebThree\Contracts\Herc115520\Functions\ViewMutableData\" />
+    <Folder Include="Services\WebThree\Contracts\Herc1155\Functions\EditMutableData\" />
+    <Folder Include="Services\WebThree\Contracts\Herc1155\Functions\ViewTokenData\" />
+    <Folder Include="Services\WebThree\Contracts\Herc1155\Functions\ViewMutableData\" />
   </ItemGroup>
 </Project>

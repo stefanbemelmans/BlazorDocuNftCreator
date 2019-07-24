@@ -28,11 +28,13 @@
 
       var aAddNewTemplateFunctionMessage = new AddNewTemplateFunctionInput
       {
-        NewTemplateName = aAddNewTemplateServiceRequest.NewTemplateName,
-        NewTemplateSymbol = aAddNewTemplateServiceRequest.NewTemplateSymbol,
-        NewTemplateAttachedTokens = aAddNewTemplateServiceRequest.NewTemplateAttachedTokens,
-        NewTemplateMintLimit = aAddNewTemplateServiceRequest.NewTemplateMintLimit
+        NewTemplateName = aAddNewTemplateServiceRequest.NewNftTemplate.Name,
+        NewTemplateSymbol = aAddNewTemplateServiceRequest.NewNftTemplate.Symbol,
+        NewTemplateAttachedTokens = aAddNewTemplateServiceRequest.NewNftTemplate.AttachedTokens,
+        NewTemplateMintLimit = aAddNewTemplateServiceRequest.NewNftTemplate.MintLimit
       };
+
+      // Gas Estimates, needs to be tested
 
       Nethereum.Hex.HexTypes.HexBigInteger gasEstimate = await addNewTemplateFunctionHandler.EstimateGasAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aAddNewTemplateFunctionMessage);
 
