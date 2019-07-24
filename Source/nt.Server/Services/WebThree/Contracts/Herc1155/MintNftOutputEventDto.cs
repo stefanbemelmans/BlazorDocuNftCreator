@@ -1,12 +1,12 @@
-﻿namespace nt.Server.Services.WebThree.Contracts
+﻿namespace nt.Server.Services.WebThree.Contracts.Herc1155
 {   // [Event("event name")]
     using Nethereum.ABI.FunctionEncoding.Attributes;
     using System.Numerics;
 
-    // [Parameter("type", "param_name", order num, true/false is Indexed?)]
+    // this is an event that is emitted by HERC1155 as result of the NftCreator Mint function
 
     [Event("TransferSingle")]
-    public class TransferEventDto : IEventDTO
+    public class MintNftOutputEventDto : IEventDTO
     {
         [Parameter(type: "address", name: "_operater", order: 1, indexed: true)]
         public string Operator { get; set; }

@@ -6,6 +6,7 @@
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
   using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
   using MediatR;
+  using nt.Shared.Features.WebThree;
 
   public class GetNftByTypeServerServiceHandler : IRequestHandler<GetNftByTypeServiceRequest, GetNftByTypeServiceResponse>
     {

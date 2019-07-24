@@ -1,6 +1,8 @@
-﻿namespace nt.Shared.Features.WebThree.Contracts.NftCreator.AddNewTemplate
+﻿
+namespace nt.Shared.Features.WebThree.Contracts.NftCreator.AddNewTemplate
 {
-  public class AddNewTemplateSharedResponse
+  using nt.Shared.Features.Base;
+  public class AddNewTemplateSharedResponse : BaseResponse
   {
     public Nethereum.RPC.Eth.DTOs.TransactionReceipt NewTemplateTransactionReceipt { get; set; }
 

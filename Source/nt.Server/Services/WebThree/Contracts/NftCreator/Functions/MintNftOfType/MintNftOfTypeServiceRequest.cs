@@ -5,7 +5,7 @@
 
   public class MintNftOfTypeServiceRequest : IRequest<MintNftOfTypeServiceResponse>
     {
-      public int MintNftId { get; set; }
+    public int MintNftId { get; set; }
 
     public List<string> ImmutableData { get; set; }
 

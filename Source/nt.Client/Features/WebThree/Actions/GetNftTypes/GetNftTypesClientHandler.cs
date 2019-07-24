@@ -4,8 +4,8 @@
   using System.Threading;
   using System.Threading.Tasks;
   using BlazorState;
-  using nt.Shared.Features.WebThree;
   using Microsoft.AspNetCore.Components;
+  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftTypes;
 
   internal partial class WebThreeState
   {

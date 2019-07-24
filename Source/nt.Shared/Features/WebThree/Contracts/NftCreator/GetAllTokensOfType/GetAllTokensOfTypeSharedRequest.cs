@@ -7,8 +7,8 @@ public class GetAllTokensOfTypeSharedRequest : BaseRequest, IRequest<GetAllToken
   {
     public const string Route = "api/getAllTokensByType";
 
-    public static string RouteFactory(int aId) => $"api/getAllTokensOfType?GetAllTokensOfType={aId}";
-    public int GetAllTokensOfType { get; set; }
+    public static string RouteFactory(uint aId) => $"api/getAllTokensOfType?GetAllTokensOfType={aId}";
+    public uint GetAllTokensOfType { get; set; }
   }
 
 }

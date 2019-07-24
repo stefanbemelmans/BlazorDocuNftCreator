@@ -1,6 +1,7 @@
 ﻿namespace nt.Client.Features.WebThree.Components
 {
     using nt.Client.Features.Base.Components;
+  using nt.Shared.Features.WebThree;
   using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
     public class NewNftTemplateFormModel : BaseComponent
     {

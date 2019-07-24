@@ -1,12 +1,10 @@
-﻿namespace nt.Server.Services.WebThree.Contracts.NftCreator.Functions.MintNftOfType
+﻿namespace nt.Shared.Features.WebThree.Contracts.NftCreator.MintNftOfType
 {
   using nt.Shared.Features.Base;
   using System.Numerics;
 
-  public class MintNftOfTypeServiceResponse : BaseResponse
-    {
-    // No response for this function but an Event is emitted
-    // This is trying to capture the event Data
+  public class MintNftOfTypeSharedResponse : BaseResponse
+  {
     public string Operator { get; set; }
 
     public string From { get; set; }

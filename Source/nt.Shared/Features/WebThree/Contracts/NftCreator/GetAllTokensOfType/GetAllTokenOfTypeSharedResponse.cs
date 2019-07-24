@@ -14,6 +14,6 @@ namespace nt.Shared.Features.WebThree.Contracts.NftCreator.GetAllTokensOfType
       RequestId = aRequestId;
     }
 
-    public List<int> TokenList { get; set; }
+    public List<uint> TokenList { get; set; }
   }
 }

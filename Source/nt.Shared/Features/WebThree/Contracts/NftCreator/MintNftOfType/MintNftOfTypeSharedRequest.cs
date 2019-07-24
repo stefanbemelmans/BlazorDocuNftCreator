@@ -2,9 +2,9 @@
 {
   using nt.Shared.Features.Base;
   using MediatR;
-  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
+  using nt.Shared.Features.WebThree.Contracts.NftCreator.MintNftOfType;
 
-  public class MintNftOfTypeSharedRequest : BaseRequest, IRequest<GetNftByTypeSharedResponse>
+  public class MintNftOfTypeSharedRequest : BaseRequest, IRequest<MintNftOfTypeSharedResponse>
   {
     public const string Route = "api/mintNftOfType";
 

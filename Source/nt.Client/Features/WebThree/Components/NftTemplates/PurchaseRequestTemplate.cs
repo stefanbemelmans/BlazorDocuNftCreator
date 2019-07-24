@@ -2,14 +2,19 @@
 {
   using System.Collections.Generic;
 
-  public class PurchaseRequestTemplate : TemplateForm
+  public class PurchaseRequestTemplate : TemplateFormBase
   {
     public PurchaseRequestTemplate()
     {
       NftId = 4;
-      TemplateFormName = "Purchase Request";
 
+      TemplateBaseInfo.Id = NftId;
+      TemplateBaseInfo.Name = "Purchase Request";
+      TemplateBaseInfo.Symbol = "PRQ";
+      TemplateBaseInfo.MintLimit = 5;
+      TemplateBaseInfo.AttachedTokens = 0;
       ItemFormData = new Dictionary<string, string>()
+
       {
         {"StockNumber", ""},
         {"Description", "" },

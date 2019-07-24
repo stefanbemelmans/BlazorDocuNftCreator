@@ -2,12 +2,16 @@
 {
   using System.Collections.Generic;
 
-  public class RequestForProposalTemplate : TemplateForm
+  public class RequestForProposalTemplate : TemplateFormBase
   {
     public RequestForProposalTemplate()
     {
        NftId = 0;
-       TemplateFormName = "Request For Proposal";
+      TemplateBaseInfo.Id = NftId;
+      TemplateBaseInfo.Name = "Request For Proposal";
+      TemplateBaseInfo.Symbol = "RFQ";
+      TemplateBaseInfo.MintLimit = 5;
+      TemplateBaseInfo.AttachedTokens = 0;
 
       TemplateFormData = new Dictionary<string, string>()
       {

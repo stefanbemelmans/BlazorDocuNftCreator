@@ -5,6 +5,7 @@
   using Nethereum.Contracts;
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
   using nt.Server.Services.WebThree.Instance;
+  using nt.Server.Services.WebThree.Contracts.Herc1155;
   using MediatR;
   using nt.Shared.Features.WebThree.Contracts.NftCreator.MintNftOfType;
   using nt.Shared.Constants.ContractConstants.NftCreator;
@@ -22,7 +23,7 @@
 
     public async Task<MintNftOfTypeServiceResponse> Handle(MintNftOfTypeServiceRequest aMintNftOfTypeServiceRequest, CancellationToken aCancellationToken)
     {
-      Function aMintNftOfTypeFunction = NftCreatorInstance.Instance.GetFunction("mintNFT");
+      Function<MintNftOfTypeFunctionInput> aMintNftOfTypeFunction = NftCreatorInstance.Instance.GetFunction<MintNftOfTypeFunctionInput>();
 
       Nethereum.Contracts.ContractHandlers.IContractTransactionHandler<MintNftOfTypeFunctionInput> mintingHandler = NethWeb3.Instance.Eth.GetContractTransactionHandler<MintNftOfTypeFunctionInput>();
 
@@ -34,9 +35,13 @@
 
       Nethereum.RPC.Eth.DTOs.TransactionReceipt mintingTransactionReceipt = await mintingHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aMintNftOfTypeFunctionMessage);
 
-     
+      System.Collections.Generic.List<EventLog<MintNftOutputEventDto>> MintNftOutput = mintingTransactionReceipt.DecodeAllEvents<MintNftOutputEventDto>();
 
-      return new MintNftOfTypeServiceResponse() ;
+
+      return new MintNftOfTypeServiceResponse
+      {
+        //  Test needed
+      };
     }
   }
 }

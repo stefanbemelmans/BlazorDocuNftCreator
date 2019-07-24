@@ -5,11 +5,17 @@ using System.Threading.Tasks;
 
 namespace nt.Client.Features.WebThree.Components.NftTemplates
 {
-  public class RequestForQuotationTemplate : TemplateForm
+  public class RequestForQuotationTemplate : TemplateFormBase
   {
     public RequestForQuotationTemplate()
     {
       NftId = 1;
+      TemplateBaseInfo.Id = NftId;
+      TemplateBaseInfo.Name = "Request For Quotation";
+      TemplateBaseInfo.Symbol = "RFQ";
+      TemplateBaseInfo.MintLimit = 5;
+      TemplateBaseInfo.AttachedTokens = 0;
+
       TemplateFormData = new Dictionary<string, string>()
       {
         { "DeliveryTerms", "" },

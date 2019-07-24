@@ -7,7 +7,6 @@
   using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftByType;
   using System.Threading.Tasks;
   using nt.Shared.Features.WebThree;
-  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
 
   class GetNftByTypeTests
   {

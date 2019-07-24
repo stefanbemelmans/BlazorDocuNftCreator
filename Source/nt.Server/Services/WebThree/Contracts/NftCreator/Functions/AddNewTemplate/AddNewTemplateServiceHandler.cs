@@ -5,10 +5,9 @@
   using Nethereum.Contracts;
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
   using nt.Server.Services.WebThree.Instance;
-  using nt.Shared.Features.WebThree.Contracts;
   using MediatR;
   using nt.Shared.Constants.ContractConstants.NftCreator;
-  using nt.Server.Services.WebThree.Contracts.NftCreator.AddNewTemplate;
+  using nt.Shared.Features.WebThree.Contracts.NftCreator.AddNewTemplate;
 
   public class AddNewTemplateServerServiceHandler : IRequestHandler<AddNewTemplateServiceRequest, AddNewTemplateServiceResponse>
   {

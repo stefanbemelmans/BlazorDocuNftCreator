@@ -1,12 +1,11 @@
 ﻿namespace nt.Server.Integration.Tests.Features.WebThree.Contracts.NftCreator
 {
   using System;
-  using nt.Shared.Features.WebThree;
   using Microsoft.Extensions.DependencyInjection;
   using Shouldly;
   using MediatR;
   using System.Threading.Tasks;
-  using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftTypes;
+  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftTypes;
 
   class GetNftTypesTests
   {

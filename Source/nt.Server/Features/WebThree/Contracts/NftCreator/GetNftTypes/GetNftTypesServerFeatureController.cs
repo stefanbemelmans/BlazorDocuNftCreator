@@ -2,8 +2,8 @@
 {
   using System.Threading.Tasks;
   using nt.Server.Features.Base;
-  using nt.Shared.Features.WebThree;
   using Microsoft.AspNetCore.Mvc;
+  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftTypes;
 
   [Route(GetNftTypesSharedRequest.Route)]
   public class GetNftTypesServerFeaturesController : BaseController<GetNftTypesSharedRequest, GetNftTypesSharedResponse> 

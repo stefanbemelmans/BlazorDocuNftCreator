@@ -2,18 +2,25 @@
 
   <div id="NftTemplateComponent" class="container-fluid justify-content-around row align-items-center pt-3">
 
-    <h1> @RfpTemplate.TemplateFormName</h1>
+    <div class="container row w-75 d-flex space-around">
+      <h1> @RfpTemplate.TemplateBaseInfo.Name</h1>
+      <h4>@RfpTemplate.TemplateBaseInfo.Symbol</h4>
+      <h4>@RfpTemplate.TemplateBaseInfo.MintLimit</h4>
+      <h4>@RfpTemplate.TemplateBaseInfo.AttachedTokens</h4>
+      </div>
+    <div class="container">
 
-    @foreach(var key in RfpTemplate.TemplateFormData.Keys)
-    {
-      <h3>@key</h3>
-      <input id="" @bind="@RfpTemplate.TemplateFormData[key]" />
-    }
-    @*NFT Template Name: @RfpTemplate
+      @foreach (var key in RfpTemplate.TemplateFormData.Keys)
+      { <div class="col"></div>
+        <h4>@key</h4>
+        <input id="" @bind="@RfpTemplate.TemplateFormData[key]" />
+      }
+      @*NFT Template Name: @RfpTemplate
     NFT Template Symbol: @NftTemplate.Symbol
     NFT Template Mint Limit: @NftTemplate.MintLimit
     NFT Template Attached Token Amount:@NftTemplate.AttachedTokens*@
 
+    </div>
     <button type="button" class="btn btn-primary" @onclick="@PrintValues">
      Console Values
     </button>

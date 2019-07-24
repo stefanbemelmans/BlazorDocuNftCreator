@@ -15,9 +15,6 @@
       Mediator = aMediator;
     }
 
-    public AddNewTemplateServerFeaturesHandler()
-    {
-    }
 
     public async Task<AddNewTemplateSharedResponse> Handle
     (
@@ -37,7 +34,8 @@
 
       return new AddNewTemplateSharedResponse
       {
-        NewTemplateTransactionReceipt = response.NewTemplateTransactionReceipt  };
+        NewTemplateTransactionReceipt = response.NewTemplateTransactionReceipt
+      };
     }
   }
 }
