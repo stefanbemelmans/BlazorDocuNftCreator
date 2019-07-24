@@ -3,7 +3,7 @@
   using Nethereum.Contracts;
   using nt.Server.Services.WebThree.Instance;
   using nt.Shared.Constants.ContractConstants.Herc115520;
-
+  //using nt.Shared.Constants.ContractConstants.Herc115520;
   public class Herc115520Instance
     {
       NethWeb3 NethWeb3 { get; set; }
@@ -15,7 +15,7 @@
       public Herc115520Instance(NethWeb3 aNethWeb3)
       {
         NethWeb3 = aNethWeb3;
-        Instance = NethWeb3.Instance.Eth.GetContract(ContractAbi.Abi, Herc115520Addresses.RinkebyAddress);
+        Instance = NethWeb3.Instance.Eth.GetContract(ContractAbi.Abi, Herc115520Adresses.RinkebyAddress);
     }
   }
 
