@@ -22,4 +22,10 @@
     <ProjectReference Include="..\nt.Client\nt.Client.csproj" />
     <ProjectReference Include="..\nt.Shared\nt.Shared.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\WebThree\Contracts\Herc115520\Functions\EditMutableData\" />
+    <Folder Include="Services\WebThree\Contracts\Herc115520\Functions\ViewTokenData\" />
+    <Folder Include="Services\WebThree\Contracts\Herc115520\Functions\ViewMutableData\" />
+  </ItemGroup>
 </Project>
