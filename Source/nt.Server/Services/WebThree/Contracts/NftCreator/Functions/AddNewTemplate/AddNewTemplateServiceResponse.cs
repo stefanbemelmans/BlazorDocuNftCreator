@@ -1,4 +1,4 @@
-﻿namespace nt.Server.Services.WebThree.Contracts.NftCreator.Functions.AddNewTemplate
+﻿namespace nt.Server.Services.WebThree.Contracts.NftCreator.AddNewTemplate
 {
   using nt.Shared.Features.Base;
 

@@ -1,4 +1,4 @@
-﻿namespace nt.Server.Services.WebThree.Contracts.NftCreator.Functions.AddNewTemplate
+﻿namespace nt.Server.Services.WebThree.Contracts.NftCreator.AddNewTemplate
 {
   using System.Threading.Tasks;
   using System.Threading;
@@ -8,6 +8,7 @@
   using nt.Shared.Features.WebThree.Contracts;
   using MediatR;
   using nt.Shared.Constants.ContractConstants.NftCreator;
+  using nt.Server.Services.WebThree.Contracts.NftCreator.AddNewTemplate;
 
   public class AddNewTemplateServerServiceHandler : IRequestHandler<AddNewTemplateServiceRequest, AddNewTemplateServiceResponse>
   {

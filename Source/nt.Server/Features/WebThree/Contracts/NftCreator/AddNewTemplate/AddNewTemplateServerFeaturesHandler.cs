@@ -1,34 +1,43 @@
-﻿namespace nt.Server.Features.WebThree.Contracts.NftCreator.GetNftByType
+﻿namespace nt.Server.Features.WebThree.Contracts.NftCreator.AddNewTemplate
 {
   using MediatR;
-  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
-  using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftByType;
+  using nt.Server.Services.WebThree.Contracts.NftCreator.AddNewTemplate;
+  using nt.Shared.Features.WebThree.Contracts.NftCreator.AddNewTemplate;
   using System.Threading;
   using System.Threading.Tasks;
 
-  public class GetNftByTypeServerFeaturesHandler : IRequestHandler<GetNftByTypeSharedRequest, GetNftByTypeSharedResponse>
+  public class AddNewTemplateServerFeaturesHandler : IRequestHandler<AddNewTemplateSharedRequest, AddNewTemplateSharedResponse>
   {
     IMediator Mediator { get; set; }
 
-    public GetNftByTypeServerFeaturesHandler(IMediator aMediator)
+    public AddNewTemplateServerFeaturesHandler(IMediator aMediator)
     {
       Mediator = aMediator;
     }
 
-    public async Task<GetNftByTypeSharedResponse> Handle
+    public AddNewTemplateServerFeaturesHandler()
+    {
+    }
+
+    public async Task<AddNewTemplateSharedResponse> Handle
     (
-      GetNftByTypeSharedRequest aGetNftByTypeSharedRequest,
+      AddNewTemplateSharedRequest aAddNewTemplateSharedRequest,
       CancellationToken aCancellationToken
     )
     {
-      var aNftRequest = new GetNftByTypeServiceRequest { GetNftId = aGetNftByTypeSharedRequest.GetNftType };
-
-      GetNftByTypeServiceResponse response = await Mediator.Send(aNftRequest);
-
-      return new GetNftByTypeSharedResponse
+      var aNftRequest = new AddNewTemplateServiceRequest
       {
-        NftTypeData = response.NftTypeData
+        NewNftTemplate = aAddNewTemplateSharedRequest.NewNftTemplate
       };
+
+
+
+
+      AddNewTemplateServiceResponse response = await Mediator.Send(aNftRequest);
+
+      return new AddNewTemplateSharedResponse
+      {
+        NewTemplateTransactionReceipt = response.NewTemplateTransactionReceipt  };
     }
   }
 }

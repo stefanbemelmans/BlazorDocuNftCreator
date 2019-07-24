@@ -8,11 +8,11 @@
 
   public class GetNftByTypeServerFeaturesHandler : IRequestHandler<GetNftByTypeSharedRequest, GetNftByTypeSharedResponse>
   {
-    IMediator Mediator { get; set; }
+    IMediator GMediator { get; set; }
 
     public GetNftByTypeServerFeaturesHandler(IMediator aMediator)
     {
-      Mediator = aMediator;
+      GMediator = aMediator;
     }
 
     public async Task<GetNftByTypeSharedResponse> Handle
@@ -23,7 +23,7 @@
     {
       var aNftRequest = new GetNftByTypeServiceRequest { GetNftId = aGetNftByTypeSharedRequest.GetNftType };
 
-      GetNftByTypeServiceResponse response = await Mediator.Send(aNftRequest);
+      GetNftByTypeServiceResponse response = await GMediator.Send(aNftRequest);
 
       return new GetNftByTypeSharedResponse
       {

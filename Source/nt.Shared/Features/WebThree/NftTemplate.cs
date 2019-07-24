@@ -1,7 +1,8 @@
 ﻿namespace nt.Shared.Features.WebThree
 {
-  
-    public class NftTemplate
+  using System.Collections;
+  using System.Collections.Generic;
+  public class NftTemplate : IEnumerable<NftTemplate>
     {
       public int Id { get; set; }
       public string Name { get; set; }
@@ -12,6 +13,9 @@
 
       public int AttachedTokens { get; set; }
 
-    }
+    public IEnumerator<NftTemplate> GetEnumerator() => throw new System.NotImplementedException();
+
+    IEnumerator IEnumerable.GetEnumerator() => throw new System.NotImplementedException();
+  }
 
 }

@@ -1,4 +1,4 @@
-﻿namespace nt.Shared.Features.WebThree.Contracts
+﻿namespace nt.Shared.Features.WebThree.Contracts.NftCreator.AddNewTemplate
 {   // [Function("name", "return type")]
     using Nethereum.ABI.FunctionEncoding.Attributes;
     using Nethereum.Contracts;

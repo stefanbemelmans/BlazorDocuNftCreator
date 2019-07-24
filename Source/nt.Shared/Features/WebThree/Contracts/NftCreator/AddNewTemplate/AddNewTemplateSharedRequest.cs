@@ -4,7 +4,7 @@
   using MediatR;
   using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
 
-  public class AddNewTemplateSharedRequest : BaseRequest, IRequest<GetNftByTypeSharedResponse>
+  public class AddNewTemplateSharedRequest : BaseRequest, IRequest<AddNewTemplateSharedResponse>
   {
     public const string Route = "api/AddNewTemplate";
 

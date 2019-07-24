@@ -1,4 +1,4 @@
-namespace nt.Shared.Features.WebThree
+namespace nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftTypes
 {
   using System;
   using nt.Shared.Features.Base;
