@@ -27,8 +27,10 @@
         }
         );
 
-
-      return
+      return new ViewTokenDataServiceResponse
+      {
+        TokenUri = response
+      };
 
     }
   }
