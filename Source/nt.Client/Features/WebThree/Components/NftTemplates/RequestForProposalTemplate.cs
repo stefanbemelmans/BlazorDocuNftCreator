@@ -7,7 +7,6 @@
     public RequestForProposalTemplate()
     {
        NftId = 0;
-      TemplateBaseInfo.Id = NftId;
       TemplateBaseInfo.Name = "Request For Proposal";
       TemplateBaseInfo.Symbol = "RFQ";
       TemplateBaseInfo.MintLimit = 5;

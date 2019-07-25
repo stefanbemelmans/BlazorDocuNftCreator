@@ -7,7 +7,6 @@
     public BillOfLadingTemplate()
     {
       NftId = 6;
-      TemplateBaseInfo.Id = NftId;
       TemplateBaseInfo.Name = "Bill of Lading";
       TemplateBaseInfo.Symbol = "BOL";
       TemplateBaseInfo.MintLimit = 5;

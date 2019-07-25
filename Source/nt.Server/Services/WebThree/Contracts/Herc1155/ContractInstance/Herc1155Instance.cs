@@ -15,7 +15,7 @@
       public Herc1155Instance(NethWeb3 aNethWeb3)
       {
         NethWeb3 = aNethWeb3;
-        Instance = NethWeb3.Instance.Eth.GetContract(ContractAbi.Abi, Herc1155Adresses.RinkebyAddress);
+        Instance = NethWeb3.Instance.Eth.GetContract(ContractAbi.Abi, Herc1155Addresses.RinkebyAddress);
     }
   }
 

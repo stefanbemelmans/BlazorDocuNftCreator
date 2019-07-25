@@ -10,7 +10,6 @@ namespace nt.Client.Features.WebThree.Components.NftTemplates
     public RequestForQuotationTemplate()
     {
       NftId = 1;
-      TemplateBaseInfo.Id = NftId;
       TemplateBaseInfo.Name = "Request For Quotation";
       TemplateBaseInfo.Symbol = "RFQ";
       TemplateBaseInfo.MintLimit = 5;

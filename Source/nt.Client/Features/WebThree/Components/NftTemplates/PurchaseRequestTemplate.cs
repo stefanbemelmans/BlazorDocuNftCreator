@@ -8,7 +8,6 @@
     {
       NftId = 4;
 
-      TemplateBaseInfo.Id = NftId;
       TemplateBaseInfo.Name = "Purchase Request";
       TemplateBaseInfo.Symbol = "PRQ";
       TemplateBaseInfo.MintLimit = 5;
