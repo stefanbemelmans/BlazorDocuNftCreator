@@ -7,8 +7,8 @@ public class ViewMutableDataSharedRequest : BaseRequest, IRequest<ViewMutableDat
   {
     public const string Route = "api/viewMutableData";
 
-    public static string RouteFactory(int aId) => $"api/viewMutableData?ViewTokenId={aId}";
-    public int ViewTokenId { get; set; }
+    public static string RouteFactory(uint aId) => $"api/viewMutableData?ViewTokenId={aId}";
+    public uint ViewTokenId { get; set; }
   }
 
 }
