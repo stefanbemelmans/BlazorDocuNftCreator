@@ -5,6 +5,7 @@ namespace nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType
 
   public class GetNftByTypeSharedResponse : BaseResponse
   {
+    public GetNftByTypeSharedResponse() { }
     public GetNftByTypeSharedResponse(Guid aRequestId)
     {
       RequestId = aRequestId;
