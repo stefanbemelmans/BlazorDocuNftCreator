@@ -28,7 +28,7 @@
       GetNftTypesServiceResponse response = await Mediator.Send(getNftRequest);
 
       //Assert
-      response.TotalNftTypes.ShouldBe(3);
+      response.TotalNftTypes.ShouldBeGreaterThan(2);
       response.TotalNftTypes.ShouldNotBeNull();
 
     }
