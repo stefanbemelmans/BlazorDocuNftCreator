@@ -6,11 +6,9 @@
 
   public class AddNewTemplateServiceRequest : IRequest<AddNewTemplateServiceResponse>
     {
-   public AddNewTemplateServiceRequest()
-    {
-      NewNftTemplate = new NftTemplate();
-    }
-   public NftTemplate NewNftTemplate { get; set; }
-
+    public string NewTemplateName { get; set; }
+    public string NewTemplateSymbol { get; set; }
+    public uint NewTemplateMintLimit { get; set; }
+    public uint NewTemplateAttachedTokens { get; set; }
   }
 }

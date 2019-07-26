@@ -14,23 +14,22 @@
     {
       Mediator = aMediator;
     }
-
-
+    
     public async Task<AddNewTemplateSharedResponse> Handle
     (
       AddNewTemplateSharedRequest aAddNewTemplateSharedRequest,
       CancellationToken aCancellationToken
     )
     {
-      var aNftRequest = new AddNewTemplateServiceRequest
+      var aNewTemplateServiceRequest = new AddNewTemplateServiceRequest
       {
-        NewNftTemplate = aAddNewTemplateSharedRequest.NewNftTemplate
+        NewTemplateName = aAddNewTemplateSharedRequest.NewTemplateName,
+        NewTemplateSymbol = aAddNewTemplateSharedRequest.NewTemplateSymbol,
+        NewTemplateMintLimit = aAddNewTemplateSharedRequest.NewTemplateMintLimit,
+        NewTemplateAttachedTokens = aAddNewTemplateSharedRequest.NewTemplateAttachedTokens
       };
 
-
-
-
-      AddNewTemplateServiceResponse response = await Mediator.Send(aNftRequest);
+      AddNewTemplateServiceResponse response = await Mediator.Send(aNewTemplateServiceRequest);
 
       return new AddNewTemplateSharedResponse
       {

@@ -28,10 +28,10 @@
 
       var aAddNewTemplateFunctionMessage = new AddNewTemplateFunctionInput
       {
-        NewTemplateName = aAddNewTemplateServiceRequest.NewNftTemplate.Name,
-        NewTemplateSymbol = aAddNewTemplateServiceRequest.NewNftTemplate.Symbol,
-        NewTemplateAttachedTokens = aAddNewTemplateServiceRequest.NewNftTemplate.AttachedTokens,
-        NewTemplateMintLimit = aAddNewTemplateServiceRequest.NewNftTemplate.MintLimit
+        NewTemplateName = aAddNewTemplateServiceRequest.NewTemplateName,
+        NewTemplateSymbol = aAddNewTemplateServiceRequest.NewTemplateSymbol,
+        NewTemplateAttachedTokens = aAddNewTemplateServiceRequest.NewTemplateAttachedTokens,
+        NewTemplateMintLimit = aAddNewTemplateServiceRequest.NewTemplateMintLimit
       };
 
       // Gas Estimates, needs to be tested
