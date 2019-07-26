@@ -2,7 +2,6 @@
 {
   public class NftTemplate
   {
-    public NftTemplate() { }
 
     public string Name { get; set; }
 
@@ -11,8 +10,5 @@
     public int MintLimit { get; set; }
 
     public int AttachedTokens { get; set; }
-
-
-
   }
 }

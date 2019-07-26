@@ -5,6 +5,10 @@
 
   public class TemplateFormBase
   {
+    public TemplateFormBase()
+    {
+      TemplateBaseInfo = new NftTemplate();
+    }
     public int NftId { get; set; }
     // I was thinking on render to put together the NftTemplate which is the Base Immutable Data with the 
     // TemplateFormData and potential ItemFormData

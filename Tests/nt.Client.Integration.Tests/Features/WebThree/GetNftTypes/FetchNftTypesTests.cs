@@ -29,7 +29,7 @@
       WebThreeState ActionResponse = await Mediator.Send(Action);
 
       ActionResponse.ShouldNotBe(null);
-      ActionResponse.TotalNftTypes.ShouldBe(2);
+      ActionResponse.TotalNftTypes.ShouldBeGreaterThan(2);
 
     }
 
@@ -39,7 +39,7 @@
 
       WebThreeState response = await Mediator.Send(fetchNftTypes);
 
-      response.TotalNftTypes.ShouldBe(2);
+      response.TotalNftTypes.ShouldBeGreaterThan(2);
     }
 
   }
