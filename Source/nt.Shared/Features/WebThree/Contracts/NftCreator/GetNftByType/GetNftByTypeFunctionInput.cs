@@ -7,6 +7,6 @@
   public class GetNftByTypeFunctionInput : FunctionMessage
   {
     [Parameter(type: "uint", name:"id", order: 1)]
-    public int NftId { get; set; }
+    public uint NftId { get; set; }
   }
 }

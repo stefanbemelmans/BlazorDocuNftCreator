@@ -4,7 +4,7 @@
   using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
   public class GetNftByTypeServiceRequest : IRequest<GetNftByTypeServiceResponse>
     {
-      public int GetNftId { get; set; }
+      public uint GetNftId { get; set; }
     
     }
 }

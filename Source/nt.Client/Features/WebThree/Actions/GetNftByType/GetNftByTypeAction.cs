@@ -3,6 +3,6 @@
   using MediatR;
   public class GetNftByTypeClientFeaturesAction : IRequest<WebThreeState>
   {
-   public int GetNftType { get; set; }
+   public uint GetNftType { get; set; }
   }
 }
