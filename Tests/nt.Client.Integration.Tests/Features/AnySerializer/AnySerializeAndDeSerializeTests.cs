@@ -14,28 +14,47 @@
     public AnySerializeAndDeSerializeTests(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
+      BolSerializedByteArray = Serializer.Serialize(TestObject);
     }
     SerializerOptions options = 0;
 
-    public void WhichStringIsLonger()
-    {
-      var TestObject = new BillOfLadingTemplate();
+      BillOfLadingTemplate TestObject = new BillOfLadingTemplate();
 
-      byte[] BolSerializedByteArray = Serializer.Serialize(TestObject);
+      byte[] BolSerializedByteArray { get; set; }
+
+    public void FullSerializeDeSerializeNoData()
+    {
+
 
       int byteArrayLength = BolSerializedByteArray.Length;
 
-      string byteArrayToString = BolSerializedByteArray.ToString();
+      //string byteArrayToString = BolSerializedByteArray.ToString();
 
-      int stringLength = byteArrayToString.Length;
+      //string byteArrayToString = Encoding.UTF8.GetString(BolSerializedByteArray);
 
-      // byteArray is much longer Length
-      //byteArrayLength.ShouldBeSameAs(expected: stringLength);
-   
-      BillOfLadingTemplate restoredObject = Serializer.Deserialize<BillOfLadingTemplate>(BolSerializedByteArray, options);
+      string byteArraytoBase64String = Convert.ToBase64String(BolSerializedByteArray);
 
-      //not EXACTLY the same object, but same object.
-      restoredObject.ShouldBe(expected: TestObject);
+      int byteArraytoBase64StringLength = byteArraytoBase64String.Length;
+
+      byteArrayLength.CompareTo(byteArraytoBase64StringLength);
+
+      //BillOfLadingTemplate restoredObject = Serializer.Deserialize<BillOfLadingTemplate>(BolSerializedByteArray, options);
+     
+       //restoredObject.ShouldBeOfType<BillOfLadingTemplate>();
+
+      byte[] serializedObjectBase64StringBackToByteArray = Convert.FromBase64String(byteArraytoBase64String);
+
+      //serializedObjectStringBackToByteArray.Length.CompareTo(byteArrayLength);
+
+
+      //serializedObjectStringBackToByteArray.Length.ShouldBe(stringLength);
+
+      serializedObjectBase64StringBackToByteArray.ShouldBe(BolSerializedByteArray);
+
+      //BillOfLadingTemplate /*restoredFromString*/ = Serializer.Deserialize<BillOfLadingTemplate>(serializedObjectStringBackToByteArray, options);
+      BillOfLadingTemplate restoredFromBase64String = Serializer.Deserialize<BillOfLadingTemplate>(serializedObjectBase64StringBackToByteArray, options);
+
+      restoredFromBase64String.ShouldBeOfType<BillOfLadingTemplate>();
 
     }
   }
