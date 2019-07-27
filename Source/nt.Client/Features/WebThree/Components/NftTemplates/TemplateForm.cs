@@ -13,7 +13,7 @@
 
     // I was thinking on render to put together the NftTemplate which is the Base Immutable Data with the 
     // TemplateFormData and potential ItemFormData
-    public NftTemplate TemplateBaseInfo { get; private set; } 
+    public NftTemplate TemplateBaseInfo { get; set; } 
 
     public IEnumerator GetEnumerator() => throw new System.NotImplementedException();
   }

@@ -17,17 +17,16 @@
     {
       ServiceProvider = aTestFixture.ServiceProvider;
       //BolSerializedByteArray = Serializer.Serialize(TestObject);
-      //objectWithData.ItemTemplate = itemInfo;
-      //BolSerializedByteArrayWithData = Serializer.Serialize(objectWithData);
+      objectWithData.ItemTemplate = itemInfo;
+      PoSerializedWithData = Serializer.Serialize(objectWithData);
     }
 
     SerializerOptions options = 0;
 
-    BillOfLadingTemplate TestObject = new BillOfLadingTemplate();
+    //BillOfLadingTemplate TestObject = new BillOfLadingTemplate();
 
     PurchaseOrderTemplate objectWithData = new PurchaseOrderTemplate()
     {
-      DeliveryDate = DateTime.Now,
       Department = "TestingDept",
       Notes = "Serialization Test With Data, This is some data.",
       Requester = "The Man",
@@ -39,35 +38,32 @@
       Discount = "Fancy Tester Discount",
       Name = "Fancy Product Name Test",
       Price = "Fancy Price Tester",
-      Qty = "Many!",
+      Qty = 24,
       Total = 100
     };
 
 
-    byte[] BolSerializedByteArray { get; set; }
-    byte[] BolSerializedByteArrayWithData { get; set; }
+    //public void FullSerializeDeSerializeNoData()
+    //{
+    byte[] PoSerializedWithData;
+    //byte[] BolSerializedByteArray = Serializer.Serialize(new BillOfLadingTemplate());
 
-    public void FullSerializeDeSerializeNoData()
-    {
-      BolSerializedByteArray = Serializer.Serialize(TestObject);
+    //  string byteArraytoBase64String = Convert.ToBase64String(BolSerializedByteArray);
 
-      string byteArraytoBase64String = Convert.ToBase64String(BolSerializedByteArray);
+    //  byte[] serializedObjectBase64StringBackToByteArray = Convert.FromBase64String(byteArraytoBase64String);
 
-      byte[] serializedObjectBase64StringBackToByteArray = Convert.FromBase64String(byteArraytoBase64String);
+    //  BillOfLadingTemplate restoredFromBase64String = Serializer.Deserialize<BillOfLadingTemplate>(serializedObjectBase64StringBackToByteArray, options);
 
-      BillOfLadingTemplate restoredFromBase64String = Serializer.Deserialize<BillOfLadingTemplate>(serializedObjectBase64StringBackToByteArray, options);
+    //  restoredFromBase64String.ShouldBeOfType<BillOfLadingTemplate>();
 
-      restoredFromBase64String.ShouldBeOfType<BillOfLadingTemplate>();
-
-    }
+    //}
 
     public void FullSerializeDeSerializeWithData()
     {
-      objectWithData.ItemTemplate = itemInfo;
 
-      BolSerializedByteArrayWithData = Serializer.Serialize(objectWithData);
 
-      string BolSerializedByteArrayWithDatatoBase64String = Convert.ToBase64String(BolSerializedByteArrayWithData);
+
+      string BolSerializedByteArrayWithDatatoBase64String = Convert.ToBase64String(PoSerializedWithData);
 
       byte[] BolSerializedByteArrayWithDatatoBase64StringBackToByteArray = Convert.FromBase64String(BolSerializedByteArrayWithDatatoBase64String);
 
