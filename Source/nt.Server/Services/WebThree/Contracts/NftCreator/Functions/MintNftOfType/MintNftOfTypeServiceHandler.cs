@@ -40,7 +40,8 @@
 
       return new MintNftOfTypeServiceResponse
       {
-        //  Test needed
+        
+       
       };
     }
   }

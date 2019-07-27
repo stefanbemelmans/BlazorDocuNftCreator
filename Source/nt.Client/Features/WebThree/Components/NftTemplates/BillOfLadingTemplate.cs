@@ -15,7 +15,7 @@
       TemplateBaseInfo.AttachedTokens = 0;
     }
 
-    public string Lading { get; set; }
+    public string Lading { get; set; } 
     public string Order { get; set; }
     public string PO { get; set; }
     public DateTime Date { get; set; }

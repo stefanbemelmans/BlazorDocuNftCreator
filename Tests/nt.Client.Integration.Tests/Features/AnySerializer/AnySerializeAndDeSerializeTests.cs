@@ -58,7 +58,6 @@
     public void FullSerializeDeSerializeWithData()
     {
 
-
       byte[]  PoSerializedWithData = Serializer.Serialize<ItemTemplate>(itemInfo);
 
       string BolSerializedByteArrayWithDatatoBase64String = Convert.ToBase64String(PoSerializedWithData);
