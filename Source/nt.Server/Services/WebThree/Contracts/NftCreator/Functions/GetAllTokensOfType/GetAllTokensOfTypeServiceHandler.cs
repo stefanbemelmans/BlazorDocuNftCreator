@@ -12,7 +12,7 @@
   public class GetAllTokensOfTypeServerServiceHandler : IRequestHandler<GetAllTokensOfTypeServiceRequest, GetAllTokensOfTypeServiceResponse>
     {
     NftCreatorInstance NftCreatorInstance { get; set; }
-
+    GetAllTokensOfTypeServerServiceHandler() { }
     public GetAllTokensOfTypeServerServiceHandler(NftCreatorInstance aNftCreatorInstance)
     {
       NftCreatorInstance = aNftCreatorInstance;
@@ -24,7 +24,6 @@
       
       // The Solidity uses "uints" 
 
-      uint aTokenId = (uint)aGetAllTokensOfTypeServiceRequest.GetAllTokensOfType;
       //var aGetAllTokensOfTypeFunctionMessage = new GetAllTokensOfTypeFunctionInput { GetAllTokensOfType = aTokenId };
 
       GetAllTokensOfTypeOutputDto aTokenList = await aGetAllTokensOfTypeFunction.CallDeserializingToObjectAsync<GetAllTokensOfTypeOutputDto>(

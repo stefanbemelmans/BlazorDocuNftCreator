@@ -6,6 +6,8 @@
   [FunctionOutput] 
   public class GetAllTokensOfTypeOutputDto : IFunctionOutputDTO
   {
+    public GetAllTokensOfTypeOutputDto() { }
+
     [Parameter(type: "uint[100]", name: "List", 1)]
     public uint[] TokenList { get; set; }
 

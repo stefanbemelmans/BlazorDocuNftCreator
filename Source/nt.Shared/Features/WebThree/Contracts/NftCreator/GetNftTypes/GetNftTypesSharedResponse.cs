@@ -13,6 +13,6 @@ namespace nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftTypes
       RequestId = aRequestId;
     }
 
-    public int TotalNftTypes { get; set; }
+    public uint TotalNftTypes { get; set; }
   }
 }
