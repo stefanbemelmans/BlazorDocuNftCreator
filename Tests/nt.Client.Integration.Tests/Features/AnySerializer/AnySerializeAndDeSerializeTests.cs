@@ -16,9 +16,7 @@
     public AnySerializeAndDeSerializeTests(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
-      //BolSerializedByteArray = Serializer.Serialize(TestObject);
-      objectWithData.ItemTemplate = itemInfo;
-      PoSerializedWithData = Serializer.Serialize(objectWithData);
+    
     }
 
     SerializerOptions options = 0;
@@ -45,7 +43,6 @@
 
     //public void FullSerializeDeSerializeNoData()
     //{
-    byte[] PoSerializedWithData;
     //byte[] BolSerializedByteArray = Serializer.Serialize(new BillOfLadingTemplate());
 
     //  string byteArraytoBase64String = Convert.ToBase64String(BolSerializedByteArray);
@@ -62,16 +59,17 @@
     {
 
 
+      byte[]  PoSerializedWithData = Serializer.Serialize<ItemTemplate>(itemInfo);
 
       string BolSerializedByteArrayWithDatatoBase64String = Convert.ToBase64String(PoSerializedWithData);
 
       byte[] BolSerializedByteArrayWithDatatoBase64StringBackToByteArray = Convert.FromBase64String(BolSerializedByteArrayWithDatatoBase64String);
 
-      PurchaseOrderTemplate deSerializedObjectWithData = Serializer.Deserialize<PurchaseOrderTemplate>(BolSerializedByteArrayWithDatatoBase64StringBackToByteArray, options);
+      ItemTemplate deSerializedObjectWithData = Serializer.Deserialize<ItemTemplate>(BolSerializedByteArrayWithDatatoBase64StringBackToByteArray, options);
 
-      deSerializedObjectWithData.Approver.ShouldBe(objectWithData.Approver);
+      deSerializedObjectWithData.Discount.ShouldBe(itemInfo.Discount);
 
-      objectWithData.ItemTemplate.Code.ShouldBe(objectWithData.ItemTemplate.Code);
+      deSerializedObjectWithData.Code.ShouldBe(itemInfo.Code);
 
     }
   }
