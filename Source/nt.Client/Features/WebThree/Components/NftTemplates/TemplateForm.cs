@@ -8,6 +8,7 @@
   {
     public TemplateFormBase()
     {
+      TemplateBaseInfo = new NftTemplate();
     }
 
     // I was thinking on render to put together the NftTemplate which is the Base Immutable Data with the 

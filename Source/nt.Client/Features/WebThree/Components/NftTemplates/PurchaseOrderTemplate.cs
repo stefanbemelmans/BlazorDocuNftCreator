@@ -2,8 +2,16 @@
 
 namespace nt.Client.Features.WebThree.Components.NftTemplates
   {
-    public class PurchaseOrderTemplate
+    public class PurchaseOrderTemplate : TemplateFormBase
     {
+      public PurchaseOrderTemplate()
+    {
+      TemplateBaseInfo.Name = "Purchase Order";
+      TemplateBaseInfo.Symbol = "POT";
+      TemplateBaseInfo.MintLimit = 1000;
+      TemplateBaseInfo.AttachedTokens = 0;
+    }
+
       public const int NftId = 1;
       public string Approver { get; set; }
       public DateTime DeliveryDate { get; set; }

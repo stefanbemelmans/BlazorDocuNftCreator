@@ -6,13 +6,13 @@
 
   public class NftTemplateComponentModel : BaseComponent
   {
-
+    // this is just for testing
     public RequestForProposalTemplate RfpTemplate = new RequestForProposalTemplate();
 
     public void PrintValues()
     {
-      foreach(System.Collections.Generic.KeyValuePair<string, string> kvp in RfpTemplate.TemplateFormData){
-        Console.WriteLine($"{kvp.Key}: {kvp.Value}"); 
+      foreach(object kvp in RfpTemplate){
+        Console.WriteLine($"{kvp.ToString()}: {kvp.ToString()}"); 
       }
     }
 
