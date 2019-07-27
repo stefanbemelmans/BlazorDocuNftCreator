@@ -7,24 +7,29 @@
   using System.Text;
   using Shouldly;
   using global::AnySerializer;
+  using static nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrderTemplate;
 
   class AnySerializeAndDeSerializeTests
   {
     private IServiceProvider ServiceProvider { get; }
+
     public AnySerializeAndDeSerializeTests(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
       BolSerializedByteArray = Serializer.Serialize(TestObject);
     }
+
     SerializerOptions options = 0;
 
-      BillOfLadingTemplate TestObject = new BillOfLadingTemplate();
+    BillOfLadingTemplate TestObject = new BillOfLadingTemplate();
 
-      byte[] BolSerializedByteArray { get; set; }
+    PurchaseOrderTemplate objectWithData { get; set; }
+    
+
+    byte[] BolSerializedByteArray { get; set; }
 
     public void FullSerializeDeSerializeNoData()
     {
-
 
       int byteArrayLength = BolSerializedByteArray.Length;
 
@@ -39,8 +44,8 @@
       byteArrayLength.CompareTo(byteArraytoBase64StringLength);
 
       //BillOfLadingTemplate restoredObject = Serializer.Deserialize<BillOfLadingTemplate>(BolSerializedByteArray, options);
-     
-       //restoredObject.ShouldBeOfType<BillOfLadingTemplate>();
+
+      //restoredObject.ShouldBeOfType<BillOfLadingTemplate>();
 
       byte[] serializedObjectBase64StringBackToByteArray = Convert.FromBase64String(byteArraytoBase64String);
 
@@ -55,6 +60,40 @@
       BillOfLadingTemplate restoredFromBase64String = Serializer.Deserialize<BillOfLadingTemplate>(serializedObjectBase64StringBackToByteArray, options);
 
       restoredFromBase64String.ShouldBeOfType<BillOfLadingTemplate>();
+
+    }
+
+    public void FullSerializeDeSerializeWithData()
+    {
+
+      objectWithData = new PurchaseOrderTemplate()
+      {
+        Approver = "ApproverTestData",
+        DeliveryDate = DateTime.Now,
+        Department = "TestingDept",
+        Notes = "Serialization Test With Data, This is some data.",
+        Requester ="The Man",
+      };
+      var itemInfo = new ItemTemplate()
+      {
+        Code = "Fancy Code Tester",
+        Discount = "Fancy Tester Discount",
+        Name = "Fancy Product Name Test",
+        Price = "Fancy Price Tester",
+        Qty = "Many!",
+        Total = 100
+      };
+
+      objectWithData.ItemTemplate = itemInfo;
+
+      byte[] serializedObjectWithData = Serializer.Serialize(objectWithData);
+
+
+      PurchaseOrderTemplate deSerializedObjectWithData = Serializer.Deserialize<PurchaseOrderTemplate>(serializedObjectWithData, options);
+
+      deSerializedObjectWithData.Approver.ShouldBe(objectWithData.Approver);
+
+      objectWithData.ItemTemplate.Code.ShouldBe(objectWithData.ItemTemplate.Code);
 
     }
   }

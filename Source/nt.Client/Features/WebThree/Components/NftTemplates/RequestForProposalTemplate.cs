@@ -4,27 +4,25 @@
 
   public class RequestForProposalTemplate : TemplateFormBase
   {
+    public const int NftId = 0;
     public RequestForProposalTemplate()
     {
-       NftId = 0;
       TemplateBaseInfo.Name = "Request For Proposal";
       TemplateBaseInfo.Symbol = "RFQ";
       TemplateBaseInfo.MintLimit = 5;
       TemplateBaseInfo.AttachedTokens = 0;
-
-      TemplateFormData = new Dictionary<string, string>()
-      {
-        {"Company Name","" },
-        {"AddressParcel","" },
-        {"Requirement",""},
-        {"Deadline","" },
-        {"AcceptanceCriteria","" },
-        {"ModeofTransport","" },
-        {"ContactEmail","" },
-        {"Budget","" },
-        {"EquivalentSubstitution","" }
-      };
     }
+
+    public string CompanyName { get; set; }
+    public string AddressParcel { get; set; }
+    public string Requirement { get; set; }
+    public string Deadline { get; set; }
+    public string AcceptanceCriteria { get; set; }
+    public string ModeofTransport { get; set; }
+    public string ContactEmail { get; set; }
+    public string Budget { get; set; }
+    public string EquivalentSubstitution { get; set; }
+
   }
 }
 
