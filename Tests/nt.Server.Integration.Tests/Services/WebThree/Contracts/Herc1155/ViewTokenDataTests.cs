@@ -7,10 +7,11 @@
   using Shouldly;
   using nt.Server.Services.WebThree.Contracts.Herc1155.Functions;
   using System.Threading.Tasks;
-  using nt.Shared.Features.WebThree;
+  using nt.Shared.Constants.AccountAddresses;
   using nt.Server.Services.WebThree.Contracts.Herc1155.ContractInstance;
   using nt.Server.Services.WebThree.Instance;
   using Nethereum.Contracts;
+  using Nethereum.RPC.Eth.DTOs;
 
   class ViewTokenDeserializeDataTests
   {
@@ -26,14 +27,15 @@
     private IMediator Mediator { get; }
     private NethWeb3 NethWeb3 { get; set; }
     private Herc1155Instance Herc1155 { get; set; }
+    public TestEthAccounts testEthAccounts { get; set; }
     public async Task ShouldGetTokenData()
     { // 
       // Arrange
       //var getNftRequest = new ViewTokenDataServiceRequest { ViewTokenId = 3 };
-
+      var blockParameter = new BlockParameter();
       Function viewTokenDataFunction = Herc1155.Instance.GetFunction("viewTokenData");
       // Act
-      string response = await viewTokenDataFunction.CallAsync<string>(2);
+      string response = await viewTokenDataFunction.CallAsync<string>(from: "0x12833d6fADd206dEd2fcE84936d8D78326AB8EfA", gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), new Nethereum.Hex.HexTypes.HexBigInteger(0),5);
       //ViewTokenDataServiceResponse response = await Mediator.Send(getNftRequest);
 
       //Assert
