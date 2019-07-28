@@ -1,4 +1,4 @@
-﻿namespace nt.Server.Integration.Tests.Services.WebThree.Contracts.NftCreator
+﻿namespace nt.Server.Integration.Tests.Services.WebThree.Contracts.Herc1155
 {
   using System;
   using MediatR;
@@ -12,6 +12,7 @@
   using nt.Server.Services.WebThree.Instance;
   using Nethereum.Contracts;
   using Nethereum.RPC.Eth.DTOs;
+  using nt.Server.Integration.Tests.Services.WebThree.Contracts.NftCreator;
 
   class ViewTokenDataTests
   {
@@ -50,5 +51,20 @@
       int balance = response;
       balance.ShouldNotBe(0);
     }
+
+    public async Task ShouldGetByteArrayAndTokenId()
+    {
+      var request = new ViewTokenDataServiceRequest { ViewTokenId = 3 };
+
+      ViewTokenDataServiceResponse response = await Mediator.Send(request);
+
+      response.TokenType.ShouldBe((uint)4);
+      ImmutableData deSerObj = Serializer.Deserialize<ImmutableData>(response.SerializedTokenData, 0);
+
+      deSerObj.ShouldBeOfType<ImmutableData>();
+      deSerObj.Title.ShouldBe("The First Minted NFT!Take 2");
+
+    }
+
   }
 }

@@ -6,15 +6,15 @@
   using System.Threading.Tasks;
   using BlazorState;
   using Microsoft.AspNetCore.Components;
-  using nt.Client.Features.WebThree.Actions.GetAllTokensOfType;
-  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetAllTokensOfType;
+  using nt.Client.Features.WebThree.Actions.GetAllOwnedTokens;
+  using nt.Shared.Features.WebThree.Contracts.Herc1155;
 
   internal partial class WebThreeState
   {
 
-    public class GetAllTokensOfTypeHandler : RequestHandler<GetAllTokensOfTypeAction, WebThreeState>
+    public class GetAllOwnedTokensHandler : RequestHandler<GetAllOwnedTokensAction, WebThreeState>
     {
-      public GetAllTokensOfTypeHandler
+      public GetAllOwnedTokensHandler
         (
           IStore aStore,
           HttpClient aHttpClient
@@ -27,17 +27,17 @@
 
       public override async Task<WebThreeState> Handle
         (
-          GetAllTokensOfTypeAction aGetAllTokensOfTypeClientRequest,
+          GetAllOwnedTokensAction aGetAllOwnedTokensClientRequest,
           CancellationToken aCancellationToken
         )
       {
 
-        //string requestUri = QueryHelpers.AddQueryString(GetAllTokensOfTypeSharedRequest.Route, "GetNftType", getNftId.ToString());
-        string requestUri = GetAllTokensOfTypeSharedRequest.RouteFactory(aGetAllTokensOfTypeClientRequest.GetAllTokensOfType);
+        //string requestUri = QueryHelpers.AddQueryString(GetAllOwnedTokensSharedRequest.Route, "GetNftType", getNftId.ToString());
+        string requestUri = GetAllOwnedTokensSharedRequest.RouteFactory(aGetAllOwnedTokensClientRequest.TokenOwner);
 
         List<uint> tempList = await HttpClient.GetJsonAsync<List<uint>>(requestUri);
         
-        //GetAllTokensOfTypeSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllTokensOfTypeSharedResponse>(requestUri);
+        //GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(requestUri);
 
 
 

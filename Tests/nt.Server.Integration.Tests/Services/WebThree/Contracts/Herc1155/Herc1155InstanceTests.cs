@@ -1,5 +1,5 @@
 ﻿
-namespace nt.Server.Integration.Tests.Services.WebThree
+namespace nt.Server.Integration.Tests.Services.WebThree.Contracts.Herc1155
 {
   using System;
   using Microsoft.Extensions.DependencyInjection;

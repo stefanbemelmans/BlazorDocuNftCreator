@@ -1,4 +1,4 @@
-﻿namespace nt.Server.Integration.Tests.Services.WebThree.Contracts.NftCreator
+﻿namespace nt.Server.Integration.Tests.Services.WebThree.Contracts.Herc1155
 {
   using System;
   using MediatR;
@@ -12,9 +12,9 @@
   using nt.Server.Services.WebThree.Instance;
   using Nethereum.Contracts;
   using Nethereum.RPC.Eth.DTOs;
-  
+using nt.Server.Integration.Tests.Services.WebThree.Contracts.NftCreator;
 
-  class TokenDataDeserializationTests
+class TokenDataDeserializationTests
   {
     public TokenDataDeserializationTests(TestFixture aTestFixture)
     {

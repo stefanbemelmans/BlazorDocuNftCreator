@@ -9,6 +9,8 @@ namespace nt.Shared.Features.WebThree.Contracts.Herc1155
     {
       RequestId = aRequestId;
     }
-    public string TokenUri { get; set; }
+    public byte[] SerializedTokenData { get; set; }
+    // Token Type will determine what object to use to deserialize the data
+    public uint TokenType { get; set; }
   }
 }

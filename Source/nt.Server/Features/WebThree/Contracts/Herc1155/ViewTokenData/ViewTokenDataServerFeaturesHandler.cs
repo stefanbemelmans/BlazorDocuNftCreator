@@ -29,7 +29,8 @@
 
       return new ViewTokenDataSharedResponse(new System.Guid())
       {
-        TokenUri = response.TokenUri
+        SerializedTokenData = response.SerializedTokenData,
+        TokenType= aViewTokenDataSharedRequest.ViewTokenId
       };
 
     }

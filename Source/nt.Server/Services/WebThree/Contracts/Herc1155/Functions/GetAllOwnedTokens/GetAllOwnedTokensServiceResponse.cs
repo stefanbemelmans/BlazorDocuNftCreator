@@ -2,9 +2,10 @@
 {
   using nt.Shared.Features.Base;
   using nt.Shared.Features.WebThree;
-    public class ViewTokenDataServiceResponse : BaseResponse
+  using System.Collections.Generic;
+
+  public class GetAllOwnedTokensServiceResponse : BaseResponse
     {
-    public byte[] SerializedTokenData { get; set; }
-    public uint TokenType { get; set; }
+    public List<uint> TokenIdList { get; set; }
     }
 }
