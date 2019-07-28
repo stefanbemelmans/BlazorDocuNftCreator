@@ -12,10 +12,11 @@
   using nt.Server.Services.WebThree.Instance;
   using Nethereum.Contracts;
   using Nethereum.RPC.Eth.DTOs;
+  
 
-  class ViewTokenDataTests
+  class TokenDataDeserializationTests
   {
-    public ViewTokenDataTests(TestFixture aTestFixture)
+    public TokenDataDeserializationTests(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
       Mediator = ServiceProvider.GetService<IMediator>();
@@ -23,32 +24,33 @@
       Herc1155 = ServiceProvider.GetService<Herc1155Instance>();
     }
 
+    public ImmutableData immutable { get; set; }
     private IServiceProvider ServiceProvider { get; }
     private IMediator Mediator { get; }
     private NethWeb3 NethWeb3 { get; set; }
     private Herc1155Instance Herc1155 { get; set; }
     public async Task ShouldGetTokenData()
     { // 
-      // Arrange
+      // Arrange 
       //var getNftRequest = new ViewTokenDataServiceRequest { ViewTokenId = 3 };"0x12833d6fADd206dEd2fcE84936d8D78326AB8EfA"
+      SerializerOptions options = 0;
       Function viewTokenDataFunction = Herc1155.Instance.GetFunction("viewTokenData");
+
+      CallInput CallInput = viewTokenDataFunction.CreateCallInput(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), new Nethereum.Hex.HexTypes.HexBigInteger(0));
+      
       // Act
-      string response = await viewTokenDataFunction.CallAsync<string>(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), new Nethereum.Hex.HexTypes.HexBigInteger(0), 5);
+      string base64SerializedString = await viewTokenDataFunction.CallAsync<string>(CallInput, 4);
       //ViewTokenDataServiceResponse response = await Mediator.Send(getNftRequest);
+
+      byte[] serializedImmutableData = Convert.FromBase64String(base64SerializedString);
+
+      ImmutableData deserializedObject = Serializer.Deserialize<ImmutableData>(serializedImmutableData, options);
       //Assert
-      response.ShouldNotBe(null);
-      response.ShouldMatch("This Is MintingTest 3");
+
+      deserializedObject.ShouldNotBe(null);
+      deserializedObject.MintedFrom.ShouldMatch(immutable.MintedFrom);
     }
 
-    public async Task ShouldGetTokenBalance()
-    {
-      Function viewBalanceFunction = Herc1155.Instance.GetFunction("balanceOf");
-
-      CallInput CallInput = viewBalanceFunction.CreateCallInput(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), new Nethereum.Hex.HexTypes.HexBigInteger(0));
-
-      int response = await viewBalanceFunction.CallAsync<int>(TestEthAccounts.TestEthAccountAddress, 5);
-      int balance = response;
-      balance.ShouldNotBe(0);
-    }
+   
   }
 }

@@ -70,11 +70,11 @@
 
       gasEstimate.Value.ShouldBeGreaterThan(0);
 
-      Nethereum.RPC.Eth.DTOs.TransactionReceipt MintNftOfTypeTransactionReceipt = await MintNftOfTypeFunctionHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aMintNftOfTypeFunctionMessage);
+      //Nethereum.RPC.Eth.DTOs.TransactionReceipt MintNftOfTypeTransactionReceipt = await MintNftOfTypeFunctionHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aMintNftOfTypeFunctionMessage);
 
-      System.Collections.Generic.List<EventLog<MintNftOutputEventDto>> MintNftOutput = MintNftOfTypeTransactionReceipt.DecodeAllEvents<MintNftOutputEventDto>();
-      MintNftOfTypeTransactionReceipt.ShouldNotBe(null);
-      MintNftOutput.Count.ShouldBeGreaterThan(0);
+      //System.Collections.Generic.List<EventLog<MintNftOutputEventDto>> MintNftOutput = MintNftOfTypeTransactionReceipt.DecodeAllEvents<MintNftOutputEventDto>();
+      //MintNftOfTypeTransactionReceipt.ShouldNotBe(null);
+      //MintNftOutput.Count.ShouldBeGreaterThan(0);
 
     }
   }

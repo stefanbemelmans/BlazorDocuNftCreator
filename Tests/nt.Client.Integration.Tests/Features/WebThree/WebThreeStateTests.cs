@@ -27,7 +27,7 @@
 
       webThreeState.ShouldNotBe(null);
 
-      webThreeState.TotalNftTypes.ShouldBe(0);
+      webThreeState.TotalNftTypes.ShouldBeGreaterThan((uint)0);
       //var fetchNftTypes = new GetNftTypesClientFeaturesAction();
 
       //WebThreeState = await Mediator.Send(fetchNftTypes);
