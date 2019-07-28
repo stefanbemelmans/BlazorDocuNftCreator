@@ -19,15 +19,15 @@
     public TokenDataDeserializationTests(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
-      Mediator = ServiceProvider.GetService<IMediator>();
-      NethWeb3 = ServiceProvider.GetService<NethWeb3>();
+      //Mediator = ServiceProvider.GetService<IMediator>();
+      //NethWeb3 = ServiceProvider.GetService<NethWeb3>();
       Herc1155 = ServiceProvider.GetService<Herc1155Instance>();
     }
 
-    public ImmutableData immutable { get; set; }
+    public ImmutableData immutable = new ImmutableData();
     private IServiceProvider ServiceProvider { get; }
-    private IMediator Mediator { get; }
-    private NethWeb3 NethWeb3 { get; set; }
+    //private IMediator Mediator { get; }
+    //private NethWeb3 NethWeb3 { get; set; }
     private Herc1155Instance Herc1155 { get; set; }
     public async Task ShouldGetTokenData()
     { // 
@@ -36,10 +36,10 @@
       SerializerOptions options = 0;
       Function viewTokenDataFunction = Herc1155.Instance.GetFunction("viewTokenData");
 
-      CallInput CallInput = viewTokenDataFunction.CreateCallInput(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), new Nethereum.Hex.HexTypes.HexBigInteger(0));
+      CallInput CallInput = viewTokenDataFunction.CreateCallInput(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), value: new Nethereum.Hex.HexTypes.HexBigInteger(0), functionInput: 4);
       
       // Act
-      string base64SerializedString = await viewTokenDataFunction.CallAsync<string>(CallInput, 4);
+      string base64SerializedString = await viewTokenDataFunction.CallAsync<string>(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), value: new Nethereum.Hex.HexTypes.HexBigInteger(0), functionInput: 3);
       //ViewTokenDataServiceResponse response = await Mediator.Send(getNftRequest);
 
       byte[] serializedImmutableData = Convert.FromBase64String(base64SerializedString);

@@ -13,9 +13,9 @@
   using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftTypes;
   using System.Collections.Generic;
 
-  class GetAllTokensOfTypeTests
+  class NoLongerUsed
   {
-    public GetAllTokensOfTypeTests(TestFixture aTestFixture)
+    public NoLongerUsed(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
       Mediator = ServiceProvider.GetService<IMediator>();
