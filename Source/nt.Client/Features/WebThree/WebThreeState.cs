@@ -10,7 +10,7 @@
 
   internal partial class WebThreeState : State<WebThreeState>
   {
-    public int TotalNftTypes { get; set; }
+    public uint TotalNftTypes { get; set; }
 
     public List<uint> CurrentTokenIds { get; set; } 
     public NftTemplate CurrentNftType { get; set; }

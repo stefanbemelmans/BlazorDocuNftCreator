@@ -19,14 +19,14 @@
 //  // Below is nftType 4 for deserialization
 //  class ImmutableData
 //  {
-//    public string Title = "The First Minted NFT!";
+//    public string Title = "The First Minted NFT!Take 2";
 //    public DateTime Date = DateTime.Now;
 //    public string MintedFrom = "Server.Services";
 //  }
 
 //  class MutableData
 //  {
-//    public string Mutable = "Data for versioning perhaps";
+//    public string Mutable = "Data for versioning perhaps x2";
 //  }
 //  class MintNftOfTypeTests
 //  {
@@ -51,19 +51,17 @@
 
 //      Nethereum.Contracts.ContractHandlers.IContractTransactionHandler<MintNftOfTypeFunctionInput> MintNftOfTypeFunctionHandler = NethWeb3.Instance.Eth.GetContractTransactionHandler<MintNftOfTypeFunctionInput>();
 
-//      GetNftTypesServiceResponse lastTemplateId = await Mediator.Send(new GetNftTypesServiceRequest());
-//      lastTemplateId.TotalNftTypes.ShouldBe(4);
-//      byte[] serializedImmutable = Serializer.Serialize(new ImmutableData());
-//      byte[] serializedMutable = Serializer.Serialize(new MutableData());
+//      //byte[] serializedImmutable = Serializer.Serialize(new ImmutableData());
+//      //byte[] serializedMutable = Serializer.Serialize(new MutableData());
 
-//      string base64StringifiedSerializedImmutable = Convert.ToBase64String(serializedImmutable);
-//      string base64StringifiedSerializedMutable = Convert.ToBase64String(serializedMutable);
+//      //string base64StringifiedSerializedImmutable = Convert.ToBase64String(serializedImmutable);
+//      //string base64StringifiedSerializedMutable = Convert.ToBase64String(serializedMutable);
 
 //      var aMintNftOfTypeFunctionMessage = new MintNftOfTypeFunctionInput
 //      {
-//        Type = lastTemplateId.TotalNftTypes,
-//        MutableData = base64StringifiedSerializedMutable,
-//        ImmutableData = base64StringifiedSerializedImmutable
+//        Type = 4,
+//        MutableData = "The First Minted NFT!Take 2",
+//        ImmutableData = "This Is MintingTest 2"
 //      };
 
 //      Nethereum.Hex.HexTypes.HexBigInteger gasEstimate = await MintNftOfTypeFunctionHandler.EstimateGasAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aMintNftOfTypeFunctionMessage);

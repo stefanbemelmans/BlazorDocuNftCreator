@@ -22,7 +22,7 @@
     public async Task ShouldGetTotalNftTemplateTypes()
     { 
       // Arrange
-      var getNftRequest = new GetNftByTypeServiceRequest { GetNftId = 1 };
+      var getNftRequest = new GetNftByTypeServiceRequest { GetNftId = 4 };
 
       // Act
       GetNftByTypeServiceResponse response = await Mediator.Send(getNftRequest);

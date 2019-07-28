@@ -8,27 +8,37 @@
   using nt.Server.Services.WebThree.Contracts.Herc1155.Functions;
   using System.Threading.Tasks;
   using nt.Shared.Features.WebThree;
+  using nt.Server.Services.WebThree.Contracts.Herc1155.ContractInstance;
+  using nt.Server.Services.WebThree.Instance;
+  using Nethereum.Contracts;
 
   class ViewTokenDeserializeDataTests
   {
     public ViewTokenDeserializeDataTests(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
+      Mediator = ServiceProvider.GetService<IMediator>();
+      NethWeb3 = ServiceProvider.GetService<NethWeb3>();
+      Herc1155 = ServiceProvider.GetService<Herc1155Instance>();
     }
 
     private IServiceProvider ServiceProvider { get; }
     private IMediator Mediator { get; }
-
-    public async Task ShouldGetTotalNftTemplateTypes()
+    private NethWeb3 NethWeb3 { get; set; }
+    private Herc1155Instance Herc1155 { get; set; }
+    public async Task ShouldGetTokenData()
     { // 
       // Arrange
-      var getNftRequest = new ViewTokenDataServiceRequest { ViewTokenId = 3 };
+      //var getNftRequest = new ViewTokenDataServiceRequest { ViewTokenId = 3 };
 
+      Function viewTokenDataFunction = Herc1155.Instance.GetFunction("viewTokenData");
       // Act
-      ViewTokenDataServiceResponse response = await Mediator.Send(getNftRequest);
+      string response = await viewTokenDataFunction.CallAsync<string>(2);
+      //ViewTokenDataServiceResponse response = await Mediator.Send(getNftRequest);
 
       //Assert
-      response.TokenUri.ShouldNotBe(null);
+      response.ShouldNotBe(null);
+      response.ShouldMatch("This Is MintingTest 2");
 
     }
   }
