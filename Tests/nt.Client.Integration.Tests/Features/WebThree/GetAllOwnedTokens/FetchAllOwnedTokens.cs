@@ -15,6 +15,8 @@
   {
     private IMediator Mediator { get; }
     private IServiceProvider ServiceProvider { get; }
+
+    public WebThreeState newWebState = new WebThreeState();
     public FetchAllOwnedTokensTests(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
@@ -24,18 +26,14 @@
     public async Task ClientActionTest()
     {
 
-      var aGetAllOwnedTokensAction = 
-        new GetAllOwnedTokensAction
-      {
-        TokenOwner = TestEthAccounts.TestEthAccountAddress
-      };
+      var aGetAllOwnedTokensAction = new GetAllOwnedTokensAction();
+      
+      newWebState = await Mediator.Send(aGetAllOwnedTokensAction);
 
-      WebThreeState aGetAllOwnedTokensResponse = await Mediator.Send(aGetAllOwnedTokensAction);
+      newWebState.ShouldNotBe(null);
+      newWebState.CurrentTokenIds.ShouldNotBe(null);
 
-      aGetAllOwnedTokensResponse.ShouldNotBe(null);
-      aGetAllOwnedTokensResponse.CurrentTokenIds.ShouldNotBe(null);
-
-      aGetAllOwnedTokensResponse.CurrentTokenIds.Count.ShouldBe(3);
+      newWebState.CurrentTokenIds.Count.ShouldBe(3);
     }
 
     //public async Task Should_Fetch_NftTypes()

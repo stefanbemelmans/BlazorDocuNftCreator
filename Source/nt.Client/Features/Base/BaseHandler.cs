@@ -6,6 +6,7 @@
   using nt.Client.Features.EventStream;
   using BlazorState;
   using MediatR;
+  using nt.Client.Features.WebThree;
 
   /// <summary>
   /// Base Handler that makes it easy to access state
@@ -22,5 +23,6 @@
     protected WeatherForecastsState WeatherForecastsState => Store.GetState<WeatherForecastsState>();
     protected CounterState CounterState => Store.GetState<CounterState>();
     protected EventStreamState EventStreamState => Store.GetState<EventStreamState>();
+    protected WebThreeState WebThreeState => Store.GetState<WebThreeState>();
   }
 }

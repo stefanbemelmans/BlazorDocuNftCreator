@@ -73,10 +73,7 @@
 
     public async Task ShouldGetAllTokensUsingServerFeatures()
     {
-      var request = new GetAllOwnedTokensSharedRequest()
-      {
-        TokenOwner = TestEthAccounts.TestEthAccountAddress
-      };
+      var request = new GetAllOwnedTokensSharedRequest();
 
       GetAllOwnedTokensSharedResponse totalTokens = await Mediator.Send(request);
 

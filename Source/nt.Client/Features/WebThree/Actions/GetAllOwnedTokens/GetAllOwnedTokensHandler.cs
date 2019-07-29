@@ -33,15 +33,14 @@
       {
 
         //string requestUri = QueryHelpers.AddQueryString(GetAllOwnedTokensSharedRequest.Route, "GetNftType", getNftId.ToString());
-        string requestUri = GetAllOwnedTokensSharedRequest.RouteFactory(aGetAllOwnedTokensClientRequest.TokenOwner);
 
-        List<uint> tempList = await HttpClient.GetJsonAsync<List<uint>>(requestUri);
-        
-        //GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(requestUri);
+        //WebThreeState.CurrentTokenIds  = await HttpClient.GetJsonAsync<List<uint>>(requestUri);
+
+        GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(GetAllOwnedTokensSharedRequest.Route);
 
         return new WebThreeState
         {
-          CurrentTokenIds = tempList
+          CurrentTokenIds = aTokenList.TokenIdList
         };
       }
     }

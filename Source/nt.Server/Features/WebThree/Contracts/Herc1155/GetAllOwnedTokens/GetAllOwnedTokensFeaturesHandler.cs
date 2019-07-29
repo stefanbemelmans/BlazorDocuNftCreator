@@ -26,7 +26,7 @@
 
       GetAllOwnedTokensServiceResponse response = await Mediator.Send(aNftRequest);
 
-      return new GetAllOwnedTokensSharedResponse
+      return new GetAllOwnedTokensSharedResponse()
       {
         TokenIdList = response.TokenIdList
       };
