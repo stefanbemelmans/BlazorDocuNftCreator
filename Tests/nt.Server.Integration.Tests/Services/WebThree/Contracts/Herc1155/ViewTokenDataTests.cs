@@ -56,7 +56,7 @@
       balance.ShouldNotBe(0);
     }
 
-    public async Task ShouldGetByteArrayAndTokenId()
+    public async Task ShouldDeserializeTokenData()
     {
       var request = new ViewTokenDataServiceRequest { ViewTokenId = 3 };
 
@@ -66,7 +66,7 @@
       ImmutableData deSerObj = Serializer.Deserialize<ImmutableData>(response.SerializedTokenData, 0);
 
       deSerObj.ShouldBeOfType<ImmutableData>();
-      deSerObj.Title.ShouldBe("The First Minted NFT!Take 2");
+      deSerObj.Title.ShouldBe("The First Minted NFT!");
 
     }
 
