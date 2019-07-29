@@ -39,8 +39,6 @@
         
         //GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(requestUri);
 
-
-
         return new WebThreeState
         {
           CurrentTokenIds = tempList

@@ -1,4 +1,4 @@
-﻿namespace nt.Server.Services.WebThree.Contracts.Herc1155.Functions
+﻿namespace nt.Server.Services.WebThree.Contracts.Herc1155
 {
   using System.Threading.Tasks;
   using System.Threading;
