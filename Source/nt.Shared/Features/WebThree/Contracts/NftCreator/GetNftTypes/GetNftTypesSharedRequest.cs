@@ -1,4 +1,5 @@
-namespace nt.Shared.Features.WebThree
+namespace nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftTypes
+
 {
   using nt.Shared.Features.Base;
   using MediatR;

@@ -1,4 +1,4 @@
-namespace nt.Shared.Features.WebThree
+namespace nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftTypes
 {
   using System;
   using nt.Shared.Features.Base;
@@ -13,6 +13,6 @@ namespace nt.Shared.Features.WebThree
       RequestId = aRequestId;
     }
 
-    public int TotalNftTypes { get; set; }
+    public uint TotalNftTypes { get; set; }
   }
 }

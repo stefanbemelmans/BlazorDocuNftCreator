@@ -2,9 +2,9 @@
 {
   using System.Threading;
   using System.Threading.Tasks;
-  using nt.Shared.Features.WebThree;
   using MediatR;
   using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftTypes;
+  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftTypes;
 
   public class GetNftTypesServerFeaturesHandler : IRequestHandler<GetNftTypesSharedRequest, GetNftTypesSharedResponse>
   {

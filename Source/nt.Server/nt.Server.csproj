@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AnySerializer" Version="1.1.31" />
     <PackageReference Include="MediatR" Version="$(MediatrVersion)" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="$(MediatrExtensionsMicrosoftDependencyInjectionVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Server" Version="$(MicrosoftAspNetCoreBlazorVersion)" />
@@ -21,5 +22,9 @@
   <ItemGroup>
     <ProjectReference Include="..\nt.Client\nt.Client.csproj" />
     <ProjectReference Include="..\nt.Shared\nt.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\WebThree\Contracts\Herc1155\Functions\EditMutableData\" />
   </ItemGroup>
 </Project>

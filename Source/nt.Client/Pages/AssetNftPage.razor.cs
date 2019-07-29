@@ -1,7 +1,7 @@
 ﻿namespace nt.Client.Pages
 {
   using nt.Client.Features.Base.Components;
-  using nt.Client.Features.WebThree.Components;
+  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
 
   public class AssetNftPageModel : BaseComponent
   {
@@ -9,12 +9,9 @@
 
     public string Address { get; set; }
 
-    public int NftTypes { get; set; }
-
     public int TotalNfts { get; set; }
     public int NftTypeToGet { get; set; }
 
-      NftTemplate NftTemplate = new NftTemplate();
 
      
     }

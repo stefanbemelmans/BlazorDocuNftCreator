@@ -21,7 +21,7 @@
 
       var totalNfts = new GetNftTypesServiceResponse();
 
-      int nfts =  await totalNftsFunction.CallAsync<int>();
+      uint nfts =  await totalNftsFunction.CallAsync<uint>();
 
 
       totalNfts.TotalNftTypes = nfts;

@@ -1,14 +1,20 @@
 ﻿namespace nt.Client.Features.WebThree.Components
 {
   using nt.Client.Features.Base.Components;
+  using nt.Client.Features.WebThree.Components.NftTemplates;
+  using System;
 
   public class NftTemplateComponentModel : BaseComponent
   {
+    // this is just for testing
+    public RequestForProposalTemplate RfpTemplate = new RequestForProposalTemplate();
 
-     public NftTemplate NftTemplate { get; set; }
-
-   
-
+    public void PrintValues()
+    {
+      foreach(object kvp in RfpTemplate){
+        Console.WriteLine($"{kvp.ToString()}: {kvp.ToString()}"); 
+      }
+    }
 
     //AddNewNftTemplateFunction AddNewNftFunction = NftCreatorContract.GetFunction("NFTTemplates");
 

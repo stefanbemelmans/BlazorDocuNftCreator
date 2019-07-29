@@ -17,6 +17,7 @@
   using nt.Shared.Constants;
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
   using nt.Server.Services.WebThree.Instance;
+  using nt.Server.Services.WebThree.Contracts.Herc1155.ContractInstance;
 
   public class Startup
   {
@@ -74,7 +75,7 @@
      
       aServiceCollection.AddSingleton<NethWeb3>();
       aServiceCollection.AddScoped<NftCreatorInstance>();
-	  
+      aServiceCollection.AddScoped<Herc1155Instance>();
       new Client.Startup().ConfigureServices(aServiceCollection);
 
       aServiceCollection.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
