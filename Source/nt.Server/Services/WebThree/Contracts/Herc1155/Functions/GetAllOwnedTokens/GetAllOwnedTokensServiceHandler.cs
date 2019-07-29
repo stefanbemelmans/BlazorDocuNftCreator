@@ -8,6 +8,7 @@
   using MediatR;
   using nt.Shared.Constants.AccountAddresses;
   using System.Collections.Generic;
+  using Nethereum.Contracts.ContractHandlers;
 
   public class GetAllOwnedTokensServerServiceHandler : IRequestHandler<GetAllOwnedTokensServiceRequest, GetAllOwnedTokensServiceResponse>
   {
@@ -17,7 +18,6 @@
     {
       Herc1155Instance = aHerc1155Instance;
     }
-
     public async Task<GetAllOwnedTokensServiceResponse> Handle(GetAllOwnedTokensServiceRequest aGetAllOwnedTokensServiceRequest, CancellationToken aCancellationToken)
     {
       Function<GetAllOwnedTokensFunctionInput> aGetAllOwnedTokensFunction = Herc1155Instance.Instance.GetFunction<GetAllOwnedTokensFunctionInput>();

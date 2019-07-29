@@ -13,6 +13,7 @@
   using Nethereum.Contracts;
   using Nethereum.RPC.Eth.DTOs;
   using nt.Server.Integration.Tests.Services.WebThree.Contracts.NftCreator;
+  using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
 
   class ViewTokenDataTests
   {
@@ -22,12 +23,15 @@
       Mediator = ServiceProvider.GetService<IMediator>();
       NethWeb3 = ServiceProvider.GetService<NethWeb3>();
       Herc1155 = ServiceProvider.GetService<Herc1155Instance>();
+      //NFtCreator = ServiceProvider.GetService<NftCreatorInstance>();
     }
 
     private IServiceProvider ServiceProvider { get; }
     private IMediator Mediator { get; }
     private NethWeb3 NethWeb3 { get; set; }
     private Herc1155Instance Herc1155 { get; set; }
+    //private NftCreatorInstance NFtCreator { get; set; }
+
     public async Task ShouldGetTokenData()
     { // 
       // Arrange

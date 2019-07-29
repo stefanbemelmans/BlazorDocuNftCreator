@@ -25,9 +25,9 @@
       Function aViewTokenDataFunction = Herc1155.Instance.GetFunction("viewTokenData");
       //(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), value: new Nethereum.Hex.HexTypes.HexBigInteger(0), functionInput: 3)
 
-      Function tokenTypeFunction = Herc1155.Instance.GetFunction("tokenType");
+      //Function tokenTypeFunction = Herc1155.Instance.GetFunction("tokenType");
 
-      uint TokenType = await tokenTypeFunction.CallAsync<uint>(aViewTokenDataServiceRequest.ViewTokenId);
+      //uint TokenType = await tokenTypeFunction.CallAsync<uint>(aViewTokenDataServiceRequest.ViewTokenId);
 
       string serializedBase64String = await aViewTokenDataFunction.CallAsync<string>(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), value: new Nethereum.Hex.HexTypes.HexBigInteger(0), functionInput: aViewTokenDataServiceRequest.ViewTokenId);
 
@@ -36,7 +36,7 @@
       return new ViewTokenDataServiceResponse
       {
         SerializedTokenData = serializedImmutableData,
-        TokenType = TokenType
+        TokenType = 4
       };
 
     }

@@ -30,7 +30,7 @@
       return new ViewTokenDataSharedResponse(new System.Guid())
       {
         SerializedTokenData = response.SerializedTokenData,
-        TokenType= aViewTokenDataSharedRequest.ViewTokenId
+        TokenType = aViewTokenDataSharedRequest.ViewTokenId
       };
 
     }
