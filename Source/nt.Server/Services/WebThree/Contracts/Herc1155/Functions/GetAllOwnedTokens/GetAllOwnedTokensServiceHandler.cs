@@ -1,14 +1,14 @@
-﻿namespace nt.Server.Services.WebThree.Contracts.Herc1155.Functions
-{
+﻿namespace nt.Server.Services.WebThree.Contracts.Herc1155.GetAllOwnedTokens
+{ 
   using System.Threading.Tasks;
   using System.Threading;
   using Nethereum.Contracts;
   using nt.Server.Services.WebThree.Contracts.Herc1155.ContractInstance;
-  using nt.Shared.Features.WebThree.Contracts.Herc1155;
   using MediatR;
   using nt.Shared.Constants.AccountAddresses;
   using System.Collections.Generic;
   using Nethereum.Contracts.ContractHandlers;
+  using nt.Shared.Features.WebThree.Contracts.Herc1155;
 
   public class GetAllOwnedTokensServerServiceHandler : IRequestHandler<GetAllOwnedTokensServiceRequest, GetAllOwnedTokensServiceResponse>
   {

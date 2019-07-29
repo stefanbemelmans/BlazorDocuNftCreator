@@ -1,4 +1,4 @@
-﻿namespace nt.Server.Features.WebThree.Contracts.NftCreator.GetAllOwnedTokens
+﻿namespace nt.Server.Features.WebThree.Contracts.Herc1155.GetAllOwnedTokens
 {
   using System.Threading.Tasks;
   using nt.Server.Features.Base;
