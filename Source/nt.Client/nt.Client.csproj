@@ -11,6 +11,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Features\WebThree\Components\TokenInfoComponent.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Features\WebThree\Components\TokenInfoComponent.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AnySerializer" Version="1.1.31" />
     <PackageReference Include="Blazor-State" Version="$(BlazorStateVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="$(MicrosoftAspNetCoreBlazorVersion)" />

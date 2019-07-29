@@ -4,15 +4,18 @@
   using nt.Client.Features.WebThree.Components.NftTemplates;
   using System;
 
-  public class NftTemplateComponentModel : BaseComponent
+  public class TokenInfoComponentModel : BaseComponent
   {
-    // this is just for testing
-    public RequestForProposalTemplate RfpTemplate = new RequestForProposalTemplate();
+    public TemplateFormBase TokenTypeInfo { get; set; }
+
+    public uint TokenId { get; set; }
+
+    public uint TokenNftType { get; set; }
 
     public void PrintValues()
     {
-      foreach(object kvp in RfpTemplate){
-        Console.WriteLine($"{kvp.ToString()}: {kvp.ToString()}"); 
+      foreach(object obj in TokenTypeInfo){
+        Console.WriteLine($"{obj.ToString()}: {obj.ToString()}"); 
       }
     }
 

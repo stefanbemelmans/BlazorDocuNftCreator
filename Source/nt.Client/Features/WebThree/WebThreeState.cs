@@ -13,7 +13,7 @@
     public WebThreeState() { }
 
     public uint TotalNftTypes { get; set; }
-    public uint TotalTokenTypes { get; set; }
+    public uint TotalTokenTypes { get; set; } 
     public List<uint> CurrentTokenIds { get; set; } 
     public NftTemplate CurrentNftType { get; set; }
     protected override void Initialize()
