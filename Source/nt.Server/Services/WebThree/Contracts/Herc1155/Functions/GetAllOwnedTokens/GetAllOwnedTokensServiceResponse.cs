@@ -1,4 +1,4 @@
-﻿namespace nt.Server.Services.WebThree.Contracts.Herc1155
+﻿namespace nt.Server.Services.WebThree.Contracts.Herc1155.GetAllOwnedTokens
 { 
   using nt.Shared.Features.Base;
   using nt.Shared.Features.WebThree;

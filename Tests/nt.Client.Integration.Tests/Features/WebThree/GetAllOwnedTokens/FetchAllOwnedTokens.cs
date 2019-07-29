@@ -33,9 +33,9 @@
       WebThreeState aGetAllOwnedTokensResponse = await Mediator.Send(aGetAllOwnedTokensAction);
 
       aGetAllOwnedTokensResponse.ShouldNotBe(null);
-      aGetAllOwnedTokensResponse.CurrentNftType.ShouldNotBe(null);
+      aGetAllOwnedTokensResponse.CurrentTokenIds.ShouldNotBe(null);
 
-      aGetAllOwnedTokensResponse.CurrentNftType.Name.ShouldBeOfType<string>();
+      aGetAllOwnedTokensResponse.CurrentTokenIds.Count.ShouldBe(3);
     }
 
     //public async Task Should_Fetch_NftTypes()

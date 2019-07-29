@@ -7,7 +7,7 @@
   using BlazorState;
   using Microsoft.AspNetCore.Components;
   using nt.Client.Features.WebThree.Actions.GetAllOwnedTokens;
-  using nt.Shared.Features.WebThree.Contracts.Herc1155;
+  using nt.Shared.Features.WebThree.Contracts.Herc1155.GetAllOwnedTokens;
 
   internal partial class WebThreeState
   {

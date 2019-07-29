@@ -1,4 +1,4 @@
-namespace nt.Shared.Features.WebThree.Contracts.Herc1155
+namespace nt.Shared.Features.WebThree.Contracts.Herc1155.GetAllOwnedTokens
 {
   using nt.Shared.Features.Base;
   using MediatR;
