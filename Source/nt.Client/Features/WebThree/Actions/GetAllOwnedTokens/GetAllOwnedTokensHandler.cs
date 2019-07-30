@@ -24,7 +24,7 @@
       }
       private HttpClient HttpClient { get; }
 
-
+      WebThreeState WebThreeState => Store.GetState<WebThreeState>();
       public override async Task<WebThreeState> Handle
         (
           GetAllOwnedTokensAction aGetAllOwnedTokensClientRequest,
@@ -32,16 +32,11 @@
         )
       {
 
-        //string requestUri = QueryHelpers.AddQueryString(GetAllOwnedTokensSharedRequest.Route, "GetNftType", getNftId.ToString());
-
-        //WebThreeState.CurrentTokenIds  = await HttpClient.GetJsonAsync<List<uint>>(requestUri);
-
         GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(GetAllOwnedTokensSharedRequest.Route);
 
-        return new WebThreeState
-        {
-          CurrentTokenIds = aTokenList.TokenIdList
-        };
+        WebThreeState.CurrentTokenIds = aTokenList.TokenIdList;
+        return WebThreeState;
+        
       }
     }
   }

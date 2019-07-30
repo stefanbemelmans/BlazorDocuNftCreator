@@ -23,7 +23,7 @@
       }
       private HttpClient HttpClient { get; }
 
-      WebThreeState webThreeState => Store.GetState<WebThreeState>();
+      WebThreeState WebThreeState => Store.GetState<WebThreeState>();
       public override async Task<WebThreeState> Handle
         (
           GetNftTypesClientFeaturesAction aGetNftTypesClientRequest,
@@ -33,12 +33,11 @@
 
         GetNftTypesSharedResponse aSharedResponse = await HttpClient.GetJsonAsync<GetNftTypesSharedResponse>(GetNftTypesSharedRequest.Route);
 
-        webThreeState.TotalNftTypes = aSharedResponse.TotalNftTypes;
-        return webThreeState;
-        
+        WebThreeState.TotalNftTypes = aSharedResponse.TotalNftTypes;
+        return WebThreeState;
+
       }
     }
   }
 }
 
- 
