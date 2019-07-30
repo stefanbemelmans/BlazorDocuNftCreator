@@ -13,9 +13,12 @@
 
   internal partial class WebThreeState : State<WebThreeState>
   {
-    [Inject]
+   
     IMediator Mediator { get; set; }
-    public WebThreeState() { }
+    public WebThreeState()
+    {
+      
+    }
 
     public uint TotalNftTypes { get; set; }
     public uint TotalTokenTypes { get; set; } 
@@ -23,9 +26,9 @@
     public NftTemplate CurrentNftType { get; set; }
     protected override void Initialize()
     {
-      Mediator.Send(new GetTotalNftsAction());
-      Mediator.Send(new GetAllOwnedTokensAction());
-      TotalTokenTypes = (uint)CurrentTokenIds.Count;
+      //Mediator.Send(new GetTotalNftsAction());
+      //Mediator.Send(new GetAllOwnedTokensAction());
+      //TotalTokenTypes = (uint)CurrentTokenIds.Count;
     }
     
 

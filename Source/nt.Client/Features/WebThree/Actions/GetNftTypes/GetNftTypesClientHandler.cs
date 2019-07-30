@@ -32,7 +32,7 @@
 
         GetNftTypesSharedResponse aSharedResponse = await HttpClient.GetJsonAsync<GetNftTypesSharedResponse>(GetNftTypesSharedRequest.Route);
 
-        return new WebThreeState
+        return new WebThreeState()
         {
           TotalNftTypes = aSharedResponse.TotalNftTypes
         };

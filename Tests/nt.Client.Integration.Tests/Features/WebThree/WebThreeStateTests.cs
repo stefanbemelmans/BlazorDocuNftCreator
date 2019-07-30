@@ -27,6 +27,7 @@
 
       webThreeState.ShouldNotBe(null);
 
+      webThreeState.CurrentTokenIds.Count.ShouldBe(3);
       //webThreeState.TotalNftTypes.ShouldBeGreaterThan((uint)0);
       //var fetchNftTypes = new GetNftTypesClientFeaturesAction();
 

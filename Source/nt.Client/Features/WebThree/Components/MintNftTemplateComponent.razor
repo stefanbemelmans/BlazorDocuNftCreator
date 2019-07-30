@@ -14,10 +14,13 @@
       </div>
       <div class="container">
 
-        @foreach (var prop in TokenTypeInfo)
-        {<div class="col"></div>
-          <h4>@prop</h4>
-          <input id=@prop @bind="@TokenTypeInfo[prop]" />
+        @foreach (var property in TokenTypeInfo.GetType().GetProperties())
+        {
+          string propName = property.ToString();
+          <div class="col">
+          <h4>@property</h4>
+          <input id=@property @bind="@propName") />
+        </div>
         }
        
 
