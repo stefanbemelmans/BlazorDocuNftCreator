@@ -1,27 +1,26 @@
 ﻿@inherits TokenInfoComponentModel
-
 <div id="TokenInfoComponent" class="d-flex justify-content-around row align-items-center pt-3">
 
-    <div class="container row w-75 d-flex space-around">
-      <h1> @TokenTypeInfo.TemplateBaseInfo.Name</h1>
-      <h2> @TokenTypeInfo.TokenId</h2>
-      <h4>@TokenTypeInfo.TemplateBaseInfo.Symbol</h4>
-      <h4>@TokenTypeInfo.TemplateBaseInfo.MintLimit</h4>
-      <h4>@TokenTypeInfo.TemplateBaseInfo.AttachedTokens</h4>
-      <h4>@TokenTypeInfo.TokenNftType</h4>
-    </div>
-    <div class="container">
+  <div class="container row w-75 d-flex space-around">
+    <h1> @TokenTypeInfo.TemplateBaseInfo.Name</h1>
+    <h2> @TokenTypeInfo.TokenId</h2>
+    <h4>@TokenTypeInfo.TemplateBaseInfo.Symbol</h4>
+    <h4>@TokenTypeInfo.TemplateBaseInfo.MintLimit</h4>
+    <h4>@TokenTypeInfo.TemplateBaseInfo.AttachedTokens</h4>
+    <h4>@TokenTypeInfo.TokenNftType</h4>
+  </div>
+  <div class="container">
 
-     @foreach (var prop in TokenTypeInfo)
+    @foreach (var prop in TokenTypeInfo)
       { <div class="col"></div>
-        <h4>@prop :</h4>
-        <h5>@TokenTypeInfo[prop]
+    <h4>@prop :</h4>
+    <h5>@TokenTypeInfo[prop]</h5>
       }
-   
-    </div>
-    <button type="button" class="btn btn-primary" @onclick="@PrintValues">
-     Console Values
-    </button>
 
   </div>
+  <button type="button" class="btn btn-primary" @onclick="@PrintValues>
+    Console Values
+  </button>
+
+</div>
 

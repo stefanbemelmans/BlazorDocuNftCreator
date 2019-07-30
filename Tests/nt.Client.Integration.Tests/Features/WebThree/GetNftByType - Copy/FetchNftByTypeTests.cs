@@ -23,7 +23,7 @@
     {
 
       var aGetNftByTypeAction = 
-        new GetNftByTypeClientFeaturesAction
+        new GetTotalNftsAction
       {
         GetNftType = 1
       };

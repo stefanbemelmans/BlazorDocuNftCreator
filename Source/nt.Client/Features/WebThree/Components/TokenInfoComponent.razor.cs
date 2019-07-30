@@ -2,6 +2,7 @@
 {
   using nt.Client.Features.Base.Components;
   using nt.Client.Features.WebThree.Components.NftTemplates;
+  using nt.Shared.Features.WebThree;
   using System;
 
   public class TokenInfoComponentModel : BaseComponent
@@ -10,7 +11,8 @@
 
     public uint TokenId { get; set; }
 
-    public uint TokenNftType { get; set; }
+    public uint NftId { get; set; } 
+    public NftTemplate TokenNftType { get; set; }
 
     public void PrintValues()
     {
