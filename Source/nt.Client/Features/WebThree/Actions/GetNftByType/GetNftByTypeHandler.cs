@@ -38,7 +38,7 @@
 
         return new WebThreeState
         {
-          CurrentNftType = aNftTemplate.NftTypeData
+          CurrentNftTemplate = aNftTemplate.NftTypeData
         };
       }
     }
