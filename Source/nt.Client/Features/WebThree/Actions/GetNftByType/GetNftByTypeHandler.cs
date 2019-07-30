@@ -10,7 +10,7 @@
   internal partial class WebThreeState
   {
 
-    public class GetNftByTypeClientFeaturesHandler : RequestHandler<GetTotalNftsAction, WebThreeState>
+    public class GetNftByTypeClientFeaturesHandler : RequestHandler<GetNftByTypeAction, WebThreeState>
     {
       public GetNftByTypeClientFeaturesHandler
         (
@@ -25,7 +25,7 @@
 
       public override async Task<WebThreeState> Handle
         (
-          GetTotalNftsAction aGetNftByTypeClientRequest,
+          GetNftByTypeAction aGetNftByTypeClientRequest,
           CancellationToken aCancellationToken
         )
       {

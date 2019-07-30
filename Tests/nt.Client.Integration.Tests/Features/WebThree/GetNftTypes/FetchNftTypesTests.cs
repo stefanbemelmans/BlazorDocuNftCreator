@@ -8,6 +8,7 @@
   using MediatR;
   using System.Threading.Tasks;
   using System.Net.Http;
+  using nt.Client.Features.WebThree.Actions;
 
   internal class FetchNftTypesTests
   {

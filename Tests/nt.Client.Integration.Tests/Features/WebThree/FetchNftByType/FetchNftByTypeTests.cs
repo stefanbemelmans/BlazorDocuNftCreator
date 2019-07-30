@@ -23,17 +23,17 @@
     {
 
       var aGetNftByTypeAction = 
-        new GetTotalNftsAction
+        new GetNftByTypeAction
       {
-        GetNftType = 1
+        GetNftType = 4
       };
 
       WebThreeState aGetNftByTypeResponse = await Mediator.Send(aGetNftByTypeAction);
 
       aGetNftByTypeResponse.ShouldNotBe(null);
-      aGetNftByTypeResponse.CurrentNftType.ShouldNotBe(null);
+      aGetNftByTypeResponse.CurrentNftTemplate.ShouldNotBe(null);
 
-      aGetNftByTypeResponse.CurrentNftType.Name.ShouldBeOfType<string>();
+      aGetNftByTypeResponse.CurrentNftTemplate.Name.ShouldBeOfType<string>();
     }
 
     //public async Task Should_Fetch_NftTypes()
