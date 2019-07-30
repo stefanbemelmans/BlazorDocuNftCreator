@@ -10,33 +10,43 @@
     <div class="col-xs bg-danger align-self-center">
       <p> Total NfT Count</p>
       <h3>@TotalNfts</h3>
-      @*<TotalTokensComponent />
+      <p>see who wins</p>
+      <h3>@WebThreeState.TotalNftTypes</h3>
       </div>
-      <div class="col-xs bg-danger align-self-center">
-        <p> TotalToken Count</p>
-        <h3>@TotalTokens</h3>
-        @*<TotalTokensComponent />
+    <div class="col-xs bg-danger align-self-center">
+      <p> TotalToken Count</p>
+      @if (WebThreeState.CurrentTokenIds.Count > 0)
+      {
+        <h3>@WebThreeState.CurrentTokenIds.Count</h3>
+      }
     </div>
+      <div class="text-center m-2 p-2 bg-info">
+        <h2 class="m-2">Current Tokens</h2>
+        @if (WebThreeState.CurrentTokenIds.Count > 0)
+        {
+          foreach (uint tokenId in WebThreeState.CurrentTokenIds)
+          {
+            <p>@tokenId</p>
+          }
+        }
+      </div>
 
-    <h2>@CurrentTokenIds[0]</h2>
-
-
-    <div>
-      <p>Name: @CurrentNftTemplate.Name</p>
-      <p>Symbol: @CurrentNftTemplate.Symbol</p>
-*@
+    <div class="bg-success">
+      <h3>Current Token:</h3>
+      <p>Name: @WebThreeState.CurrentNftTemplate.Name</p>
+      <p>Symbol: @WebThreeState.CurrentNftTemplate.Symbol</p>
     </div>
   </div>
 
 
-  <button type="button" class="btn btn-primary">
-    Send One or Some To Someone
-  </button>
+  @*<button type="button" class="btn btn-primary" onclick="@GetTotalTokans">
+   Get Total Tokens
+  </button>*@
 
 
 <div id="TokenDataContainer" class="d-flex bg-light text-dark text-center">
 
-  TokenData here
+  @*<TotalTokensComponent />*@
 
 </div>
 

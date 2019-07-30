@@ -8,7 +8,7 @@
   using nt.Client.Features.WebThree.Actions;
   using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftTypes;
 
-  internal partial class WebThreeState
+  internal partial class WebThreeState : State<WebThreeState>
   {
 
     public class GetNftTypesClientFeaturesHandler : RequestHandler<GetNftTypesClientFeaturesAction, WebThreeState>
@@ -23,7 +23,7 @@
       }
       private HttpClient HttpClient { get; }
 
-
+      WebThreeState webThreeState => Store.GetState<WebThreeState>();
       public override async Task<WebThreeState> Handle
         (
           GetNftTypesClientFeaturesAction aGetNftTypesClientRequest,
@@ -33,10 +33,9 @@
 
         GetNftTypesSharedResponse aSharedResponse = await HttpClient.GetJsonAsync<GetNftTypesSharedResponse>(GetNftTypesSharedRequest.Route);
 
-        return new WebThreeState()
-        {
-          TotalNftTypes = aSharedResponse.TotalNftTypes
-        };
+        webThreeState.TotalNftTypes = aSharedResponse.TotalNftTypes;
+        return webThreeState;
+        
       }
     }
   }

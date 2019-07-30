@@ -23,7 +23,15 @@
       TotalNftTypes = 0;
       TotalTokenTypes = 0;
       CurrentNftType = 0;
+      CurrentTokenIds = new List<uint>();
       
+      CurrentNftTemplate = new NftTemplate()
+      {
+        Name = "fillerName",
+        Symbol = "stubSymbol",
+        MintLimit = 42,
+        AttachedTokens = 0
+      };
 
     }
     

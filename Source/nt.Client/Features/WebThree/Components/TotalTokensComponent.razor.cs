@@ -12,15 +12,11 @@
     {
     }
 
-    public List<uint> TokenIds { get; set; }
-    public int TotalTokens { get; set; }
-      
-      protected override async Task OnInitAsync()
-      {
-      WebThreeState response = await Mediator.Send(new GetAllOwnedTokensAction());
+    public List<uint> TokenIds => WebThreeState.CurrentTokenIds;
+    public int TotalTokens => TokenIds.Count;
 
-      TokenIds = response.CurrentTokenIds;
-      TotalTokens = response.CurrentTokenIds.Count;
-      }
+    protected override async Task OnInitAsync() => _ = await Mediator.Send(new GetAllOwnedTokensAction());
+    
+    //TokenIds = response.CurrentTokenIds;//TotalTokens = response.CurrentTokenIds.Count;
   }
 }
