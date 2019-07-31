@@ -13,11 +13,11 @@
 
   public class AssetNftPageModel : BaseComponent
   {
-    public uint TotalNfts
-    {
-      get => WebThreeState.TotalNftTypes;
-      set { }
-    }
+    //public uint TotalNfts
+    //{
+    //  get => WebThreeState.TotalNftTypes;
+    //  set { }
+    //}
 
     public NftTemplate CurrentNft
     {
@@ -57,16 +57,16 @@
       // Getting All Nft Types
       WebThreeState w3s = await Mediator.Send(new GetNftTypesClientFeaturesAction());
 
-      TotalNfts = w3s.TotalNftTypes;
+      uint TotalNfts = w3s.TotalNftTypes;
 
-      WebThreeState NftTypeResponse = await Mediator.Send(new GetNftByTypeAction()
+     _ = await Mediator.Send(new GetNftByTypeAction()
       {
         GetNftType = TotalNfts // this number will come from the user NftId
       }
          );
-      CurrentNft = NftTypeResponse.CurrentNftTemplate;
 
       WebThreeState tokenList = await Mediator.Send(new GetAllOwnedTokensAction());
+
       CurrentTokenIds = tokenList.OwnedTokenIdList;
       TotalTokens = CurrentTokenIds.Count;
      
