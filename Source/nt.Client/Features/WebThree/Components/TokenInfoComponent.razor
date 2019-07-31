@@ -1,16 +1,32 @@
 ﻿@inherits TokenInfoModel
 
-  <div class="flex-row space-around m-2 p-2">
-    <p>Name: @TokenData.Name</p>
-    <p>Symbol: @TokenData.Symbol</p>
-    <p>MintLimit: @TokenData.MintLimit</p>
-    <p>AttachedTokens: @TokenData.AttachedTokens</p>
-
-    @foreach (var property in TokenData.NftProps)
-    {
-  <div class="col bg-light text-center p-2 m-2">
-    <h4>@property.Key</h4>
-    <h5>@property.Value</h5>
+<div class="flex-column justify-content-center m-2 p-2">
+  <h3 class="text-center">Token Template Info</h3>
+  <div class="container bg-danger">
+    <div class="row">
+      <div class="col">
+        <h4>Name: @TokenData.Name</h4>
+      </div>
+      <div class="col">
+        <h4>Symbol: @TokenData.Symbol</h4>
+      </div>
+      <div class="col">
+        <h4>MintLimit: @TokenData.MintLimit</h4>
+      </div>
+      <div class="col">
+        <h4>AttachedTokens: @TokenData.AttachedTokens</h4>
+      </div>
+    </div>
   </div>
-    }
+  <div class="container bg-info mt-4">
+    <div class="row">
+      @foreach (var property in TokenData.NftProps)
+      {
+        <div class="col text-center">
+          <h4>@property.Key</h4>
+          <h5 class="bg-light">@property.Value</h5>
+        </div>
+      }
+    </div>
   </div>
+</div>
