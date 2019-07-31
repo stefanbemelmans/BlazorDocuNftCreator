@@ -1,0 +1,17 @@
+﻿@inherits TokenInfoModel
+
+  <div class="flex-row space-around m-2 p-2">
+    <p>Name: @TokenData.TemplateBaseInfo.Name</p>
+    <p>Symbol: @TokenData.TemplateBaseInfo.Symbol</p>
+    <p>MintLimit: @TokenData.TemplateBaseInfo.MintLimit</p>
+    <p>AttachedTokens: @TokenData.TemplateBaseInfo.AttachedTokens</p>
+
+    @foreach (var property in TokenData.GetType().GetProperties())
+    {
+      string propName = property.ToString();
+  <div class="col">
+    <h3>@property</h3>
+    <h4>@property.GetValue(TokenData)</h4>
+  </div>
+    }
+  </div>

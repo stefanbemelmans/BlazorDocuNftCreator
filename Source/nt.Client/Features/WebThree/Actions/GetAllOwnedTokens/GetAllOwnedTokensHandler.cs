@@ -34,7 +34,7 @@
 
         GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(GetAllOwnedTokensSharedRequest.Route);
 
-        WebThreeState.CurrentTokenIds = aTokenList.TokenIdList;
+        WebThreeState.OwnedTokenIdList = aTokenList.TokenIdList;
         return WebThreeState;
         
       }

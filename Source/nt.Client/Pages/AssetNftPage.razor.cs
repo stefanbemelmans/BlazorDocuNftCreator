@@ -1,6 +1,8 @@
 ﻿namespace nt.Client.Pages
 {
   using nt.Client.Features.Base.Components;
+  using nt.Client.Features.WebThree.Components.NftTemplates;
+  using nt.Client.Features.WebThree.Components;
   using nt.Client.Features.WebThree;
   using nt.Client.Features.WebThree.Actions;
   using nt.Client.Features.WebThree.Actions.GetAllOwnedTokens;
@@ -10,48 +12,46 @@
 
   public class AssetNftPageModel : BaseComponent
   {
-    public uint TotalNfts {
+    public uint TotalNfts
+    {
       get => WebThreeState.TotalNftTypes;
       set { }
     }
 
-    //public int TotalTokens { get; set; }
+    public NftTemplate CurrentNft
+    {
+      get => WebThreeState.CurrentNftTemplate;
+      set { }
+    }
 
-    //public NftTemplate CurrentNftTemplate { get; set; }
-    //public List<uint> CurrentTokenIds { get; set; }
+    public List<uint> CurrentTokenIds
+    {
+      get => WebThreeState.OwnedTokenIdList;
+      set { }
+    }
 
-    //public async Task GetTotalTokens()
-    //{
-    //  WebThreeState tokenList = await Mediator.Send(new GetAllOwnedTokensAction());
-    //  CurrentTokenIds = tokenList.CurrentTokenIds;
+    public int TotalTokens { get; set; }
 
-    //}
+    public TemplateFormBase TokenData => new TesterNftTemplate();
 
-    //protected override async Task OnAfterRenderAsync()
-    //{
-    //  WebThreeState tokenList = await Mediator.Send(new GetAllOwnedTokensAction());
-    //  CurrentTokenIds = tokenList.CurrentTokenIds;
-    //}
     protected override async Task OnInitAsync()
     {
       // Getting All Nft Types
-     WebThreeState w3s = await Mediator.Send(new GetNftTypesClientFeaturesAction());
+      WebThreeState w3s = await Mediator.Send(new GetNftTypesClientFeaturesAction());
 
       TotalNfts = w3s.TotalNftTypes;
-      //CurrentTokenIds = tokenList.CurrentTokenIds;
 
-      //await Mediator.Send(new GetNftByTypeAction()
-      //{
-      //  GetNftType = nftType.TotalNftTypes // this number will come from the user NftId
-      //}
-      //  );
+      WebThreeState NftTypeResponse = await Mediator.Send(new GetNftByTypeAction()
+      {
+        GetNftType = TotalNfts // this number will come from the user NftId
+      }
+         );
+      CurrentNft = NftTypeResponse.CurrentNftTemplate;
 
-      //await Mediator.Send(new GetAllOwnedTokensAction());
-      //CurrentNftTemplate = template.CurrentNftTemplate;
-
-      //TotalNfts = response.TotalNftTypes;
+      WebThreeState tokenList = await Mediator.Send(new GetAllOwnedTokensAction());
+      CurrentTokenIds = tokenList.OwnedTokenIdList;
+      TotalTokens = CurrentTokenIds.Count;
     }
-
   }
 }
 

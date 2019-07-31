@@ -31,9 +31,9 @@
       newWebState = await Mediator.Send(aGetAllOwnedTokensAction);
 
       newWebState.ShouldNotBe(null);
-      newWebState.CurrentTokenIds.ShouldNotBe(null);
+      newWebState.OwnedTokenIdList.ShouldNotBe(null);
 
-      newWebState.CurrentTokenIds.Count.ShouldBe(3);
+      newWebState.OwnedTokenIdList.Count.ShouldBe(3);
     }
 
     //public async Task Should_Fetch_NftTypes()

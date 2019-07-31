@@ -12,7 +12,7 @@
     {
     }
 
-    public List<uint> TokenIds => WebThreeState.CurrentTokenIds;
+    public List<uint> TokenIds => WebThreeState.OwnedTokenIdList;
     public int TotalTokens => TokenIds.Count;
 
     protected override async Task OnInitAsync() => _ = await Mediator.Send(new GetAllOwnedTokensAction());
