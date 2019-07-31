@@ -5,13 +5,13 @@
 
   public class PurchaseRequestTemplate : TemplateFormBase
   {
-    public const int NftId = 4;
     public PurchaseRequestTemplate()
     {
-      TemplateBaseInfo.Name = "Purchase Request";
-      TemplateBaseInfo.Symbol = "PRQ";
-      TemplateBaseInfo.MintLimit = 5;
-      TemplateBaseInfo.AttachedTokens = 0;
+      NftId = 4;
+      Name = "Purchase Request";
+      Symbol = "PRQ";
+      MintLimit = 5;
+      AttachedTokens = 0;
     }
 
     public int StockNumber { get; set; }

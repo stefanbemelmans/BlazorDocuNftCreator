@@ -6,47 +6,47 @@
   </NavLink>*@
 
 
-  <div id="NftCountContainer" class="container justify-content-center py-2">
-    <div class="bg-success text-center w-25">
-      <p> Total NfT Count</p>
-      <h3>@TotalNfts</h3>
-      <p>see who wins</p>
-      <h3>@WebThreeState.TotalNftTypes</h3>
-      </div>
-    <div class="bg-info text-center">
-      <p> TotalToken Count</p>
-      @if (WebThreeState.OwnedTokenIdList.Count > 0)
+<div id="NftCountContainer" class="container justify-content-center py-2">
+  <div class="bg-success text-center w-25">
+    <p> Total NfT Count</p>
+    <h3>@TotalNfts</h3>
+    <p>see who wins</p>
+    <h3>@WebThreeState.TotalNftTypes</h3>
+  </div>
+  <div class="bg-info text-center">
+    <p> TotalToken Count</p>
+    @if (WebThreeState.OwnedTokenIdList.Count > 0)
+    {
+      <h3>@WebThreeState.OwnedTokenIdList.Count</h3>
+    }
+  </div>
+  <div class="bg-danger text-center">
+    <h2 class="m-2">Current Tokens</h2>
+    @if (WebThreeState.OwnedTokenIdList.Count > 0)
+    {
+      foreach (uint tokenId in WebThreeState.OwnedTokenIdList)
       {
-        <h3>@WebThreeState.OwnedTokenIdList.Count</h3>
+        <p>@tokenId</p>
       }
-    </div>
-      <div class="bg-danger text-center">
-        <h2 class="m-2">Current Tokens</h2>
-        @if (WebThreeState.OwnedTokenIdList.Count > 0)
-        {
-          foreach (uint tokenId in WebThreeState.OwnedTokenIdList)
-          {
-            <p>@tokenId</p>
-          }
-        }
-      </div>
-
-    <div class="bg-success text-center">
-      <h3>Current Token:</h3>
-      <p>Name: @WebThreeState.CurrentNftTemplate.Name</p>
-      <p>Symbol: @WebThreeState.CurrentNftTemplate.Symbol</p>
-    </div>
+    }
   </div>
 
+  <div class="bg-success text-center">
+    <h3>Current Token:</h3>
+    <p>Name: @WebThreeState.CurrentNftTemplate.Name</p>
+    <p>Symbol: @WebThreeState.CurrentNftTemplate.Symbol</p>
+  </div>
+</div>
 
-  @*<button type="button" class="btn btn-primary" onclick="@GetTotalTokans">
+
+@*<button type="button" class="btn btn-primary" onclick="@GetTotalTokans">
    Get Total Tokens
   </button>*@
 
 
 <div id="TokenDataContainer" class="d-flex bg-light text-dark text-center">
   <h1>TokenInfo</h1>
-  <TokenInfoComponent TokenData=@TokenData />
+  <TokenInfoComponent TokenData=@tokenData />
 
 </div>
 

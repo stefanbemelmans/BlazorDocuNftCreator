@@ -2,13 +2,14 @@
 {
   public class RequestForQuotationTemplate : TemplateFormBase
   {
-    public const int NftId = 1;
+
     public RequestForQuotationTemplate()
     {
-      TemplateBaseInfo.Name = "Request For Quotation";
-      TemplateBaseInfo.Symbol = "RFQ";
-      TemplateBaseInfo.MintLimit = 5;
-      TemplateBaseInfo.AttachedTokens = 0;
+      NftId = 1;
+      Name = "Request For Quotation";
+      Symbol = "RFQ";
+      MintLimit = 5;
+      AttachedTokens = 0;
     }
     public string DeliveryTerms { get; set; }
     public string CustomClearance { get; set; }

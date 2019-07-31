@@ -9,15 +9,26 @@ namespace nt.Client.Features.WebThree.Components.NftTemplates
   {
     public TesterNftTemplate()
     {
-      TemplateBaseInfo.Name = "TesterTemplate";
-      TemplateBaseInfo.Symbol = "TEST";
-      TemplateBaseInfo.MintLimit = 1000;
-      TemplateBaseInfo.AttachedTokens = 0;
+      Name = "Tester Nft Template";
+      Symbol = "TNT";
+      MintLimit = 42;
+      AttachedTokens = 0;
+      NftProps = new Dictionary<string, string>()
+      {
+        { ImportantNumber1Of2, "one" },
+        { ImportantWord1of2, "Important" },
+        { ImportantNumber2of2, "42" },
+        { ImportantWord2of2, "Word" },
+        { Date, DateTime.Now.ToString() }
+
+      };
+
     }
-    public int ImportantNumber1fo2 { get; set; }
-    public string ImportantWord1of2 { get; set; }
-    public string ImportantWord2of2 { get; set; }
-    public DateTime Date { get; set; }
-    public int ImportantNumber2of2 { get; set; }
+
+    public string ImportantNumber1Of2 = "ImportantNumber1Of2";
+    public string ImportantWord1of2 = "ImportantWord1of2";
+    public string ImportantWord2of2 = "ImportantWord2of2";
+    public string Date = "Date";
+    public string ImportantNumber2of2 = "ImportantNumber2of2";
   }
 }

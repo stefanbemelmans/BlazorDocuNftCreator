@@ -4,13 +4,13 @@
 
   public class RequestForProposalTemplate : TemplateFormBase
   {
-    public const int NftId = 0;
     public RequestForProposalTemplate()
     {
-      TemplateBaseInfo.Name = "Request For Proposal";
-      TemplateBaseInfo.Symbol = "RFQ";
-      TemplateBaseInfo.MintLimit = 5;
-      TemplateBaseInfo.AttachedTokens = 0;
+      NftId = 0;
+      Name = "Request For Proposal";
+      Symbol = "RFQ";
+      MintLimit = 5;
+      AttachedTokens = 0;
     }
 
     public string CompanyName { get; set; }

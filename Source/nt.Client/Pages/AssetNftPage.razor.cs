@@ -9,6 +9,7 @@
   using nt.Shared.Features.WebThree;
   using System.Collections.Generic;
   using System.Threading.Tasks;
+  using static nt.Client.Features.WebThree.Components.NftTemplates.TemplateFormBase;
 
   public class AssetNftPageModel : BaseComponent
   {
@@ -32,7 +33,24 @@
 
     public int TotalTokens { get; set; }
 
-    public TemplateFormBase TokenData => new TesterNftTemplate();
+   public TemplateFormBase tokenData = new TemplateFormBase()
+    {
+      NftId = 5,
+      Name = "TestTemplate",
+      Symbol = "TTFL",
+      MintLimit = 300,
+      AttachedTokens = 0,
+      NftProps = new Dictionary<string, string>()
+      {
+        { "FieldOneKey", "FieldOneVal" },
+        { "ImportantNumber1fo2", "42" },
+        { "ImportantWord1of2", "The Word1" },
+        { "ImportantNumber2of2", "17" },
+        { "ImportantWord2of2", "The Word2" },
+        { "Date", new System.DateTime().ToString() }
+
+      }
+    };
 
     protected override async Task OnInitAsync()
     {
@@ -51,6 +69,7 @@
       WebThreeState tokenList = await Mediator.Send(new GetAllOwnedTokensAction());
       CurrentTokenIds = tokenList.OwnedTokenIdList;
       TotalTokens = CurrentTokenIds.Count;
+     
     }
   }
 }

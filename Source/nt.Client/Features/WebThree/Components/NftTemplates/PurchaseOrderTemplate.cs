@@ -6,13 +6,13 @@ namespace nt.Client.Features.WebThree.Components.NftTemplates
   {
     public PurchaseOrderTemplate()
     {
-      TemplateBaseInfo.Name = "Purchase Order";
-      TemplateBaseInfo.Symbol = "POT";
-      TemplateBaseInfo.MintLimit = 1000;
-      TemplateBaseInfo.AttachedTokens = 0;
+      Name = "Purchase Order";
+      Symbol = "POT";
+      MintLimit = 1000;
+      AttachedTokens = 0;
+      NftId = 1;
     }
 
-    public const int NftId = 1;
     public string Approver { get; set; } = "";
     public DateTime DeliveryDate => DateTime.Now;
     public string Department { get; set; } = "";

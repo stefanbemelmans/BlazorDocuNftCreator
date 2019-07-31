@@ -1,17 +1,16 @@
 ﻿@inherits TokenInfoModel
 
   <div class="flex-row space-around m-2 p-2">
-    <p>Name: @TokenData.TemplateBaseInfo.Name</p>
-    <p>Symbol: @TokenData.TemplateBaseInfo.Symbol</p>
-    <p>MintLimit: @TokenData.TemplateBaseInfo.MintLimit</p>
-    <p>AttachedTokens: @TokenData.TemplateBaseInfo.AttachedTokens</p>
+    <p>Name: @TokenData.Name</p>
+    <p>Symbol: @TokenData.Symbol</p>
+    <p>MintLimit: @TokenData.MintLimit</p>
+    <p>AttachedTokens: @TokenData.AttachedTokens</p>
 
-    @foreach (var property in TokenData.GetType().GetProperties())
+    @foreach (var property in TokenData.NftProps)
     {
-      string propName = property.ToString();
-  <div class="col">
-    <h3>@property</h3>
-    <h4>@property.GetValue(TokenData)</h4>
+  <div class="col bg-light text-center p-2 m-2">
+    <h4>@property.Key</h4>
+    <h5>@property.Value</h5>
   </div>
     }
   </div>

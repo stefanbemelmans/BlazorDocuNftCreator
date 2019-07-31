@@ -6,13 +6,13 @@
 
   public class BillOfLadingTemplate : TemplateFormBase
   {
-    public const int NftId = 6;
     public BillOfLadingTemplate()
     {
-      TemplateBaseInfo.Name = "Bill Of Lading";
-      TemplateBaseInfo.Symbol = "BOL";
-      TemplateBaseInfo.MintLimit = 1000;
-      TemplateBaseInfo.AttachedTokens = 0;
+      NftId = 5;
+      Name = "Bill Of Lading";
+      Symbol = "BOL";
+      MintLimit = 1000;
+      AttachedTokens = 0;
     }
 
     public string Lading { get; set; } 
