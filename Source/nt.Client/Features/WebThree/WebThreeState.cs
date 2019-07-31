@@ -15,15 +15,17 @@
 
     public uint TotalNftTypes { get; set; }
     public uint TotalTokenTypes { get; set; } 
-    public List<uint> CurrentTokenIds { get; set; }
+    public List<uint> OwnedTokenIdList { get; set; }
     public uint CurrentNftType { get; set; }
+    public uint CurrentTokenId { get; set; }
     public NftTemplate CurrentNftTemplate { get; set; }
     protected override void Initialize()
     {
       TotalNftTypes = 0;
       TotalTokenTypes = 0;
       CurrentNftType = 0;
-      CurrentTokenIds = new List<uint>();
+      OwnedTokenIdList = new List<uint>();
+      CurrentTokenId = 0;
       
       CurrentNftTemplate = new NftTemplate()
       {
