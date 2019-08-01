@@ -2,7 +2,7 @@
 
 namespace nt.Client.Features.WebThree.Components.NftTemplates
 {
-  public class PurchaseOrderTemplate : TemplateFormBase
+  public class PurchaseOrderTemplate : TemplateBase
   {
     public PurchaseOrderTemplate()
     {

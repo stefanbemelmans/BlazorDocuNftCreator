@@ -4,7 +4,7 @@
   using nt.Client.Features.WebThree.Components.NftTemplates;
   public class NewNftTemplateFormModel : BaseComponent
     {
-      public TemplateFormBase CurrentTemplateForm { get; set; } 
+      public TemplateBase CurrentTemplateForm { get; set; } 
 
     }
 }

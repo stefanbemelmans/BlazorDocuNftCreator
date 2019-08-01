@@ -8,7 +8,8 @@
   public class TokenInfoModel : BaseComponent
   {
     [Parameter]
-    public TemplateFormBase TokenData { get; set; }
+    public TemplateBase TokenData { get; set; }
+    public string TokenDataString { get; set; }
     [Parameter]
     public string MutableData { get; set; }
 

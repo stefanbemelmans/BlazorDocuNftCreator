@@ -21,5 +21,7 @@
     internal const string TestEthPrivateKey = "307F685A376C5BF8296B4BE1D3703F068315BCD3115280B52C4CA0F8BA83C474";
         //readonly byte[] bytes = Encoding.UTF8.GetBytes(TestEthPrivateKey);
         public Account TesterAcct { get; set; }
+
+
     }
 }

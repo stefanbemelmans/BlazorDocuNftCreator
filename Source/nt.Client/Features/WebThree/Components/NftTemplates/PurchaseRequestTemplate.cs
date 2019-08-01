@@ -3,7 +3,7 @@
   using System;
   using System.Collections.Generic;
 
-  public class PurchaseRequestTemplate : TemplateFormBase
+  public class PurchaseRequestTemplate : TemplateBase
   {
     public PurchaseRequestTemplate()
     {

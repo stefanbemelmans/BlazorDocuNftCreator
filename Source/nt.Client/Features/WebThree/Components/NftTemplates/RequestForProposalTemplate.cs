@@ -2,7 +2,7 @@
 {
   using System.Collections.Generic;
 
-  public class RequestForProposalTemplate : TemplateFormBase
+  public class RequestForProposalTemplate : TemplateBase
   {
     public RequestForProposalTemplate()
     {

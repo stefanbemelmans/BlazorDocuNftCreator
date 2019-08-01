@@ -9,7 +9,7 @@
   using nt.Shared.Features.WebThree;
   using System.Collections.Generic;
   using System.Threading.Tasks;
-  using static nt.Client.Features.WebThree.Components.NftTemplates.TemplateFormBase;
+  using static nt.Client.Features.WebThree.Components.NftTemplates.TemplateBase;
 
   public class AssetNftPageModel : BaseComponent
   {
@@ -33,7 +33,7 @@
 
     public int TotalTokens { get; set; }
 
-   public TemplateFormBase tokenData = new TemplateFormBase()
+   public TemplateBase tokenData = new TemplateBase()
     {
       NftId = 5,
       Name = "TestTemplate",

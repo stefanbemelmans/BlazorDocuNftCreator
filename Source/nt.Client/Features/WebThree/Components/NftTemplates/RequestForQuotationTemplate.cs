@@ -1,6 +1,6 @@
 ﻿namespace nt.Client.Features.WebThree.Components.NftTemplates
 {
-  public class RequestForQuotationTemplate : TemplateFormBase
+  public class RequestForQuotationTemplate : TemplateBase
   {
 
     public RequestForQuotationTemplate()

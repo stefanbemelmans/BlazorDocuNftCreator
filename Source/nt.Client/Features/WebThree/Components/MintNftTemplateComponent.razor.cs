@@ -13,7 +13,7 @@
       BuildInputs();
     }
 
-    public TemplateFormBase TokenTypeInfo { get; set; }
+    public TemplateBase TokenTypeInfo { get; set; }
 
     public Dictionary<object, object> FormInputs;
 

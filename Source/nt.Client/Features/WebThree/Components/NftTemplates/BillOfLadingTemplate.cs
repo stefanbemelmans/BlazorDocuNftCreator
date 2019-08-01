@@ -4,7 +4,7 @@
   using System;
   using System.Collections.Generic;
 
-  public class BillOfLadingTemplate : TemplateFormBase
+  public class BillOfLadingTemplate : TemplateBase
   {
     public BillOfLadingTemplate()
     {

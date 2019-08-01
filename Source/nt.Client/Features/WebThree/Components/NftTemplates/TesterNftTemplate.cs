@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace nt.Client.Features.WebThree.Components.NftTemplates
 {
-  public class TesterNftTemplate : TemplateFormBase
+  public class TesterNftTemplate : TemplateBase
   {
     public TesterNftTemplate()
     {

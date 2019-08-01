@@ -4,9 +4,9 @@
   using System.Collections.Generic;
   using nt.Shared.Features.WebThree;
 
-  public class TemplateFormBase 
+  public class TemplateBase 
   {
-    //public TemplateFormBase()
+    //public TemplateBase()
     //{
     //  NftProps = new Dictionary<string, string>();
     //}
@@ -18,7 +18,7 @@
     public uint AttachedTokens { get; set; }
 
 
-   public Dictionary<string, string> NftProps;
+   public Dictionary<string, string> NftProps { get; set; }
 
 
   }
