@@ -18,6 +18,7 @@
     public List<uint> OwnedTokenIdList { get; set; }
     public uint CurrentNftType { get; set; }
     public uint CurrentTokenId { get; set; }
+    public uint CurrentTokenNftType { get; set; }
     public NftTemplate CurrentNftTemplate { get; set; }
     protected override void Initialize()
     {

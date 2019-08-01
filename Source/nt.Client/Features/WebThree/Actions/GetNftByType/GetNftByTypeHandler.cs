@@ -33,7 +33,7 @@
         uint getNftId = aGetNftByTypeClientRequest.GetNftType;
 
         //string requestUri = QueryHelpers.AddQueryString(GetNftByTypeSharedRequest.Route, "GetNftType", getNftId.ToString());
-        string requestUri = GetNftByTypeSharedRequest.RouteFactory(getNftId);
+        string requestUri = GetNftByTypeSharedRequest.RouteFactory((int)getNftId);
 
         GetNftByTypeSharedResponse aNftTemplate = await HttpClient.GetJsonAsync<GetNftByTypeSharedResponse>(requestUri);
 
