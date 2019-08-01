@@ -1,6 +1,7 @@
 ﻿namespace nt.Client.Features.WebThree
 {
   using BlazorState;
+  using nt.Client.Features.WebThree.Components.NftTemplates;
   using nt.Shared.Features.WebThree;
   using System.Collections.Generic;
 
@@ -20,6 +21,9 @@
     public uint CurrentTokenId { get; set; }
     public uint CurrentTokenNftType { get; set; }
     public NftTemplate CurrentNftTemplate { get; set; }
+    public List<NftTemplate> NftTypeList { get; set; }
+    
+    public List<TemplateBase> ListOfTokenInfo { get; set; }
     protected override void Initialize()
     {
       TotalNftTypes = 0;

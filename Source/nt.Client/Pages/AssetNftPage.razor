@@ -6,31 +6,44 @@
   </NavLink>*@
 
 
-<div id="NftCountContainer" class="container justify-content-center py-2">
-  <div class="bg-success text-center w-25">
-    <p> TotalToken Count</p>
-    @if (WebThreeState.OwnedTokenIdList.Count > 0)
-    {
-      <h3>@WebThreeState.OwnedTokenIdList.Count</h3>
-    }
-  </div>
-  <div class="bg-danger text-center">
-    <h2 class="m-2">Current Token</h2>
-    @if (WebThreeState.OwnedTokenIdList.Count > 0)
-    {
-      foreach (uint tokenId in WebThreeState.OwnedTokenIdList)
+  <div id="NftCountContainer" class="container justify-content-center py-2">
+    <div class="bg-success text-center w-25">
+      <p> TotalToken Count</p>
+      @if (WebThreeState.OwnedTokenIdList.Count > 0)
       {
-        <p>@tokenId</p>
+        <h3>@WebThreeState.OwnedTokenIdList.Count</h3>
       }
-    }
-  </div>
+    </div>
+    <div class="bg-danger text-center">
+      <h2 class="m-2">Current Token</h2>
+      @if (WebThreeState.OwnedTokenIdList.Count > 0)
+      {
+        foreach (uint tokenId in WebThreeState.OwnedTokenIdList)
+        {
+          <p>@tokenId</p>
+        }
+      }
+    </div>
 
-  <div class="bg-success text-center">
-    <h3>Current Token:</h3>
-    <p>Name: @WebThreeState.CurrentNftTemplate.Name</p>
-    <p>Symbol: @WebThreeState.CurrentNftTemplate.Symbol</p>
+    <div class="bg-danger text-center">
+      <h2 class="m-2">Current Nft Templates</h2>
+      @if (WebThreeState.NftTypeList.Count > 0)
+      {
+        foreach (var nftTemplate in WebThreeState.NftTypeList)
+        {
+          <p>Template ID: @WebThreeState.NftTypeList.IndexOf(nftTemplate)</p>
+          <p>Name: @nftTemplate.Name</p>
+          <p>Symbol: @nftTemplate.Symbol</p>
+        }
+      }
+    </div>
+
+    <div class="bg-success text-center">
+      <h3>Current Token:</h3>
+      <p>Name: @WebThreeState.CurrentNftTemplate.Name</p>
+      <p>Symbol: @WebThreeState.CurrentNftTemplate.Symbol</p>
+    </div>
   </div>
-</div>
 
 
 @*<button type="button" class="btn btn-primary" onclick="@GetTotalTokans">

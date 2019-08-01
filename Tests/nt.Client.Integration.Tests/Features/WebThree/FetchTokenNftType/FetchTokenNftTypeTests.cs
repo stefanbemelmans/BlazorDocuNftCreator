@@ -7,8 +7,6 @@
   using Microsoft.Extensions.DependencyInjection;
   using MediatR;
   using System.Threading.Tasks;
-  using nt.Client.Features.WebThree.Actions.GetTokenNftType;
-  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetTokenNftType;
 
   internal class FetchGetTokenNftTypeTests
   {
