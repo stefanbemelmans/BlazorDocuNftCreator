@@ -59,11 +59,12 @@
 
       uint TotalNfts = w3s.TotalNftTypes;
 
-     _ = await Mediator.Send(new GetNftByTypeAction()
-      {
-        GetNftType = TotalNfts // this number will come from the user NftId
-      }
-         );
+      // The below now gets taken care of in the above Handler and produces the 
+     //_ = await Mediator.Send(new GetNftByTypeAction()
+     // {
+     //   GetNftType = TotalNfts // this number will come from the user NftId
+     // }
+     //    );
 
       WebThreeState tokenList = await Mediator.Send(new GetAllOwnedTokensAction());
 

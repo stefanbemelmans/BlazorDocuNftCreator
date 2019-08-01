@@ -52,24 +52,31 @@
       var NftTypeList = new List<NftTemplate>();
       var NftTypeDict = new Dictionary<uint, NftTemplate>();
 
-      var fetchNftTypes = new GetNftByTypeAction();
+      var fetchNftTypes = new GetNftTypesClientFeaturesAction();
 
       WebThreeState response = await Mediator.Send(fetchNftTypes);
 
       int NumOfTemplates = (int)response.TotalNftTypes;
-
-      for (uint ctr = 1; ctr < NumOfTemplates; ctr++)
+      // Nft templates are not zero indexed.
+      for (uint ctr = 1; ctr <= NumOfTemplates; ctr++)
       {
         string requestUri = GetNftByTypeSharedRequest.RouteFactory((int)ctr);
 
         GetNftByTypeSharedResponse templateResponse = await HttpClient.GetJsonAsync<GetNftByTypeSharedResponse>(requestUri);
         templateResponse.NftTypeData.ShouldBeOfType<NftTemplate>();
-        //  NftTypeList.Add(templateResponse);
+        var template = new NftTemplate()
+        {
+          Name = templateResponse.NftTypeData.Name,
+          Symbol = templateResponse.NftTypeData.Symbol,
+          MintLimit = templateResponse.NftTypeData.MintLimit,
+          AttachedTokens = templateResponse.NftTypeData.AttachedTokens
+        };
+        NftTypeList.Add(template);
         //  NftTypeDict[ctr] = templateResponse;
         //
       }
 
-      //NftTypeList.Count.ShouldBe(3);
+      NftTypeList.Count.ShouldBe(4);
 
       //NftTypeList[3].Name.ShouldBe("TesterTemplate_0");
       //NftTypeDict[4].Name.ShouldBe("TesterTemplate_0");

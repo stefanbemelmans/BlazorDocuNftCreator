@@ -1,0 +1,12 @@
+﻿@inherits NftTypeListComponentModel
+
+<div class="bg-primary">
+  Nft Type List Here
+  <select>
+    @foreach(var template in NftDataList)
+    {
+      <option value=@NftDataList.IndexOf(template)>@template.Name</option>
+    }
+    </select>
+
+</div>

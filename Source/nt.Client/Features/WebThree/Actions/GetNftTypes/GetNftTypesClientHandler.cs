@@ -25,8 +25,8 @@
         HttpClient = aHttpClient;
       }
       private HttpClient HttpClient { get; }
-      private List<NftTemplate> _NftTypeList { get; set; }
-
+      //private List<KeyValuePair<uint, NftTemplate>> _TemplateList { get; set; }
+      private List<NftTemplate> _TemplateList { get; set; }
       WebThreeState WebThreeState => Store.GetState<WebThreeState>();
       public override async Task<WebThreeState> Handle
         (
@@ -34,24 +34,33 @@
           CancellationToken aCancellationToken
         )
       {
-        _NftTypeList = new List<NftTemplate>();
+        _TemplateList = new List<NftTemplate>();
 
         GetNftTypesSharedResponse aSharedResponse = await HttpClient.GetJsonAsync<GetNftTypesSharedResponse>(GetNftTypesSharedRequest.Route);
         int NumOfTemplates = (int)aSharedResponse.TotalNftTypes;
 
-        for (int ctr = 1; ctr < NumOfTemplates; ctr++)
+        for (uint ctr = 1; ctr <= NumOfTemplates; ctr++)
         {
-          string requestUri = GetNftByTypeSharedRequest.RouteFactory(ctr);
+          string requestUri = GetNftByTypeSharedRequest.RouteFactory((int)ctr);
+          GetNftByTypeSharedResponse templateResponse = await HttpClient.GetJsonAsync<GetNftByTypeSharedResponse>(requestUri);
+          int num = (int)ctr;
+          var template = new NftTemplate()
+          {
+            Name = templateResponse.NftTypeData.Name,
+            Symbol = templateResponse.NftTypeData.Symbol,
+            MintLimit = templateResponse.NftTypeData.MintLimit,
+            AttachedTokens = templateResponse.NftTypeData.AttachedTokens
+          };
 
-          NftTemplate templateResponse = await HttpClient.GetJsonAsync<NftTemplate>(requestUri);
-
-          _NftTypeList.Add(templateResponse);
+                 
+          _TemplateList.Add(template);
         }
-        WebThreeState.NftTypeList = _NftTypeList;
+
+        WebThreeState.TemplateDataList = _TemplateList;
 
         WebThreeState.TotalNftTypes = aSharedResponse.TotalNftTypes;
-        return WebThreeState;
 
+        return WebThreeState;
       }
     }
   }
