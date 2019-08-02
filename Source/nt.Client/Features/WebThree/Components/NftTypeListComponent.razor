@@ -1,12 +1,19 @@
 ﻿@inherits NftTypeListComponentModel
 
-<div class="bg-primary">
+<div class="bg-primary container text-center">
   Nft Type List Here
-  <select>
-    @foreach(var template in NftDataList)
-    {
-      <option value=@NftDataList.IndexOf(template)>@template.Name</option>
-    }
+  <div class="align-self-center p-2 m-2">
+    <select onselect=@SetNewNft>
+      @foreach (var template in NftDataList)
+      {
+        <option value=@template.Name>@template.Name</option>
+      }
     </select>
-
+  </div>
+  <div class="row justify-content-around">
+    <p>Name: @CurrentNftTemplate.Name </p>
+    <p>Name: @CurrentNftTemplate.Symbol </p>
+    <p>Name: @CurrentNftTemplate.MintLimit </p>
+    <p>Name: @CurrentNftTemplate.AttachedTokens </p>
+  </div>
 </div>

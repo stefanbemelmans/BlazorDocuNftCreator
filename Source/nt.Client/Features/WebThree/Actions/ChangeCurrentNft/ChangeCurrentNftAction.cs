@@ -5,6 +5,6 @@
   using nt.Shared.Features.WebThree;
   public class ChangeCurrentNftAction : BaseRequest, IRequest<WebThreeState>
   {
-    public uint NewNftTypeIndex { get; set; }
+    public string TemplateName { get; set; }
   }
 }

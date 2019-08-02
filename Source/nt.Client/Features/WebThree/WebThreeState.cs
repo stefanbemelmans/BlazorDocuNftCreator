@@ -14,7 +14,8 @@
     public List<uint> OwnedTokenIdList { get; set; }
 
     // "int" type becuase it's an index position.
-    public int CurrentNftTypeIndex { get; set; } = 1;
+    // NftTemplate Id is index + 1
+    public int CurrentNftTypeIndex { get; set; } = 0;
     public uint CurrentTokenId { get; set; }
     public uint CurrentTokenNftType { get; set; } // CurrentTokenNftType will be used on the AssetNftPage
     public NftTemplate CurrentNftTemplate { get; set; }// CurrentNftType will be used on the MintNftPage
