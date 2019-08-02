@@ -3,7 +3,7 @@
 <div class="bg-primary container text-center">
   Nft Type List Here
   <div class="align-self-center p-2 m-2">
-    <select onselect=@SetNewNft>
+    <select @onchange=@SetNewNft>
       @foreach (var template in NftDataList)
       {
         <option value=@template.Name>@template.Name</option>
