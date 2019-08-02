@@ -28,7 +28,13 @@
             )
             {
                 int TokenId = aFetchTokenTokenDataRequest.TokenIdToGet;
-
+                // What comes back from the server call will be either a string or a base64 string,
+                // Once things progress further in development the pattern will be
+                // Server response is a base64 string that will deserialized using 
+                // "Any Serializer" into respective object based on NftId,
+                // TokenId 5 is just a string
+                // TokenId 4 is just a string
+                // TokenId 3 deserializes from base64 into ImmutableData type
                 string requestUri = ViewTokenDataSharedRequest.RouteFactory(TokenId);
                 ViewTokenDataSharedResponse QuestionableString = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(requestUri);
 

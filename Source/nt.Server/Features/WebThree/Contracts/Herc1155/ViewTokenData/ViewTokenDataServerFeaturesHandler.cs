@@ -29,7 +29,7 @@
 
             return new ViewTokenDataSharedResponse(new System.Guid())
             {
-                TokenData = response.TokenData,
+                TokenDataString = response.TokenDataString,
                
             };
 

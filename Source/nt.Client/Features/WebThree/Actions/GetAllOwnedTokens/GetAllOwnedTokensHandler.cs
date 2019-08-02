@@ -6,28 +6,32 @@
     using System.Threading.Tasks;
     using BlazorState;
     using Microsoft.AspNetCore.Components;
-    using Nethereum.Contracts;
+    using MediatR;
     using nt.Client.Features.WebThree.Actions.GetAllOwnedTokens;
     using nt.Client.Features.WebThree.Components.NftTemplates;
     using nt.Shared.Features.WebThree.Contracts.Herc1155.GetAllOwnedTokens;
-
+    using nt.Shared.Features.WebThree.Contracts.NftCreator.GetTokenNftType;
+    using nt.Shared.Features.WebThree;
 
     internal partial class WebThreeState
     {
 
-        public class GetAllOwnedTokensHandler : RequestHandler<GetAllOwnedTokensAction, WebThreeState>
+        public class GetAllOwnedTokensHandler : BlazorState.RequestHandler<GetAllOwnedTokensAction, WebThreeState>
         {
             public GetAllOwnedTokensHandler
               (
                 IStore aStore,
-                HttpClient aHttpClient
+                HttpClient aHttpClient,
+                Mediator aMediator
               ) : base(aStore)
             {
+                Mediator = aMediator;
                 HttpClient = aHttpClient;
             }
             private HttpClient HttpClient { get; }
-            private
+            private Mediator Mediator { get; }
             WebThreeState WebThreeState => Store.GetState<WebThreeState>();
+            List<NftTemplate> TemplateDataList => WebThreeState.TemplateDataList;
             List<TemplateBase> TokenDataList { get; set; }
             public override async Task<WebThreeState> Handle
               (
@@ -37,9 +41,15 @@
             {
 
                 GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(GetAllOwnedTokensSharedRequest.Route);
-                foreach(uint token in aTokenList.TokenIdList)
+                foreach (uint token in aTokenList.TokenIdList)
                 {
-                    
+                    string requestUri = GetTokenNftTypeSharedRequest.RouteFactory((int)token);
+
+                    GetTokenNftTypeSharedResponse TokenType = await HttpClient.GetJsonAsync<GetTokenNftTypeSharedResponse>(requestUri);
+
+
+
+
                 }
 
                 WebThreeState.OwnedTokenIdList = aTokenList.TokenIdList;
