@@ -8,7 +8,7 @@ public class ViewTokenDataSharedRequest : BaseRequest, IRequest<ViewTokenDataSha
     public const string Route = "api/viewTokenData";
 
     public static string RouteFactory(uint aId) => $"api/viewTokenData?ViewTokenId={aId}";
-    public uint ViewTokenId { get; set; }
+    public uint TokenIdToGet { get; set; }
   }
 
 }

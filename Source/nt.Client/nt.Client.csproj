@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Features\WebThree\Actions\GetNftListInfo\GetNftListInfoHandler.cs" />
+    <Compile Remove="Features\WebThree\Actions\ViewTokenData\ViewTokenDataHandler.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,7 +31,7 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
-    <None Include="Features\WebThree\Actions\GetNftListInfo\GetNftListInfoHandler.cs" />
+    <None Include="Features\WebThree\Actions\ViewTokenData\ViewTokenDataHandler.cs" />
     <None Include="wwwroot\images\certificate.png" />
     <None Include="wwwroot\images\herc.png" />
   </ItemGroup>

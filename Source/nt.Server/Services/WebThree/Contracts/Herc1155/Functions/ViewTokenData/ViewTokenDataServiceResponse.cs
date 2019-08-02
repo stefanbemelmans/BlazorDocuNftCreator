@@ -4,7 +4,6 @@
   using nt.Shared.Features.WebThree;
     public class ViewTokenDataServiceResponse : BaseResponse
     {
-    public byte[] SerializedTokenData { get; set; }
-    public uint TokenType { get; set; }
+    public string TokenData { get; set; }
     }
 }

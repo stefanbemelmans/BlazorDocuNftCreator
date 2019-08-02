@@ -5,7 +5,6 @@
   using System.Threading.Tasks;
   using BlazorState;
   using Microsoft.AspNetCore.Components;
-  using nt.Client.Features.WebThree.Actions.GetTokenNftType;
   using nt.Shared.Features.WebThree.Contracts.NftCreator.GetTokenNftType;
   internal partial class WebThreeState
   {

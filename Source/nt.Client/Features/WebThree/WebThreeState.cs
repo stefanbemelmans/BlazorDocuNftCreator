@@ -21,7 +21,7 @@
     public NftTemplate CurrentNftTemplate { get; set; }// CurrentNftType will be used on the MintNftPage
     //public List<KeyValuePair<uint, NftTemplate>> NftIdxTypeKvpList { get; set; }
     public List<NftTemplate> TemplateDataList { get; set; }
-    public List<TemplateBase> ListOfTokenInfo { get; set; }
+    public List<TemplateBase> TokenDataList { get; set; }
     protected override void Initialize()
     {
       TotalNftTypes = 0;

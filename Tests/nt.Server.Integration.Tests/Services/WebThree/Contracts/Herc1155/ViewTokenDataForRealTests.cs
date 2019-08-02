@@ -49,30 +49,45 @@
       tokenType.ShouldBe((uint)4);
     }
 
-    //public async Task ShouldGetTokenBalance()
-    //{
-    //  Function viewBalanceFunction = Herc1155.Instance.GetFunction("balanceOf");
 
-    //  CallInput CallInput = viewBalanceFunction.CreateCallInput(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), new Nethereum.Hex.HexTypes.HexBigInteger(0));
+        public async Task TestingTokenTypeFunctionShouldGetTypeWithCallInput()
+        { // 
+          // Arrange
+            Function viewTokenDataFunction = Herc1155.Instance.GetFunction("viewTokenData");
 
-    //  int response = await viewBalanceFunction.CallAsync<int>(TestEthAccounts.TestEthAccountAddress, 5);
-    //  int balance = response;
-    //  balance.ShouldNotBe(0);
-    //}
+            Function tokenTypeFunction = NFtCreator.Instance.GetFunction("tokenType");
+            CallInput CallInput = tokenTypeFunction.CreateCallInput(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), new Nethereum.Hex.HexTypes.HexBigInteger(0), functionInput: 5);
 
-    //public async Task ShouldGetByteArrayAndTokenId()
-    //{
-    //  var request = new ViewTokenDataServiceRequest { ViewTokenId = 3 };
+            // Act
+            uint tokenType = await tokenTypeFunction.CallAsync<uint>(CallInput);
+            //tokenType.ShouldBe((uint)4);
+            tokenType.ShouldBe((uint)4);
+        }
 
-    //  ViewTokenDataServiceResponse response = await Mediator.Send(request);
+        //public async Task ShouldGetTokenBalance()
+        //{
+        //  Function viewBalanceFunction = Herc1155.Instance.GetFunction("balanceOf");
 
-    //  response.TokenType.ShouldBe((uint)4);
-    //  ImmutableData deSerObj = Serializer.Deserialize<ImmutableData>(response.SerializedTokenData, 0);
+        //  CallInput CallInput = viewBalanceFunction.CreateCallInput(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), new Nethereum.Hex.HexTypes.HexBigInteger(0));
 
-    //  deSerObj.ShouldBeOfType<ImmutableData>();
-    //  deSerObj.Title.ShouldBe("The First Minted NFT!Take 2");
+        //  int response = await viewBalanceFunction.CallAsync<int>(TestEthAccounts.TestEthAccountAddress, 5);
+        //  int balance = response;
+        //  balance.ShouldNotBe(0);
+        //}
 
-    //}
+        //public async Task ShouldGetByteArrayAndTokenId()
+        //{
+        //  var request = new ViewTokenDataServiceRequest { ViewTokenId = 3 };
 
-  }
+        //  ViewTokenDataServiceResponse response = await Mediator.Send(request);
+
+        //  response.TokenType.ShouldBe((uint)4);
+        //  ImmutableData deSerObj = Serializer.Deserialize<ImmutableData>(response.SerializedTokenData, 0);
+
+        //  deSerObj.ShouldBeOfType<ImmutableData>();
+        //  deSerObj.Title.ShouldBe("The First Minted NFT!Take 2");
+
+        //}
+
+    }
 }

@@ -10,7 +10,6 @@
     [Parameter]
     public TemplateBase TokenData { get; set; }
     public string TokenDataString { get; set; }
-    [Parameter]
     public string MutableData { get; set; }
 
 

@@ -23,20 +23,16 @@
     {
       // using the functionMessage seems to error when it's a simple call. More research needed.
       Function aViewTokenDataFunction = Herc1155.Instance.GetFunction("viewTokenData");
-      //(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), value: new Nethereum.Hex.HexTypes.HexBigInteger(0), functionInput: 3)
-
-      //Function tokenTypeFunction = Herc1155.Instance.GetFunction("tokenType");
-
-      //uint TokenType = await tokenTypeFunction.CallAsync<uint>(aViewTokenDataServiceRequest.ViewTokenId);
-
+            // TokenId 5 is just a string
+            // TokenId 4 I believe deserializes from base64 into mutable
+            // TokenId 3 deserializes from base64 into ImmutableData type
       string serializedBase64String = await aViewTokenDataFunction.CallAsync<string>(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), value: new Nethereum.Hex.HexTypes.HexBigInteger(0), functionInput: aViewTokenDataServiceRequest.ViewTokenId);
 
       byte[] serializedImmutableData = Convert.FromBase64String(serializedBase64String);
 
       return new ViewTokenDataServiceResponse
       {
-        SerializedTokenData = serializedImmutableData,
-        TokenType = 4
+        SerializedTokenData = serializedImmutableData
       };
 
     }
