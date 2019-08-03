@@ -6,30 +6,28 @@
     using System.Threading.Tasks;
     using BlazorState;
     using Microsoft.AspNetCore.Components;
-    using MediatR;
     using nt.Client.Features.WebThree.Actions.GetAllOwnedTokens;
     using nt.Client.Features.WebThree.Components.NftTemplates;
     using nt.Shared.Features.WebThree.Contracts.Herc1155.GetAllOwnedTokens;
     using nt.Shared.Features.WebThree.Contracts.NftCreator.GetTokenNftType;
     using nt.Shared.Features.WebThree;
+    using Nethereum.Contracts;
 
-    internal partial class WebThreeState
+    internal partial class WebThreeState 
     {
 
-        public class GetAllOwnedTokensHandler : BlazorState.RequestHandler<GetAllOwnedTokensAction, WebThreeState>
+        public class GetAllOwnedTokensHandler : RequestHandler<GetAllOwnedTokensAction, WebThreeState>
         {
             public GetAllOwnedTokensHandler
               (
                 IStore aStore,
-                HttpClient aHttpClient,
-                Mediator aMediator
+                HttpClient aHttpClient
+                
               ) : base(aStore)
             {
-                Mediator = aMediator;
                 HttpClient = aHttpClient;
             }
             private HttpClient HttpClient { get; }
-            private Mediator Mediator { get; }
             WebThreeState WebThreeState => Store.GetState<WebThreeState>();
             List<NftTemplate> TemplateDataList => WebThreeState.TemplateDataList;
             List<TemplateBase> TokenDataList { get; set; }
@@ -45,7 +43,17 @@
                 {
                     string requestUri = GetTokenNftTypeSharedRequest.RouteFactory((int)token);
 
-                    GetTokenNftTypeSharedResponse TokenType = await HttpClient.GetJsonAsync<GetTokenNftTypeSharedResponse>(requestUri);
+                    // TokenNFtTypeId
+                    GetTokenNftTypeSharedResponse TokenNftType = await HttpClient.GetJsonAsync<GetTokenNftTypeSharedResponse>(requestUri);
+
+                    // TokenNftTypeData
+
+                    TokenBase T
+                        // Token Balance
+                    int response = await Meidator.Send(new BalanceOfSharedRequest()
+                    {
+
+                    })
 
 
 

@@ -103,7 +103,7 @@
             //byte[] SerializedObject = Convert.FromBase64String(response.TokenDataString);
             //ImmutableData deSerObj = Serializer.Deserialize<ImmutableData>(SerializedObject, 0);
             response.TokenDataString.ShouldBeOfType<string>();
-            response.TokenDataString.ShouldBe("The First Minted NFT!");
+            response.TokenDataString.ShouldBe("This Is MintingTest 2");
             //deSerObj.ShouldBeOfType<ImmutableData>();
             //deSerObj.Title.ShouldBe("The First Minted NFT!");
 
