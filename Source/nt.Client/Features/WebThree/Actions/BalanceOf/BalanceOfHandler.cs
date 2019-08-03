@@ -8,9 +8,8 @@
 //    using Microsoft.AspNetCore.Components;
 //    using nt.Client.Features.WebThree.Actions;
 //    using nt.Shared.Features.WebThree.Contracts.Herc1155.BalanceOf;
-//    using nt.Shared.Features.WebThree;
 
-//    internal partial class WebThreeState 
+//    internal partial class WebThreeState : State<WebThreeState>
 //    {
 
 //        public class BalanceOfHandler : RequestHandler<BalanceOfAction, WebThreeState>
@@ -39,8 +38,10 @@
 //            {
 
 //                BalanceOfSharedResponse BalanceContainer = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(BalanceOfSharedRequest.RouteFactory(aBalanceOfClientRequest.TokenId));
-//                WebThreeState.G
-                
+
+//                WebThreeState.
+
+
 
 //                return WebThreeState;
 

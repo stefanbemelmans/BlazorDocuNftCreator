@@ -11,10 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Features\WebThree\Actions\ViewTokenData\ViewTokenDataHandler.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AnySerializer" Version="1.1.31" />
     <PackageReference Include="Blazor-State" Version="$(BlazorStateVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="$(MicrosoftAspNetCoreBlazorVersion)" />
@@ -31,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
-    <None Include="Features\WebThree\Actions\ViewTokenData\ViewTokenDataHandler.cs" />
     <None Include="wwwroot\images\certificate.png" />
     <None Include="wwwroot\images\herc.png" />
   </ItemGroup>

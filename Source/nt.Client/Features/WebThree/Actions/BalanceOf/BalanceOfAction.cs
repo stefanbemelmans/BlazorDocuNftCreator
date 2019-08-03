@@ -1,10 +1,9 @@
 ﻿namespace nt.Client.Features.WebThree.Actions.BalanceOf
 {
-  using MediatR;
-  using nt.Shared.Constants.AccountAddresses;
+    using MediatR;
 
-  public class BalanceOfAction : IRequest<WebThreeState>
-  {
-    public uint TokenId { get; set; }
-  }
+    public class BalanceOfAction : IRequest<WebThreeState>
+    {
+        public uint TokenId { get; set; }
+    }
 }
