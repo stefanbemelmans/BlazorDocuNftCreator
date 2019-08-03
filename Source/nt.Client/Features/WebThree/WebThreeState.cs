@@ -16,6 +16,7 @@
         public uint TotalTokenTypes { get; set; }
         public List<uint> OwnedTokenIdList { get; set; }
         public uint CurrentTokenId { get; set; }
+        public TokenBase CurrentTokenData { get; set; }
         public uint CurrentTokenNftType { get; set; } // CurrentTokenNftType will be used on the AssetNftPage
                                                       // "int" type becuase it's an index position.
                                                       // NftTemplate Id is index + 1
@@ -30,6 +31,7 @@
             TotalTokenTypes = 0;
             OwnedTokenIdList = new List<uint>();
             CurrentTokenId = 0;
+            CurrentTokenData = new TokenBase();
             Balance = 0;
             CurrentTokenNftType = 0;
             //BalanceByTokenId = new List<KeyValuePair<uint, uint>>();

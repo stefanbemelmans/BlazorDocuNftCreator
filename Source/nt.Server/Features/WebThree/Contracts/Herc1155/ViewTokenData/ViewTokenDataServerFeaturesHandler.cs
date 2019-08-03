@@ -5,6 +5,8 @@
     using MediatR;
     using nt.Server.Services.WebThree.Contracts.Herc1155.Functions;
     using nt.Shared.Features.WebThree.Contracts.Herc1155;
+    using nt.Shared.Features.WebThree.Contracts.Herc1155.ViewTokenData;
+
     public class ViewTokenDataServerFeaturesHandler : IRequestHandler<ViewTokenDataSharedRequest, ViewTokenDataSharedResponse>
     {
         IMediator Mediator { get; set; }

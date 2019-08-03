@@ -93,6 +93,19 @@
             deSerObj.Title.ShouldBe("The First Minted NFT!");
 
         }
+        public async Task ShouldDeserializeToken3FromServerShared()
+        {
+            var request = new ViewTokenDataServiceRequest { ViewTokenId = 3 };
+
+            ViewTokenDataServiceResponse response = await Mediator.Send(request);
+            byte[] SerializedObject = Convert.FromBase64String(response.TokenDataString);
+
+            ImmutableData deSerObj = Serializer.Deserialize<ImmutableData>(SerializedObject, 0);
+
+            deSerObj.ShouldBeOfType<ImmutableData>();
+            deSerObj.Title.ShouldBe("The First Minted NFT!");
+
+        }
 
         public async Task ShouldDeserializeToken4()
         {

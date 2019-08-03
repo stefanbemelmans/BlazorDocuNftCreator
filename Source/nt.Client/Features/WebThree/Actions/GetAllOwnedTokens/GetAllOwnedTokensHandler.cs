@@ -18,7 +18,7 @@
     using nt.Shared.Features.WebThree.Contracts.Herc1155;
     using System;
     using AnySerializer;
-   
+    using nt.Shared.Features.WebThree.Contracts.Herc1155.ViewTokenData;
 
     internal partial class WebThreeState : State<WebThreeState>
     {
@@ -72,7 +72,7 @@
 
                     // Token ImmutableData (Data)
 
-                    string viewDataUri = ViewTokenDataSharedRequest.RouteFactory(token);
+                    string viewDataUri = ViewTokenDataSharedRequest.RouteFactory((int)token);
 
                     ViewTokenDataSharedResponse DataString = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(viewDataUri);
 

@@ -9,6 +9,7 @@
     using nt.Server.Services.WebThree.Instance;
     using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
     using nt.Shared.Features.WebThree.Contracts.Herc1155;
+    using nt.Shared.Features.WebThree.Contracts.Herc1155.ViewTokenData;
 
     class ViewTokenDataServerFeaturesTests
     {

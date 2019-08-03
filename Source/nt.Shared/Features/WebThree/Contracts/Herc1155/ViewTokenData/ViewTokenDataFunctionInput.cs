@@ -1,4 +1,4 @@
-﻿namespace nt.Shared.Features.WebThree.Contracts.Herc1155
+﻿namespace nt.Shared.Features.WebThree.Contracts.Herc1155.ViewTokenData
 {
     using Nethereum.ABI.FunctionEncoding.Attributes;
     using Nethereum.Contracts;
