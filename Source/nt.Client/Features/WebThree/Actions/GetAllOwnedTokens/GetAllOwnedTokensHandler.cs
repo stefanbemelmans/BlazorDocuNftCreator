@@ -66,7 +66,7 @@
 
                     // Token Balance
 
-                    var BalanceContainer = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(BalanceOfSharedRequest.RouteFactory(token));
+                    var BalanceContainer = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(BalanceOfSharedRequest.RouteFactory((int)token));
 
                     ownedToken.Balance = BalanceContainer.Balance;
 

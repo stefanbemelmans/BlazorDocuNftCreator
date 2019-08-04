@@ -7,9 +7,9 @@ namespace nt.Shared.Features.WebThree.Contracts.Herc1155.BalanceOf
     {
         public const string Route = "api/balanceOf";
 
-        public uint TokenId { get; set; }
+        public uint ViewTokenId { get; set; }
 
-        public static string RouteFactory(uint aId) => $"api/balanceOf?ViewTokenId={(int)aId}";
+        public static string RouteFactory(int aId) => $"api/balanceOf?ViewTokenId={aId}";
     }
 
 }

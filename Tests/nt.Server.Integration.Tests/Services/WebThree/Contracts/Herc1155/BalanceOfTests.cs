@@ -44,7 +44,7 @@ namespace nt.Server.Integration.Tests.Services.WebThree.Contracts.Herc1155
         {
             var response = await Mediator.Send(new BalanceOfSharedRequest()
             {
-                TokenId = 5
+                ViewTokenId = 5
             });
 
             response.ShouldNotBe(null);

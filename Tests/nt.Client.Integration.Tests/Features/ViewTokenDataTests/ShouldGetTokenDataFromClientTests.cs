@@ -21,6 +21,7 @@ namespace nt.Client.Integration.Tests.Features.ViewTokenDataTests
     using nt.Client.Integration.Tests.Infrastructure;
     using System.Net.Http;
     using nt.Shared.Features.WebThree.Contracts.Herc1155.ViewTokenData;
+    using nt.Shared.Features.WebThree.Contracts.Herc1155.BalanceOf;
 
     class ShouldGetTokenDataFromClientTests
     {
@@ -61,7 +62,17 @@ namespace nt.Client.Integration.Tests.Features.ViewTokenDataTests
 
             clientResponse.TokenDataString.ShouldNotBe(null);
         }
+        public async Task ShouldRetrieveTokenBalanceFromClient()
+        {
+            var uriString = BalanceOfSharedRequest.RouteFactory(3);
 
+            var clientResponse = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(uriString);
+
+            clientResponse.ShouldBeOfType<BalanceOfSharedResponse>();
+
+            clientResponse.Balance.ShouldNotBe(0);
+            clientResponse.Balance.ShouldBe(1);
+        }
     }
 
 }
