@@ -18,6 +18,7 @@
     using AnySerializer;
     using nt.Shared.Features.WebThree.Contracts.Herc1155.ViewTokenData;
     using nt.Client.Features.Base;
+    using static nt.Client.Features.WebThree.Components.NftTemplates.ImmutableDataObjectBase;
 
     internal partial class WebThreeState : State<WebThreeState>
     {
@@ -81,14 +82,14 @@
                         // need to figure out a way to get the type occording to the nftId
                         ImmutableData DeserializedObject = Serializer.Deserialize<ImmutableData>(serializedImmutableData, options); // options == 0
 
-                        ownedToken.DataObject = DeserializedObject;
+                        ownedToken.ImmDataObj = DeserializedObject;
 
                         // Add to StateList 
                         TokenDataList.Add(ownedToken);
                     }
                     else
                     {
-                        ownedToken.ImmutableData = DataString.TokenDataString;
+                        ownedToken.Data = DataString.TokenDataString;
 
                         TokenDataList.Add(ownedToken);
                     }
@@ -106,10 +107,10 @@
     }
 
     // a testing class
-    class ImmutableData : ImmutableDataObjectBase
-    {
-        public string Title = "The First Minted NFT!Take 2";
-        public DateTime Date = DateTime.Now;
-        public string MintedFrom = "Server.Services";
-    }
+    //class ImmutableData 
+    //{
+    //    public string Title = "The First Minted NFT!Take 2";
+    //    public DateTime Date = DateTime.Now;
+    //    public string MintedFrom = "Server.Services";
+    //}
 }

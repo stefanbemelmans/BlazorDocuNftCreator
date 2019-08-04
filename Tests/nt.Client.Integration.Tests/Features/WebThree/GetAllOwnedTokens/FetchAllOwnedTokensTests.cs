@@ -21,6 +21,7 @@
     using nt.Shared.Features.WebThree.Contracts.Herc1155;
     using nt.Shared.Features.WebThree.Contracts.Herc1155.BalanceOf;
     using nt.Shared.Features.WebThree.Contracts.Herc1155.ViewTokenData;
+    using static nt.Client.Features.WebThree.Components.NftTemplates.ImmutableDataObjectBase;
 
     internal class FetchAllOwnedTokensTests
     {
@@ -82,14 +83,14 @@
                     // need to figure out a way to get the type occording to the nftId
                     ImmutableData DeserializedObject = Serializer.Deserialize<ImmutableData>(serializedImmutableData, options); // options == 0
 
-                    ownedToken.DataObject = DeserializedObject;
+                    ownedToken.ImmDataObj= DeserializedObject;
 
                     // Add to StateList 
                     TokenDataList.Add(ownedToken);
                 }
                 else
                 {
-                    ownedToken.ImmutableData = DataString.TokenDataString;
+                    ownedToken.Data = DataString.TokenDataString;
 
                     TokenDataList.Add(ownedToken);
                 }

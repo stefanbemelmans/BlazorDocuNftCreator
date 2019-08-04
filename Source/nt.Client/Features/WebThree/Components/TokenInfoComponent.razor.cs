@@ -16,8 +16,11 @@
             get => WebThreeState.CurrentTokenData;
             set { }
         }
-        public List<TokenBase> TokenDataList => WebThreeState.TokenDataList;
-
+        public List<TokenBase> TokenDataList
+        {
+            get => WebThreeState.TokenDataList;
+            set { }
+        }
         public void SetNewToken(UIChangeEventArgs eventArgs)
         {
             string TokenId = eventArgs.Value.ToString();
@@ -25,8 +28,13 @@
             Mediator.Send(new ChangeCurrentTokenAction() { TokenId = int.Parse(TokenId) });
         }
 
-        protected override async Task OnInitAsync() =>
-       await Mediator.Send(new GetAllOwnedTokensAction());
+        //protected override async Task OnInitAsync()
+        //{
+            //var TokenList = await Mediator.Send(new GetAllOwnedTokensAction());
+            //TokenDataList = TokenList.TokenDataList;
+            //CurrentToken = TokenDataList[0];
+
+        //}
     }
 
 }

@@ -33,7 +33,7 @@
                 CurrentTokenData.TokenId = TokenId;
 
                 ViewTokenDataSharedResponse DataString = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(ViewTokenDataSharedRequest.RouteFactory((int)TokenId));
-                CurrentTokenData.ImmutableData = DataString.TokenDataString;
+                CurrentTokenData.Data = DataString.TokenDataString;
                 WebThreeState.CurrentTokenData = CurrentTokenData;
 
                 return WebThreeState;

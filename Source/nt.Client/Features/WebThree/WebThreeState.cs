@@ -33,10 +33,11 @@
             CurrentTokenData = new TokenBase()
             {
                 TokenId = 42,
-                ImmutableData = "Hello!",
+                Data = "Hello!",
+                MutableData = "HelloAgain",
                 Balance = 10,
                 TemplateData = CurrentNftTemplate,
-                DataObject = new ImmutableData()
+                DataObject = null,
             };
             CurrentTokenNftType = 0;
             //BalanceByTokenId = new List<KeyValuePair<uint, uint>>();
