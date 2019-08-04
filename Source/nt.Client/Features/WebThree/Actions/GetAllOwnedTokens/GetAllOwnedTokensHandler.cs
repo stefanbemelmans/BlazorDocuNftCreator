@@ -45,6 +45,7 @@
                 CancellationToken aCancellationToken
               )
             {
+                TokenDataList = new List<TokenBase>();
 
                 GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(GetAllOwnedTokensSharedRequest.Route);
                 foreach (uint token in aTokenList.TokenIdList)
@@ -94,7 +95,10 @@
                 }
 
                 WebThreeState.TokenDataList = TokenDataList;
-
+                WebThreeState.CurrentTokenData = TokenDataList[0];
+                WebThreeState.CurrentTokenId = TokenDataList[0].TokenId;
+                WebThreeState.OwnedTokenIdList = aTokenList.TokenIdList;
+                WebThreeState.CurrentTokenNftType = TokenDataList[0].TemplateData.NftId;
                 return WebThreeState;
 
             }

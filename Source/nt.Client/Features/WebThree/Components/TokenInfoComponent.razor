@@ -2,12 +2,15 @@
 
 <div class="flex-column justify-content-center m-2 p-2">
   <h3 class="text-center">Token Info</h3>
-  <select @onchange=@SetNewToken>
-    @foreach (var token in TokenDataList)
-    {
-      <option value=@token.TokenId>Token Id</option>
-    }
-  </select>
+  @*@if (TokenDataList.Count > 0)
+  {
+    <select @onchange=@SetNewToken>
+      @foreach (var token in TokenDataList)
+      {
+        <option value=@token.TokenId>Token Id</option>
+      }
+    </select>
+  }*@
   <div class="container bg-danger">
     <div class="row text-center">
       <p>Template Info</p>

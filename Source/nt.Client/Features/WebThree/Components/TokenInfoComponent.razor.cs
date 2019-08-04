@@ -6,6 +6,8 @@
     using nt.Client.Features.WebThree.Components.NftTemplates;
     using System.Collections.Generic;
     using nt.Client.Features.WebThree.Actions.ChangeCurrentToken;
+    using System.Threading.Tasks;
+    using nt.Client.Features.WebThree.Actions.GetAllOwnedTokens;
 
     public class TokenInfoModel : BaseComponent
     {
@@ -19,9 +21,12 @@
         public void SetNewToken(UIChangeEventArgs eventArgs)
         {
             string TokenId = eventArgs.Value.ToString();
-            
+
             Mediator.Send(new ChangeCurrentTokenAction() { TokenId = int.Parse(TokenId) });
         }
+
+        protected override async Task OnInitAsync() =>
+       await Mediator.Send(new GetAllOwnedTokensAction());
     }
 
 }

@@ -27,12 +27,19 @@
         protected override void Initialize()
         {
             TotalTokenTypes = 0;
+            TokenDataList = new List<TokenBase>();
             OwnedTokenIdList = new List<uint>();
             CurrentTokenId = 0;
-            CurrentTokenData = new TokenBase();
+            CurrentTokenData = new TokenBase()
+            {
+                TokenId = 42,
+                ImmutableData = "Hello!",
+                Balance = 10,
+                TemplateData = CurrentNftTemplate,
+                DataObject = new ImmutableData()
+            };
             CurrentTokenNftType = 0;
             //BalanceByTokenId = new List<KeyValuePair<uint, uint>>();
-            TokenDataList = new List<TokenBase>();
             TotalNftTypes = 0;
             //NftIdxTypeKvpList = new List<KeyValuePair<uint, NftTemplate>>();
             TemplateDataList = new List<NftTemplate>();

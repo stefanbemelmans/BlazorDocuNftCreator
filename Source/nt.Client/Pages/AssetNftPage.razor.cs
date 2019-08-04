@@ -66,10 +66,10 @@
      // }
      //    );
 
-      WebThreeState tokenList = await Mediator.Send(new GetAllOwnedTokensAction());
+      //WebThreeState tokenList = await Mediator.Send(new GetAllOwnedTokensAction());
 
-      CurrentTokenIds = tokenList.OwnedTokenIdList;
-      TotalTokens = CurrentTokenIds.Count;
+      //CurrentTokenIds = tokenList.OwnedTokenIdList;
+      //TotalTokens = CurrentTokenIds.Count;
      
     }
   }

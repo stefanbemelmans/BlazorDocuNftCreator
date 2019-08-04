@@ -11,11 +11,11 @@ namespace nt.Client.Features.WebThree.Components.NftTemplates
     {
         public ImmutableDataObjectBase()
         {
-            TokenProps = GetProps();
+            //TokenProps = GetProps();
 
         }
 
-        private List<KeyValuePair<string, object>> _propNamesAndVals { get; }
+        private List<KeyValuePair<string, object>> TempList { get; set; }
         public List<KeyValuePair<string, object>> TokenProps { get; set; }
         public uint TokenId { get; set; }
         public uint NftId { get; set; }
@@ -23,16 +23,15 @@ namespace nt.Client.Features.WebThree.Components.NftTemplates
 
         List<KeyValuePair<string, object>> GetProps()
         {
-            List<KeyValuePair<string, object>> _tempList = new List<KeyValuePair<string, object>>();
-
+            TempList = new List<KeyValuePair<string, object>>();
             foreach (var propName in this.GetProperties(0)) // That 0 is GetProperty Options
             {
                 var item = new KeyValuePair<string, object>(propName.Name, this.GetPropertyValue(propName.Name, propName.Type));
 
-                _propNamesAndVals.Add(item);
+                TempList.Add(item);
 
             }
-            return _propNamesAndVals;
+            return TempList;
         }
 
         //public object Current => throw new NotImplementedException();
