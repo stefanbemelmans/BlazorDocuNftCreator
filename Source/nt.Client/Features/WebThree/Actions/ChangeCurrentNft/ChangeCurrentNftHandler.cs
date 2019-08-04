@@ -3,12 +3,13 @@ using System.Threading.Tasks;
 using BlazorState;
 using nt.Shared.Features.WebThree;
 using nt.Client.Features.WebThree.Actions.ChangeCurrentNft;
+using nt.Client.Features.Base;
 
 namespace nt.Client.Features.WebThree
 {
     internal partial class WebThreeState : State<WebThreeState>
     {
-        public class ChangeCurrentNftHandler : RequestHandler<ChangeCurrentNftAction, WebThreeState>
+        public class ChangeCurrentNftHandler : BaseHandler<ChangeCurrentNftAction, WebThreeState>
         {
             public ChangeCurrentNftHandler
                (
@@ -16,8 +17,7 @@ namespace nt.Client.Features.WebThree
                ) : base(aStore)
             {
             }
-            WebThreeState WebThreeState => Store.GetState<WebThreeState>();
-
+            
             public override Task<WebThreeState> Handle
               (
                 ChangeCurrentNftAction aChangeCurrentNftRequest,

@@ -3,29 +3,42 @@
 <div class="flex-column justify-content-center m-2 p-2">
   <h3 class="text-center">Token Template Info</h3>
   <div class="container bg-danger">
-    <div class="row">
+    <div class="row text-center">
+      <p>Template Info</p>
       <div class="col">
-        <h4>Name: @TokenData.Name</h4>
+        <h4>Name: @CurrentToken.TemplateData.Name</h4>
       </div>
       <div class="col">
-        <h4>Symbol: @TokenData.Symbol</h4>
+        <h4>Symbol: @CurrentToken.TemplateData.Symbol</h4>
       </div>
       <div class="col">
-        <h4>MintLimit: @TokenData.MintLimit</h4>
+        <h4>MintLimit: @CurrentToken.TemplateData.MintLimit</h4>
       </div>
       <div class="col">
-        <h4>AttachedTokens: @TokenData.AttachedTokens</h4>
+        <h4>AttachedTokens: @CurrentToken.TemplateData.AttachedTokens</h4>
       </div>
     </div>
   </div>
   <div class="container bg-info mt-4">
     <div class="row">
-      @foreach (var property in TokenData.NftProps)
+      <p>Token Info</p>
+      <div class="col text-center">
+        <h4>Token Id: @CurrentToken.TokenId</h4>
+      </div>
+      <div class="col text-center">
+        <h4>Balance: @CurrentToken.Balance</h4>
+      </div>
+    </div>
+    <div class="row">
+      @if (CurrentToken.DataObject != null)
       {
-        <div class="col text-center">
-          <h4>@property.Key</h4>
-          <h5 class="bg-light">@property.Value</h5>
-        </div>
+        @foreach (var property in CurrentToken.DataObject)
+        {
+          <div class="col text-center">
+            <h4>@property.Key</h4>
+            <h5 class="bg-light">@property.Value</h5>
+          </div>
+        }
       }
     </div>
   </div>

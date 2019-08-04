@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using BlazorState;
     using Microsoft.AspNetCore.Components;
+    using nt.Client.Features.Base;
     using nt.Client.Features.WebThree.Actions;
     using nt.Shared.Features.WebThree;
     using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
@@ -14,7 +15,7 @@
     internal partial class WebThreeState : State<WebThreeState>
     {
 
-        public class GetNftTypesClientFeaturesHandler : RequestHandler<GetNftTypesClientFeaturesAction, WebThreeState>
+        public class GetNftTypesClientFeaturesHandler : BaseHandler<GetNftTypesClientFeaturesAction, WebThreeState>
         {
             public GetNftTypesClientFeaturesHandler
               (
@@ -27,7 +28,6 @@
             private HttpClient HttpClient { get; }
             //private List<KeyValuePair<uint, NftTemplate>> _TemplateList { get; set; }
             private List<NftTemplate> _TemplateList { get; set; }
-            WebThreeState WebThreeState => Store.GetState<WebThreeState>();
             public override async Task<WebThreeState> Handle
               (
                 GetNftTypesClientFeaturesAction aGetNftTypesClientRequest,

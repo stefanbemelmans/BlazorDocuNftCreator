@@ -1,18 +1,20 @@
 ﻿namespace nt.Client.Features.WebThree.Components
 {
-  using nt.Shared.Features.WebThree;
-  using nt.Client.Features.Base.Components;
-  using Microsoft.AspNetCore.Components;
-  using nt.Client.Features.WebThree.Components.NftTemplates;
+    using nt.Shared.Features.WebThree;
+    using nt.Client.Features.Base.Components;
+    using Microsoft.AspNetCore.Components;
+    using nt.Client.Features.WebThree.Components.NftTemplates;
+    using System.Collections.Generic;
 
-  public class TokenInfoModel : BaseComponent
-  {
-    [Parameter]
-    public TemplateBase TokenData { get; set; }
-    public string TokenDataString { get; set; }
-    public string MutableData { get; set; }
+    public class TokenInfoModel : BaseComponent
+    {
+        public TokenBase CurrentToken
+        {
+            get => WebThreeState.CurrentTokenData;
+            set { }
+        }
+        public List<TokenBase> TokenDataList => WebThreeState.TokenDataList;
 
-
-  }
+    }
 
 }

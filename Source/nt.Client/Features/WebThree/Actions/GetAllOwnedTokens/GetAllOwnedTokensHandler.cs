@@ -11,19 +11,18 @@
     using nt.Shared.Features.WebThree.Contracts.Herc1155.GetAllOwnedTokens;
     using nt.Shared.Features.WebThree.Contracts.NftCreator.GetTokenNftType;
     using nt.Shared.Features.WebThree;
-    using Nethereum.Contracts;
     using MediatR;
-    using nt.Client.Features.WebThree.Actions.BalanceOf;
     using nt.Shared.Features.WebThree.Contracts.Herc1155.BalanceOf;
-    using nt.Shared.Features.WebThree.Contracts.Herc1155;
+    using nt.Shared.Features.Base;
     using System;
     using AnySerializer;
     using nt.Shared.Features.WebThree.Contracts.Herc1155.ViewTokenData;
+    using nt.Client.Features.Base;
 
     internal partial class WebThreeState : State<WebThreeState>
     {
 
-        public class GetAllOwnedTokensHandler : BlazorState.RequestHandler<GetAllOwnedTokensAction, WebThreeState>
+        public class GetAllOwnedTokensHandler : BaseHandler<GetAllOwnedTokensAction, WebThreeState>
         {
             public GetAllOwnedTokensHandler
               (
@@ -35,7 +34,6 @@
                 HttpClient = aHttpClient;
             }
             private HttpClient HttpClient { get; }
-            WebThreeState WebThreeState => Store.GetState<WebThreeState>();
             List<NftTemplate> TemplateDataList => WebThreeState.TemplateDataList;
             List<TokenBase> TokenDataList { get; set; }
             IMediator Mediator { get; set; }

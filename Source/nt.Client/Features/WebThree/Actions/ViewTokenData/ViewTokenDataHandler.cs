@@ -1,19 +1,18 @@
 ﻿namespace nt.Client.Features.WebThree
-{ 
+{
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
     using BlazorState;
     using Microsoft.AspNetCore.Components;
+    using nt.Client.Features.Base;
     using nt.Client.Features.WebThree.Actions.ViewTokenData;
     using nt.Client.Features.WebThree.Components.NftTemplates;
-    using nt.Shared.Features.WebThree.Contracts.Herc1155;
     using nt.Shared.Features.WebThree.Contracts.Herc1155.ViewTokenData;
 
-    internal partial class WebThreeState 
+    internal partial class WebThreeState
     {
-       
-        public class ViewTokenDataHandler : RequestHandler<ViewTokenDataAction, WebThreeState>
+        public class ViewTokenDataHandler : BaseHandler<ViewTokenDataAction, WebThreeState>
         {
             public ViewTokenDataHandler(IStore aStore, HttpClient aHttpClient) : base(aStore)
             {
@@ -21,8 +20,6 @@
             }
 
             private HttpClient HttpClient { get; }
-
-            WebThreeState WebThreeState => Store.GetState<WebThreeState>();
 
             public TokenBase CurrentTokenData { get; set; }
 

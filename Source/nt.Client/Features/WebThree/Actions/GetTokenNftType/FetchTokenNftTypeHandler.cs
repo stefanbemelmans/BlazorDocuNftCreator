@@ -5,11 +5,12 @@
   using System.Threading.Tasks;
   using BlazorState;
   using Microsoft.AspNetCore.Components;
-  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetTokenNftType;
+    using nt.Client.Features.Base;
+    using nt.Shared.Features.WebThree.Contracts.NftCreator.GetTokenNftType;
   internal partial class WebThreeState
   {
 
-    public class FetchTokenNftTypeClientFeaturesHandler : RequestHandler<FetchTokenNftTypeAction, WebThreeState>
+    public class FetchTokenNftTypeClientFeaturesHandler : BaseHandler<FetchTokenNftTypeAction, WebThreeState>
     {
       public FetchTokenNftTypeClientFeaturesHandler
         (IStore aStore,
@@ -19,7 +20,6 @@
         HttpClient = aHttpClient;
       }
       private HttpClient HttpClient { get; }
-      WebThreeState WebThreeState => Store.GetState<WebThreeState>();
 
       public override async Task<WebThreeState> Handle
       (

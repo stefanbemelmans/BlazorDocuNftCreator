@@ -1,47 +1,47 @@
 ﻿namespace nt.Client.Features.WebThree
 {
-  using System.Net.Http;
-  using System.Threading;
-  using System.Threading.Tasks;
-  using BlazorState;
-  using Microsoft.AspNetCore.Components;
-  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
+    using System.Net.Http;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using BlazorState;
+    using Microsoft.AspNetCore.Components;
+    using nt.Client.Features.Base;
+    using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
 
-  internal partial class WebThreeState
-  {
-
-    public class GetNftByTypeClientFeaturesHandler : RequestHandler<GetNftByTypeAction, WebThreeState>
+    internal partial class WebThreeState
     {
-      public GetNftByTypeClientFeaturesHandler
-        (
-          IStore aStore,
-          HttpClient aHttpClient
-        ) : base(aStore)
-      {
-        HttpClient = aHttpClient;
-      }
-      private HttpClient HttpClient { get; }
-      WebThreeState WebThreeState => Store.GetState<WebThreeState>();
 
-      public override async Task<WebThreeState> Handle
-        (
-          GetNftByTypeAction aGetNftByTypeClientRequest,
-          CancellationToken aCancellationToken
-        )
-      {
+        public class GetNftByTypeClientFeaturesHandler : BaseHandler<GetNftByTypeAction, WebThreeState>
+        {
+            public GetNftByTypeClientFeaturesHandler
+              (
+                IStore aStore,
+                HttpClient aHttpClient
+              ) : base(aStore)
+            {
+                HttpClient = aHttpClient;
+            }
+            private HttpClient HttpClient { get; }
 
-        uint getNftId = aGetNftByTypeClientRequest.GetNftType;
+            public override async Task<WebThreeState> Handle
+              (
+                GetNftByTypeAction aGetNftByTypeClientRequest,
+                CancellationToken aCancellationToken
+              )
+            {
 
-        //string requestUri = QueryHelpers.AddQueryString(GetNftByTypeSharedRequest.Route, "GetNftType", getNftId.ToString());
-        string requestUri = GetNftByTypeSharedRequest.RouteFactory((int)getNftId);
+                uint getNftId = aGetNftByTypeClientRequest.GetNftType;
 
-        GetNftByTypeSharedResponse aNftTemplate = await HttpClient.GetJsonAsync<GetNftByTypeSharedResponse>(requestUri);
+                //string requestUri = QueryHelpers.AddQueryString(GetNftByTypeSharedRequest.Route, "GetNftType", getNftId.ToString());
+                string requestUri = GetNftByTypeSharedRequest.RouteFactory((int)getNftId);
 
-        WebThreeState.CurrentNftTemplate = aNftTemplate.NftTypeData;
+                GetNftByTypeSharedResponse aNftTemplate = await HttpClient.GetJsonAsync<GetNftByTypeSharedResponse>(requestUri);
 
-        return WebThreeState;
-      }
+                WebThreeState.CurrentNftTemplate = aNftTemplate.NftTypeData;
+
+                return WebThreeState;
+            }
+        }
     }
-  }
 }
 
