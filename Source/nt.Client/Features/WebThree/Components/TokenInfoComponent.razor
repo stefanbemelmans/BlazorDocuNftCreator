@@ -1,7 +1,13 @@
 ﻿@inherits TokenInfoModel
 
 <div class="flex-column justify-content-center m-2 p-2">
-  <h3 class="text-center">Token Template Info</h3>
+  <h3 class="text-center">Token Info</h3>
+  <select @onchange=@SetNewToken>
+    @foreach (var token in TokenDataList)
+    {
+      <option value=@token.TokenId>Token Id</option>
+    }
+  </select>
   <div class="container bg-danger">
     <div class="row text-center">
       <p>Template Info</p>
@@ -39,6 +45,20 @@
             <h5 class="bg-light">@property.Value</h5>
           </div>
         }
+      }
+      @if (CurrentToken.ImmutableData != null)
+      {
+        <div class="col text-center">
+          <h4>Immutable Data:</h4>
+          <h5 class="bg-light">@CurrentToken.ImmutableData</h5>
+        </div>
+      }
+      @if (CurrentToken.MutableData != null)
+      {
+        <div class="col text-center">
+          <h4>Immutable Data:</h4>
+          <h5 class="bg-light">@CurrentToken.MutableData</h5>
+        </div>
       }
     </div>
   </div>

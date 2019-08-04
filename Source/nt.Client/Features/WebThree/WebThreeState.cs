@@ -12,7 +12,6 @@
         //public List<KeyValuePair<uint, uint>> BalanceByTokenId { get; set; }
         public List<TokenBase> TokenDataList { get; set; }
 
-        public Dictionary<uint, uint> TokenBalances { get; set; }
         public uint TotalTokenTypes { get; set; }
         public List<uint> OwnedTokenIdList { get; set; }
         public uint CurrentTokenId { get; set; }
@@ -24,7 +23,6 @@
         public uint TotalNftTypes { get; set; }
         public int CurrentNftTypeIndex { get; set; } = 0;
         public NftTemplate CurrentNftTemplate { get; set; }// CurrentNftType will be used on the MintNftPage
-        public int Balance { get; set; }                                      // public List<KeyValuePair<uint, NftTemplate>> NftIdxTypeKvpList { get; set; }
         public List<NftTemplate> TemplateDataList { get; set; }
         protected override void Initialize()
         {
@@ -32,14 +30,12 @@
             OwnedTokenIdList = new List<uint>();
             CurrentTokenId = 0;
             CurrentTokenData = new TokenBase();
-            Balance = 0;
             CurrentTokenNftType = 0;
             //BalanceByTokenId = new List<KeyValuePair<uint, uint>>();
             TokenDataList = new List<TokenBase>();
             TotalNftTypes = 0;
             //NftIdxTypeKvpList = new List<KeyValuePair<uint, NftTemplate>>();
             TemplateDataList = new List<NftTemplate>();
-            TokenBalances = new Dictionary<uint, uint>();
             CurrentNftTemplate = new NftTemplate()
             {
                 Name = "fillerName",

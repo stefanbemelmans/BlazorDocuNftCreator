@@ -16,16 +16,11 @@
     </div>
     <div class="bg-danger text-center">
       <h2 class="m-2">Current Token</h2>
-      @if (WebThreeState.OwnedTokenIdList.Count > 0)
-      {
-        foreach (uint tokenId in WebThreeState.OwnedTokenIdList)
-        {
-          <p>@tokenId</p>
-        }
-      }
+     
     </div>
+    <TokenInfoComponent />
 
-    <NftTypeListComponent />
+    @*<NftTypeListComponent />*@
 
 
     @*<div class="bg-danger text-center">
@@ -41,11 +36,11 @@
       }
     </div>*@
 
-    <div class="bg-success text-center">
+    @*<div class="bg-success text-center">
       <h3>Current Token:</h3>
       <p>Name: @WebThreeState.CurrentNftTemplate.Name</p>
       <p>Symbol: @WebThreeState.CurrentNftTemplate.Symbol</p>
-    </div>
+    </div*@>
   </div>
 
 
@@ -54,10 +49,10 @@
   </button>*@
 
 
-<div id="TokenDataContainer" class="d-flex bg-info text-dark justify-content-center">
+@*<div id="TokenDataContainer" class="d-flex bg-info text-dark justify-content-center">
   <TokenInfoComponent TokenData=@tokenData />
 
-</div>
+</div>*@
 
 
 
