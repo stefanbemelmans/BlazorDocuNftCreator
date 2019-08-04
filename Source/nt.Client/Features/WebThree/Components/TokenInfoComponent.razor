@@ -32,7 +32,7 @@
     <div class="row">
       @if (CurrentToken.DataObject != null)
       {
-        @foreach (var property in CurrentToken.DataObject)
+        @foreach (var property in CurrentToken.DataObject.TokenProps)
         {
           <div class="col text-center">
             <h4>@property.Key</h4>

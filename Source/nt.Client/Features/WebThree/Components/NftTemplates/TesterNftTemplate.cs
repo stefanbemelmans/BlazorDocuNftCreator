@@ -13,15 +13,15 @@ namespace nt.Client.Features.WebThree.Components.NftTemplates
       Symbol = "TNT";
       MintLimit = 42;
       AttachedTokens = 0;
-      NftProps = new Dictionary<string, string>()
-      {
-        { ImportantNumber1Of2, "one" },
-        { ImportantWord1of2, "Important" },
-        { ImportantNumber2of2, "42" },
-        { ImportantWord2of2, "Word" },
-        { Date, DateTime.Now.ToString() }
+      //NftProps = new Dictionary<string, string>()
+      //{
+      //  { ImportantNumber1Of2, "one" },
+      //  { ImportantWord1of2, "Important" },
+      //  { ImportantNumber2of2, "42" },
+      //  { ImportantWord2of2, "Word" },
+      //  { Date, DateTime.Now.ToString() }
 
-      };
+      //};
 
     }
 

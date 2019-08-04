@@ -40,16 +40,16 @@
       Symbol = "TTFL",
       MintLimit = 300,
       AttachedTokens = 0,
-      NftProps = new Dictionary<string, string>()
-      {
-        { "FieldOneKey", "FieldOneVal" },
-        { "ImportantNumber1fo2", "42" },
-        { "ImportantWord1of2", "The Word1" },
-        { "ImportantNumber2of2", "17" },
-        { "ImportantWord2of2", "The Word2" },
-        { "Date", new System.DateTime().ToString() }
+      //NftProps = new Dictionary<string, string>()
+      //{
+      //  { "FieldOneKey", "FieldOneVal" },
+      //  { "ImportantNumber1fo2", "42" },
+      //  { "ImportantWord1of2", "The Word1" },
+      //  { "ImportantNumber2of2", "17" },
+      //  { "ImportantWord2of2", "The Word2" },
+      //  { "Date", new System.DateTime().ToString() }
 
-      }
+      //}
     };
 
     protected override async Task OnInitAsync()

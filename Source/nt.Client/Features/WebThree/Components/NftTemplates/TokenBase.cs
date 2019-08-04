@@ -3,6 +3,7 @@
 namespace nt.Client.Features.WebThree.Components.NftTemplates
 {
     public class TokenBase
+
     {
         public uint TokenId { get; set; }
         public int Balance { get; set; }
@@ -12,5 +13,6 @@ namespace nt.Client.Features.WebThree.Components.NftTemplates
 
         public ImmutableDataObjectBase DataObject { get; set; }
 
+        
     }
 }

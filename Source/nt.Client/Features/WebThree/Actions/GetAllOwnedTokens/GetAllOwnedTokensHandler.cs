@@ -102,7 +102,7 @@
     }
 
     // a testing class
-    class ImmutableData
+    class ImmutableData : ImmutableDataObjectBase
     {
         public string Title = "The First Minted NFT!Take 2";
         public DateTime Date = DateTime.Now;
