@@ -96,10 +96,10 @@
                 }
 
                 WebThreeState.TokenDataList = TokenDataList;
-                WebThreeState.CurrentTokenData = TokenDataList[0];
-                WebThreeState.CurrentTokenId = TokenDataList[0].TokenId;
                 WebThreeState.OwnedTokenIdList = aTokenList.TokenIdList;
-                WebThreeState.CurrentTokenNftType = TokenDataList[0].TemplateData.NftId;
+                //WebThreeState.CurrentTokenData = TokenDataList[0];
+                //WebThreeState.CurrentTokenId = TokenDataList[0].TokenId;
+                //WebThreeState.CurrentTokenNftType = TokenDataList[0].TemplateData.NftId;
                 return WebThreeState;
 
             }

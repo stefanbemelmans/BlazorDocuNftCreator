@@ -11,7 +11,7 @@
 
     public class TokenInfoModel : BaseComponent
     {
-        public TokenBase CurrentToken
+        public TokenBase CurrentTokenData
         {
             get => WebThreeState.CurrentTokenData;
             set { }
@@ -21,6 +21,11 @@
             get => WebThreeState.TokenDataList;
             set { }
         }
+
+        public List<uint> OwnedTokenIdList => WebThreeState.OwnedTokenIdList;
+        
+        public NftTemplate CurrentTokenNftType { get; set; }
+
         public void SetNewToken(UIChangeEventArgs eventArgs)
         {
             string TokenId = eventArgs.Value.ToString();
@@ -30,10 +35,11 @@
 
         //protected override async Task OnInitAsync()
         //{
-            //var TokenList = await Mediator.Send(new GetAllOwnedTokensAction());
-            //TokenDataList = TokenList.TokenDataList;
-            //CurrentToken = TokenDataList[0];
-
+        //    var TokenData = await Mediator.Send(new GetAllOwnedTokensAction());
+        //    CurrentTokenData = TokenDataList[0];
+        //    CurrentTokenId = TokenDataList[0].TokenId;
+        //    CurrentTokenNftType = TokenDataList[0].TemplateData;
+        //    //WebThreeState.CurrentTokenNftType = TokenDataList[0].TemplateData.NftId;
         //}
     }
 

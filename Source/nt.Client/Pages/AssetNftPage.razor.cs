@@ -13,13 +13,13 @@
 
   public class AssetNftPageModel : BaseComponent
   {
-    //public uint TotalNfts
-    //{
-    //  get => WebThreeState.TotalNftTypes;
-    //  set { }
-    //}
+        public uint TotalNfts
+        {
+            get => WebThreeState.TotalNftTypes;
+            set { }
+        }
 
-    public NftTemplate CurrentNft
+        public NftTemplate CurrentNft
     {
       get => WebThreeState.CurrentNftTemplate;
       set { }
@@ -31,33 +31,20 @@
       set { }
     }
 
-    public int TotalTokens { get; set; }
+    public uint TotalTokens
+        {
+            get => WebThreeState.TotalTokenTypes;
+            set { }
+        }
 
-   public TemplateBase tokenData = new TemplateBase()
-    {
-      NftId = 5,
-      Name = "TestTemplate",
-      Symbol = "TTFL",
-      MintLimit = 300,
-      AttachedTokens = 0,
-      //NftProps = new Dictionary<string, string>()
-      //{
-      //  { "FieldOneKey", "FieldOneVal" },
-      //  { "ImportantNumber1fo2", "42" },
-      //  { "ImportantWord1of2", "The Word1" },
-      //  { "ImportantNumber2of2", "17" },
-      //  { "ImportantWord2of2", "The Word2" },
-      //  { "Date", new System.DateTime().ToString() }
-
-      //}
-    };
 
     protected override async Task OnInitAsync()
     {
       // Getting All Nft Types
       WebThreeState w3s = await Mediator.Send(new GetNftTypesClientFeaturesAction());
 
-      uint TotalNfts = w3s.TotalNftTypes;
+       TotalNfts = w3s.TotalNftTypes;
+
 
             // The below now gets taken care of in the above Handler and produces the 
             //_ = await Mediator.Send(new GetNftByTypeAction()
@@ -67,6 +54,7 @@
             //    );
 
             WebThreeState tokenList = await Mediator.Send(new GetAllOwnedTokensAction());
+
 
             //CurrentTokenIds = tokenList.OwnedTokenIdList;
             //TotalTokens = CurrentTokenIds.Count;

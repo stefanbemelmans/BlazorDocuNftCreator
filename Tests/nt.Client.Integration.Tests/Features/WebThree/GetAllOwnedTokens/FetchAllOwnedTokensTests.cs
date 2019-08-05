@@ -22,6 +22,7 @@
     using nt.Shared.Features.WebThree.Contracts.Herc1155.BalanceOf;
     using nt.Shared.Features.WebThree.Contracts.Herc1155.ViewTokenData;
     using static nt.Client.Features.WebThree.Components.NftTemplates.ImmutableDataObjectBase;
+    using nt.Client.Features.WebThree.Actions.GetAllOwnedTokens;
 
     internal class FetchAllOwnedTokensTests
     {
@@ -49,6 +50,11 @@
             var WebThree = await Mediator.Send(new GetNftTypesClientFeaturesAction());
 
             GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(GetAllOwnedTokensSharedRequest.Route);
+            aTokenList.TokenIdList.Count.ShouldBe(3);
+            aTokenList.TokenIdList.Contains(3).ShouldBe(true);
+            aTokenList.TokenIdList.Contains(4).ShouldBe(true);
+            aTokenList.TokenIdList.Contains(5).ShouldBe(true);
+
             foreach (uint token in aTokenList.TokenIdList)
             {
                 // TokenId
@@ -99,5 +105,11 @@
             TokenDataList.Count.ShouldBe(3);
         }
 
+
+        public async Task ShouldReturnWebThreeState()
+        {
+            var webThreeState = await Mediator.Send(new GetAllOwnedTokensAction());
+                webThreeState.CurrentTokenId.ShouldBe((uint)3);
+        }
     }
 }

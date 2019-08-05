@@ -11,26 +11,27 @@
         }
       </select>
     }*@
-  <div class="container bg-danger">
+  @*<div class="container bg-danger">
     <div class="row text-center">
       <p>Template Info</p>
       <div class="col">
-        <h4>Name: @CurrentToken.TemplateData.Name</h4>
+        <h4>Name: @CurrentTokenData.TemplateData.Name</h4>
       </div>
       <div class="col">
-        <h4>Symbol: @CurrentToken.TemplateData.Symbol</h4>
+        <h4>Symbol: @CurrentTokenData.TemplateData.Symbol</h4>
       </div>
       <div class="col">
-        <h4>MintLimit: @CurrentToken.TemplateData.MintLimit</h4>
+        <h4>MintLimit: @CurrentTokenData.TemplateData.MintLimit</h4>
       </div>
       <div class="col">
-        <h4>AttachedTokens: @CurrentToken.TemplateData.AttachedTokens</h4>
+        <h4>AttachedTokens: @CurrentTokenData.TemplateData.AttachedTokens</h4>
       </div>
     </div>
-  </div>
+  </div>*@
   <div class="container bg-info mt-4">
     <div class="row">
-      <p>Token Info</p>
+      <p>Total Tokens</p>
+   @* @OwnedTokenIdList[0]*@
       @*<div class="col text-center">
         <h4>Token Id: @CurrentToken.TokenId</h4>
       </div>

@@ -62,6 +62,16 @@ namespace nt.Client.Integration.Tests.Features.ViewTokenDataTests
 
             clientResponse.TokenDataString.ShouldNotBe(null);
         }
+
+        public async Task ShouldRetrieveToken4DataFromClient()
+        {
+            var uriString = ViewTokenDataSharedRequest.RouteFactory(4);
+
+            var clientResponse = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(uriString);
+
+            clientResponse.TokenDataString.ShouldNotBe(null);
+
+        }
         public async Task ShouldRetrieveTokenBalanceFromClient()
         {
             var uriString = BalanceOfSharedRequest.RouteFactory(3);
