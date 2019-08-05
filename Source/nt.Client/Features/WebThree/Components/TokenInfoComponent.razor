@@ -11,66 +11,72 @@
         }
       </select>
     }*@
-  @*<div class="container bg-danger">
-    <div class="row text-center">
-      <p>Template Info</p>
-      <div class="col">
-        <h4>Name: @CurrentTokenData.TemplateData.Name</h4>
-      </div>
-      <div class="col">
-        <h4>Symbol: @CurrentTokenData.TemplateData.Symbol</h4>
-      </div>
-      <div class="col">
-        <h4>MintLimit: @CurrentTokenData.TemplateData.MintLimit</h4>
-      </div>
-      <div class="col">
-        <h4>AttachedTokens: @CurrentTokenData.TemplateData.AttachedTokens</h4>
+  @if (CurrentTokenData.TemplateData != null)
+  {
+    <div class="container bg-danger">
+      <div class="row text-center">
+        <p>Template Info</p>
+        <div class="col">
+          <h4>Name: @CurrentTokenData.TemplateData.Name</h4>
+        </div>
+        <div class="col">
+          <h4>Symbol: @CurrentTokenData.TemplateData.Symbol</h4>
+        </div>
+        <div class="col">
+          <h4>MintLimit: @CurrentTokenData.TemplateData.MintLimit</h4>
+        </div>
+        <div class="col">
+          <h4>AttachedTokens: @CurrentTokenData.TemplateData.AttachedTokens</h4>
+        </div>
       </div>
     </div>
-  </div>*@
+  }
   <div class="container bg-info mt-4">
     <div class="row">
       <p>Total Tokens</p>
-   @* @OwnedTokenIdList[0]*@
+      @* @OwnedTokenIdList[0]*@
       @*<div class="col text-center">
-        <h4>Token Id: @CurrentToken.TokenId</h4>
-      </div>
-      <div class="col text-center">
-        <h4>Balance: @CurrentToken.Balance</h4>
-      </div>*@
+          <h4>Token Id: @CurrentToken.TokenId</h4>
+        </div>
+        <div class="col text-center">
+          <h4>Balance: @CurrentToken.Balance</h4>
+        </div>*@
     </div>
-    <div class="row">
-      Token Id and stuff
-      @*@if (CurrentToken.TokenId == 3)
-      {
+    @*@if (CurrentTokenData != null)
+    {
+      <div class="row">
+        Token Id and stuff
+        @if (CurrentTokenData.TokenId == 3)
+        {
 
-        <div class="col text-center">
-          <h4>Date:</h4>
-          <h5 class="bg-light">@CurrentToken.ImmDataObj.Date</h5>
-        </div>
-        <div class="col text-center">
-          <h4>Minted From:</h4>
-          <h5 class="bg-light">@CurrentToken.ImmDataObj.MintedFrom</h5>
-        </div>
-        <div class="col text-center">
-          <h4>Title:</h4>
-          <h5 class="bg-light">@CurrentToken.ImmDataObj.Title</h5>
-        </div>
-      }*@
-      @*@if (CurrentToken.Data != null)
-      {
-        <div class="col text-center">
-          <h4>Immutable Data:</h4>
-          <h5 class="bg-light">@CurrentToken.Data</h5>
-        </div>
-      }
-      @if (CurrentToken.MutableData != null)
-      {
-        <div class="col text-center">
-          <h4>Immutable Data:</h4>
-          <h5 class="bg-light">@CurrentToken.MutableData</h5>
-        </div>
-      }*@
-    </div>
+          <div class="col text-center">
+            <h4>Date:</h4>
+            <h5 class="bg-light">@CurrentTokenData.ImmDataObj.Date</h5>
+          </div>
+          <div class="col text-center">
+            <h4>Minted From:</h4>
+            <h5 class="bg-light">@CurrentTokenData.ImmDataObj.MintedFrom</h5>
+          </div>
+          <div class="col text-center">
+            <h4>Title:</h4>
+            <h5 class="bg-light">@CurrentTokenData.ImmDataObj.Title</h5>
+          </div>
+        }
+        @if (CurrentTokenData.Data != null)
+        {
+          <div class="col text-center">
+            <h4>Immutable Data:</h4>
+            <h5 class="bg-light">@CurrentTokenData.Data</h5>
+          </div>
+        }
+        @if (CurrentTokenData.MutableData != null)
+        {
+          <div class="col text-center">
+            <h4>Immutable Data:</h4>
+            <h5 class="bg-light">@CurrentTokenData.MutableData</h5>
+          </div>
+        }
+      </div>*@
+    }
   </div>
 </div>

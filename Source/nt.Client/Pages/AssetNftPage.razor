@@ -5,56 +5,93 @@
       <span class="oi oi-home" aria-hidden="true"></span>Home
   </NavLink>*@
 
-
   <div id="NftCountContainer" class="container justify-content-center py-2">
     <div class="bg-success text-center w-25">
       <p> TotalToken Count</p>
       @if (WebThreeState.OwnedTokenIdList.Count > 0)
       {
         <h3>@WebThreeState.OwnedTokenIdList.Count</h3>
+        <select @onchange=@SetNewToken>
+          @foreach (var tokenId in @WebThreeState.OwnedTokenIdList)
+          {
+            <option value=@tokenId>Token Id: @tokenId</option>
+          }
+        </select>
       }
     </div>
-    <div class="bg-danger text-center">
-      <h2 class="m-2">TotalNfts: @TotalNfts</h2>
-     
-    </div>
-    @*<TokenInfoComponent />*@
 
-    @*<NftTypeListComponent />*@
+    @if (WebThreeState.CurrentTokenData != null)
+    {
+      <div class="container bg-danger">
+        <div class="row text-center">
+          <p>Template Info</p>
+          <div class="col">
+            <h4>Name: @CurrentTokenData.TemplateData.Name</h4>
+          </div>
+          <div class="col">
+            <h4>Symbol: @CurrentTokenData.TemplateData.Symbol</h4>
+          </div>
+          <div class="col">
+            <h4>MintLimit: @CurrentTokenData.TemplateData.MintLimit</h4>
+          </div>
+          <div class="col">
+            <h4>AttachedTokens: @CurrentTokenData.TemplateData.AttachedTokens</h4>
+          </div>
+        </div>
+      </div>
 
 
-    @*<div class="bg-danger text-center">
-      <h2 class="m-2">Current Nft Templates</h2>
-      @if (WebThreeState.NftTypeList.Count > 0)
+      <p>Tests from the class vars that get from webthree state, should change</p>
+      <div class="bg-success text-center">
+        <h3>Current Token:</h3>
+        <p>Token ID: @CurrentTokenData.TokenId</p>
+        <p>Symbol: @CurrentTokenData.TemplateData.Symbol</p>
+        <div class="col text-center">
+          <h4>Balance: @CurrentTokenData.Balance</h4>
+        </div>
+      </div>
+      @if (CurrentTokenData.TokenId == 3)
       {
-        foreach (var nftTemplate in WebThreeState.NftTypeList)
-        {
-          <p>Template ID: @WebThreeState.NftTypeList.IndexOf(nftTemplate)</p>
-          <p>Name: @nftTemplate.Name</p>
-          <p>Symbol: @nftTemplate.Symbol</p>
-        }
-      }
-    </div>*@
 
-    @*<div class="bg-success text-center">
-      <h3>Current Token:</h3>
-      <p>Name: @WebThreeState.CurrentNftTemplate.Name</p>
-      <p>Symbol: @WebThreeState.CurrentNftTemplate.Symbol</p>
-    </div*@>
+        <div class="col text-center">
+          <h4>Date:</h4>
+          <h5 class="bg-light">@CurrentTokenData.ImmDataObj.Date</h5>
+        </div>
+        <div class="col text-center">
+          <h4>Minted From:</h4>
+          <h5 class="bg-light">@CurrentTokenData.ImmDataObj.MintedFrom</h5>
+        </div>
+        <div class="col text-center">
+          <h4>Title:</h4>
+          <h5 class="bg-light">@CurrentTokenData.ImmDataObj.Title</h5>
+        </div>
+      }
+      @if (CurrentTokenData.Data != null)
+      {
+        <div class="col text-center">
+          <h4>Immutable Data:</h4>
+          <h5 class="bg-light">@CurrentTokenData.Data</h5>
+        </div>
+      }
+      @if (CurrentTokenData.MutableData != null)
+      {
+        <div class="col text-center">
+          <h4>Immutable Data:</h4>
+          <h5 class="bg-light">@CurrentTokenData.MutableData</h5>
+        </div>
+      }
+
+    }
   </div>
+
+
+
 
 
 @*<button type="button" class="btn btn-primary" onclick="@GetTotalTokans">
    Get Total Tokens
   </button>*@
 
-
 @*<div id="TokenDataContainer" class="d-flex bg-info text-dark justify-content-center">
-  <TokenInfoComponent TokenData=@tokenData />
-
-</div>*@
-
-
-
-
-
+    <TokenInfoComponent TokenData=@tokenData />
+  </div>*@

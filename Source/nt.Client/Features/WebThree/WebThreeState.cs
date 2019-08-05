@@ -17,8 +17,7 @@
         public uint CurrentTokenId { get; set; }
         public TokenBase CurrentTokenData { get; set; }
         public uint CurrentTokenNftType { get; set; } // CurrentTokenNftType will be used on the AssetNftPage
-                                                      // "int" type becuase it's an index position.
-                                                      // NftTemplate Id is index + 1
+                                                                                                   // NftTemplate Id is index + 1
 
         public uint TotalNftTypes { get; set; }
         public int CurrentNftTypeIndex { get; set; } = 0;
@@ -30,27 +29,11 @@
             TokenDataList = new List<TokenBase>();
             OwnedTokenIdList = new List<uint>();
             CurrentTokenId = 0;
-            CurrentTokenData = new TokenBase()
-            {
-                TokenId = 42,
-                Data = "Hello!",
-                MutableData = "HelloAgain",
-                Balance = 10,
-                TemplateData = CurrentNftTemplate,
-                DataObject = null,
-            };
+            CurrentTokenData = null;
             CurrentTokenNftType = 0;
-            //BalanceByTokenId = new List<KeyValuePair<uint, uint>>();
             TotalNftTypes = 0;
-            //NftIdxTypeKvpList = new List<KeyValuePair<uint, NftTemplate>>();
             TemplateDataList = new List<NftTemplate>();
-            CurrentNftTemplate = new NftTemplate()
-            {
-                Name = "fillerName",
-                Symbol = "stubSymbol",
-                MintLimit = 42,
-                AttachedTokens = 0
-            };
+            CurrentNftTemplate = new NftTemplate();
 
         }
 
