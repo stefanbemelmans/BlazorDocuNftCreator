@@ -1,23 +1,21 @@
 ﻿namespace nt.Client.Features.WebThree
 {
+    using AnySerializer;
+    using BlazorState;
+    using MediatR;
+    using Microsoft.AspNetCore.Components;
+    using nt.Client.Features.Base;
+    using nt.Client.Features.WebThree.Actions.GetAllOwnedTokens;
+    using nt.Client.Features.WebThree.Components.NftTemplates;
+    using nt.Shared.Features.WebThree.Contracts.Herc1155.BalanceOf;
+    using nt.Shared.Features.WebThree.Contracts.Herc1155.GetAllOwnedTokens;
+    using nt.Shared.Features.WebThree.Contracts.Herc1155.ViewTokenData;
+    using nt.Shared.Features.WebThree.Contracts.NftCreator.GetTokenNftType;
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-    using BlazorState;
-    using Microsoft.AspNetCore.Components;
-    using nt.Client.Features.WebThree.Actions.GetAllOwnedTokens;
-    using nt.Client.Features.WebThree.Components.NftTemplates;
-    using nt.Shared.Features.WebThree.Contracts.Herc1155.GetAllOwnedTokens;
-    using nt.Shared.Features.WebThree.Contracts.NftCreator.GetTokenNftType;
-    using nt.Shared.Features.WebThree;
-    using MediatR;
-    using nt.Shared.Features.WebThree.Contracts.Herc1155.BalanceOf;
-    using nt.Shared.Features.Base;
-    using System;
-    using AnySerializer;
-    using nt.Shared.Features.WebThree.Contracts.Herc1155.ViewTokenData;
-    using nt.Client.Features.Base;
     using static nt.Client.Features.WebThree.Components.NftTemplates.ImmutableDataObjectBase;
 
     internal partial class WebThreeState : State<WebThreeState>
@@ -35,8 +33,9 @@
                 HttpClient = aHttpClient;
             }
             private HttpClient HttpClient { get; }
-            List<NftTemplate> TemplateDataList => webthreestate.TemplateDataList;
-            WebThreeState webthreestate => Store.GetState<WebThreeState>();
+            //List<NftTemplate> TemplateDataList => WebThreeState.TemplateDataList;
+
+            //WebThreeState webthreestate => Store.GetState<WebThreeState>();
             List<TokenBase> TokenDataList { get; set; }
             IMediator Mediator { get; set; }
 
@@ -57,12 +56,12 @@
 
 
                     //TokenNFtTypeId
-                    string getNftTypeUri = GetTokenNftTypeSharedRequest.RouteFactory((int)token);
+                    //string getNftTypeUri = GetTokenNftTypeSharedRequest.RouteFactory((int)token);
 
-                    var NftTypeContainer = await Mediator.Send(new FetchTokenNftTypeAction() { TokenId = (int)ownedToken.TokenId });
+                    var NftTypeSharedResponse = await HttpClient.GetJsonAsync<GetTokenNftTypeSharedResponse>(GetTokenNftTypeSharedRequest.RouteFactory((int)token));
 
                     // TokenNftTypeData Should already have the data in state so no need to make a service call
-                    var nftType = TemplateDataList.Find(nft => nft.NftId == NftTypeContainer.CurrentTokenNftType);
+                    var nftType = WebThreeState.TemplateDataList.Find(nft => nft.NftId == NftTypeSharedResponse.NftType);
 
                     ownedToken.TemplateData = nftType;
 
@@ -76,7 +75,7 @@
 
                     string viewDataUri = ViewTokenDataSharedRequest.RouteFactory((int)token);
 
-                    ViewTokenDataSharedResponse DataString = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(viewDataUri);
+                    ViewTokenDataSharedResponse DataString = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(ViewTokenDataSharedRequest.RouteFactory((int)token));
 
                     if (token == 3)
                     {

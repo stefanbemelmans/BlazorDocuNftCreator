@@ -154,17 +154,17 @@
                     ownedToken.ImmDataObj = DeserializedObject;
 
                     // Add to StateList 
-                    TokenDataList.Add(ownedToken);
+                    SeparateTokenDataList.Add(ownedToken);
                 }
                 else
                 {
                     ownedToken.Data = DataString.TokenDataString;
 
-                    TokenDataList.Add(ownedToken);
+                    SeparateTokenDataList.Add(ownedToken);
                 }
             }
 
-            TokenDataList.Count.ShouldBe(3);
+            SeparateTokenDataList.Count.ShouldBe(3);
         }
         public async Task ShouldReturnWebThreeState()
         {
