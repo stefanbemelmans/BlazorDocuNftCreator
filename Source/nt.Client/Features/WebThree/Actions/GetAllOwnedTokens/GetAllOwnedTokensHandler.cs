@@ -35,7 +35,7 @@
                 HttpClient = aHttpClient;
             }
             private HttpClient HttpClient { get; }
-            List<NftTemplate> TemplateDataList => WebThreeState.TemplateDataList;
+            //List<NftTemplate> TemplateDataList => WebThreeState.TemplateDataList;
             List<TokenBase> TokenDataList { get; set; }
             IMediator Mediator { get; set; }
 
@@ -54,46 +54,47 @@
                     // TokenId
                     TokenBase ownedToken = new TokenBase() { TokenId = token };
 
-                    // TokenNFtTypeId
-                    string getNftTypeUri = GetTokenNftTypeSharedRequest.RouteFactory((int)token);
-
-                    var NftTypeContainer = await Mediator.Send(new FetchTokenNftTypeAction() { TokenId = (int)ownedToken.TokenId });
-
-                    // TokenNftTypeData Should already have the data in state so no need to make a service call
-                    var nftType = TemplateDataList.Find(nft => nft.NftId == NftTypeContainer.CurrentTokenNftType);
-
-                    ownedToken.TemplateData = nftType;
-
-                    // Token Balance
-
-                    var BalanceContainer = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(BalanceOfSharedRequest.RouteFactory((int)token));
-
-                    ownedToken.Balance = BalanceContainer.Balance;
-
-                    // Token ImmutableData (Data)
-
-                    string viewDataUri = ViewTokenDataSharedRequest.RouteFactory((int)token);
-
-                    ViewTokenDataSharedResponse DataString = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(viewDataUri);
-
-                    if(token == 3)
-                    {
-                        byte[] serializedImmutableData = Convert.FromBase64String(DataString.TokenDataString);
-                        // need to figure out a way to get the type occording to the nftId
-                        ImmutableData DeserializedObject = Serializer.Deserialize<ImmutableData>(serializedImmutableData, options); // options == 0
-
-                        ownedToken.ImmDataObj = DeserializedObject;
-
-                        // Add to StateList 
-                        TokenDataList.Add(ownedToken);
-                    }
-                    else
-                    {
-                        ownedToken.Data = DataString.TokenDataString;
-
-                        TokenDataList.Add(ownedToken);
-                    }
                 }
+                    // TokenNFtTypeId
+                    //string getNftTypeUri = GetTokenNftTypeSharedRequest.RouteFactory((int)token);
+
+                    //var NftTypeContainer = await Mediator.Send(new FetchTokenNftTypeAction() { TokenId = (int)ownedToken.TokenId });
+
+                    //// TokenNftTypeData Should already have the data in state so no need to make a service call
+                    //var nftType = TemplateDataList.Find(nft => nft.NftId == NftTypeContainer.CurrentTokenNftType);
+
+                    //ownedToken.TemplateData = nftType;
+
+                    //// Token Balance
+
+                    //var BalanceContainer = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(BalanceOfSharedRequest.RouteFactory((int)token));
+
+                    //ownedToken.Balance = BalanceContainer.Balance;
+
+                    //// Token ImmutableData (Data)
+
+                    //string viewDataUri = ViewTokenDataSharedRequest.RouteFactory((int)token);
+
+                    //ViewTokenDataSharedResponse DataString = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(viewDataUri);
+
+                    //if(token == 3)
+                    //{
+                    //    byte[] serializedImmutableData = Convert.FromBase64String(DataString.TokenDataString);
+                    //    // need to figure out a way to get the type occording to the nftId
+                    //    ImmutableData DeserializedObject = Serializer.Deserialize<ImmutableData>(serializedImmutableData, options); // options == 0
+
+                    //    ownedToken.ImmDataObj = DeserializedObject;
+
+                    //    // Add to StateList 
+                    //    TokenDataList.Add(ownedToken);
+                    //}
+                    //else
+                    //{
+                    //    ownedToken.Data = DataString.TokenDataString;
+
+                    //    TokenDataList.Add(ownedToken);
+                    //}
+                //}
 
                 WebThreeState.TokenDataList = TokenDataList;
                 WebThreeState.OwnedTokenIdList = aTokenList.TokenIdList;
