@@ -19,14 +19,13 @@
 
         }
 
-
-        List<object> ListOfProperties = new List<object>();
+        readonly List<object> ListOfProperties = new List<object>();
         PurchaseOrderTemplate PurchaseOrder = new PurchaseOrderTemplate();
 
         // I investigated the ListOfProperties in the debugger and it is 
         public void ShouldIterateOverProps()
         {
-            foreach (var property in PurchaseOrder.PropList)
+            foreach (var property in PurchaseOrder.PoPropList)
             {
                 ListOfProperties.Add(property);
             }

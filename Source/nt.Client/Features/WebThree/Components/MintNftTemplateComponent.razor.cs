@@ -1,40 +1,24 @@
 ﻿namespace nt.Client.Features.WebThree.Components
 {
-  using nt.Client.Features.Base.Components;
-  using nt.Client.Features.WebThree.Components.NftTemplates;
-  using System;
-  using System.Collections.Generic;
+    using nt.Client.Features.Base.Components;
+    using nt.Client.Features.WebThree.Components.NftTemplates;
+    using nt.Shared.Features.WebThree;
+    using System;
 
-  public class MintNftTemplateComponentModel : BaseComponent
-  {
-    
-    public MintNftTemplateComponentModel()
+    public class MintNftTemplateComponentModel : BaseComponent
     {
-      BuildInputs();
+        public PurchaseOrderTemplate TemplateFormProperties = new PurchaseOrderTemplate();
+
+
+        public NftTemplate CurrentNftTemplate => WebThreeState.CurrentNftTemplate;
+        
+
+        public void PrintValues()
+        {
+            foreach (System.Reflection.PropertyInfo prop in TemplateFormProperties.GetType().GetProperties())
+            {
+                Console.WriteLine($"{prop.ToString()}: {prop.ToString()}");
+            }
+        }
     }
-
-    public TemplateBase TokenTypeInfo { get; set; }
-
-    public Dictionary<object, object> FormInputs;
-
-    public void BuildInputs()
-    {
-      foreach (System.Reflection.PropertyInfo prop in TokenTypeInfo.GetType().GetProperties())
-      {
-        FormInputs.Add(prop.ToString(), prop.GetType());
-      }
-    }
-
-    public void PrintValues()
-    {
-      foreach(System.Reflection.PropertyInfo prop in TokenTypeInfo.GetType().GetProperties())
-      {
-        Console.WriteLine($"{prop.ToString()}: {prop.ToString()}"); 
-      }
-    }
-
-    
-
-  }
 }
-    

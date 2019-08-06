@@ -9,13 +9,13 @@ namespace nt.Client.Features.WebThree.Components.NftTemplates
         public DateTime Date = DateTime.Now;
 
         //public uint NftId { get; set; }
-        public List<object> PropList { get; set; }
+        //public List<System.Reflection.PropertyInfo> PropList { get; set; }
 
         //public string Title { get; set; }
-
+       public ICollection<TypeSupport.ExtendedProperty> PropList { get; set; }
         public ImmutableDataObjectBase()
         {
-            PropList = new List<object>(this.GetProperties(0));
+            PropList = this.GetProperties(0);
         }
         
         // test object
