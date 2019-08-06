@@ -33,19 +33,7 @@
       }
     }
 
-    //AddNewNftTemplateFunction AddNewNftFunction = NftCreatorContract.GetFunction("NFTTemplates");
-
-    //var AddNewTemplateHandler = web3.Eth.GetContractTransactionHandler<MintNftFunction>
-    //();
-
-    //public async Task MintNft()
-    //{
-
-    //NewTemplateFunctionMessage.Gas = new HexBigInteger(900000);
-
-    //var transactionReceipt = await AddNewTemplateHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddress, NewTemplateFunctionMessage);
-
-    //Console.WriteLine($"{transactionReceipt.TransactionHash}");
+    
 
   }
 }
