@@ -2,6 +2,7 @@
 {
   using nt.Client.Features.Base.Components;
   using nt.Shared.Features.WebThree;
+    using nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder;
 
   public class MintNftPageModel : BaseComponent
   {

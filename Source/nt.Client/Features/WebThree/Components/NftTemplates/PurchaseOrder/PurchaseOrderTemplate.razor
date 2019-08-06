@@ -1,0 +1,66 @@
+﻿@inherits PurchaseOrderTemplateModel
+
+<div id="MintNftTemplateComponent" class="container-fluid justify-content-around row align-items-center pt-3">
+
+  <div class="container bg-info">
+    <h3>@Title</h3>
+    <form>
+      @*<DataAnnotationsValidator />
+      <ValidationSummary />*@
+      <div class="row mb-3 p-2">
+        <div class="col text-center m-2">
+          <h4>Approver:</h4>
+          <input id=@Approver @bind="@Approver" />
+        </div>
+        <div class="col text-center m-2">
+          <h4>Deliver Date:</h4>
+           <input id=@DeliveryDate @bind="@DeliveryDate" />
+        </div>
+        <div class="col text-center m-2">
+          <h4>Department:</h4>
+           <input id=@Department @bind="@Department" />
+        </div>
+        <div class="col text-center m-2">
+          <h4>Requester:</h4>
+           <input id=@Requester @bind="@Requester" />
+        </div>
+        <div class="col text-center m-2">
+          <h4>Notes:</h4>
+           <input id=@Notes @bind="@Notes" />
+        </div>
+      </div>
+      <div class="row mb-3 p-2">
+        <h3>Item Information:</h3>
+        <div class="row">
+          <div class="col text-center m-2">
+            <h4>Item_Name:</h4>
+             <input id=@Item_Name @bind="@Item_Name" />
+          </div>
+          <div class="col text-center m-2">
+            <h4>Item_Price:</h4>
+             <input id=@Item_Price @bind="@Item_Price" />
+          </div>
+          <div class="col text-center m-2">
+            <h4>Item_Qty:</h4>
+             <input id=@Item_Qty @bind="@Item_Qty" />
+          </div>
+          <div class="col text-center m-2">
+            <h4>Item_Code:</h4>
+             <input id=@Item_Code @bind="@Item_Code" />
+          </div>
+          <div class="col text-center m-2">
+            <h4>Item_Discount:</h4>
+             <input id=@Item_Discount @bind="@Item_Discount" />
+          </div>
+          <div class="col text-center m-2">
+            <h4>Item_Total:</h4>
+             <input id=@Item_Total @bind="@Item_Total" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <button type="button" class="btn btn-primary" @onclick="PrintValues">
+    Console Values
+  </button>
+</div>
