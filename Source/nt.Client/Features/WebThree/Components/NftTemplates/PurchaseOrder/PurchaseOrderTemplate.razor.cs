@@ -11,8 +11,10 @@
     {
       FormData.Title = "Purchase Order";
     }
-    public PurchaseOrderData FormData = new PurchaseOrderData();
+    [Parameter]
+    public PurchaseOrderData FormData { get; set; } = new PurchaseOrderData();
 
+    public string MutableDataString { get; set; }
     public void PrintValues()
     {
       foreach (string prop in FormData.PoFormValueNames)

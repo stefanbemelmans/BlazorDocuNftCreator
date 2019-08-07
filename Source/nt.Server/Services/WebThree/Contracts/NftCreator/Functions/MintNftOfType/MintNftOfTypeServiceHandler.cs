@@ -33,7 +33,9 @@
         ImmutableData = aMintNftOfTypeServiceRequest.ImmutableData.ToString(),
         MutableData = aMintNftOfTypeServiceRequest.MutableData.ToString()
       };
+      Nethereum.Hex.HexTypes.HexBigInteger gasEstimate = await mintingHandler.EstimateGasAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aMintNftOfTypeFunctionMessage);
 
+      aMintNftOfTypeFunctionMessage.Gas = gasEstimate.Value;
       Nethereum.RPC.Eth.DTOs.TransactionReceipt mintingTransactionReceipt = await mintingHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aMintNftOfTypeFunctionMessage);
 
       System.Collections.Generic.List<EventLog<MintNftOutputEventDto>> MintNftOutput = mintingTransactionReceipt.DecodeAllEvents<MintNftOutputEventDto>();

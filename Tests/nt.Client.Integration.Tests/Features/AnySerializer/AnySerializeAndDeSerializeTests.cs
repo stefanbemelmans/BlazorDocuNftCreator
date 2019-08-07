@@ -1,72 +1,58 @@
-﻿//namespace nt.Client.Integration.Tests.Features.AnySerializer
-//{
-//    using System;
-//    using nt.Client.Integration.Tests.Infrastructure;
-//    using Shouldly;
-//    using global::AnySerializer;
-//    using nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder;
+﻿namespace nt.Client.Integration.Tests.Features.AnySerializer
+{
+  using System;
+  using nt.Client.Integration.Tests.Infrastructure;
+  using Shouldly;
+  using global::AnySerializer;
+  using nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder;
 
-//    class NotUsingAnyMoreAnySerializeAndDeSerializeTestsOld
-//  {
-//    private IServiceProvider ServiceProvider { get; }
+  class NewSerializeAndDeSerializeTests
+  {
+    private IServiceProvider ServiceProvider { get; }
 
-    //public AnySerializeAndDeSerializeTests(TestFixture aTestFixture)
-    //{
-    //  ServiceProvider = aTestFixture.ServiceProvider;
+    public NewSerializeAndDeSerializeTests(TestFixture aTestFixture)
+    {
+      ServiceProvider = aTestFixture.ServiceProvider;
+
+    }
+
+    SerializerOptions options = 0;
+
+    PurchaseOrderData TestObject = new PurchaseOrderData()
+    {
+      Department = "TestingDept",
+      Notes = "Serialization Test With Data, This is some data.",
+      Requester = "The Man",
+      Approver = "The Man's Man Approves",
+      Item_Code = "Item Code Here",
+      Item_Discount = 123,
+      Item_Name = "Fancy Product Name Test",
+      Item_Price = "Fancy Price Tester",
+      Item_Qty = 42,
+      Item_Total = 1234,
+      MutableDataString = "This Data Can Change, but for now, Hello!"
+    };
+
     
-    //}
 
-    //SerializerOptions options = 0;
+    public void FullSerializeDeSerializeWithData_InPoDataType()
+    {
+      byte[] BolSerializedByteArray = Serializer.Serialize(TestObject);
 
-    //BillOfLadingTemplate TestObject = new BillOfLadingTemplate();
+      string byteArraytoBase64String = Convert.ToBase64String(BolSerializedByteArray);
 
-    //PurchaseOrderTemplate objectWithData = new PurchaseOrderTemplate()
-    //{
-    //  Department = "TestingDept",
-    //  Notes = "Serialization Test With Data, This is some data.",
-    //  Requester = "The Man",
-    //};
+      byte[] serializedObjectBase64StringBackToByteArray = Convert.FromBase64String(byteArraytoBase64String);
 
-    //ItemTemplate itemInfo = new ItemTemplate()
-    //{
-    //  Code = "Fancy Code Tester",
-    //  Discount = "Fancy Tester Discount",
-    //  Name = "Fancy Product Name Test",
-    //  Price = "Fancy Price Tester",
-    //  Qty = 24,
-    //  Total = 100
-    //};
+      PurchaseOrderData restoredFromBase64String = Serializer.Deserialize<PurchaseOrderData>(serializedObjectBase64StringBackToByteArray, options);
 
+      restoredFromBase64String.ShouldBeOfType<PurchaseOrderData>();
 
-    //public void FullSerializeDeSerializeNoData()
-    //{
-    //byte[] BolSerializedByteArray = Serializer.Serialize(new BillOfLadingTemplate());
+      restoredFromBase64String.MutableDataString.ShouldBe(TestObject.MutableDataString);
+      restoredFromBase64String.Item_Price.ShouldBe(TestObject.Item_Price);
+      restoredFromBase64String.Approver.ShouldBe(TestObject.Approver);
 
-    //  string byteArraytoBase64String = Convert.ToBase64String(BolSerializedByteArray);
+    }
 
-    //  byte[] serializedObjectBase64StringBackToByteArray = Convert.FromBase64String(byteArraytoBase64String);
-
-    //  BillOfLadingTemplate restoredFromBase64String = Serializer.Deserialize<BillOfLadingTemplate>(serializedObjectBase64StringBackToByteArray, options);
-
-    //  restoredFromBase64String.ShouldBeOfType<BillOfLadingTemplate>();
-
-    //}
-
-    //public void FullSerializeDeSerializeWithData()
-    //{
-
-    //  byte[]  PoSerializedWithData = Serializer.Serialize<ItemTemplate>(itemInfo);
-
-    //  string BolSerializedByteArrayWithDatatoBase64String = Convert.ToBase64String(PoSerializedWithData);
-
-    //  byte[] BolSerializedByteArrayWithDatatoBase64StringBackToByteArray = Convert.FromBase64String(BolSerializedByteArrayWithDatatoBase64String);
-
-    //  ItemTemplate deSerializedObjectWithData = Serializer.Deserialize<ItemTemplate>(BolSerializedByteArrayWithDatatoBase64StringBackToByteArray, options);
-
-    //  deSerializedObjectWithData.Discount.ShouldBe(itemInfo.Discount);
-
-    //  deSerializedObjectWithData.Code.ShouldBe(itemInfo.Code);
-
-    //}
-//  }
-//}
+    
+  }
+}

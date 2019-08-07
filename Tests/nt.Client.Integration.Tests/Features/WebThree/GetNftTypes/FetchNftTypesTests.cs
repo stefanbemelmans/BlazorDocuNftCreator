@@ -76,7 +76,7 @@
                 //
             }
 
-            NftTypeList.Count.ShouldBe(4);
+            NftTypeList.Count.ShouldBe(5);
 
             //NftTypeList[3].Name.ShouldBe("TesterTemplate_0");
             //NftTypeDict[4].Name.ShouldBe("TesterTemplate_0");
