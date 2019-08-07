@@ -51,7 +51,7 @@
                 {
                     // TokenId
 
-                    TokenBase ownedToken = new TokenBase() { TokenId = token };
+                    var ownedToken = new TokenBase() { TokenId = token };
 
                     //TokenNFtTypeId
 
@@ -61,11 +61,11 @@
 
                     ownedToken.Balance = await GetBalance(token);
 
-                    // Token ImmutableData (Data)
+          // Token ImmutableData (Data)
 
-                    var DataString = await GetDataString(token);
+          string aDataString = await GetDataString(token);
 
-                    DeserializeAndAddData(token, ownedToken, DataString);
+                    DeserializeAndAddData(token, ownedToken, aDataString);
                 }
 
                 WebThreeState.TokenDataList = TokenDataList;
@@ -76,45 +76,45 @@
                 return WebThreeState;
             }
 
-            private void DeserializeAndAddData(uint token, TokenBase ownedToken, string DataString)
+            private void DeserializeAndAddData(uint aToken, TokenBase aOwnedToken, string aDataString)
             {
-                if (token == 3)
+                if (aToken == 3)
                 {
-                    byte[] serializedImmutableData = Convert.FromBase64String(DataString);
+                    byte[] serializedImmutableData = Convert.FromBase64String(aDataString);
 
-                    ImmutableData DeserializedObject = Serializer.Deserialize<ImmutableData>(serializedImmutableData, options); // options == 0
+                    ImmutableData aDeserializedObject = Serializer.Deserialize<ImmutableData>(serializedImmutableData, options); // options == 0
 
-                    ownedToken.ImmDataObj = DeserializedObject;
+                    aOwnedToken.ImmDataObj = aDeserializedObject;
 
                     // Add to StateList
-                    TokenDataList.Add(ownedToken);
+                    TokenDataList.Add(aOwnedToken);
                 }
                 else
                 {
-                    ownedToken.Data = DataString;
+                    aOwnedToken.Data = aDataString;
 
-                    TokenDataList.Add(ownedToken);
+                    TokenDataList.Add(aOwnedToken);
                 }
             }
 
-            private async Task<int> GetBalance(uint token)
+            private async Task<int> GetBalance(uint aToken)
             {
-                BalanceOfSharedResponse BalanceContainer = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(BalanceOfSharedRequest.RouteFactory((int)token));
-                return BalanceContainer.Balance;
+                BalanceOfSharedResponse aBalanceContainer = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(BalanceOfSharedRequest.RouteFactory((int)aToken));
+                return aBalanceContainer.Balance;
             }
 
-            private async Task<string> GetDataString(uint token)
+            private async Task<string> GetDataString(uint aToken)
             {
-                ViewTokenDataSharedResponse DataString = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(ViewTokenDataSharedRequest.RouteFactory((int)token));
-                string dataString = DataString.TokenDataString;
-                return dataString;
+                ViewTokenDataSharedResponse dataString = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(ViewTokenDataSharedRequest.RouteFactory((int)aToken));
+                string aDataString = dataString.TokenDataString;
+                return aDataString;
             }
 
-            private async Task<NftTemplate> GetNft(uint token)
+            private async Task<NftTemplate> GetNft(uint aToken)
             {   // TokenNftTypeData Should already have the data in state so no need to make a service call
-                var NftContainer = await HttpClient.GetJsonAsync<GetTokenNftTypeSharedResponse>(GetTokenNftTypeSharedRequest.RouteFactory((int)token));
-                var Template = WebThreeState.TemplateDataList.Find(nft => nft.NftId == NftContainer.NftType);
-                return Template;
+        GetTokenNftTypeSharedResponse nftContainer = await HttpClient.GetJsonAsync<GetTokenNftTypeSharedResponse>(GetTokenNftTypeSharedRequest.RouteFactory((int)aToken));
+        NftTemplate template = WebThreeState.TemplateDataList.Find(aNft => aNft.NftId == nftContainer.NftType);
+                return template;
             }
         }
     }

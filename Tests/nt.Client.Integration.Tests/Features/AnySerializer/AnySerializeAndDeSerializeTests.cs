@@ -1,31 +1,31 @@
-﻿namespace nt.Client.Integration.Tests.Features.AnySerializer
-{
-    using System;
-    using nt.Client.Integration.Tests.Infrastructure;
-    using Shouldly;
-    using global::AnySerializer;
-    using nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder;
+﻿//namespace nt.Client.Integration.Tests.Features.AnySerializer
+//{
+//    using System;
+//    using nt.Client.Integration.Tests.Infrastructure;
+//    using Shouldly;
+//    using global::AnySerializer;
+//    using nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder;
 
-    class AnySerializeAndDeSerializeTests
-  {
-    private IServiceProvider ServiceProvider { get; }
+//    class NotUsingAnyMoreAnySerializeAndDeSerializeTestsOld
+//  {
+//    private IServiceProvider ServiceProvider { get; }
 
-    public AnySerializeAndDeSerializeTests(TestFixture aTestFixture)
-    {
-      ServiceProvider = aTestFixture.ServiceProvider;
+    //public AnySerializeAndDeSerializeTests(TestFixture aTestFixture)
+    //{
+    //  ServiceProvider = aTestFixture.ServiceProvider;
     
-    }
+    //}
 
     //SerializerOptions options = 0;
 
     //BillOfLadingTemplate TestObject = new BillOfLadingTemplate();
 
-    PurchaseOrderTemplate objectWithData = new PurchaseOrderTemplate()
-    {
-      Department = "TestingDept",
-      Notes = "Serialization Test With Data, This is some data.",
-      Requester = "The Man",
-    };
+    //PurchaseOrderTemplate objectWithData = new PurchaseOrderTemplate()
+    //{
+    //  Department = "TestingDept",
+    //  Notes = "Serialization Test With Data, This is some data.",
+    //  Requester = "The Man",
+    //};
 
     //ItemTemplate itemInfo = new ItemTemplate()
     //{
@@ -68,5 +68,5 @@
     //  deSerializedObjectWithData.Code.ShouldBe(itemInfo.Code);
 
     //}
-  }
-}
+//  }
+//}

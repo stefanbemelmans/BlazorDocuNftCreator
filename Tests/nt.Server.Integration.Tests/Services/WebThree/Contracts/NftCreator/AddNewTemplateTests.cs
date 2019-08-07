@@ -53,13 +53,15 @@
 
       gasEstimate.Value.ShouldBeGreaterThan(0);
 
+      // Leaving this commented out as this is the action that makes a new template
+      // it's been tested and works
 
-            //Nethereum.RPC.Eth.DTOs.TransactionReceipt addingTemplateTransactionReceipt = await addNewTemplateFunctionHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aAddNewTemplateFunctionMessage);
+      Nethereum.RPC.Eth.DTOs.TransactionReceipt addingTemplateTransactionReceipt = await addNewTemplateFunctionHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aAddNewTemplateFunctionMessage);
 
-            //addingTemplateTransactionReceipt.ShouldNotBe(null);
+      addingTemplateTransactionReceipt.ShouldNotBe(null);
 
 
-            GetNftTypesServiceResponse totalTypesAfterTest = await Mediator.Send(getNftRequest);
+      GetNftTypesServiceResponse totalTypesAfterTest = await Mediator.Send(getNftRequest);
 
 
       //totalTypesAfterTest.TotalNftTypes.ShouldBeGreaterThan(totalTypesBeforeTest.TotalNftTypes);

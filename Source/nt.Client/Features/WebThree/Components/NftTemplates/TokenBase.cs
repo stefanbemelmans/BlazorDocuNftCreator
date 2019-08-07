@@ -1,9 +1,9 @@
-﻿using nt.Shared.Features.WebThree;
-using static nt.Client.Features.WebThree.Components.NftTemplates.ImmutableDataObjectBase;
-
-namespace nt.Client.Features.WebThree.Components.NftTemplates
+﻿namespace nt.Client.Features.WebThree.Components.NftTemplates
 {
-    public class TokenBase
+  using nt.Shared.Features.WebThree;
+  using static nt.Client.Features.WebThree.Components.NftTemplates.ImmutableDataObjectBase;
+
+  public class TokenBase
 
     {
         public uint TokenId { get; set; }
@@ -12,6 +12,7 @@ namespace nt.Client.Features.WebThree.Components.NftTemplates
         public string MutableData { get; set; }
         public string Data { get; set; }
 
+        // Changing Object to ImmutableObjectBase that contains the Immutable DataProperty
         public ImmutableDataObjectBase DataObject { get; set; }
 
         public ImmutableData ImmDataObj { get; set; } 
