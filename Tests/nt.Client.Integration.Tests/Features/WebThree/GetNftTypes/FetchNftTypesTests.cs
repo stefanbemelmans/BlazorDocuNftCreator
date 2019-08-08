@@ -49,8 +49,8 @@
 
         public async Task Should_Generate_NftTypesList()
         {
-            var NftTypeList = new List<NftTemplate>();
-            var NftTypeDict = new Dictionary<uint, NftTemplate>();
+            var nftTypeList = new List<NftTemplate>();
+            var nftTypeDict = new Dictionary<uint, NftTemplate>();
 
             var fetchNftTypes = new GetNftTypesClientFeaturesAction();
 
@@ -71,12 +71,12 @@
                     MintLimit = templateResponse.NftTypeData.MintLimit,
                     AttachedTokens = templateResponse.NftTypeData.AttachedTokens
                 };
-                NftTypeList.Add(template);
+                nftTypeList.Add(template);
                 //  NftTypeDict[ctr] = templateResponse;
                 //
             }
 
-            NftTypeList.Count.ShouldBe(5);
+            nftTypeList.Count.ShouldBeGreaterThan(5);
 
             //NftTypeList[3].Name.ShouldBe("TesterTemplate_0");
             //NftTypeDict[4].Name.ShouldBe("TesterTemplate_0");
