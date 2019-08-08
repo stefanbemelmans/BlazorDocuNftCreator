@@ -7,7 +7,7 @@
     <div class="form-group">
       @*<DataAnnotationsValidator />
         <ValidationSummary />*@
-      <div class="form-row  mb-3 p-2">
+      <div class="form-row mb-3 p-2">
         <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
           <label for="PoApprover" class="font-weight-bold">Approver</label>
           <input id="Approver" class="form-control" placeholder="Approver" type="text" @bind="@FormData.Approver" />
@@ -53,7 +53,7 @@
           </div>
           <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
             <label for="PoItem_Label" class="font-weight-bold">Item Total:</label>
-            <input id="Item_Total" type="text" class="form-control" @bind="@FormData.Item_Total" />
+            <input id="Item_Total" type="text" class="form-control" @bind=@FormData.Item_Total />
           </div>
           <div class="col-6 col-sm-5 col-lg-4 col-xl-3 text-center m-2">
             <label for="AdditionalInformation" class="font-weight-bold">Additional Information:</label>
@@ -61,7 +61,7 @@
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-primary" @OnClick=@SendDataToState>
+      <button type="button" class="btn btn-primary" @onclick=@SendDataToState>
         Console Values
       </button>
     </div>

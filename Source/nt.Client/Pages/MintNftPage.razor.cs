@@ -22,7 +22,7 @@
       set { }
     }
 
-    
+    public FormDto FormData => WebThreeState.CollectedFormValues;
 
   }
 }

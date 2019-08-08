@@ -2,25 +2,28 @@
 @layout MintNftPageLayout;
 @inherits MintNftPageModel
 
+<div id="MintNftPage" class="justify-content-center py-2 row">
 
-
-  <div id="MintNftPage" class="justify-content-center py-2 row">
-
-    <div class="bg-success text-center w-25">
-      <p> Total NfT Count</p>
-      <h3>@TotalNfts</h3>
-    </div>
-
-    <NftTypeListComponent />
-
-    <nt.Client.Features.WebThree.Components.NftTemplates.DocumentComponent NftId="@CurrentNftTemplate.NftId" />
-    @*<nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder.PurchaseOrderTemplate />*@
+  <div class="bg-success text-center w-25">
+    <p> Total NfT Count</p>
+    <h3>@TotalNfts</h3>
   </div>
 
-@*<button type="button" class="btn btn-primary" @onclick="@CreateNft">
-    Create New NFT
-</button>*@
-
-
-
-
+  @if (@FormData != null)
+  {
+    <div class="form-row mb-3 p-2">
+      <h3>Confirm Data</h3>
+      <h4>@FormData.MutableDataString</h4>
+      <h4>@FormData.FormValues.Title</h4>
+      @foreach (var prop in FormData.FormValues.GetType().GetProperties(0))
+      {
+        <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
+          <p>@prop.Name:</p>
+          <h5>@prop.GetValue(FormData.FormValues).ToString()</h5>
+        </div>
+      }
+    </div>
+  }
+  <NftTypeListComponent />
+  <nt.Client.Features.WebThree.Components.NftTemplates.DocumentComponent NftId="@CurrentNftTemplate.NftId" />
+</div>
