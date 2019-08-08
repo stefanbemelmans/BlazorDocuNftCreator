@@ -1,5 +1,5 @@
 ﻿@page "/mintNftPage"
-@layout AssetNftLayout;
+@layout MintNftPageLayout;
 @inherits MintNftPageModel
 
 
@@ -10,9 +10,10 @@
       <p> Total NfT Count</p>
       <h3>@TotalNfts</h3>
     </div>
-    
+
     <NftTypeListComponent />
 
+    <nt.Client.Features.WebThree.Components.NftTemplates.DocumentComponent NftId="@CurrentNftTemplate.NftId" />
     @*<nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder.PurchaseOrderTemplate />*@
   </div>
 

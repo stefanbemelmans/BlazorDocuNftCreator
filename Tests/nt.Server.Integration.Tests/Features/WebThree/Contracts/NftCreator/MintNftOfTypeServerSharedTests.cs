@@ -74,24 +74,24 @@
     //  //SharedResponse.ShouldNotBe(null);
     //}
 
-    public async Task ShouldMintNftOfTypeFromClient()
-    {
+    //public async Task ShouldMintNftOfTypeFromClient()
+    //{
 
-      // Arrange
+    //  // Arrange
 
-      var aMintNftOfTypeClientAction = new MintNftOfTypeClientAction()
-      {
-        MintNftId = 4,
-        MutableDataString = "Testing Minting From Client Features! Here's some Mutable Data",
-        ImmutableDataString = "Testing Minting From Client Features! Here's some  ImMutable Data 19-8-7"
-      };
+    //  var aMintNftOfTypeClientAction = new MintNftOfTypeClientAction()
+    //  {
+    //    MintNftId = 4,
+    //    MutableDataString = "Testing Minting From Client Features! Here's some Mutable Data",
+    //    ImmutableDataString = "Testing Minting From Client Features! Here's some  ImMutable Data 19-8-7"
+    //  };
 
-      WebThreeState ClientMintResponse = await Mediator.Send(aMintNftOfTypeClientAction);
+    //  WebThreeState ClientMintResponse = await Mediator.Send(aMintNftOfTypeClientAction);
 
-      aMintNftOfTypeClientAction.ShouldNotBeNull();
-      ClientMintResponse.MintingTransactionReceipt.ShouldNotBe(null);
+    //  aMintNftOfTypeClientAction.ShouldNotBeNull();
+    //  ClientMintResponse.MintingTransactionReceipt.ShouldNotBe(null);
     }
 
   }
-}
+
 
