@@ -1,7 +1,8 @@
 ﻿namespace nt.Client.Features.WebThree
 {
     using BlazorState;
-    using nt.Client.Features.WebThree.Components.NftTemplates;
+  using Nethereum.RPC.Eth.DTOs;
+  using nt.Client.Features.WebThree.Components.NftTemplates;
     using nt.Shared.Features.WebThree;
     using System.Collections.Generic;
 
@@ -16,9 +17,8 @@
         public List<uint> OwnedTokenIdList { get; set; }
         public uint CurrentTokenId { get; set; }
         public TokenBase CurrentTokenData { get; set; }
-        public uint CurrentTokenNftType { get; set; } // CurrentTokenNftType will be used on the AssetNftPage
-                                                                                                   // NftTemplate Id is index + 1
-
+        public uint CurrentTokenNftType { get; set; } // CurrentTokenNftType will be used on the AssetNftPage NftTemplate Id is index + 1
+        public TransactionReceipt MintingTransactionReceipt { get; set; }
         public uint TotalNftTypes { get; set; }
         public int CurrentNftTypeIndex { get; set; } = 0;
         public NftTemplate CurrentNftTemplate { get; set; }// CurrentNftType will be used on the MintNftPage

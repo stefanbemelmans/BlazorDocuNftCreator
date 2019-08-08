@@ -30,7 +30,7 @@
       Item_Price = "Fancy Price Tester",
       Item_Qty = 42,
       Item_Total = 1234,
-      MutableDataString = "This Data Can Change, but for now, Hello!"
+     
     };
 
     
@@ -47,7 +47,7 @@
 
       restoredFromBase64String.ShouldBeOfType<PurchaseOrderData>();
 
-      restoredFromBase64String.MutableDataString.ShouldBe(TestObject.MutableDataString);
+      //restoredFromBase64String.MutableDataString.ShouldBe(TestObject.MutableDataString);
       restoredFromBase64String.Item_Price.ShouldBe(TestObject.Item_Price);
       restoredFromBase64String.Approver.ShouldBe(TestObject.Approver);
 

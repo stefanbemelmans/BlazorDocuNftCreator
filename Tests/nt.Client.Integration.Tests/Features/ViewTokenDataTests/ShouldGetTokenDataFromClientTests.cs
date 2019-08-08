@@ -38,7 +38,7 @@ namespace nt.Client.Integration.Tests.Features.ViewTokenDataTests
 
         public void ViewTokenDataSharedRouteFactoryShouldWork()
         {
-            var uriString = ViewTokenDataSharedRequest.RouteFactory(3);
+      string uriString = ViewTokenDataSharedRequest.RouteFactory(3);
             uriString.ShouldBe("api/viewTokenData?TokenIdToGet=3");
         }
         public void ViewTokenDataSharedRequestShouldWork()
@@ -54,9 +54,9 @@ namespace nt.Client.Integration.Tests.Features.ViewTokenDataTests
 
         public async Task ShouldRetrieveToken3DataFromClient()
         {
-            var uriString = ViewTokenDataSharedRequest.RouteFactory(3);
+      string uriString = ViewTokenDataSharedRequest.RouteFactory(3);
 
-            var clientResponse = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(uriString);
+      ViewTokenDataSharedResponse clientResponse = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(uriString);
 
             clientResponse.ShouldBeOfType<ViewTokenDataSharedResponse>();
 
@@ -65,18 +65,18 @@ namespace nt.Client.Integration.Tests.Features.ViewTokenDataTests
 
         public async Task ShouldRetrieveToken4DataFromClient()
         {
-            var uriString = ViewTokenDataSharedRequest.RouteFactory(4);
+      string uriString = ViewTokenDataSharedRequest.RouteFactory(4);
 
-            var clientResponse = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(uriString);
+      ViewTokenDataSharedResponse clientResponse = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(uriString);
 
             clientResponse.TokenDataString.ShouldNotBe(null);
 
         }
         public async Task ShouldRetrieveTokenBalanceFromClient()
         {
-            var uriString = BalanceOfSharedRequest.RouteFactory(3);
+      string uriString = BalanceOfSharedRequest.RouteFactory(3);
 
-            var clientResponse = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(uriString);
+      BalanceOfSharedResponse clientResponse = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(uriString);
 
             clientResponse.ShouldBeOfType<BalanceOfSharedResponse>();
 

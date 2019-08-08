@@ -50,16 +50,16 @@
           //  Arrange
           //Function<ViewTokenDataFunctionInput> viewTokenDataFunction = Herc1155.Instance.GetFunction<ViewTokenDataFunctionInput>();
             Function viewTokenDataFunction = Herc1155.Instance.GetFunction("viewTokenData");
-            //viewTokenDataFunction.CreateCallInput(new ViewTokenDataFunctionInput()
-            //{
-            //    FromAddress = TestEthAccounts.TestEthAccountAddress,
-            //    Gas = new Nethereum.Hex.HexTypes.HexBigInteger(900000),
-            //    AmountToSend = new Nethereum.Hex.HexTypes.HexBigInteger(0),
+      //viewTokenDataFunction.CreateCallInput(new ViewTokenDataFunctionInput()
+      //{
+      //    FromAddress = TestEthAccounts.TestEthAccountAddress,
+      //    Gas = new Nethereum.Hex.HexTypes.HexBigInteger(900000),
+      //    AmountToSend = new Nethereum.Hex.HexTypes.HexBigInteger(0),
 
-            //    ViewTokenId = 5
-            //});
+      //    ViewTokenId = 5
+      //});
 
-            var response = await viewTokenDataFunction.CallAsync<string>(
+      string response = await viewTokenDataFunction.CallAsync<string>(
                 from: TestEthAccounts.TestEthAccountAddress,
                     gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000),
                     value: new Nethereum.Hex.HexTypes.HexBigInteger(0),

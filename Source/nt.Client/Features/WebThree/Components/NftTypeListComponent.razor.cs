@@ -31,16 +31,7 @@
       Console.WriteLine(templateName);
       Mediator.Send(new ChangeCurrentNftAction() { TemplateName = templateName });
     }
-
-    public PurchaseOrderTemplate GetDocument(uint NftType)
-    {
-      if (NftType == 5)
-      {
-        return Document;
-      }
-      else { return null; }
-
-    }
+    
   }
 }
 

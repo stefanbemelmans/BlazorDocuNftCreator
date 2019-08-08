@@ -47,7 +47,7 @@
         public async Task ShouldBuildTokenList()
         {
 
-            var WebThree = await Mediator.Send(new GetNftTypesClientFeaturesAction());
+      WebThreeState WebThree = await Mediator.Send(new GetNftTypesClientFeaturesAction());
 
             GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(GetAllOwnedTokensSharedRequest.Route);
             aTokenList.TokenIdList.Count.ShouldBe(3);
@@ -58,21 +58,21 @@
             foreach (uint token in aTokenList.TokenIdList)
             {
                 // TokenId
-                TokenBase ownedToken = new TokenBase() { TokenId = token };
+                var ownedToken = new TokenBase() { TokenId = token };
 
                 // TokenNFtTypeId
                 string getNftTypeUri = GetTokenNftTypeSharedRequest.RouteFactory((int)token);
 
-                var NftTypeContainer = await Mediator.Send(new FetchTokenNftTypeAction() { TokenId = (int)ownedToken.TokenId });
+        WebThreeState NftTypeContainer = await Mediator.Send(new FetchTokenNftTypeAction() { TokenId = (int)ownedToken.TokenId });
 
-                // TokenNftTypeData Should already have the data in state so no need to make a service call
-                var nftType = WebThree.TemplateDataList.Find(nft => nft.NftId == NftTypeContainer.CurrentTokenNftType);
+        // TokenNftTypeData Should already have the data in state so no need to make a service call
+        NftTemplate nftType = WebThree.TemplateDataList.Find(nft => nft.NftId == NftTypeContainer.CurrentTokenNftType);
 
                 ownedToken.TemplateData = nftType;
 
-                // Token Balance
+        // Token Balance
 
-                var BalanceContainer = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(BalanceOfSharedRequest.RouteFactory((int)token));
+        BalanceOfSharedResponse BalanceContainer = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(BalanceOfSharedRequest.RouteFactory((int)token));
 
                 ownedToken.Balance = BalanceContainer.Balance;
 
@@ -107,9 +107,9 @@
 
         public async Task ShouldBuildTokenListInPieces()
         {
-            List<TokenBase> SeparateTokenDataList = new List<TokenBase>();
+            var SeparateTokenDataList = new List<TokenBase>();
 
-            var WebThree = await Mediator.Send(new GetNftTypesClientFeaturesAction());
+      WebThreeState WebThree = await Mediator.Send(new GetNftTypesClientFeaturesAction());
 
             GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(GetAllOwnedTokensSharedRequest.Route);
             aTokenList.TokenIdList.Count.ShouldBe(3);
@@ -120,21 +120,21 @@
             foreach (uint token in aTokenList.TokenIdList)
             {
                 // Start the list with TokenId
-                TokenBase ownedToken = new TokenBase() { TokenId = token };
+                var ownedToken = new TokenBase() { TokenId = token };
                 //SeparateTokenDataList.Add(ownedToken);
             
                 string getNftTypeUri = GetTokenNftTypeSharedRequest.RouteFactory((int)token);
 
-                var NftTypeSharedResponse = await HttpClient.GetJsonAsync<GetTokenNftTypeSharedResponse>(getNftTypeUri);
+        GetTokenNftTypeSharedResponse NftTypeSharedResponse = await HttpClient.GetJsonAsync<GetTokenNftTypeSharedResponse>(getNftTypeUri);
 
-                // TokenNftTypeData Should already have the data in state so no need to make a service call
-                var nftType = WebThree.TemplateDataList.Find(nft => nft.NftId == NftTypeSharedResponse.NftType);
+        // TokenNftTypeData Should already have the data in state so no need to make a service call
+        NftTemplate nftType = WebThree.TemplateDataList.Find(nft => nft.NftId == NftTypeSharedResponse.NftType);
 
                 ownedToken.TemplateData = nftType;
 
-                // Token Balance
+        // Token Balance
 
-                var BalanceContainer = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(BalanceOfSharedRequest.RouteFactory((int)token));
+        BalanceOfSharedResponse BalanceContainer = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(BalanceOfSharedRequest.RouteFactory((int)token));
 
                 ownedToken.Balance = BalanceContainer.Balance;
 
@@ -168,7 +168,7 @@
         }
         public async Task ShouldReturnWebThreeState()
         {
-            var webThreeState = await Mediator.Send(new GetAllOwnedTokensAction());
+      WebThreeState webThreeState = await Mediator.Send(new GetAllOwnedTokensAction());
                 webThreeState.CurrentTokenId.ShouldBe((uint)3);
         }
     }

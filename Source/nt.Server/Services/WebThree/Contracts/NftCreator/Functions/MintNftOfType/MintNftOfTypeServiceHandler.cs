@@ -1,19 +1,19 @@
 ﻿namespace nt.Server.Services.WebThree.Contracts.NftCreator.Functions.MintNftOfType
 {
-  using System.Threading.Tasks;
-  using System.Threading;
+  using MediatR;
   using Nethereum.Contracts;
+  using nt.Server.Services.WebThree.Contracts.Herc1155;
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
   using nt.Server.Services.WebThree.Instance;
-  using nt.Server.Services.WebThree.Contracts.Herc1155;
-  using MediatR;
-  using nt.Shared.Features.WebThree.Contracts.NftCreator.MintNftOfType;
   using nt.Shared.Constants.ContractConstants.NftCreator;
+  using nt.Shared.Features.WebThree.Contracts.NftCreator.MintNftOfType;
+  using System.Threading;
+  using System.Threading.Tasks;
 
   public class MintNftOfTypeServerServiceHandler : IRequestHandler<MintNftOfTypeServiceRequest, MintNftOfTypeServiceResponse>
-    {
-    NftCreatorInstance NftCreatorInstance { get; set; }
-    NethWeb3 NethWeb3 { get; set; }
+  {
+    private NethWeb3 NethWeb3 { get; set; }
+    private NftCreatorInstance NftCreatorInstance { get; set; }
 
     public MintNftOfTypeServerServiceHandler(NethWeb3 aNethWeb3, NftCreatorInstance aNftCreatorInstance)
     {
@@ -26,28 +26,26 @@
       Function<MintNftOfTypeFunctionInput> aMintNftOfTypeFunction = NftCreatorInstance.Instance.GetFunction<MintNftOfTypeFunctionInput>();
 
       Nethereum.Contracts.ContractHandlers.IContractTransactionHandler<MintNftOfTypeFunctionInput> mintingHandler = NethWeb3.Instance.Eth.GetContractTransactionHandler<MintNftOfTypeFunctionInput>();
-            // serialization needed
+      // serialization needed
 
-      var aMintNftOfTypeFunctionMessage = new MintNftOfTypeFunctionInput {
+      var aMintNftOfTypeFunctionMessage = new MintNftOfTypeFunctionInput
+      {
         Type = aMintNftOfTypeServiceRequest.MintNftId,
-        ImmutableData = aMintNftOfTypeServiceRequest.ImmutableData.ToString(),
-        MutableData = aMintNftOfTypeServiceRequest.MutableData.ToString()
+        ImmutableDataString = aMintNftOfTypeServiceRequest.ImmutableDataString,
+        MutableDataString = aMintNftOfTypeServiceRequest.MutableDataString
       };
       Nethereum.Hex.HexTypes.HexBigInteger gasEstimate = await mintingHandler.EstimateGasAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aMintNftOfTypeFunctionMessage);
 
       aMintNftOfTypeFunctionMessage.Gas = gasEstimate.Value;
+
       Nethereum.RPC.Eth.DTOs.TransactionReceipt mintingTransactionReceipt = await mintingHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aMintNftOfTypeFunctionMessage);
 
       System.Collections.Generic.List<EventLog<MintNftOutputEventDto>> MintNftOutput = mintingTransactionReceipt.DecodeAllEvents<MintNftOutputEventDto>();
 
-
       return new MintNftOfTypeServiceResponse
       {
-        
-       
+        mintingTransactionReceipt = mintingTransactionReceipt
       };
     }
   }
 }
-
-
