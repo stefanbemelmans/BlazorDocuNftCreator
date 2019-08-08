@@ -47,7 +47,7 @@
 
     public async Task ShouldBuildTokenList()
     {
-      WebThreeState WebThree = await Mediator.Send(new GetNftTypesClientFeaturesAction());
+      WebThreeState webThree = await Mediator.Send(new GetNftTypesClientFeaturesAction());
 
       GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(GetAllOwnedTokensSharedRequest.Route);
       aTokenList.TokenIdList.Count.ShouldBeGreaterThan(3);
@@ -66,7 +66,7 @@
         WebThreeState NftTypeContainer = await Mediator.Send(new FetchTokenNftTypeAction() { TokenId = (int)ownedToken.TokenId });
 
         // TokenNftTypeData Should already have the data in state so no need to make a service call
-        NftTemplate nftType = WebThree.TemplateDataList.Find(nft => nft.NftId == NftTypeContainer.CurrentTokenNftType);
+        NftTemplate nftType = webThree.TemplateDataList.Find(nft => nft.NftId == NftTypeContainer.CurrentTokenNftType);
 
         ownedToken.TemplateData = nftType;
 

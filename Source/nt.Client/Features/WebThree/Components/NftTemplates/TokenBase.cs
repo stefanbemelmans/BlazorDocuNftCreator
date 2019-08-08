@@ -13,7 +13,7 @@
         public string Data { get; set; }
 
         // Changing Object to ImmutableObjectBase that contains the Immutable DataProperty
-        public ImmutableDataObjectBase DataObject { get; set; }
+        public ImmutableObjectBase DataObject { get; set; }
 
         public ImmutableData ImmDataObj { get; set; } 
 

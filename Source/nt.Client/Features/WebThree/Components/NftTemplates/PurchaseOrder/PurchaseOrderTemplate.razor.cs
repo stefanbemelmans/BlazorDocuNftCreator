@@ -2,25 +2,31 @@
 {
   using Microsoft.AspNetCore.Components;
   using nt.Client.Features.Base.Components;
-  using System;
-  using System.Collections.Generic;
+  using nt.Client.Features.WebThree.Actions.AddFormDataToState;
+  using System.Threading.Tasks;
 
   public class PurchaseOrderTemplateModel : BaseComponent
   {
-    public PurchaseOrderTemplateModel()
-    {
-      FormData.Title = "Purchase Order";
-    }
     [Parameter]
     public PurchaseOrderData FormData { get; set; } = new PurchaseOrderData();
 
     public string MutableDataString { get; set; }
-    public void PrintValues()
+
+    public PurchaseOrderTemplateModel()
     {
-      foreach (string prop in FormData.PoFormValueNames)
+      FormData.Title = "Purchase Order";
+    }
+
+    public async void SendDataToState()
+    {
+      WebThreeState response = await Mediator.Send(new AddFormDataToStateAction()
       {
-        Console.WriteLine(value: $"{prop}: {FormData.GetType().GetProperty(prop).GetValue(FormData)}");
-      }
+        FormObjectValues = FormData,
+        MutableDataString = MutableDataString
+      });
+
+      WebThreeState.CollectedFormValues = response.CollectedFormValues;
+     
     }
   }
 }

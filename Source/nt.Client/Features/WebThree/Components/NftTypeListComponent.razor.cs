@@ -22,6 +22,7 @@
 
     public PurchaseOrderTemplate Document { get; set; } = new PurchaseOrderTemplate();
 
+    public FormDto CollectedFormValues { get; set; }
     public PurchaseOrderData PoData { get; set; } = new PurchaseOrderData();
 
     //public NftTemplate SelectedTemplate { get; set; }
