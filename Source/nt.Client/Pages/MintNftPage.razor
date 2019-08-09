@@ -2,28 +2,30 @@
 @layout MintNftPageLayout;
 @inherits MintNftPageModel
 
-<div id="MintNftPage" class="justify-content-center py-2 row">
-
-  <div class="bg-success text-center w-25">
-    <p> Total NfT Count</p>
-    <h3>@TotalNfts</h3>
-  </div>
-
-  @if (@FormData != null)
-  {
-    <div class="form-row mb-3 p-2">
-      <h3>Confirm Data</h3>
-      <h4>@FormData.MutableDataString</h4>
-      <h4>@FormData.FormValues.Title</h4>
-      @foreach (var prop in FormData.FormValues.GetType().GetProperties(0))
-      {
-        <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-          <p>@prop.Name:</p>
-          <h5>@prop.GetValue(FormData.FormValues).ToString()</h5>
-        </div>
-      }
+<div id="MintNftPage" class="container-fluid">
+  <div class="d-flex justify-content-center">
+    <div class="bg-success text-center flex-column p-2 m-2 justify-content-center">
+      <!--!-->
+      <!--!--><p> Total NfT Count</p>
+      <h3>6</h3><!--!-->
     </div>
-  }
+
+    @if (@FormData != null)
+    {
+      <div class="form-row mb-3 p-2">
+        <h3>Confirm Data</h3>
+        <h4>@MutableDataString</h4>
+        <h4>@FormData.Title</h4>
+        @foreach (var prop in FormData.GetType().GetProperties())
+        {
+          <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
+            <p>@prop.Name:</p>
+            <h5>@prop.GetValue(FormData).ToString()</h5>
+          </div>
+        }
+      </div>
+    }
+  </div>
   <NftTypeListComponent />
   <nt.Client.Features.WebThree.Components.NftTemplates.DocumentComponent NftId="@CurrentNftTemplate.NftId" />
 </div>

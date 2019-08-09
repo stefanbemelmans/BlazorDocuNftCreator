@@ -8,16 +8,14 @@
 
   public class PurchaseOrderTemplateModel : BaseComponent
   {
-    [Parameter]
-    public PurchaseOrderData FormData { get; set; } = new PurchaseOrderData();
+    public PurchaseOrderTemplateModel()
+    {
+      //FormData = new PurchaseOrderData();
+    }
     
     public string MutableDataString { get; set; }
 
-    public PurchaseOrderTemplateModel()
-    {
-      FormData.Title = "Purchase Order";
-    }
-
+    public PurchaseOrderData FormData = new PurchaseOrderData();
     public async void SendDataToState()
     {
       ConsoleData();
@@ -27,10 +25,6 @@
         MutableDataString = MutableDataString
       });
 
-      WebThreeState.CollectedFormValues.FormValues = response.CollectedFormValues.FormValues;
-      WebThreeState.CollectedFormValues.MutableDataString = response.CollectedFormValues.MutableDataString;
-
-     
     }
 
     public void ConsoleData()
@@ -42,4 +36,29 @@
       }
     }
   }
+  public class PurchaseOrderData : ImmutableObjectBase
+  {
+    public string Approver { get; set; }
+
+    public DateTime DeliveryDate { get; set; } = DateTime.Now;
+
+    public string Department { get; set; }
+
+    public string Item_Code { get; set; }
+
+    public int Item_Discount { get; set; }
+
+    public string Item_Name { get; set; }
+
+    public string Item_Price { get; set; }
+
+    public int Item_Qty { get; set; }
+
+    public int Item_Total { get; set; }
+
+    public string Notes { get; set; }
+
+    public string Requester { get; set; }
+  }
+
 }

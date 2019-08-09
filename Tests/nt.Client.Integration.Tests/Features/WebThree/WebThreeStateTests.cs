@@ -41,8 +41,8 @@
 
       WebThreeState SendFormDataResponse = await Mediator.Send(SendFormInfo);
 
-      SendFormDataResponse.CollectedFormValues.FormValues.Title.ShouldBe("TestFormTitle");
-      SendFormDataResponse.CollectedFormValues.MutableDataString.ShouldBe("Mutable Data Test Words");
+      SendFormDataResponse.ImmutableObject.Title.ShouldBe("TestFormTitle");
+      SendFormDataResponse.MutableDataString.ShouldBe("Mutable Data Test Words");
     }
 
     public void WebThreeState_Should_Exist()

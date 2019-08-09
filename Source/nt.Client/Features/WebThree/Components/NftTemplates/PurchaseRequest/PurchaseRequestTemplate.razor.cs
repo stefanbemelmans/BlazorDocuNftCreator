@@ -27,8 +27,8 @@
         MutableDataString = MutableDataString
       });
 
-      WebThreeState.CollectedFormValues.FormValues = response.CollectedFormValues.FormValues;
-      WebThreeState.CollectedFormValues.MutableDataString = response.CollectedFormValues.MutableDataString;
+      WebThreeState.ImmutableObject = response.ImmutableObject;
+      WebThreeState.MutableDataString = response.MutableDataString;
 
      
     }

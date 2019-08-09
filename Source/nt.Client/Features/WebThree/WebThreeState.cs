@@ -8,7 +8,8 @@
 
   internal partial class WebThreeState : State<WebThreeState>
   {
-    public FormDto CollectedFormValues { get; set; }
+    public ImmutableObjectBase ImmutableObject { get; set; }
+    public string MutableDataString { get; set; }
 
     public NftTemplate CurrentNftTemplate { get; set; }
 

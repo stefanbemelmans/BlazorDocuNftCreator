@@ -19,17 +19,14 @@
         CancellationToken aCancellationToken
         )
       {
-        ImmutableObjectBase formValues =  aAddFormDataToStateRequest.FormObjectValues;
+        ImmutableObjectBase formValues = aAddFormDataToStateRequest.FormObjectValues;
 
-        var formData = new FormDto()
-        {
-          FormValues = formValues,
-          MutableDataString = aAddFormDataToStateRequest.MutableDataString
+        WebThreeState.MutableDataString = aAddFormDataToStateRequest.MutableDataString;
+        WebThreeState.ImmutableObject = formValues;
 
-        };
-
-        WebThreeState.CollectedFormValues = formData;
+        
         return Task.FromResult(WebThreeState);
+
       }
     }
   }

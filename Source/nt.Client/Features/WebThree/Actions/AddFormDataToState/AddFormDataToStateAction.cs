@@ -1,6 +1,4 @@
-﻿ 
-
-namespace nt.Client.Features.WebThree.Actions.AddFormDataToState
+﻿namespace nt.Client.Features.WebThree.Actions.AddFormDataToState
 {
   using MediatR;
   using nt.Client.Features.WebThree.Components.NftTemplates;
