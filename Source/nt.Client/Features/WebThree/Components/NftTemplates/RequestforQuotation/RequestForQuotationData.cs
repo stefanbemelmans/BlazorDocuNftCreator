@@ -1,16 +1,9 @@
-﻿namespace nt.Client.Features.WebThree.Components.NftTemplates
+﻿namespace nt.Client.Features.WebThree.Components.NftTemplates.RequestForQuotation
 {
-  public class RequestForQuotationTemplate : TemplateBase
-  {
+  using nt.Client.Features.WebThree.Components.NftTemplates;
 
-    public RequestForQuotationTemplate()
-    {
-      NftId = 1;
-      Name = "Request For Quotation";
-      Symbol = "RFQ";
-      MintLimit = 5;
-      AttachedTokens = 0;
-    }
+  public class RequestForQuotationData : ImmutableObjectBase
+  {
     public string DeliveryTerms { get; set; }
     public string CustomClearance { get; set; }
     public string UNDPprefered { get; set; }
