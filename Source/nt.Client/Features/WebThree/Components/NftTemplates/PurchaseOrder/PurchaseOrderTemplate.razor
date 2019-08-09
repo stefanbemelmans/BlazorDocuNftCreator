@@ -8,6 +8,10 @@
       @*<DataAnnotationsValidator />
         <ValidationSummary />*@
       <div class="form-row mb-3 p-2">
+
+        @*@foreach(var propName in FormData.PoFormValueNames)
+          {}*@
+
         <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
           <label for="PoApprover" class="font-weight-bold">Approver</label>
           <input id="Approver" class="form-control" placeholder="Approver" type="text" @bind="@FormData.Approver" />
@@ -29,40 +33,40 @@
           <textarea id="Notes" type="text" class="form-control" @bind="@FormData.Notes" />
         </div>
       </div>
-        <h3>Item Information:</h3>
+      <h3>Item Information:</h3>
       <div class="row mb-3 p-2">
-          <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-            <label for="PoItem_Name" class="font-weight-bold">Item_Name</label>
-            <input id="Item_Name" type="text" class="form-control" @bind="@FormData.Item_Name" />
-          </div>
-          <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-            <label for="PoItem_Price" class="font-weight-bold">Item Price:</label>
-            <input id="Item_Price" type="text" class="form-control" @bind="@FormData.Item_Price" />
-          </div>
-          <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-            <label for="PoItem_Qty" class="font-weight-bold">Item Qty:</label>
-            <input id="Item_Qty" type="text" class="form-control" @bind="@FormData.Item_Qty" />
-          </div>
-          <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-            <label for="PoItem_Code" class="font-weight-bold">Item Code:</label>
-            <input id="Item_Code" type="text" class="form-control" @bind="@FormData.Item_Code" />
-          </div>
-          <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-            <label for="PoItem_Discount" class="font-weight-bold">Item_Discount:</label>
-            <input id="Item_Discount" type="text" class="form-control" @bind="@FormData.Item_Discount" />
-          </div>
-          <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-            <label for="PoItem_Label" class="font-weight-bold">Item Total:</label>
-            <input id="Item_Total" type="text" class="form-control" @bind=@FormData.Item_Total />
-          </div>
-          <div class="col-6 col-sm-5 col-lg-4 col-xl-3 text-center m-2">
-            <label for="AdditionalInformation" class="font-weight-bold">Additional Information:</label>
-            <textarea id="MutableData" type="text" class="form-control" @bind="@MutableDataString" />
-          </div>
+        <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
+          <label for="PoItem_Name" class="font-weight-bold">Item_Name</label>
+          <input id="Item_Name" type="text" class="form-control" @bind="@FormData.Item_Name" />
+        </div>
+        <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
+          <label for="PoItem_Price" class="font-weight-bold">Item Price:</label>
+          <input id="Item_Price" type="text" class="form-control" @bind="@FormData.Item_Price" />
+        </div>
+        <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
+          <label for="PoItem_Qty" class="font-weight-bold">Item Qty:</label>
+          <input id="Item_Qty" type="text" class="form-control" @bind="@FormData.Item_Qty" />
+        </div>
+        <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
+          <label for="PoItem_Code" class="font-weight-bold">Item Code:</label>
+          <input id="Item_Code" type="text" class="form-control" @bind="@FormData.Item_Code" />
+        </div>
+        <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
+          <label for="PoItem_Discount" class="font-weight-bold">Item_Discount:</label>
+          <input id="Item_Discount" type="text" class="form-control" @bind="@FormData.Item_Discount" />
+        </div>
+        <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
+          <label for="PoItem_Label" class="font-weight-bold">Item Total:</label>
+          <input id="Item_Total" type="text" class="form-control" @bind=@FormData.Item_Total />
+        </div>
+        <div class="col-6 col-sm-5 col-lg-4 col-xl-3 text-center m-2">
+          <label for="AdditionalInformation" class="font-weight-bold">Additional Information:</label>
+          <textarea id="MutableData" type="text" class="form-control" @bind="@MutableDataString" />
         </div>
       </div>
-      <button type="button" class="btn btn-primary" @onclick=@SendDataToState>
-        Console Values
-      </button>
     </div>
+    <button type="button" class="btn btn-primary" @onclick=@SendDataToState>
+      Console Values
+    </button>
   </div>
+</div>

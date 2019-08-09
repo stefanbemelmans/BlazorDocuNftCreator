@@ -1,19 +1,11 @@
-﻿namespace nt.Client.Features.WebThree.Components.NftTemplates
+﻿namespace nt.Client.Features.WebThree.Components.NftTemplates.PurchaseRequest
 {
+  using nt.Client.Features.WebThree.Components.NftTemplates;
   using System;
   using System.Collections.Generic;
 
-  public class PurchaseRequestTemplate : TemplateBase
+  public class PurchaseRequestData : ImmutableObjectBase
   {
-    public PurchaseRequestTemplate()
-    {
-      NftId = 4;
-      Name = "Purchase Request";
-      Symbol = "PRQ";
-      MintLimit = 5;
-      AttachedTokens = 0;
-    }
-
     public int StockNumber { get; set; }
     public string Description { get; set; }
     public int Qty { get; set; }
@@ -29,8 +21,5 @@
     public string Phone { get; set; }
     public DateTime DateNeeded { get; set; }
     public string ShipVia { get; set; }
-  };
+  }
 }
-
-
-
