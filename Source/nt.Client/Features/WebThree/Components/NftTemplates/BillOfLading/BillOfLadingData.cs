@@ -5,22 +5,6 @@
 
   public class BillOfLadingData : ImmutableObjectBase
   {
-    public List<string> BolFormValueNames = new List<string>()
-    {
-      "Lading",
-      "Order",
-      "PO",
-      "Date",
-      "Carrier",
-      "Shipper",
-      "Consignee",
-      "Instructions",
-      "ItemCode",
-      "Quantity",
-      "Weight",
-      "Details"
-    };
-   
     public string Carrier { get; set; }
     public string Consignee { get; set; }
     public DateTime Date { get; set; }

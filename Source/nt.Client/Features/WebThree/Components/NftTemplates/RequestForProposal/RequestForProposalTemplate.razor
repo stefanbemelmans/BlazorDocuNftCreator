@@ -1,11 +1,11 @@
-﻿@inherits RequestForProposalTemplateModel
+﻿@*@inherits RequestForProposalTemplateModel
 <div id="RequestForProposalTemplatComponent" class="container-fluid justify-content-around row align-items-center pt-3">
 
   <div class="bg-info">
     <h3>@FormData.Title</h3>
     <div class="form-group">
-      @*<DataAnnotationsValidator />
-        <ValidationSummary />*@
+      <DataAnnotationsValidator />
+        <ValidationSummary />
       <div class="form-row mb-3 p-2">
         <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
           <label for="PoApprover" class="font-weight-bold">Approver</label>
@@ -65,4 +65,4 @@
   <button type="button" class="btn btn-primary" @onclick=@SendDataToState>
     Send Data To State and Console
   </button>
-</div>
+</div>*@
