@@ -1,4 +1,4 @@
-﻿@*@inherits RequestForProposalTemplateModel
+﻿@inherits RequestForProposalTemplateModel
 <div id="RequestForProposalTemplatComponent" class="container-fluid justify-content-around row align-items-center pt-3">
 
   <div class="bg-info">
@@ -8,53 +8,41 @@
         <ValidationSummary />
       <div class="form-row mb-3 p-2">
         <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-          <label for="PoApprover" class="font-weight-bold">Approver</label>
-          <input id="Approver" class="form-control" placeholder="Approver" type="text" @bind="@FormData.Carrier" />
+          <label for="AcceptanceCriteria" class="font-weight-bold">Acceptance Criteria:</label>
+          <input id="AcceptanceCriteria" class="form-control" placeholder="Approver" type="text" @bind="@FormData.AcceptanceCriteria" />
         </div>
         <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-          <label for="PoDepartment" class="font-weight-bold">Department:</label>
-          <input id="Department" type="text" class="form-control" @bind="@FormData.Consignee" />
+          <label for="PoAddressParcel" class="font-weight-bold">Address Parcel:</label>
+          <input id="AddressParcel" type="text" class="form-control" @bind="@FormData.AddressParcel" />
         </div>
         <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-          <label for="PoDeliverDate" class="font-weight-bold">Deliver Date</label>
-          <input id="DeliveryDate" type="text" class="form-control" @bind="@FormData.Date" />
+          <label for="PoBudget" class="font-weight-bold">Budget:</label>
+          <input id="Budget" type="text" class="form-control" @bind="@FormData.Budget" />
         </div>
         <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-          <label for="PoRequester" class="font-weight-bold">Requester:</label>
-          <input id="Requester" type="text" class="form-control" @bind="@FormData.Details" />
+          <label for="RfpCompanyNamer" class="font-weight-bold">Company Name:</label>
+          <input id="CompanyName" type="text" class="form-control" @bind="@FormData.CompanyName" />
         </div>
         <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-          <label for="PoNotes" class="font-weight-bold">Requester:Notes:</label>
-          <textarea id="Notes" type="text" class="form-control" @bind="@FormData.Instructions" />
+          <label for="RfpContactEmail" class="font-weight-bold">Contact Email:</label>
+          <textarea id="ContactEmail" type="email" class="form-control" @bind="@FormData.ContactEmail" />
         </div>
       </div>
       <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-        <label for="PoItem_Name" class="font-weight-bold">Item_Name</label>
-        <input id="Item_Name" type="text" class="form-control" @bind="@FormData.ItemCode" />
+        <label for="RfpDeadline" class="font-weight-bold">Deadline:</label>
+        <input id="Deadline" type="text" class="form-control" @bind="@FormData.Deadline" />
       </div>
       <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-        <label for="PoItem_Price" class="font-weight-bold">Item Price:</label>
-        <input id="Item_Price" type="text" class="form-control" @bind="@FormData.Lading" />
+        <label for="RfpEquivalentSubstitution" class="font-weight-bold">Equivalent Substitution:</label>
+        <input id="EquivalentSubstitution" type="text" class="form-control" @bind="@FormData.EquivalentSubstitution" />
       </div>
       <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-        <label for="PoItem_Qty" class="font-weight-bold">Item Qty:</label>
-        <input id="Item_Qty" type="text" class="form-control" @bind="@FormData.Order" />
+        <label for="RfpModeOfTransport" class="font-weight-bold">Mode Of Transport:</label>
+        <input id="ModeOfTransport" type="text" class="form-control" @bind="@FormData.ModeOfTransport" />
       </div>
       <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-        <label for="PoItem_Code" class="font-weight-bold">Item Code:</label>
-        <input id="Item_Code" type="text" class="form-control" @bind="@FormData.PO" />
-      </div>
-      <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-        <label for="PoItem_Discount" class="font-weight-bold">Item_Discount:</label>
-        <input id="Item_Discount" type="text" class="form-control" @bind="@FormData.Quantity" />
-      </div>
-      <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-        <label for="PoItem_Label" class="font-weight-bold">Item Total:</label>
-        <input id="Item_Total" type="text" class="form-control" @bind=@FormData.Shipper />
-      </div>
-      <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2">
-        <label for="PoItem_Label" class="font-weight-bold">Item Total:</label>
-        <input id="Item_Total" type="text" class="form-control" @bind=@FormData.Weight />
+        <label for="RfpRequirement" class="font-weight-bold">Requirement:</label>
+        <input id="Requirement" type="text" class="form-control" @bind="@FormData.Requirement" />
       </div>
       <div class="col-6 col-sm-5 col-lg-4 col-xl-3 text-center m-2">
         <label for="AdditionalInformation" class="font-weight-bold">Additional Information:</label>
@@ -65,4 +53,4 @@
   <button type="button" class="btn btn-primary" @onclick=@SendDataToState>
     Send Data To State and Console
   </button>
-</div>*@
+</div>
