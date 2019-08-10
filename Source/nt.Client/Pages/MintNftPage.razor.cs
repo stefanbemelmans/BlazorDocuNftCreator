@@ -4,6 +4,8 @@
   using nt.Client.Features.WebThree;
   using nt.Client.Features.WebThree.Components.NftTemplates;
   using nt.Shared.Features.WebThree;
+  using  nt.Client.Features.WebThree.Components;
+  using System;
 
   public class MintNftPageModel : BaseComponent
   {
@@ -30,6 +32,17 @@
     {
       get => WebThreeState.MutableDataString;
       set { }
+    }
+
+    public void MintNft()
+    {
+    
+        Console.WriteLine("Trying to Console...empty?");
+      Console.WriteLine($"Mutable Data String is: {MutableDataString}");
+        foreach (System.Reflection.PropertyInfo prop in FormData.GetType().GetProperties())
+        {
+          Console.WriteLine($"{prop.Name}: {prop.GetValue(FormData)}");
+        }
     }
   }
 }

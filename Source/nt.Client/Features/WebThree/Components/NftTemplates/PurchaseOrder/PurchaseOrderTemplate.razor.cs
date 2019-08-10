@@ -10,7 +10,7 @@
   {
     public PurchaseOrderTemplateModel()
     {
-      //FormData = new PurchaseOrderData();
+      FormData.Title = "Purchase Order";
     }
     
     public string MutableDataString { get; set; }
@@ -38,6 +38,7 @@
   }
   public class PurchaseOrderData : ImmutableObjectBase
   {
+    
     public string Approver { get; set; }
 
     public DateTime DeliveryDate { get; set; } = DateTime.Now;
