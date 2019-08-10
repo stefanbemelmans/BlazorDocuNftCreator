@@ -6,6 +6,8 @@
   using nt.Shared.Features.WebThree;
   using AnySerializer;
   using System;
+  using nt.Client.Features.WebThree.Actions.MintNft;
+  using nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder;
 
   public class MintNftPageModel : BaseComponent
   {
@@ -45,10 +47,31 @@
         {
           Console.WriteLine($"{prop.Name}: {prop.GetValue(FormData)}");
         }
-      byte[] serializedImmutableObject = Serializer.Serialize(FormData);
 
-      string serializedObjectAsBase64String = Convert.ToBase64String(serializedImmutableObject);
+      Type ObjectType = FormData.GetType();
 
+      ImmutableObjectBase formDataToMint = FormData;
+      Console.WriteLine($"trying new object type,{formDataToMint.GetType()}; NFTID: {CurrentNftTemplate.NftId}");
+      Console.WriteLine($"{ObjectType} is FormData's Type");
+
+
+      //PurchaseOrderData blah = formDataToMint;
+      foreach (System.Reflection.PropertyInfo prop in formDataToMint.GetType().GetProperties())
+      {
+        Console.WriteLine($"{prop.Name}: {prop.GetValue(formDataToMint)}");
+      }
+
+      //byte[] serializedImmutableObject = Serializer.Serialize(FormData);
+
+      //string serializedObjectAsBase64String = Convert.ToBase64String(serializedImmutableObject);
+
+      //Mediator.Send(new MintNftOfTypeAction()
+      //{
+      //  ImmutableDataString = serializedObjectAsBase64String,
+      //  MutableDataString = MutableDataString,
+      //  MintNftId = CurrentNftTemplate.NftId
+
+      //});
       
     }
   }

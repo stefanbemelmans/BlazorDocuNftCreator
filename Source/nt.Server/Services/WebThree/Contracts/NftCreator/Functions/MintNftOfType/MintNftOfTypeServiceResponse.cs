@@ -10,16 +10,7 @@
     // This is trying to capture the event Data
     // The Transaction Receipt is good for now as if succesful the new token will be visible in State/UI
 
-    //public string Operator { get; set; }
-
-    //public string From { get; set; }
-
-    //public string To { get; set; }
-
-    //public BigInteger Id { get; set; }
-
-    //public BigInteger Value { get; set; }
-
-   public TransactionReceipt mintingTransactionReceipt { get; set; }
+    public int TokenId { get; set; }
+    public string TransactionHash { get; set; }
   }
 }

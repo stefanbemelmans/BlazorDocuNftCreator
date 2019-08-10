@@ -7,6 +7,7 @@
   using nt.Server.Services.WebThree.Instance;
   using nt.Shared.Constants.ContractConstants.NftCreator;
   using nt.Shared.Features.WebThree.Contracts.NftCreator.MintNftOfType;
+  using System.Numerics;
   using System.Threading;
   using System.Threading.Tasks;
 
@@ -34,6 +35,7 @@
         ImmutableDataString = aMintNftOfTypeServiceRequest.ImmutableDataString,
         MutableDataString = aMintNftOfTypeServiceRequest.MutableDataString
       };
+
       Nethereum.Hex.HexTypes.HexBigInteger gasEstimate = await mintingHandler.EstimateGasAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aMintNftOfTypeFunctionMessage);
 
       aMintNftOfTypeFunctionMessage.Gas = gasEstimate.Value;
@@ -42,9 +44,11 @@
 
       System.Collections.Generic.List<EventLog<MintNftOutputEventDto>> MintNftOutput = mintingTransactionReceipt.DecodeAllEvents<MintNftOutputEventDto>();
 
+      int id = (int)MintNftOutput[0].Event.Id;
       return new MintNftOfTypeServiceResponse
       {
-        mintingTransactionReceipt = mintingTransactionReceipt
+        TransactionHash = mintingTransactionReceipt.TransactionHash,
+        TokenId = id
       };
     }
   }

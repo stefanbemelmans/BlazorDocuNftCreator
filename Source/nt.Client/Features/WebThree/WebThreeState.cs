@@ -35,6 +35,8 @@
     public uint TotalNftTypes { get; set; }
 
     public uint TotalTokenTypes { get; set; }
+    public string TransactionHash { get; set; }
+    public int NewTokenId { get; set; }
 
     public WebThreeState() { }
 

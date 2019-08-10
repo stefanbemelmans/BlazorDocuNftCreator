@@ -30,14 +30,15 @@
              CancellationToken aCancellationToken
            )
       {
-        Shared.Features.WebThree.Contracts.NftCreator.MintNftOfType.WebThreeState MintReceiptContainer = await HttpClient.SendJsonAsync<Shared.Features.WebThree.Contracts.NftCreator.MintNftOfType.WebThreeState>(HttpMethod.Get, MintNftOfTypeClientAction.Route, new MintNftOfTypeClientAction()
+        MintNftOfTypeSharedResponse MintingResponse = await HttpClient.SendJsonAsync<MintNftOfTypeSharedResponse>(HttpMethod.Get, MintNftOfTypeSharedRequest.Route, new MintNftOfTypeAction()
         {
-          MintNftId = (int)aMintNftOfClientRequest.MintNftId,
+          MintNftId = aMintNftOfClientRequest.MintNftId,
           ImmutableDataString = aMintNftOfClientRequest.ImmutableDataString,
           MutableDataString = aMintNftOfClientRequest.MutableDataString
         });
 
-        WebThreeState.MintingTransactionReceipt = MintReceiptContainer.MintingTransactionReceipt;
+        WebThreeState.TransactionHash = MintingResponse.TransactionHash;
+        WebThreeState.NewTokenId = MintingResponse.TokenId;
 
         return WebThreeState;
       }
