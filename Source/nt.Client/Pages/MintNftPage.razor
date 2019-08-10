@@ -2,7 +2,7 @@
 @layout MintNftPageLayout;
 @inherits MintNftPageModel
 
-<div id="MintNftPage" class="container-fluid">
+<div id="MintNftPage" class="container-fluid text-center">
   <div class="d-flex justify-content-center">
     <div class="bg-success text-center flex-column p-2 m-2 justify-content-center">
       <!--!-->
@@ -13,7 +13,7 @@
   <NftTypeListComponent />
   @if (FormData != null)
   {
-  <button type="button" class="btn btn-danger btn-lg" @onclick=@MintNft>
+  <button type="button" class="btn btn-danger btn-lg mt-2 shadow" @onclick=@MintNft>
    Mint The Bastid!
   </button>
   }

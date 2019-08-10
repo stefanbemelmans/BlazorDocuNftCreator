@@ -4,7 +4,7 @@
   using nt.Client.Features.WebThree;
   using nt.Client.Features.WebThree.Components.NftTemplates;
   using nt.Shared.Features.WebThree;
-  using  nt.Client.Features.WebThree.Components;
+  using AnySerializer;
   using System;
 
   public class MintNftPageModel : BaseComponent
@@ -34,15 +34,22 @@
       set { }
     }
 
+    public bool IsMinting { get; set; } = false;
+
     public void MintNft()
     {
-    
+      IsMinting = true;
         Console.WriteLine("Trying to Console...empty?");
       Console.WriteLine($"Mutable Data String is: {MutableDataString}");
         foreach (System.Reflection.PropertyInfo prop in FormData.GetType().GetProperties())
         {
           Console.WriteLine($"{prop.Name}: {prop.GetValue(FormData)}");
         }
+      byte[] serializedImmutableObject = Serializer.Serialize(FormData);
+
+      string serializedObjectAsBase64String = Convert.ToBase64String(serializedImmutableObject);
+
+      
     }
   }
 }
