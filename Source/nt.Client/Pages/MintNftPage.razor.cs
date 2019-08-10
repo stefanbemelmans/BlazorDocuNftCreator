@@ -20,8 +20,16 @@
       set { }
     }
 
-    public ImmutableObjectBase FormData => WebThreeState.ImmutableObject;
+    public ImmutableObjectBase FormData
+    {
+      get => WebThreeState.ImmutableObject;
+      set { }
+    }
 
-    public string MutableDataString => WebThreeState.MutableDataString;
+    public string MutableDataString
+    {
+      get => WebThreeState.MutableDataString;
+      set { }
+    }
   }
 }
