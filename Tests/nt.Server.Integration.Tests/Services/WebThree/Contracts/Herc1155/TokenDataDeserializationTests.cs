@@ -1,20 +1,17 @@
 ﻿namespace nt.Server.Integration.Tests.Services.WebThree.Contracts.Herc1155
 {
-  using System;
-  using MediatR;
-  using AnySerializer;
-  using Microsoft.Extensions.DependencyInjection;
-  using Shouldly;
-  using nt.Server.Services.WebThree.Contracts.Herc1155.Functions;
-  using System.Threading.Tasks;
-  using nt.Shared.Constants.AccountAddresses;
-  using nt.Server.Services.WebThree.Contracts.Herc1155.ContractInstance;
-  using nt.Server.Services.WebThree.Instance;
-  using Nethereum.Contracts;
-  using Nethereum.RPC.Eth.DTOs;
-using nt.Server.Integration.Tests.Services.WebThree.Contracts.NftCreator;
+    using System;
+    using AnySerializer;
+    using Microsoft.Extensions.DependencyInjection;
+    using Shouldly;
+    using System.Threading.Tasks;
+    using nt.Shared.Constants.AccountAddresses;
+    using nt.Server.Services.WebThree.Contracts.Herc1155.ContractInstance;
+    using Nethereum.Contracts;
+    using Nethereum.RPC.Eth.DTOs;
+    using nt.Server.Integration.Tests.Services.WebThree.Contracts.NftCreator;
 
-class TokenDataDeserializationTests
+    class TokenDataDeserializationTests
   {
     public TokenDataDeserializationTests(TestFixture aTestFixture)
     {

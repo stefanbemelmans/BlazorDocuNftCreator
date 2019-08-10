@@ -4,12 +4,14 @@
   using MediatR;
   using nt.Shared.Features.WebThree.Contracts.NftCreator.MintNftOfType;
 
-  public class MintNftOfTypeSharedRequest : BaseRequest, IRequest<MintNftOfTypeSharedResponse>
+  public class MintNftOfTypeClientAction : BaseRequest, IRequest<WebThreeState>
   {
     public const string Route = "api/mintNftOfType";
 
     public static string RouteFactory(int aId) => $"api/mintNftOfType?MintNftType={aId}";
     public int MintNftId { get; set; }
+    public string ImmutableDataString { get; set; }
+    public string MutableDataString { get; set; }
   }
 
 }

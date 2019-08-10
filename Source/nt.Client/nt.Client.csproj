@@ -26,7 +26,6 @@
   
 
   <ItemGroup>
-    <Folder Include="Features\WebThree\Actions\NewFolder\" />
     <Folder Include="Properties\" />
     <None Include="wwwroot\images\certificate.png" />
     <None Include="wwwroot\images\herc.png" />

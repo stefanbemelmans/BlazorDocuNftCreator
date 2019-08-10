@@ -1,9 +1,11 @@
 ﻿namespace nt.Client.Features.WebThree.Actions.GetAllOwnedTokens
 {
-  using MediatR;
+    using MediatR;
+    using nt.Shared.Constants.AccountAddresses;
+    using nt.Shared.Features.Base;
 
-  public class GetAllOwnedTokensAction : IRequest<WebThreeState>
-  {
-    public string TokenOwner { get; set; }
-  }
+    public class GetAllOwnedTokensAction : BaseRequest, IRequest<WebThreeState>
+    {
+        public const string TokenOwner = TestEthAccounts.TestEthAccountAddress;
+    }
 }

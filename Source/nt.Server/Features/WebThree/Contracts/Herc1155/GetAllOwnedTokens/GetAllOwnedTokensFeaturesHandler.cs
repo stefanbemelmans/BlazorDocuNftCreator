@@ -1,8 +1,8 @@
-﻿namespace nt.Server.Features.WebThree.Contracts.NftCreator.GetAllOwnedTokens
+﻿namespace nt.Server.Features.WebThree.Contracts.Herc1155.GetAllOwnedTokens
 {
   using MediatR;
-  using nt.Shared.Features.WebThree.Contracts.Herc1155;
-  using nt.Server.Services.WebThree.Contracts.Herc1155.Functions;
+  using nt.Shared.Features.WebThree.Contracts.Herc1155.GetAllOwnedTokens;
+  using nt.Server.Services.WebThree.Contracts.Herc1155.GetAllOwnedTokens;
   using System.Threading;
   using System.Threading.Tasks;
   using nt.Shared.Constants.AccountAddresses;
@@ -26,7 +26,7 @@
 
       GetAllOwnedTokensServiceResponse response = await Mediator.Send(aNftRequest);
 
-      return new GetAllOwnedTokensSharedResponse
+      return new GetAllOwnedTokensSharedResponse()
       {
         TokenIdList = response.TokenIdList
       };

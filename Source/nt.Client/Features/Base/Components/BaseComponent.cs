@@ -22,6 +22,6 @@
     internal CounterState CounterState => GetState<CounterState>();
     internal EventStreamState EventStreamState => GetState<EventStreamState>();
     internal WeatherForecastsState WeatherForecastsState => GetState<WeatherForecastsState>();
-    internal WebThreeState NftState => GetState<WebThreeState>();
+    internal WebThreeState WebThreeState => GetState<WebThreeState>();
   }
 }

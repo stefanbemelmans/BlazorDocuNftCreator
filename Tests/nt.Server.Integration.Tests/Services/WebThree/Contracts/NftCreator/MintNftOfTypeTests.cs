@@ -60,8 +60,8 @@
       var aMintNftOfTypeFunctionMessage = new MintNftOfTypeFunctionInput
       {
         Type = 4,
-        MutableData = "The Third Minted NFT!Take 3",
-        ImmutableData = "This Is MintingTest 3"
+        MutableDataString = "The Third Minted NFT!Take 3",
+        ImmutableDataString = "This Is MintingTest 3"
       };
 
       Nethereum.Hex.HexTypes.HexBigInteger gasEstimate = await MintNftOfTypeFunctionHandler.EstimateGasAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aMintNftOfTypeFunctionMessage);
