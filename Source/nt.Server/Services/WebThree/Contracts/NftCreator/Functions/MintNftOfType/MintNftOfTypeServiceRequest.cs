@@ -7,9 +7,9 @@
     {
     public int MintNftId { get; set; }
 
-    public List<string> ImmutableData { get; set; }
+    public string ImmutableDataString { get; set; }
 
-    public List<string> MutableData { get; set; }
+    public string MutableDataString { get; set; }
     
     }
 }

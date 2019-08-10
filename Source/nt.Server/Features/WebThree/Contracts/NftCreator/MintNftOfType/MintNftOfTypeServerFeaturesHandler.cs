@@ -6,7 +6,7 @@
   using System.Threading;
   using System.Threading.Tasks;
 
-  public class MintNftOfTypeServerFeaturesHandler : IRequestHandler<MintNftOfTypeSharedRequest, MintNftOfTypeSharedResponse>
+  public class MintNftOfTypeServerFeaturesHandler : IRequestHandler<MintNftOfTypeClientAction, WebThreeState>
   {
     IMediator Mediator { get; set; }
 
@@ -15,19 +15,24 @@
       Mediator = aMediator;
     }
 
-    public async Task<MintNftOfTypeSharedResponse> Handle
+    public async Task<WebThreeState> Handle
     (
-      MintNftOfTypeSharedRequest aMintNftOfTypeSharedRequest,
+      MintNftOfTypeClientAction aMintNftOfTypeSharedRequest,
       CancellationToken aCancellationToken
     )
     {
-      var aMintNftRequest = new MintNftOfTypeServiceRequest { MintNftId = aMintNftOfTypeSharedRequest.MintNftId };
+      var aMintNftRequest = new MintNftOfTypeServiceRequest {
+        MintNftId = aMintNftOfTypeSharedRequest.MintNftId,
+        ImmutableDataString = aMintNftOfTypeSharedRequest.ImmutableDataString,
+        MutableDataString = aMintNftOfTypeSharedRequest.MutableDataString
+
+      };
 
       MintNftOfTypeServiceResponse response = await Mediator.Send(aMintNftRequest);
 
-      return new MintNftOfTypeSharedResponse
+      return new WebThreeState
       {
-       
+        MintingTransactionReceipt = response.mintingTransactionReceipt
       };
     }
   }

@@ -1,5 +1,5 @@
 ﻿namespace nt.Server.Services.WebThree.Contracts.Herc1155.GetAllOwnedTokens
-{ 
+{
   using System.Threading.Tasks;
   using System.Threading;
   using Nethereum.Contracts;
@@ -7,8 +7,7 @@
   using MediatR;
   using nt.Shared.Constants.AccountAddresses;
   using System.Collections.Generic;
-  using Nethereum.Contracts.ContractHandlers;
-  using nt.Shared.Features.WebThree.Contracts.Herc1155;
+  using nt.Shared.Features.WebThree.Contracts.Herc1155.GetAllOwnedTokens;
 
   public class GetAllOwnedTokensServerServiceHandler : IRequestHandler<GetAllOwnedTokensServiceRequest, GetAllOwnedTokensServiceResponse>
   {
@@ -25,7 +24,7 @@
       List<uint> response = await aGetAllOwnedTokensFunction.CallAsync<List<uint>>(
         new GetAllOwnedTokensFunctionInput
         {
-          TokenOwner = TestEthAccounts.TestEthAccountAddress
+          TokenOwner = TestEthAccounts.TestEthAccountAddress,
         }
         );
 

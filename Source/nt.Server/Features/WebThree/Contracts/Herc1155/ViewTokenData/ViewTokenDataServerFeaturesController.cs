@@ -4,8 +4,9 @@
   using nt.Server.Features.Base;
   using Microsoft.AspNetCore.Mvc;
   using nt.Shared.Features.WebThree.Contracts.Herc1155;
+    using nt.Shared.Features.WebThree.Contracts.Herc1155.ViewTokenData;
 
-[Route(ViewTokenDataSharedRequest.Route)]
+    [Route(ViewTokenDataSharedRequest.Route)]
 public class ViewTokenDataServerFeaturesController : BaseController<ViewTokenDataSharedRequest, ViewTokenDataSharedResponse>
   {
     public async Task<IActionResult> Get(ViewTokenDataSharedRequest aRequest) => await Send(aRequest);

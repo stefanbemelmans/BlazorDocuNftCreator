@@ -1,4 +1,4 @@
-namespace nt.Shared.Features.WebThree.Contracts.Herc1155
+namespace nt.Shared.Features.WebThree.Contracts.Herc1155.GetAllOwnedTokens
 {
   using nt.Shared.Features.Base;
   using MediatR;
@@ -7,8 +7,6 @@ public class GetAllOwnedTokensSharedRequest : BaseRequest, IRequest<GetAllOwnedT
   {
     public const string Route = "api/getAllOwnedTokens";
 
-    public static string RouteFactory(string aId) => $"api/getAllOwnedTokens?TokenOwner={aId}";
-    public string TokenOwner { get; set; }
   }
 
 }

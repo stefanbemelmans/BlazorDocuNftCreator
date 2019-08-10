@@ -12,10 +12,10 @@
     public int Type { get; set; }
 
     [Parameter("string", "data", 2)]
-    public string ImmutableData { get; set; }
+    public string ImmutableDataString { get; set; }
 
     [Parameter("string", "mutabledata", 3)]
-    public string MutableData { get; set; }
+    public string MutableDataString { get; set; }
 
   }
 }

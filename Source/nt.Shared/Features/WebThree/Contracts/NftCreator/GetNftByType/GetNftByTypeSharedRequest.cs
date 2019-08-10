@@ -7,7 +7,7 @@ public class GetNftByTypeSharedRequest : BaseRequest, IRequest<GetNftByTypeShare
   {
     public const string Route = "api/getNftByType";
 
-    public static string RouteFactory(uint aId) => $"api/getNftByType?GetNftType={aId}";
+    public static string RouteFactory(int aId) => $"api/getNftByType?GetNftType={aId}";
     public uint GetNftType { get; set; }
   }
 

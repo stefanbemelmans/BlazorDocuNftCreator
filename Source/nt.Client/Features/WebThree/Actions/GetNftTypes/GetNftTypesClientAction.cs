@@ -1,8 +1,10 @@
-﻿namespace nt.Client.Features.WebThree
+﻿namespace nt.Client.Features.WebThree.Actions
 {
-  using MediatR;
-  public class GetNftTypesClientFeaturesAction: IRequest<WebThreeState>
-  {
-   
-  }
+    using MediatR;
+    using nt.Shared.Features.Base;
+
+    public class GetNftTypesClientFeaturesAction : BaseRequest, IRequest<WebThreeState>
+    {
+
+    }
 }

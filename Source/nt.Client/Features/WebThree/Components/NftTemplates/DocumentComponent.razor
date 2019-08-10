@@ -1,0 +1,28 @@
+﻿@inherits DocumentComponentModel
+
+<div>
+  @switch (NftId)
+  {
+
+    case 5:
+      <nt.Client.Features.WebThree.Components.NftTemplates.PurchaseRequest.PurchaseRequestTemplate />;
+      break;
+
+    case 4:
+      <nt.Client.Features.WebThree.Components.NftTemplates.BillOfLading.BillOfLadingTemplate />;
+      break;
+
+    case 3:
+      <nt.Client.Features.WebThree.Components.NftTemplates.RequestForProposal.RequestForProposalTemplate />;
+      break;
+
+    case 2:
+      <nt.Client.Features.WebThree.Components.NftTemplates.RequestForQuotation.RequestForQuotationTemplate/>;
+      break;
+
+    default:
+  <nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder.PurchaseOrderTemplate />;
+      break;
+  } 
+</div>
+
