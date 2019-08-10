@@ -39,4 +39,26 @@
       WebThreeState.MutableDataString = response.MutableDataString;
     }
   }
+
+  public class RequestForQuotationData : ImmutableObjectBase
+  {
+    public string DeliveryTerms { get; set; }
+    public string CustomClearance { get; set; }
+    public string UndPreferred { get; set; }
+    public DateTime LatestExpectedDeliveryData { get; set; } = DateTime.Now;
+    public string DeliverySchedule { get; set; }
+    public string ModeOfTransport { get; set; }
+    public string AfterSalesService { get; set; }
+    public DateTime Deadline { get; set; } = DateTime.Now;  
+    public string DocumentationLanguage { get; set; }
+    public string PeriodOfValidity { get; set; }
+    public string PartialQuotes { get; set; }
+    public string PaymentTerms { get; set; }
+    public string Awardees { get; set; }
+    public string ContractType { get; set; }
+    public string CancelationPolicy { get; set; }
+    public string ConditionsOfRelease { get; set; }
+    public string Contract { get; set; }
+    public string EquivalentSubstitution { get; set; }
+  }
 }
