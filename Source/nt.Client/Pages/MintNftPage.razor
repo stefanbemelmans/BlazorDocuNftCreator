@@ -2,21 +2,44 @@
 @layout MintNftPageLayout;
 @inherits MintNftPageModel
 
-<div id="MintNftPage" class="container-fluid text-center">
-  <div class="d-flex justify-content-center">
-    <div class="bg-success text-center flex-column p-2 m-2 justify-content-center">
-      <!--!-->
-      <!--!--><p> Total NfT Count</p>
-      <h3>@TotalNfts</h3><!--!-->
+  <div id="MintNftPage" class="container-fluid text-center">
+    <div class="d-flex justify-content-center">
+      <div class="bg-success text-center flex-column p-2 m-2 justify-content-center">
+        <!--!-->
+        <!--!--><p> Total NfT Count</p>
+        <h3>@TotalNfts</h3><!--!-->
+      </div>
     </div>
+    <NftTypeListComponent />
+   
+      @if(IsMinting)
+      {
+        <h3>Minting Your Nft! This shouldn't take long</h3>
+        <div class="spinner-border">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <button type="button" @onclick="@ToggleHasMinted">Hit it</button>
+
+      }
+      @if(HasMinted)
+      {
+        <div class="p-2 m-2 bg-info text-center">
+          <h4>Check it out on EtherScan</h4>
+         @* <a href="https://rinkeby.etherscan.io/tx/?{TransactionHash}">@TransactionHash</a>*@
+          Your New Nft ID is @NewTokenId
+          <button type="button" @onclick="@ToggleHasMinted">ToggleHasMinted</button>
+          <button type="button" @onclick="@ToggleIsMinting">ToggleIsMinting</button>
+        </div>
+
+      }
+      @if(ShowMintingButton & FormData != null)
+      {
+      <button type="button" class="btn btn-danger btn-lg mt-2 shadow" @onclick=@MintNft>
+        Mint The Bastid!
+      </button>
+      }
+    @if(!HasMinted){
+    <nt.Client.Features.WebThree.Components.FormConfirmationComponent FormData="@FormData" MutableDataString="@MutableDataString" />
+    <nt.Client.Features.WebThree.Components.NftTemplates.DocumentComponent NftId="@CurrentNftTemplate.NftId" />
+    }
   </div>
-  <NftTypeListComponent />
-  @if (FormData != null)
-  {
-  <button type="button" class="btn btn-danger btn-lg mt-2 shadow" @onclick=@MintNft>
-   Mint The Bastid!
-  </button>
-  }
-  <nt.Client.Features.WebThree.Components.FormConfirmationComponent FormData="@FormData" MutableDataString="@MutableDataString" />
-  <nt.Client.Features.WebThree.Components.NftTemplates.DocumentComponent NftId="@CurrentNftTemplate.NftId" />
-</div>

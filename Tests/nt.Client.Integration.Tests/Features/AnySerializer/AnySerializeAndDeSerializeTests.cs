@@ -5,6 +5,7 @@
   using Shouldly;
   using global::AnySerializer;
   using nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder;
+  using nt.Client.Features.WebThree.Components.NftTemplates;
 
   class NewSerializeAndDeSerializeTests
   {
@@ -45,12 +46,21 @@
 
       PurchaseOrderData restoredFromBase64String = Serializer.Deserialize<PurchaseOrderData>(serializedObjectBase64StringBackToByteArray, options);
 
+      ImmutableObjectBase immObjRestored = Serializer.Deserialize<ImmutableObjectBase>(serializedObjectBase64StringBackToByteArray, options);
       restoredFromBase64String.ShouldBeOfType<PurchaseOrderData>();
 
       //restoredFromBase64String.MutableDataString.ShouldBe(TestObject.MutableDataString);
       restoredFromBase64String.Item_Price.ShouldBe(TestObject.Item_Price);
       restoredFromBase64String.Approver.ShouldBe(TestObject.Approver);
 
+      //System.Reflection.PropertyInfo[] proplist = immObjRestored.GetType().GetProperties();
+      //foreach(System.Reflection.PropertyInfo prop in proplist)
+      //{
+      //  TestObject.GetType
+      //  prop.GetValue(immObjRestored).ShouldBe(TestObject.[prop.Name]);
+      //}
+      
+      //immObjRestored.ShouldBe(TestObject);
     }
 
     
