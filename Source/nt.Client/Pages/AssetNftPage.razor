@@ -55,7 +55,6 @@
         <h4>Balance: @CurrentTokenData.Balance</h4>
       </div>
     </div>
-  }
     @*@if (TokentNft.NftId == 2)
     {
 
@@ -72,7 +71,7 @@
         <h5 class="bg-light">@CurrentTokenData.ImmDataObj.Title</h5>
       </div>
     }*@
-    @*@if (TokentNft.NftId == 5)
+    @if (CurrentTokenData.TemplateData.NftId == 5)
     {
 
       <div class="row m-2 p-2 bg-primary">
@@ -99,7 +98,8 @@
         <h5 class="bg-light">@CurrentTokenData.Data</h5>
       </div>
     }
-    @if (CurrentTokenData.MutableData != null)
+  }
+    @*@if (CurrentTokenData.MutableData != null)
     {
       <div class="col text-center">
         <h4>Immutable Data:</h4>
