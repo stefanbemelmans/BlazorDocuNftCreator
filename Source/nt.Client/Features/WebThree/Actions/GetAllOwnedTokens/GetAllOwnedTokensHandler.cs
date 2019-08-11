@@ -6,6 +6,7 @@
   using nt.Client.Features.Base;
   using nt.Client.Features.WebThree.Actions.GetAllOwnedTokens;
   using nt.Client.Features.WebThree.Components.NftTemplates;
+  using nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder;
   using nt.Shared.Features.WebThree;
   using nt.Shared.Features.WebThree.Contracts.Herc1155.BalanceOf;
   using nt.Shared.Features.WebThree.Contracts.Herc1155.GetAllOwnedTokens;
@@ -72,7 +73,7 @@
         WebThreeState.OwnedTokenIdList = aTokenList.TokenIdList;
         WebThreeState.CurrentTokenData = TokenDataList[0];
         WebThreeState.CurrentTokenId = TokenDataList[0].TokenId;
-        WebThreeState.CurrentTokenNftType = TokenDataList[0].TemplateData.NftId;
+        WebThreeState.CurrentTokenNftType = WebThreeState.CurrentTokenData.TemplateData.NftId;
         return WebThreeState;
       }
 
@@ -85,6 +86,17 @@
           ImmutableData aDeserializedObject = Serializer.Deserialize<ImmutableData>(serializedImmutableData, options); // options == 0
 
           aOwnedToken.ImmDataObj = aDeserializedObject;
+
+          // Add to StateList
+          TokenDataList.Add(aOwnedToken);
+        }
+        if (aToken == 6)
+        {
+          byte[] serializedImmutableData = Convert.FromBase64String(aDataString);
+
+          PurchaseOrderData aDeserializedObject = Serializer.Deserialize<PurchaseOrderData>(serializedImmutableData, options); // options == 0
+
+          aOwnedToken.PurchaseOrderData = aDeserializedObject;
 
           // Add to StateList
           TokenDataList.Add(aOwnedToken);

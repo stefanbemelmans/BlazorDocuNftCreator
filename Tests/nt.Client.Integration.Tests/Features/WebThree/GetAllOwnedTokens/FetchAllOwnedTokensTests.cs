@@ -9,6 +9,7 @@
   using nt.Client.Features.WebThree.Actions;
   using nt.Client.Features.WebThree.Actions.GetAllOwnedTokens;
   using nt.Client.Features.WebThree.Components.NftTemplates;
+  using nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder;
   using nt.Client.Integration.Tests.Infrastructure;
   using nt.Shared.Features.WebThree;
   using nt.Shared.Features.WebThree.Contracts.Herc1155.BalanceOf;
@@ -45,66 +46,6 @@
 
     //List<NftTemplate> TemplateDataList => WebThreeState.TemplateDataList;
 
-    public async Task ShouldBuildTokenList()
-    {
-      WebThreeState webThree = await Mediator.Send(new GetNftTypesClientFeaturesAction());
-
-      GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(GetAllOwnedTokensSharedRequest.Route);
-      aTokenList.TokenIdList.Count.ShouldBeGreaterThan(3);
-      aTokenList.TokenIdList.Contains(3).ShouldBe(true);
-      aTokenList.TokenIdList.Contains(4).ShouldBe(true);
-      aTokenList.TokenIdList.Contains(5).ShouldBe(true);
-
-      foreach (uint token in aTokenList.TokenIdList)
-      {
-        // TokenId
-        var ownedToken = new TokenBase() { TokenId = token };
-
-        // TokenNFtTypeId
-        string getNftTypeUri = GetTokenNftTypeSharedRequest.RouteFactory((int)token);
-
-        WebThreeState NftTypeContainer = await Mediator.Send(new FetchTokenNftTypeAction() { TokenId = (int)ownedToken.TokenId });
-
-        // TokenNftTypeData Should already have the data in state so no need to make a service call
-        NftTemplate nftType = webThree.TemplateDataList.Find(nft => nft.NftId == NftTypeContainer.CurrentTokenNftType);
-
-        ownedToken.TemplateData = nftType;
-
-        // Token Balance
-
-        BalanceOfSharedResponse BalanceContainer = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(BalanceOfSharedRequest.RouteFactory((int)token));
-
-        ownedToken.Balance = BalanceContainer.Balance;
-
-        // Token ImmutableData (Data)
-
-        ownedToken.TemplateData.ShouldBeOfType<NftTemplate>();
-
-        ViewTokenDataSharedResponse DataString = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(ViewTokenDataSharedRequest.RouteFactory((int)token));
-
-        DataString.TokenDataString.ShouldNotBe(null);
-        if (token == 3)
-        {
-          byte[] serializedImmutableData = Convert.FromBase64String(DataString.TokenDataString);
-          // need to figure out a way to get the type occording to the nftId
-          ImmutableData DeserializedObject = Serializer.Deserialize<ImmutableData>(serializedImmutableData, options); // options == 0
-
-          ownedToken.ImmDataObj = DeserializedObject;
-
-          // Add to StateList
-          TokenDataList.Add(ownedToken);
-        }
-        else
-        {
-          ownedToken.Data = DataString.TokenDataString;
-
-          TokenDataList.Add(ownedToken);
-        }
-      }
-
-      TokenDataList.Count.ShouldBe(3);
-    }
-
     public async Task ShouldBuildTokenListInPieces()
     {
       var SeparateTokenDataList = new List<TokenBase>();
@@ -116,7 +57,7 @@
       aTokenList.TokenIdList.Contains(3).ShouldBe(true);
       aTokenList.TokenIdList.Contains(4).ShouldBe(true);
       aTokenList.TokenIdList.Contains(5).ShouldBe(true);
-
+      aTokenList.TokenIdList.Contains(6).ShouldBe(true);
       foreach (uint token in aTokenList.TokenIdList)
       {
         // Start the list with TokenId
@@ -152,6 +93,17 @@
           ImmutableData deserializedObject = Serializer.Deserialize<ImmutableData>(serializedImmutableData, options); // options == 0
 
           ownedToken.ImmDataObj = deserializedObject;
+
+          // Add to StateList
+          SeparateTokenDataList.Add(ownedToken);
+        }
+        if (token == 6)
+        {
+          byte[] serializedImmutableData = Convert.FromBase64String(dataString.TokenDataString);
+          // need to figure out a way to get the type occording to the nftId
+          PurchaseOrderData deserializedObject = Serializer.Deserialize<PurchaseOrderData>(serializedImmutableData, options); // options == 0
+
+          ownedToken.PurchaseOrderData = deserializedObject;
 
           // Add to StateList
           SeparateTokenDataList.Add(ownedToken);

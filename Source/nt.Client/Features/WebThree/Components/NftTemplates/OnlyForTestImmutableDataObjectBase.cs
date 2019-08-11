@@ -20,6 +20,11 @@
             public DateTime Date { get; set; } = DateTime.Now;
             public string MintedFrom { get; set; } = "Yo Mama";
             public string Title { get; set; } = "Tester ImmutableDataObject";
-        }
+
+      public static implicit operator ImmutableData(ImmutableObjectBase v)
+      {
+        throw new NotImplementedException();
+      }
+    }
     }
 }
