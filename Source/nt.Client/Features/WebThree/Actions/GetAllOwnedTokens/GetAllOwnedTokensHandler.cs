@@ -66,7 +66,7 @@
 
           string aDataString = await GetDataString(token);
 
-          DeserializeAndAddData(token, ownedToken, aDataString);
+          DeserializeAndAddData(ownedToken, aDataString);
         }
 
         WebThreeState.TokenDataList = TokenDataList;
@@ -77,9 +77,9 @@
         return WebThreeState;
       }
 
-      private void DeserializeAndAddData(uint aToken, TokenBase aOwnedToken, string aDataString)
+      private void DeserializeAndAddData(TokenBase aOwnedToken, string aDataString)
       {
-        if (aToken == 3)
+        if (aOwnedToken.TemplateData.NftId == 3)
         {
           byte[] serializedImmutableData = Convert.FromBase64String(aDataString);
 
@@ -90,7 +90,7 @@
           // Add to StateList
           TokenDataList.Add(aOwnedToken);
         }
-        if (aToken == 6)
+        if (aOwnedToken.TemplateData.NftId == 5)
         {
           byte[] serializedImmutableData = Convert.FromBase64String(aDataString);
 

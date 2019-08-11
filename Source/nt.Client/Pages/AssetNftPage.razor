@@ -20,37 +20,43 @@
     }
   </div>
 
-  @if (WebThreeState.CurrentTokenData != null)
+  @*@if (TokentNft != null)
   {
     <div class="container bg-danger">
       <div class="row text-center">
         <p>Template Info</p>
         <div class="col">
-          <h4>Name: @CurrentTokenData.TemplateData.Name</h4>
+          <h4>NftID: @TokentNft.NftId</h4>
         </div>
         <div class="col">
-          <h4>Symbol: @CurrentTokenData.TemplateData.Symbol</h4>
+          <h4>Name: @TokentNft.Name</h4>
         </div>
         <div class="col">
-          <h4>MintLimit: @CurrentTokenData.TemplateData.MintLimit</h4>
+          <h4>Symbol: @TokentNft.Symbol</h4>
         </div>
         <div class="col">
-          <h4>AttachedTokens: @CurrentTokenData.TemplateData.AttachedTokens</h4>
+          <h4>MintLimit: @TokentNft.MintLimit</h4>
+        </div>
+        <div class="col">
+          <h4>AttachedTokens: @TokentNft.AttachedTokens</h4>
         </div>
       </div>
-    </div>
+    </div>*@
 
-
+  @if (CurrentTokenData != null)
+  {
     <p>Tests from the class vars that get from webthree state, should change</p>
     <div class="bg-success text-center">
       <h3>Current Token:</h3>
       <p>Token ID: @CurrentTokenData.TokenId</p>
       <p>Symbol: @CurrentTokenData.TemplateData.Symbol</p>
+      <p>NftId: @CurrentTokenData.TemplateData.NftId</p>
       <div class="col text-center">
         <h4>Balance: @CurrentTokenData.Balance</h4>
       </div>
     </div>
-    @if (CurrentTokenData.TokenId == 3)
+  }
+    @*@if (TokentNft.NftId == 2)
     {
 
       <div class="col text-center">
@@ -65,8 +71,8 @@
         <h4>Title:</h4>
         <h5 class="bg-light">@CurrentTokenData.ImmDataObj.Title</h5>
       </div>
-    }
-    @if (CurrentTokenData.TokenId == 6)
+    }*@
+    @*@if (TokentNft.NftId == 5)
     {
 
       <div class="row m-2 p-2 bg-primary">
@@ -99,7 +105,7 @@
         <h4>Immutable Data:</h4>
         <h5 class="bg-light">@CurrentTokenData.MutableData</h5>
       </div>
-    }
+    }*@
 
   }
 </div>

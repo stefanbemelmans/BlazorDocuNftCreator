@@ -13,9 +13,9 @@
 
   public class AssetNftPageModel : BaseComponent
   {
-    public NftTemplate CurrentNft
+    public NftTemplate TokentNft
     {
-      get => WebThreeState.CurrentNftTemplate;
+      get => WebThreeState.CurrentTokenData.TemplateData;
       set { }
     }
 

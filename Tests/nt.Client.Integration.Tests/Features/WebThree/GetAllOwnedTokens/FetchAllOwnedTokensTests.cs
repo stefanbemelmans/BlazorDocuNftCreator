@@ -97,7 +97,7 @@
           // Add to StateList
           SeparateTokenDataList.Add(ownedToken);
         }
-        if (token == 6)
+        if (token == 8)
         {
           byte[] serializedImmutableData = Convert.FromBase64String(dataString.TokenDataString);
           // need to figure out a way to get the type occording to the nftId
