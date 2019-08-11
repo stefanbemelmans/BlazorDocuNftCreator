@@ -3,7 +3,7 @@ namespace nt.Client.Features.WebThree.Actions.MintNft
 {
   using MediatR;
   using nt.Client.Features.WebThree;
-  public class MintNftOfTypeAction : IRequest<WebThreeState>
+  public class MintNftOfTypeClientAction : IRequest<WebThreeState>
   {
     public uint MintNftId { get; set; }
     public string ImmutableDataString { get; set; }

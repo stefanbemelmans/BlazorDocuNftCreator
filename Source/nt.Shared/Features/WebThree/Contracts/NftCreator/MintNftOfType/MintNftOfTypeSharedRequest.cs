@@ -7,7 +7,7 @@
   {
     public const string Route = "api/mintNftOfType";
 
-    //public static string RouteFactory(int aId) => $"api/mintNftOfType?MintNftType={aId}";
+    public static string RouteFactory(int aId, string mutable, string immutable) => $"api/mintNftOfType?MintNftId={aId}?MutableDataString={mutable}?ImmutableDataString={immutable}";
     public int MintNftId { get; set; }
     public string ImmutableDataString { get; set; }
     public string MutableDataString { get; set; }

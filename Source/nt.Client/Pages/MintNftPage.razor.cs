@@ -57,19 +57,19 @@
     {
       ShowMintingButton = false;
       IsMinting = true;
-      Console.WriteLine("Trying to Console...empty?");
-      Console.WriteLine($"Mutable Data String is: {MutableDataString}");
-      Console.WriteLine($"Type of FormData {FormData.GetType()}");
-      foreach (System.Reflection.PropertyInfo prop in FormData.GetType().GetProperties())
-      {
-        Console.WriteLine($"{prop.Name}: {prop.GetValue(FormData)}");
-      }
+      //Console.WriteLine("Trying to Console...empty?");
+      //Console.WriteLine($"Mutable Data String is: {MutableDataString}");
+      //Console.WriteLine($"Type of FormData {FormData.GetType()}");
+      //foreach (System.Reflection.PropertyInfo prop in FormData.GetType().GetProperties())
+      //{
+      //  Console.WriteLine($"{prop.Name}: {prop.GetValue(FormData)}");
+      //}
 
       byte[] serializedImmutableObject = Serializer.Serialize(FormData);
 
       string serializedObjectAsBase64String = Convert.ToBase64String(serializedImmutableObject);
 
-      WebThreeState MintingResponse = await Mediator.Send(new MintNftOfTypeAction()
+      WebThreeState MintingResponse = await Mediator.Send(new MintNftOfTypeClientAction()
       {
         ImmutableDataString = serializedObjectAsBase64String,
         MutableDataString = MutableDataString,

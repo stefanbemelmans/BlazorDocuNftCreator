@@ -4,10 +4,11 @@
   using nt.Server.Features.Base;
   using Microsoft.AspNetCore.Mvc;
   using nt.Shared.Features.WebThree.Contracts.NftCreator.MintNftOfType;
-
+  
   [Route(MintNftOfTypeSharedRequest.Route)]
   public class MintNftOfTypeServerFeaturesController : BaseController<MintNftOfTypeSharedRequest, MintNftOfTypeSharedResponse> 
   {
-    public async Task<IActionResult> Get(MintNftOfTypeSharedRequest aRequest) => await Send(aRequest);
+    [HttpPost]
+    public async Task<IActionResult> Post(MintNftOfTypeSharedRequest aRequest) => await Send(aRequest);
   }
 }

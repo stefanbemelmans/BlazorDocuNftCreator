@@ -10,5 +10,7 @@
 
     public int TokenId { get; set; }
     public string TransactionHash { get; set; }
+
+    public string GasUsed { get; set; }
   }
 }

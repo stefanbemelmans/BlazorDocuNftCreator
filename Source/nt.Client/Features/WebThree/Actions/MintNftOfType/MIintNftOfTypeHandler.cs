@@ -11,7 +11,7 @@
 
   internal partial class WebThreeState : State<WebThreeState>
   {
-    public class MintNftOfTypeHandler : BaseHandler<MintNftOfTypeAction, WebThreeState>
+    public class MintNftOfTypeHandler : BaseHandler<MintNftOfTypeClientAction, WebThreeState>
     {
       private HttpClient HttpClient { get; }
 
@@ -26,19 +26,22 @@
 
       public override async Task<WebThreeState> Handle
            (
-             MintNftOfTypeAction aMintNftOfClientRequest,
+             MintNftOfTypeClientAction aMintNftClientRequest,
              CancellationToken aCancellationToken
            )
       {
-        MintNftOfTypeSharedResponse MintingResponse = await HttpClient.SendJsonAsync<MintNftOfTypeSharedResponse>(HttpMethod.Get, MintNftOfTypeSharedRequest.Route, new MintNftOfTypeAction()
+        var mintingRequest = new MintNftOfTypeSharedRequest()
         {
-          MintNftId = aMintNftOfClientRequest.MintNftId,
-          ImmutableDataString = aMintNftOfClientRequest.ImmutableDataString,
-          MutableDataString = aMintNftOfClientRequest.MutableDataString
-        });
+          MintNftId = (int)aMintNftClientRequest.MintNftId,
+          ImmutableDataString = aMintNftClientRequest.ImmutableDataString,
+          MutableDataString = aMintNftClientRequest.MutableDataString
+        };
 
-        WebThreeState.TransactionHash = MintingResponse.TransactionHash;
-        WebThreeState.NewTokenId = MintingResponse.TokenId;
+        //string uri = MintNftOfTypeSharedRequest.RouteFactory((int)aMintNftClientRequest.MintNftId, aMintNftClientRequest.MutableDataString, aMintNftClientRequest.ImmutableDataString);
+        MintNftOfTypeSharedResponse mintingResponse = await HttpClient.SendJsonAsync<MintNftOfTypeSharedResponse>(HttpMethod.Post, MintNftOfTypeSharedRequest.Route, mintingRequest);
+
+        WebThreeState.TransactionHash = mintingResponse.TransactionHash;
+        WebThreeState.NewTokenId = mintingResponse.TokenId;
 
         return WebThreeState;
       }

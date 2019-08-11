@@ -47,7 +47,7 @@
       PurchaseOrderData restoredFromBase64String = Serializer.Deserialize<PurchaseOrderData>(serializedObjectBase64StringBackToByteArray, options);
 
       ImmutableObjectBase immObjRestored = Serializer.Deserialize<ImmutableObjectBase>(serializedObjectBase64StringBackToByteArray, options);
-      restoredFromBase64String.ShouldBeOfType<PurchaseOrderData>();
+      //restoredFromBase64String.ShouldBeOfType<PurchaseOrderData>();
 
       //restoredFromBase64String.MutableDataString.ShouldBe(TestObject.MutableDataString);
       restoredFromBase64String.Item_Price.ShouldBe(TestObject.Item_Price);
