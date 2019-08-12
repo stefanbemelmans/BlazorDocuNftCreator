@@ -33,23 +33,23 @@
         private Herc1155Instance Herc1155 { get; set; }
         //private NftCreatorInstance NFtCreator { get; set; }
 
-        public async Task ShouldGetTokenData()
-        { // 
+        //public async Task ShouldGetTokenData()
+        //{ // 
           // Arrange
           //var getNftRequest = new ViewTokenDataServiceRequest { ViewTokenId = 3 };"0x12833d6fADd206dEd2fcE84936d8D78326AB8EfA"
-            Function viewTokenDataFunction = Herc1155.Instance.GetFunction("viewTokenData");
+            //Function viewTokenDataFunction = Herc1155.Instance.GetFunction("viewTokenData");
             // Act
-            string response = await viewTokenDataFunction.CallAsync<string>(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), new Nethereum.Hex.HexTypes.HexBigInteger(0), 5);
+            //string response = await viewTokenDataFunction.CallAsync<string>(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), new Nethereum.Hex.HexTypes.HexBigInteger(0), 5);
             //ViewTokenDataServiceResponse response = await Mediator.Send(getNftRequest);
             //Assert
-            response.ShouldNotBe(null);
-            response.ShouldMatch("This Is MintingTest 3");
-        }
-        public async Task ShouldGetTokenDataWithFunctionMessage()
-        { // 
+            //response.ShouldNotBe(null);
+            //response.ShouldMatch("This Is MintingTest 3");
+        //}
+        //public async Task ShouldGetTokenDataWithFunctionMessage()
+        //{ // 
           //  Arrange
           //Function<ViewTokenDataFunctionInput> viewTokenDataFunction = Herc1155.Instance.GetFunction<ViewTokenDataFunctionInput>();
-            Function viewTokenDataFunction = Herc1155.Instance.GetFunction("viewTokenData");
+            //Function viewTokenDataFunction = Herc1155.Instance.GetFunction("viewTokenData");
       //viewTokenDataFunction.CreateCallInput(new ViewTokenDataFunctionInput()
       //{
       //    FromAddress = TestEthAccounts.TestEthAccountAddress,
@@ -59,68 +59,68 @@
       //    ViewTokenId = 5
       //});
 
-      string response = await viewTokenDataFunction.CallAsync<string>(
-                from: TestEthAccounts.TestEthAccountAddress,
-                    gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000),
-                    value: new Nethereum.Hex.HexTypes.HexBigInteger(0),
-                    functionInput: 5
-                );
-            response.ShouldNotBe(null);
-            response.ShouldMatch("This Is MintingTest 3");
-        }
+      //string response = await viewTokenDataFunction.CallAsync<string>(
+      //          from: TestEthAccounts.TestEthAccountAddress,
+      //              gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000),
+      //              value: new Nethereum.Hex.HexTypes.HexBigInteger(0),
+      //              functionInput: 5
+      //          );
+      //      response.ShouldNotBe(null);
+      //      response.ShouldMatch("This Is MintingTest 3");
+        //}
 
-        public async Task ShouldGetTokenBalance()
-        {
-            Function viewBalanceFunction = Herc1155.Instance.GetFunction("balanceOf");
+        //public async Task ShouldGetTokenBalance()
+        //{
+        //    Function viewBalanceFunction = Herc1155.Instance.GetFunction("balanceOf");
 
-            CallInput CallInput = viewBalanceFunction.CreateCallInput(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), new Nethereum.Hex.HexTypes.HexBigInteger(0));
+        //    CallInput CallInput = viewBalanceFunction.CreateCallInput(from: TestEthAccounts.TestEthAccountAddress, gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), new Nethereum.Hex.HexTypes.HexBigInteger(0));
 
-            int response = await viewBalanceFunction.CallAsync<int>(TestEthAccounts.TestEthAccountAddress, 5);
-            int balance = response;
-            balance.ShouldNotBe(0);
-        }
+        //    int response = await viewBalanceFunction.CallAsync<int>(TestEthAccounts.TestEthAccountAddress, 5);
+        //    int balance = response;
+        //    balance.ShouldNotBe(0);
+        //}
 
-        public async Task ShouldDeserializeToken3()
-        {
-            var request = new ViewTokenDataServiceRequest { ViewTokenId = 3 };
+        //public async Task ShouldDeserializeToken3()
+        //{
+        //    var request = new ViewTokenDataServiceRequest { ViewTokenId = 3 };
 
-            ViewTokenDataServiceResponse response = await Mediator.Send(request);
-            byte[] SerializedObject = Convert.FromBase64String(response.TokenDataString);
+        //    ViewTokenDataServiceResponse response = await Mediator.Send(request);
+        //    byte[] SerializedObject = Convert.FromBase64String(response.TokenDataString);
 
-            ImmutableData deSerObj = Serializer.Deserialize<ImmutableData>(SerializedObject, 0);
+        //    ImmutableData deSerObj = Serializer.Deserialize<ImmutableData>(SerializedObject, 0);
 
-            deSerObj.ShouldBeOfType<ImmutableData>();
-            deSerObj.Title.ShouldBe("The First Minted NFT!");
+        //    deSerObj.ShouldBeOfType<ImmutableData>();
+        //    deSerObj.Title.ShouldBe("The First Minted NFT!");
 
-        }
-        public async Task ShouldDeserializeToken3FromServerShared()
-        {
-            var request = new ViewTokenDataServiceRequest { ViewTokenId = 3 };
+        //}
+        //public async Task ShouldDeserializeToken3FromServerShared()
+        //{
+        //    var request = new ViewTokenDataServiceRequest { ViewTokenId = 3 };
 
-            ViewTokenDataServiceResponse response = await Mediator.Send(request);
-            byte[] SerializedObject = Convert.FromBase64String(response.TokenDataString);
+        //    ViewTokenDataServiceResponse response = await Mediator.Send(request);
+        //    byte[] SerializedObject = Convert.FromBase64String(response.TokenDataString);
 
-            ImmutableData deSerObj = Serializer.Deserialize<ImmutableData>(SerializedObject, 0);
+        //    ImmutableData deSerObj = Serializer.Deserialize<ImmutableData>(SerializedObject, 0);
 
-            deSerObj.ShouldBeOfType<ImmutableData>();
-            deSerObj.Title.ShouldBe("The First Minted NFT!");
+        //    deSerObj.ShouldBeOfType<ImmutableData>();
+        //    deSerObj.Title.ShouldBe("The First Minted NFT!");
 
-        }
+        //}
 
-        public async Task ShouldDeserializeToken4()
-        {
-            var request = new ViewTokenDataServiceRequest { ViewTokenId = 4 };
+        //public async Task ShouldDeserializeToken4()
+        //{
+        //    var request = new ViewTokenDataServiceRequest { ViewTokenId = 4 };
 
-            ViewTokenDataServiceResponse response = await Mediator.Send(request);
+        //    ViewTokenDataServiceResponse response = await Mediator.Send(request);
 
             //byte[] SerializedObject = Convert.FromBase64String(response.TokenDataString);
             //ImmutableData deSerObj = Serializer.Deserialize<ImmutableData>(SerializedObject, 0);
-            response.TokenDataString.ShouldBeOfType<string>();
-            response.TokenDataString.ShouldBe("This Is MintingTest 2");
+            //response.TokenDataString.ShouldBeOfType<string>();
+            //response.TokenDataString.ShouldBe("This Is MintingTest 2");
             //deSerObj.ShouldBeOfType<ImmutableData>();
             //deSerObj.Title.ShouldBe("The First Minted NFT!");
 
-        }
+        //}
 
     }
 }

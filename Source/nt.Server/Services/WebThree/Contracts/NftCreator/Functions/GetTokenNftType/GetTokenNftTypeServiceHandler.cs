@@ -19,7 +19,7 @@
 
     public async Task<GetTokenNftTypeServiceResponse> Handle(GetTokenNftTypeServiceRequest aGetTokenNftTypeServiceRequest, CancellationToken aCancellationToken)
     {
-      Function tokenTypeFunction = NftCreator.Instance.GetFunction("tokenType");
+      Function tokenTypeFunction = NftCreator.Instance.GetFunction("NFTTemplates");
       
       uint tokenType = await tokenTypeFunction.CallAsync<uint>(
         from: TestEthAccounts.TestEthAccountAddress,

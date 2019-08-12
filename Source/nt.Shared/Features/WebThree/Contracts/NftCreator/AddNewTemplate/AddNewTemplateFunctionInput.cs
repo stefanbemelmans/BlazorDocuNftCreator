@@ -6,7 +6,8 @@
 
     // Create a new NFT Template 
     // This Works
-    [Function(name: "AddNFTTemplate")]
+    //[Function(name: "AddNFTTemplate")]
+    [Function(name: "CreateTemplate")]
     public class AddNewTemplateFunctionInput : FunctionMessage
     {
         [Parameter(type: "string", name: "name", 1)]
@@ -18,7 +19,7 @@
         [Parameter("uint", "mintlimit", 3)]
         public BigInteger NewTemplateMintLimit { get; set; }
 
-        [Parameter("uint", "attachedTokens", 4)]
+        [Parameter("uint", "attachedtokens", 4)]
         public BigInteger NewTemplateAttachedTokens { get; set; }
 
     }

@@ -19,7 +19,7 @@
 
     public async Task<GetNftByTypeServiceResponse> Handle(GetNftByTypeServiceRequest aGetNftByTypeServiceRequest, CancellationToken aCancellationToken)
     {
-      Function aGetNftByTypeFunction = NftCreatorInstance.Instance.GetFunction("getNFTData");
+      Function aGetNftByTypeFunction = NftCreatorInstance.Instance.GetFunction("NFTTemplates");
 
       var aGetNftByTypeFunctionMessage = new GetNftByTypeFunctionInput { NftId = aGetNftByTypeServiceRequest.GetNftId };
 

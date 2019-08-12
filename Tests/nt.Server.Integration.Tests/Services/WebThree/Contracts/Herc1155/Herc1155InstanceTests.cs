@@ -26,7 +26,7 @@ namespace nt.Server.Integration.Tests.Services.WebThree.Contracts.Herc1155
     {
       string address = Herc1155Instance.Instance.Address;
 
-      address.ShouldBe(Herc1155Addresses.RinkebyAddress);
+      address.ShouldBe(Herc115520Addresses.RopstenAddress);
 
     }
 

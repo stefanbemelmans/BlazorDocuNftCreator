@@ -1,6 +1,6 @@
 namespace nt.Shared.Constants.ContractConstants.NftCreator
 {
-    public class ContractAbi
+    public class NftCreatorAbi
     {
 
         public static string Abi =

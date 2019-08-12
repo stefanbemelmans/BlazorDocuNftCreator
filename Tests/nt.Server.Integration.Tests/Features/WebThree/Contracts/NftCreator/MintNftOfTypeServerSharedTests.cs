@@ -56,46 +56,46 @@
     }
 
 
-    public async Task ShouldMint_SerializedNftFrom_Shared()
-    {
-      // Arrange
-      string MutableDataString = "Client Mutable Data String Minting Tester";
+    //public async Task ShouldMint_SerializedNftFrom_Shared()
+    //{
+    //  // Arrange
+    //  string MutableDataString = "Client Mutable Data String Minting Tester";
 
-      var PurchaseOrData = new PurchaseOrderData()
-      {
-        Department = "TestingDept",
-        Notes = "Serialization Test With Data, This is some data.",
-        Requester = "The Man",
-        Approver = "The Man's Man Approves",
-        Item_Code = "Item Code Here",
-        Item_Discount = 123,
-        Item_Name = "Fancy Product Name Test",
-        Item_Price = "Fancy Price Tester",
-        Item_Qty = 42,
-        Item_Total = 1234,
-        Title = "Purchase Order Test"
-      };
+    //  var PurchaseOrData = new PurchaseOrderData()
+    //  {
+    //    Department = "TestingDept",
+    //    Notes = "Serialization Test With Data, This is some data.",
+    //    Requester = "The Man",
+    //    Approver = "The Man's Man Approves",
+    //    Item_Code = "Item Code Here",
+    //    Item_Discount = 123,
+    //    Item_Name = "Fancy Product Name Test",
+    //    Item_Price = "Fancy Price Tester",
+    //    Item_Qty = 42,
+    //    Item_Total = 1234,
+    //    Title = "Purchase Order Test"
+    //  };
 
-      byte[] serializedImmutableObject = Serializer.Serialize(PurchaseOrData);
+    //  byte[] serializedImmutableObject = Serializer.Serialize(PurchaseOrData);
 
-      string serializedObjectAsBase64String = Convert.ToBase64String(serializedImmutableObject);
+    //  string serializedObjectAsBase64String = Convert.ToBase64String(serializedImmutableObject);
 
-      var TesterPoNft = new MintNftOfTypeSharedRequest()
-      {
-        ImmutableDataString = serializedObjectAsBase64String,
-        MutableDataString = MutableDataString,
-        MintNftId = 5
-      };
+    //  var TesterPoNft = new MintNftOfTypeSharedRequest()
+    //  {
+    //    ImmutableDataString = serializedObjectAsBase64String,
+    //    MutableDataString = MutableDataString,
+    //    MintNftId = 5
+    //  };
 
       // Act
 
-      MintNftOfTypeSharedResponse mintingResponse = await Mediator.Send(TesterPoNft);
+      //MintNftOfTypeSharedResponse mintingResponse = await Mediator.Send(TesterPoNft);
 
-      mintingResponse.TransactionHash.ShouldNotBe(null);
+      //mintingResponse.TransactionHash.ShouldNotBe(null);
 
     }
   }
-}
+
     //public async Task ShouldMintNftOfTypeFromClient()
     //{
 

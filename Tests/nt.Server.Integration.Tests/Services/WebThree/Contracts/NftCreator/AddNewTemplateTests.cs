@@ -44,7 +44,7 @@
         NewTemplateName = "Purchase Order",
         NewTemplateSymbol = "POR",
         NewTemplateAttachedTokens = 0,
-        NewTemplateMintLimit = 10
+        NewTemplateMintLimit = 1
       };
 
       Nethereum.Hex.HexTypes.HexBigInteger gasEstimate = await addNewTemplateFunctionHandler.EstimateGasAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aAddNewTemplateFunctionMessage);
@@ -53,18 +53,18 @@
 
       gasEstimate.Value.ShouldBeGreaterThan(0);
 
-      // Leaving this commented out as this is the action that makes a new template
+      //Leaving this commented out as this is the action that makes a new template
       // it's been tested and works
 
-      //Nethereum.RPC.Eth.DTOs.TransactionReceipt addingTemplateTransactionReceipt = await addNewTemplateFunctionHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aAddNewTemplateFunctionMessage);
+      Nethereum.RPC.Eth.DTOs.TransactionReceipt addingTemplateTransactionReceipt = await addNewTemplateFunctionHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aAddNewTemplateFunctionMessage);
 
-      //addingTemplateTransactionReceipt.ShouldNotBe(null);
-
-
-      //GetNftTypesServiceResponse totalTypesAfterTest = await Mediator.Send(getNftRequest);
+      addingTemplateTransactionReceipt.ShouldNotBe(null);
 
 
-      //totalTypesAfterTest.TotalNftTypes.ShouldBeGreaterThan(totalTypesBeforeTest.TotalNftTypes);
+      GetNftTypesServiceResponse totalTypesAfterTest = await Mediator.Send(getNftRequest);
+
+
+      totalTypesAfterTest.TotalNftTypes.ShouldBeGreaterThan(totalTypesBeforeTest.TotalNftTypes);
     }
   }
 }

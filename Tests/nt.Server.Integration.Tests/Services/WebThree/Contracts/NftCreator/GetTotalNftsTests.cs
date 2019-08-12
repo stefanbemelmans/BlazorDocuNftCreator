@@ -1,26 +1,32 @@
 ﻿namespace nt.Server.Integration.Tests.Services.WebThree.Contracts.NftCreator
 {
-  using System;
   using MediatR;
   using Microsoft.Extensions.DependencyInjection;
-  using Shouldly;
+  using Nethereum.Contracts;
+  using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
   using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftTypes;
+  using nt.Shared.Constants.AccountAddresses;
+  using Shouldly;
+  using System;
   using System.Threading.Tasks;
-  using nt.Shared.Features.WebThree;
 
-  class GetTotalNftsTests
+  internal class GetTotalNftsTests
   {
+    private IMediator Mediator { get; }
+
+    private NftCreatorInstance NftCreator { get; set; }
+
+    private IServiceProvider ServiceProvider { get; }
+
     public GetTotalNftsTests(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
       Mediator = ServiceProvider.GetService<IMediator>();
+      NftCreator = ServiceProvider.GetService<NftCreatorInstance>();
     }
 
-    private IServiceProvider ServiceProvider { get; }
-    private IMediator Mediator { get; }
-
     public async Task ShouldGetTotalNftTemplateTypes()
-    { 
+    {
       // Arrange
       var getNftRequest = new GetNftTypesServiceRequest();
 
@@ -30,7 +36,26 @@
       //Assert
       //response.TotalNftTypes.ShouldBeGreaterThan(2);
       response.TotalNftTypes.ShouldNotBeNull();
+      response.TotalNftTypes.ShouldBe((uint)1);
+    }
 
+    public async Task ShouldGetTotalNftTypesFromContractVariable()
+    {
+      // Arrange
+      Function getNftCountFunction = NftCreator.Instance.GetFunction("totalNFTs");
+
+      // Act
+
+      uint totalNfts = await getNftCountFunction.CallAsync<uint>(
+         from: TestEthAccounts.TestEthAccountAddress,
+        gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000),
+        new Nethereum.Hex.HexTypes.HexBigInteger(0)
+        );
+
+      //Assert
+      //response.TotalNftTypes.ShouldBeGreaterThan(2);
+      totalNfts.ShouldNotBeNull();
+      totalNfts.ShouldBe((uint)1);
     }
   }
 }

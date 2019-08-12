@@ -31,10 +31,10 @@
         public async Task ShouldGetTokenDataStringFromServerFeatures()
         { // 
           // Arrange
-            ViewTokenDataSharedRequest TokenDataRequest = new ViewTokenDataSharedRequest() { TokenIdToGet = 5 };
-          // Act
+            var TokenDataRequest = new ViewTokenDataSharedRequest() { TokenIdToGet = 5 };
+      // Act
 
-            var TokenDataResponse = await Mediator.Send(TokenDataRequest);
+      ViewTokenDataSharedResponse TokenDataResponse = await Mediator.Send(TokenDataRequest);
             TokenDataResponse.TokenDataString.ShouldBeOfType<string>();
         }
 

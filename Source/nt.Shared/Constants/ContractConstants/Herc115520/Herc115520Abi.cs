@@ -1,7 +1,10 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace nt.Shared.Constants.ContractConstants.Herc1155
 {
-  public class ContractAbi
+  public class Herc115520Abi
   {
     public static string Abi = @"[
     {
@@ -21,8 +24,33 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x01ffc9a7""
+      ""type"": ""function""
+    },
+    {
+      ""constant"": false,
+      ""inputs"": [
+        {
+          ""name"": ""_spender"",
+          ""type"": ""address""
+        },
+        {
+          ""name"": ""_id"",
+          ""type"": ""uint256""
+        },
+        {
+          ""name"": ""_currentValue"",
+          ""type"": ""uint256""
+        },
+        {
+          ""name"": ""amount"",
+          ""type"": ""uint256""
+        }
+      ],
+      ""name"": ""decreaseApproval"",
+      ""outputs"": [],
+      ""payable"": false,
+      ""stateMutability"": ""nonpayable"",
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -41,27 +69,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x0f915c64""
-    },
-    {
-      ""constant"": false,
-      ""inputs"": [
-        {
-          ""name"": ""order"",
-          ""type"": ""uint256""
-        },
-        {
-          ""name"": ""client"",
-          ""type"": ""address""
-        }
-      ],
-      ""name"": ""delistClient"",
-      ""outputs"": [],
-      ""payable"": false,
-      ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0x14405397""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -80,27 +88,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x1d0f114b""
-    },
-    {
-      ""constant"": false,
-      ""inputs"": [
-        {
-          ""name"": ""order"",
-          ""type"": ""uint256""
-        },
-        {
-          ""name"": ""manager"",
-          ""type"": ""address""
-        }
-      ],
-      ""name"": ""delistManager"",
-      ""outputs"": [],
-      ""payable"": false,
-      ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0x24b9c75c""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -119,8 +107,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x254cc981""
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -150,8 +137,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ""outputs"": [],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0x2eb2c2d6""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -174,27 +160,16 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x2f745c59""
+      ""type"": ""function""
     },
     {
       ""constant"": false,
-      ""inputs"": [
-        {
-          ""name"": ""order"",
-          ""type"": ""uint256""
-        },
-        {
-          ""name"": ""client"",
-          ""type"": ""address""
-        }
-      ],
-      ""name"": ""AssignAsClient"",
+      ""inputs"": [],
+      ""name"": ""unpause"",
       ""outputs"": [],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0x4208c609""
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -208,28 +183,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ""outputs"": [],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0x42966c68""
-    },
-    {
-      ""constant"": true,
-      ""inputs"": [
-        {
-          ""name"": ""_data"",
-          ""type"": ""uint256[]""
-        }
-      ],
-      ""name"": ""sumAsm"",
-      ""outputs"": [
-        {
-          ""name"": ""sum"",
-          ""type"": ""uint256""
-        }
-      ],
-      ""payable"": false,
-      ""stateMutability"": ""pure"",
-      ""type"": ""function"",
-      ""signature"": ""0x4d36b7a4""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -252,8 +206,21 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x4e1273f4""
+      ""type"": ""function""
+    },
+    {
+      ""constant"": true,
+      ""inputs"": [],
+      ""name"": ""paused"",
+      ""outputs"": [
+        {
+          ""name"": """",
+          ""type"": ""bool""
+        }
+      ],
+      ""payable"": false,
+      ""stateMutability"": ""view"",
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -262,8 +229,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ""outputs"": [],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0x715018a6""
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -306,8 +272,42 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0x83ee81ec""
+      ""type"": ""function""
+    },
+    {
+      ""constant"": false,
+      ""inputs"": [],
+      ""name"": ""pause"",
+      ""outputs"": [],
+      ""payable"": false,
+      ""stateMutability"": ""nonpayable"",
+      ""type"": ""function""
+    },
+    {
+      ""constant"": false,
+      ""inputs"": [
+        {
+          ""name"": ""_spender"",
+          ""type"": ""address""
+        },
+        {
+          ""name"": ""_id"",
+          ""type"": ""uint256""
+        },
+        {
+          ""name"": ""_currentValue"",
+          ""type"": ""uint256""
+        },
+        {
+          ""name"": ""amount"",
+          ""type"": ""uint256""
+        }
+      ],
+      ""name"": ""increaseApproval"",
+      ""outputs"": [],
+      ""payable"": false,
+      ""stateMutability"": ""nonpayable"",
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -321,8 +321,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x8da5cb5b""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -336,8 +335,38 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x8f32d59b""
+      ""type"": ""function""
+    },
+    {
+      ""constant"": false,
+      ""inputs"": [
+        {
+          ""name"": ""_initialSupply"",
+          ""type"": ""uint256""
+        },
+        {
+          ""name"": ""_uri"",
+          ""type"": ""string""
+        },
+        {
+          ""name"": ""name"",
+          ""type"": ""string""
+        },
+        {
+          ""name"": ""symbol"",
+          ""type"": ""string""
+        }
+      ],
+      ""name"": ""create"",
+      ""outputs"": [
+        {
+          ""name"": ""_id"",
+          ""type"": ""uint256""
+        }
+      ],
+      ""payable"": false,
+      ""stateMutability"": ""nonpayable"",
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -356,8 +385,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x91cf34a5""
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -371,8 +399,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ""outputs"": [],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0x983b2d56""
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -381,8 +408,26 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ""outputs"": [],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0x98650275""
+      ""type"": ""function""
+    },
+    {
+      ""constant"": true,
+      ""inputs"": [
+        {
+          ""name"": ""_data"",
+          ""type"": ""uint256[]""
+        }
+      ],
+      ""name"": ""Sum"",
+      ""outputs"": [
+        {
+          ""name"": ""sum"",
+          ""type"": ""uint256""
+        }
+      ],
+      ""payable"": false,
+      ""stateMutability"": ""pure"",
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -400,8 +445,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ""outputs"": [],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0xa22cb465""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -420,8 +464,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0xaa271e1a""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -435,8 +478,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0xaffed0e0""
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -454,27 +496,26 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ""outputs"": [],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0xb9ff093a""
+      ""type"": ""function""
     },
     {
-      ""constant"": false,
+      ""constant"": true,
       ""inputs"": [
         {
-          ""name"": ""order"",
+          ""name"": """",
           ""type"": ""uint256""
-        },
-        {
-          ""name"": ""manager"",
-          ""type"": ""address""
         }
       ],
-      ""name"": ""AssignAsManager"",
-      ""outputs"": [],
+      ""name"": ""MintableTokens"",
+      ""outputs"": [
+        {
+          ""name"": """",
+          ""type"": ""uint256""
+        }
+      ],
       ""payable"": false,
-      ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0xbbe1e54a""
+      ""stateMutability"": ""view"",
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -493,8 +534,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0xcd53d08e""
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -516,8 +556,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ""outputs"": [],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0xcfa84fc1""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -536,32 +575,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0xd418070c""
-    },
-    {
-      ""constant"": true,
-      ""inputs"": [
-        {
-          ""name"": """",
-          ""type"": ""address""
-        },
-        {
-          ""name"": """",
-          ""type"": ""uint256""
-        }
-      ],
-      ""name"": ""Client"",
-      ""outputs"": [
-        {
-          ""name"": """",
-          ""type"": ""bool""
-        }
-      ],
-      ""payable"": false,
-      ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0xd4c0b399""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -575,8 +589,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0xe0a5c949""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -595,8 +608,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0xe8d0be6b""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -619,8 +631,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0xe985e9c5""
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -650,8 +661,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ""outputs"": [],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0xf242432a""
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -665,32 +675,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ""outputs"": [],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0xf2fde38b""
-    },
-    {
-      ""constant"": true,
-      ""inputs"": [
-        {
-          ""name"": """",
-          ""type"": ""address""
-        },
-        {
-          ""name"": """",
-          ""type"": ""uint256""
-        }
-      ],
-      ""name"": ""Manager"",
-      ""outputs"": [
-        {
-          ""name"": """",
-          ""type"": ""bool""
-        }
-      ],
-      ""payable"": false,
-      ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0xf3abb7fb""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -704,15 +689,13 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0xfc67bf1c""
+      ""type"": ""function""
     },
     {
       ""inputs"": [],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""constructor"",
-      ""signature"": ""constructor""
+      ""type"": ""constructor""
     },
     {
       ""anonymous"": false,
@@ -734,8 +717,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
         }
       ],
       ""name"": ""Transfer"",
-      ""type"": ""event"",
-      ""signature"": ""0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef""
+      ""type"": ""event""
     },
     {
       ""anonymous"": false,
@@ -757,8 +739,31 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
         }
       ],
       ""name"": ""Approval"",
-      ""type"": ""event"",
-      ""signature"": ""0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925""
+      ""type"": ""event""
+    },
+    {
+      ""anonymous"": false,
+      ""inputs"": [
+        {
+          ""indexed"": true,
+          ""name"": ""account"",
+          ""type"": ""address""
+        }
+      ],
+      ""name"": ""MinterAdded"",
+      ""type"": ""event""
+    },
+    {
+      ""anonymous"": false,
+      ""inputs"": [
+        {
+          ""indexed"": true,
+          ""name"": ""account"",
+          ""type"": ""address""
+        }
+      ],
+      ""name"": ""MinterRemoved"",
+      ""type"": ""event""
     },
     {
       ""anonymous"": false,
@@ -790,8 +795,48 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
         }
       ],
       ""name"": ""Approval"",
-      ""type"": ""event"",
-      ""signature"": ""0x3a9c85c6b31f7a9d7fe1478f53e1be42e85db97ca30d1789cfef9196dbc472c9""
+      ""type"": ""event""
+    },
+    {
+      ""anonymous"": false,
+      ""inputs"": [
+        {
+          ""indexed"": false,
+          ""name"": ""account"",
+          ""type"": ""address""
+        }
+      ],
+      ""name"": ""Paused"",
+      ""type"": ""event""
+    },
+    {
+      ""anonymous"": false,
+      ""inputs"": [
+        {
+          ""indexed"": false,
+          ""name"": ""account"",
+          ""type"": ""address""
+        }
+      ],
+      ""name"": ""Unpaused"",
+      ""type"": ""event""
+    },
+    {
+      ""anonymous"": false,
+      ""inputs"": [
+        {
+          ""indexed"": true,
+          ""name"": ""previousOwner"",
+          ""type"": ""address""
+        },
+        {
+          ""indexed"": true,
+          ""name"": ""newOwner"",
+          ""type"": ""address""
+        }
+      ],
+      ""name"": ""OwnershipTransferred"",
+      ""type"": ""event""
     },
     {
       ""anonymous"": false,
@@ -823,8 +868,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
         }
       ],
       ""name"": ""TransferSingle"",
-      ""type"": ""event"",
-      ""signature"": ""0xc3d58168c5ae7397731d063d5bbf3d657854427343f4c083240f7aacaa2d0f62""
+      ""type"": ""event""
     },
     {
       ""anonymous"": false,
@@ -856,8 +900,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
         }
       ],
       ""name"": ""TransferBatch"",
-      ""type"": ""event"",
-      ""signature"": ""0x4a39dc06d4c0dbc64b70af90fd698a233a518aa5d07e595d983b8c0526c8f7fb""
+      ""type"": ""event""
     },
     {
       ""anonymous"": false,
@@ -879,8 +922,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
         }
       ],
       ""name"": ""ApprovalForAll"",
-      ""type"": ""event"",
-      ""signature"": ""0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31""
+      ""type"": ""event""
     },
     {
       ""anonymous"": false,
@@ -897,52 +939,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
         }
       ],
       ""name"": ""URI"",
-      ""type"": ""event"",
-      ""signature"": ""0x6bb7ff708619ba0610cba295a58592e0451dee2622938c8755667688daf3529b""
-    },
-    {
-      ""anonymous"": false,
-      ""inputs"": [
-        {
-          ""indexed"": true,
-          ""name"": ""account"",
-          ""type"": ""address""
-        }
-      ],
-      ""name"": ""MinterAdded"",
-      ""type"": ""event"",
-      ""signature"": ""0x6ae172837ea30b801fbfcdd4108aa1d5bf8ff775444fd70256b44e6bf3dfc3f6""
-    },
-    {
-      ""anonymous"": false,
-      ""inputs"": [
-        {
-          ""indexed"": true,
-          ""name"": ""account"",
-          ""type"": ""address""
-        }
-      ],
-      ""name"": ""MinterRemoved"",
-      ""type"": ""event"",
-      ""signature"": ""0xe94479a9f7e1952cc78f2d6baab678adc1b772d936c6583def489e524cb66692""
-    },
-    {
-      ""anonymous"": false,
-      ""inputs"": [
-        {
-          ""indexed"": true,
-          ""name"": ""previousOwner"",
-          ""type"": ""address""
-        },
-        {
-          ""indexed"": true,
-          ""name"": ""newOwner"",
-          ""type"": ""address""
-        }
-      ],
-      ""name"": ""OwnershipTransferred"",
-      ""type"": ""event"",
-      ""signature"": ""0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0""
+      ""type"": ""event""
     },
     {
       ""constant"": true,
@@ -965,8 +962,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x00fdd58e""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -985,8 +981,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x70a08231""
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -1009,8 +1004,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0xa9059cbb""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -1024,8 +1018,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x18160ddd""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -1039,8 +1032,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x06fdde03""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -1054,8 +1046,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x95d89b41""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -1069,8 +1060,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x313ce567""
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -1097,8 +1087,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0x23b872dd""
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -1121,8 +1110,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0x095ea7b3""
+      ""type"": ""function""
     },
     {
       ""constant"": false,
@@ -1148,8 +1136,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ""outputs"": [],
       ""payable"": false,
       ""stateMutability"": ""nonpayable"",
-      ""type"": ""function"",
-      ""signature"": ""0x4f4df442""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -1176,8 +1163,7 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0x598af9e7""
+      ""type"": ""function""
     },
     {
       ""constant"": true,
@@ -1200,12 +1186,8 @@ namespace nt.Shared.Constants.ContractConstants.Herc1155
       ],
       ""payable"": false,
       ""stateMutability"": ""view"",
-      ""type"": ""function"",
-      ""signature"": ""0xdd62ed3e""
+      ""type"": ""function""
     }
   ]";
-  };
-};
-
-
-
+  }
+}

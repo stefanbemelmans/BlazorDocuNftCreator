@@ -11,13 +11,11 @@
       NethWeb3 NethWeb3 { get; set; }
       public Contract Instance { get; set; }
     
-    //static StreamReader reader = new StreamReader(@"C:\mv\NewTimewarpTemplate\nt\Source\nt.Shared\Constants\ContractConstants\Herc1155\Abi.json");
     
-      //readonly string NftCreatorAbi = reader.ReadToEnd();
       public NftCreatorInstance(NethWeb3 aNethWeb3)
       {
           NethWeb3 = aNethWeb3;
-          Instance = NethWeb3.Instance.Eth.GetContract(ContractAbi.Abi,  NftCreatorAddresses.NftCreatorRinkebyAddress); 
+          Instance = NethWeb3.Instance.Eth.GetContract( NewNftCreatorAbi.Abi, NftCreatorAddresses.NewNftCreatorRopstenAddress); 
       }
   }
 

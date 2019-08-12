@@ -19,29 +19,29 @@
     private IServiceProvider ServiceProvider { get; }
     private IMediator Mediator { get; }
 
-    public async Task ClientShouldGetTokenNftType()
-    {
-      // Arrange
-      var getNftRequest = new GetTokenNftTypeServiceRequest { TokenId = 3 };
+    //public async Task ClientShouldGetTokenNftType()
+    //{
+    //  // Arrange
+    //  var getNftRequest = new GetTokenNftTypeServiceRequest { TokenId = 3 };
 
-      // Act
-      GetTokenNftTypeServiceResponse response = await Mediator.Send(getNftRequest);
+    //  // Act
+    //  GetTokenNftTypeServiceResponse response = await Mediator.Send(getNftRequest);
 
-      //Assert
-      response.TokensNftType.ShouldBe((uint)4);
+    //  //Assert
+    //  response.TokensNftType.ShouldBe((uint)4);
 
-    }
-    public async Task SharedShouldGetTokenNftType()
-    {
-      // Arrange
-      var getNftSharedRequest = new GetTokenNftTypeSharedRequest { TokenId = 3 };
+    //}
+    //public async Task SharedShouldGetTokenNftType()
+    //{
+    //  // Arrange
+    //  var getNftSharedRequest = new GetTokenNftTypeSharedRequest { TokenId = 3 };
 
-      // Act
-      GetTokenNftTypeSharedResponse response = await Mediator.Send(getNftSharedRequest);
+    //  // Act
+    //  GetTokenNftTypeSharedResponse response = await Mediator.Send(getNftSharedRequest);
 
-      //Assert
-      response.NftType.ShouldBe((uint)4);
+    //  //Assert
+    //  response.NftType.ShouldBe((uint)4);
 
-    }
+    //}
   }
 }
