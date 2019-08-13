@@ -14,30 +14,18 @@
   public class AssetNftPageModel : BaseComponent
   {
    
-    public TokenBase CurrentTokenData => WebThreeState.CurrentTokenData;
+    //public TokenBase CurrentTokenData => WebThreeState.CurrentTokenData;
 
-    public List<uint> CurrentTokenIds
+    public List<uint> OwnedTokenIdList
     {
       get => WebThreeState.OwnedTokenIdList;
       set { }
     }
 
-    //public uint TotalNfts
-    //{
-    //    get => WebThreeState.TotalNftTypes;
-    //    set { }
-    //}
-    public uint TotalTokens
+    public TokenBase CurrentTokenData
     {
-      get => WebThreeState.TotalTokenTypes;
+      get => WebThreeState.CurrentTokenData;
       set { }
-    }
-
-    public void SetNewToken(UIChangeEventArgs eventArgs)
-    {
-      string TokenId = eventArgs.Value.ToString();
-
-      Mediator.Send(new ChangeCurrentTokenAction() { TokenId = int.Parse(TokenId) });
     }
 
     protected override async Task OnInitAsync()

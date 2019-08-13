@@ -10,6 +10,7 @@
     <RazorLangVersion>3.0</RazorLangVersion>
   </PropertyGroup>
 
+  
   <ItemGroup>
     <PackageReference Include="AnySerializer" Version="1.1.31" />
     <PackageReference Include="Blazor-State" Version="$(BlazorStateVersion)" />
@@ -26,6 +27,7 @@
   
 
   <ItemGroup>
+    <Folder Include="Features\WebThree\Components\NftTemplates\NewNftTemplateForm\" />
     <Folder Include="Properties\" />
     <None Include="wwwroot\images\certificate.png" />
     <None Include="wwwroot\images\herc.png" />

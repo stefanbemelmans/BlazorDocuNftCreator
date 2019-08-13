@@ -1,82 +1,54 @@
 ﻿@inherits TokenInfoModel
 
-<div class="flex-column justify-content-center m-2 p-2">
-  <h3 class="text-center">Token Info</h3>
-  @*@if (TokenDataList.Count > 0)
-    {
-      <select @onchange=@SetNewToken>
-        @foreach (var token in TokenDataList)
+<div id="TokenInfoComponent" class="p-2 m-2">
+@if (CurrentTokenData != null)
+{
+
+  <div class="container m-2 p-2">
+    <h3 class="text-center">Token Info</h3>
+    <h3>Template Data</h3>
+    <div class="row text-center">
+      <div class="col">
+        <h4>Nft ID: @CurrentTokenData.TemplateData.NftId</h4>
+      </div>
+      <div class="col">
+        <h4>Name: @CurrentTokenData.TemplateData.Name</h4>
+      </div>
+      <div class="col">
+        <h4>Symbol: @CurrentTokenData.TemplateData.Symbol</h4>
+      </div>
+      <div class="col">
+        <h4>MintLimit: @CurrentTokenData.TemplateData.MintLimit</h4>
+      </div>
+      <div class="col">
+        <h4>AttachedTokens: @CurrentTokenData.TemplateData.AttachedTokens</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="container bg-info mt-4">
+    <div class="row">
+      @if (CurrentTokenData.TemplateData.NftId == 1)
+      {
+        <h3>@CurrentTokenData.PurchaseOrderData.Title Info</h3>
+        @foreach (var prop in CurrentTokenData.PurchaseOrderData.GetType().GetProperties())
         {
-          <option value=@token.TokenId>Token Id</option>
+          <div class="col-6 col-sm-5 col-lg-3 col-xl-2 text-center m-2 bg-success">
+            <h4>@prop.Name:</h4>
+            <h5>@prop.GetValue(CurrentTokenData.PurchaseOrderData)</h5>
+          </div>
         }
-      </select>
-    }*@
-  @if (CurrentTokenData.TemplateData != null)
-  {
-    <div class="container bg-danger">
-      <div class="row text-center">
-        <p>Template Info</p>
+      }
         <div class="col">
-          <h4>Name: @CurrentTokenData.TemplateData.Name</h4>
-        </div>
-        <div class="col">
-          <h4>Symbol: @CurrentTokenData.TemplateData.Symbol</h4>
-        </div>
-        <div class="col">
-          <h4>MintLimit: @CurrentTokenData.TemplateData.MintLimit</h4>
-        </div>
-        <div class="col">
-          <h4>AttachedTokens: @CurrentTokenData.TemplateData.AttachedTokens</h4>
+
+          <h4>Additional Info:</h4>
+          <h5>@CurrentTokenData.MutableData</h5>
         </div>
       </div>
     </div>
-  }
-  <div class="container bg-info mt-4">
-    <div class="row">
-      <p>Total Tokens</p>
-      @* @OwnedTokenIdList[0]*@
-      @*<div class="col text-center">
-          <h4>Token Id: @CurrentToken.TokenId</h4>
-        </div>
-        <div class="col text-center">
-          <h4>Balance: @CurrentToken.Balance</h4>
-        </div>*@
-    </div>
-    @*@if (CurrentTokenData != null)
-    {
-      <div class="row">
-        Token Id and stuff
-        @if (CurrentTokenData.TokenId == 3)
-        {
+}
 
-          <div class="col text-center">
-            <h4>Date:</h4>
-            <h5 class="bg-light">@CurrentTokenData.ImmDataObj.Date</h5>
-          </div>
-          <div class="col text-center">
-            <h4>Minted From:</h4>
-            <h5 class="bg-light">@CurrentTokenData.ImmDataObj.MintedFrom</h5>
-          </div>
-          <div class="col text-center">
-            <h4>Title:</h4>
-            <h5 class="bg-light">@CurrentTokenData.ImmDataObj.Title</h5>
-          </div>
-        }
-        @if (CurrentTokenData.Data != null)
-        {
-          <div class="col text-center">
-            <h4>Immutable Data:</h4>
-            <h5 class="bg-light">@CurrentTokenData.Data</h5>
-          </div>
-        }
-        @if (CurrentTokenData.MutableData != null)
-        {
-          <div class="col text-center">
-            <h4>Immutable Data:</h4>
-            <h5 class="bg-light">@CurrentTokenData.MutableData</h5>
-          </div>
-        }
-      </div>*@
-    }
+  <div class="w-100 text-center">
+    <h3>No Token Data</h3>
   </div>
 </div>

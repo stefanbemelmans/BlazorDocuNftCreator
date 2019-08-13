@@ -9,24 +9,16 @@
 
     public class TokenInfoModel : BaseComponent
     {
-        public TokenBase CurrentTokenData
-        {
-            get => WebThreeState.CurrentTokenData;
-        }
-        public List<TokenBase> TokenDataList
-        {
-            get => WebThreeState.TokenDataList;
-        }
-
-        public List<uint> OwnedTokenIdList => WebThreeState.OwnedTokenIdList;
+       [Parameter]
+    public TokenBase CurrentTokenData { get; set; }
         
 
-        public void SetNewToken(UIChangeEventArgs eventArgs)
-        {
-            string TokenId = eventArgs.Value.ToString();
+        //public void SetNewToken(UIChangeEventArgs eventArgs)
+        //{
+        //    string TokenId = eventArgs.Value.ToString();
 
-            Mediator.Send(new ChangeCurrentTokenAction() { TokenId = int.Parse(TokenId) });
-        }
+        //    Mediator.Send(new ChangeCurrentTokenAction() { TokenId = int.Parse(TokenId) });
+        //}
 
         //protected override async Task OnInitAsync()
         //{
