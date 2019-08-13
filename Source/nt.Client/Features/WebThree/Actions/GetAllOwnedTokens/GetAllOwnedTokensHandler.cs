@@ -48,32 +48,36 @@
         TokenDataList = new List<TokenBase>();
 
         GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(GetAllOwnedTokensSharedRequest.Route);
-        foreach (uint token in aTokenList.TokenIdList)
-        {
-          // TokenId
 
-          var ownedToken = new TokenBase() { TokenId = token };
-
-          //TokenNFtTypeId
-
-          ownedToken.TemplateData = await GetNft(token);
-
-          // Token Balance
-
-          ownedToken.Balance = await GetBalance(token);
-
-          // Token ImmutableData (Data)
-
-          string aDataString = await GetDataString(token);
-
-          DeserializeAndAddData(ownedToken, aDataString);
-        }
-
-        WebThreeState.TokenDataList = TokenDataList;
         WebThreeState.OwnedTokenIdList = aTokenList.TokenIdList;
-        WebThreeState.CurrentTokenData = TokenDataList[0];
-        WebThreeState.CurrentTokenId = TokenDataList[0].TokenId;
-        WebThreeState.CurrentTokenNftType = WebThreeState.CurrentTokenData.TemplateData.NftId;
+
+        if (aTokenList.TokenIdList.Count > 0)
+        {
+          foreach (uint token in aTokenList.TokenIdList)
+          {
+            // TokenId
+
+            var ownedToken = new TokenBase() { TokenId = token };
+
+            //TokenNFtTypeId
+
+            ownedToken.TemplateData = await GetNft(token);
+
+            // Token Balance
+
+            ownedToken.Balance = await GetBalance(token);
+
+            // Token ImmutableData (Data)
+
+            string aDataString = await GetDataString(token);
+
+            DeserializeAndAddData(ownedToken, aDataString);
+          }
+          WebThreeState.TokenDataList = TokenDataList;
+          WebThreeState.CurrentTokenData = TokenDataList[0];
+          WebThreeState.CurrentTokenId = TokenDataList[0].TokenId;
+          WebThreeState.CurrentTokenNftType = WebThreeState.CurrentTokenData.TemplateData.NftId;
+        }
         return WebThreeState;
       }
 
