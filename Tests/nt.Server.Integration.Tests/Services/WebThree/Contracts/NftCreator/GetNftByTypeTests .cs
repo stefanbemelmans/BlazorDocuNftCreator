@@ -19,7 +19,7 @@
     private IServiceProvider ServiceProvider { get; }
     private IMediator Mediator { get; }
 
-    public async Task ShouldGetTotalNftTemplateTypes()
+    public async Task ShouldGetNftByType()
     { 
       // Arrange
       var getNftRequest = new GetNftByTypeServiceRequest { GetNftId = 1 };
@@ -29,8 +29,10 @@
 
       //Assert
       response.NftTypeData.ShouldBeOfType<NftTemplate>();
-      response.NftTypeData.Name.ShouldBeOfType<string>();
-
+      response.NftTypeData.Name.ShouldBe("Purchase Order");
+      response.NftTypeData.Symbol.ShouldBe("POR");
+      response.NftTypeData.AttachedTokens.ShouldBe(0);
+      response.NftTypeData.MintLimit.ShouldBe(1);
     }
   }
 }

@@ -31,7 +31,7 @@ namespace nt.Server.Integration.Tests.Services.WebThree.Contracts.Herc1155
         { // 
           // Arrange
           //
-            var response = await Mediator.Send(new BalanceOfServiceRequest()
+      BalanceOfServiceResponse response = await Mediator.Send(new BalanceOfServiceRequest()
             {
                 TokenId = 5
             });
@@ -42,7 +42,7 @@ namespace nt.Server.Integration.Tests.Services.WebThree.Contracts.Herc1155
 
         public async Task ShouldGetSharedTokenBalance()
         {
-            var response = await Mediator.Send(new BalanceOfSharedRequest()
+      BalanceOfSharedResponse response = await Mediator.Send(new BalanceOfSharedRequest()
             {
                 ViewTokenId = 5
             });

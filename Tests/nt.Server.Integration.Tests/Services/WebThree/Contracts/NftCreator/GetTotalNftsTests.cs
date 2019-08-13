@@ -36,7 +36,7 @@
       //Assert
       //response.TotalNftTypes.ShouldBeGreaterThan(2);
       response.TotalNftTypes.ShouldNotBeNull();
-      response.TotalNftTypes.ShouldBe((uint)1);
+      response.TotalNftTypes.ShouldBe((uint)2);
     }
 
     public async Task ShouldGetTotalNftTypesFromContractVariable()
@@ -55,7 +55,22 @@
       //Assert
       //response.TotalNftTypes.ShouldBeGreaterThan(2);
       totalNfts.ShouldNotBeNull();
-      totalNfts.ShouldBe((uint)1);
+      totalNfts.ShouldBe((uint)2);
+    }
+
+    public async Task ShouldGetTotalNftTypesFromContractVariableWithoutCallSign()
+    {
+      // Arrange
+      Function getNftCountFunction = NftCreator.Instance.GetFunction("totalNFTs");
+
+      // Act
+
+      uint totalNfts = await getNftCountFunction.CallAsync<uint>();
+
+      //Assert
+      //response.TotalNftTypes.ShouldBeGreaterThan(2);
+      totalNfts.ShouldNotBeNull();
+      totalNfts.ShouldBe((uint)2);
     }
   }
 }

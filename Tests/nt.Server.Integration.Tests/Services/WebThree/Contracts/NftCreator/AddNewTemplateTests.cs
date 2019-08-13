@@ -13,6 +13,7 @@
   using nt.Server.Services.WebThree.Instance;
   using nt.Shared.Constants.ContractConstants.NftCreator;
   using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftTypes;
+  using nt.Shared.Constants.AccountAddresses;
 
   class AddNewTemplateTests
   {
@@ -39,26 +40,33 @@
 
       GetNftTypesServiceResponse totalTypesBeforeTest = await Mediator.Send(getNftRequest);
 
-      var aAddNewTemplateFunctionMessage = new AddNewTemplateFunctionInput
-      {
-        NewTemplateName = "Purchase Order",
-        NewTemplateSymbol = "POR",
-        NewTemplateAttachedTokens = 0,
-        NewTemplateMintLimit = 1
-      };
+      //var aAddNewTemplateFunctionMessage = new AddNewTemplateFunctionInput
+      // Ropsten NFT 1
+      //{
+      //  NewTemplateName = "Purchase Order",
+      //  NewTemplateSymbol = "POR",
+      //  NewTemplateAttachedTokens = 0,
+      //  NewTemplateMintLimit = 1,
+      //  FromAddress = TestEthAccounts.TestEthAccountAddress
+      //};
+      // Ropsten NFT 2
+      //{
+      //  NewTemplateName = "Purchase Requeset",
+      //  NewTemplateSymbol = "PRQ",
+      //  NewTemplateAttachedTokens = 0,
+      //  NewTemplateMintLimit = 1
+      //};
 
-      Nethereum.Hex.HexTypes.HexBigInteger gasEstimate = await addNewTemplateFunctionHandler.EstimateGasAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aAddNewTemplateFunctionMessage);
+      //Nethereum.Hex.HexTypes.HexBigInteger gasEstimate = await addNewTemplateFunctionHandler.EstimateGasAsync(NftCreatorAddresses.NewNftCreatorRopstenAddress, aAddNewTemplateFunctionMessage);
 
-      aAddNewTemplateFunctionMessage.Gas = gasEstimate.Value;
-
-      gasEstimate.Value.ShouldBeGreaterThan(0);
-
+      //aAddNewTemplateFunctionMessage.Gas = gasEstimate.Value; 
+      //gasEstimate.Value.ShouldBeGreaterThan(0);
       //Leaving this commented out as this is the action that makes a new template
       // it's been tested and works
 
-      Nethereum.RPC.Eth.DTOs.TransactionReceipt addingTemplateTransactionReceipt = await addNewTemplateFunctionHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aAddNewTemplateFunctionMessage);
+      //Nethereum.RPC.Eth.DTOs.TransactionReceipt addingTemplateTransactionReceipt = await addNewTemplateFunctionHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NewNftCreatorRopstenAddress, aAddNewTemplateFunctionMessage);
 
-      addingTemplateTransactionReceipt.ShouldNotBe(null);
+      //addingTemplateTransactionReceipt.ShouldNotBe(null);
 
 
       GetNftTypesServiceResponse totalTypesAfterTest = await Mediator.Send(getNftRequest);

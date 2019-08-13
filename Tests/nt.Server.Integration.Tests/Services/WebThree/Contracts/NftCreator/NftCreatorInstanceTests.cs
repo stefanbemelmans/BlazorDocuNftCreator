@@ -30,6 +30,7 @@ namespace nt.Server.Integration.Tests.Services.WebThree
       string address = NftCreatorInstance.Instance.Address;
 
       address.ShouldBe(NftCreatorAddresses.NewNftCreatorRopstenAddress);
+      
 
     }
 
