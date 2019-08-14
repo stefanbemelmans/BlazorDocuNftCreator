@@ -5,17 +5,14 @@
   [FunctionOutput]  // This works
   public class GetNftByTypeOutputDto : IFunctionOutputDTO
   {
-    [Parameter("string", "tokentype.name", 1)]
-    public string TokenName { get; set; }
-
-    [Parameter("string", "tokentype.symbol", 2)]
-    public string TokenSymbol { get; set; }
-
-    [Parameter("uint", "tokentype.mintlimit", 3)]
-    public int TokenMintLimit { get; set; }
-
-    [Parameter("uint", "tokentype.attachedTokens", 4)]
-    public int TokenAttachedTokens { get; set; }
+    [Parameter(type: "string", name: "name", 1)]
+    public string Name { get; set; }
+    [Parameter("string", "symbol", 2)]
+    public string Symbol { get; set; }
+    [Parameter("uint", "mintlimit", 3)]
+    public uint MintLimit { get; set; }
+    [Parameter("uint", "attachedTokens", 4)]
+    public uint AttachedTokens { get; set; }
 
   }
 }

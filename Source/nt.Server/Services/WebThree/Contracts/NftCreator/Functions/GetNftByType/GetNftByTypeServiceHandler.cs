@@ -19,18 +19,18 @@
 
     public async Task<GetNftByTypeServiceResponse> Handle(GetNftByTypeServiceRequest aGetNftByTypeServiceRequest, CancellationToken aCancellationToken)
     {
-      Function aGetNftByTypeFunction = NftCreatorInstance.Instance.GetFunction("NFTTemplates");
+      Function<GetNftByTypeFunctionInput> aGetNftByTypeFunction = NftCreatorInstance.Instance.GetFunction<GetNftByTypeFunctionInput>();
 
       var aGetNftByTypeFunctionMessage = new GetNftByTypeFunctionInput { NftId = aGetNftByTypeServiceRequest.GetNftId };
 
-      GetNftByTypeOutputDto aTemplate = await aGetNftByTypeFunction.CallDeserializingToObjectAsync<GetNftByTypeOutputDto>(aGetNftByTypeFunctionMessage.NftId);
+      GetNftByTypeOutputDto aTemplate = await aGetNftByTypeFunction.CallDeserializingToObjectAsync<GetNftByTypeOutputDto>(aGetNftByTypeFunctionMessage);
 
       var response = new NftTemplate
       {
-        Name = aTemplate.TokenName,
-        Symbol = aTemplate.TokenSymbol,
-        MintLimit = aTemplate.TokenMintLimit,
-        AttachedTokens = aTemplate.TokenAttachedTokens
+        Name = aTemplate.Name,
+        Symbol = aTemplate.Symbol,
+        MintLimit = (int)aTemplate.MintLimit,
+        AttachedTokens = (int)aTemplate.AttachedTokens
 
       };
 

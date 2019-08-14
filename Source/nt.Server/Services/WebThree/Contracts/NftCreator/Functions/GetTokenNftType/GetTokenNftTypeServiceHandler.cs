@@ -19,16 +19,12 @@
 
     public async Task<GetTokenNftTypeServiceResponse> Handle(GetTokenNftTypeServiceRequest aGetTokenNftTypeServiceRequest, CancellationToken aCancellationToken)
     {
-      Function tokenTypeFunction = NftCreator.Instance.GetFunction("NFTTemplates");
-      
-      uint tokenType = await tokenTypeFunction.CallAsync<uint>(
-        from: TestEthAccounts.TestEthAccountAddress,
-        gas: new Nethereum.Hex.HexTypes.HexBigInteger(900000), 
-        new Nethereum.Hex.HexTypes.HexBigInteger(0), 
-        functionInput: aGetTokenNftTypeServiceRequest.TokenId
-        );
+      Function tokenTypeFunction = NftCreator.Instance.GetFunction("tokenType");
 
-      return new GetTokenNftTypeServiceResponse { TokensNftType = tokenType };
+      uint tokenType = await tokenTypeFunction.CallAsync<uint>(aGetTokenNftTypeServiceRequest.TokenId);
+        
+
+      return new GetTokenNftTypeServiceResponse { TokensNftType = (uint)tokenType };
     }
   }
 }

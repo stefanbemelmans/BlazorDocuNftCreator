@@ -39,7 +39,7 @@
 
       //Assert
       aTokenIdList.ShouldNotBe(null);
-      aTokenIdList.Count.ShouldBe(0);
+      aTokenIdList.Count.ShouldBe(1);
 
 
     }
@@ -55,7 +55,7 @@
 
       List<uint> tokenList = await aGetAllOwnedTokensFunction.CallAsync<List<uint>>(GetAllOwnedTokensFunctionIput);
 
-      tokenList.Count.ShouldBe(0);
+      tokenList.Count.ShouldBe(1);
     }
 
     public async Task ShouldGetAllTokensUsingServerServices()
@@ -67,7 +67,7 @@
 
       GetAllOwnedTokensServiceResponse totalTokens = await Mediator.Send(request);
 
-      totalTokens.TokenIdList.Count.ShouldBe(0);
+      totalTokens.TokenIdList.Count.ShouldBe(1);
 
     }
 
@@ -77,7 +77,7 @@
 
       GetAllOwnedTokensSharedResponse totalTokens = await Mediator.Send(request);
 
-      totalTokens.TokenIdList.Count.ShouldBe(0);
+      totalTokens.TokenIdList.Count.ShouldBe(1);
 
     }
 

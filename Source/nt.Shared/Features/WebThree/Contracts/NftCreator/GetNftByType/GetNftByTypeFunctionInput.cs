@@ -3,10 +3,10 @@
   using Nethereum.ABI.FunctionEncoding.Attributes;
   using Nethereum.Contracts;
 
-  [Function(name: "getNFTData")] // This works
+  [Function(name: "NFTTemplates")]
   public class GetNftByTypeFunctionInput : FunctionMessage
   {
-    [Parameter(type: "uint", name:"id", order: 1)]
+    [Parameter(type: "uint")]
     public uint NftId { get; set; }
   }
 }
