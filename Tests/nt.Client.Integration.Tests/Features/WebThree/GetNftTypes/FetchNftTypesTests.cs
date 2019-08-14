@@ -34,7 +34,7 @@
             WebThreeState ActionResponse = await Mediator.Send(Action);
 
             ActionResponse.ShouldNotBe(null);
-            ActionResponse.TotalNftTypes.ShouldBeGreaterThan((uint)2);
+            ActionResponse.TotalNftTypes.ShouldBe((uint)2);
 
         }
 
@@ -44,7 +44,7 @@
 
             WebThreeState response = await Mediator.Send(fetchNftTypes);
 
-            response.TotalNftTypes.ShouldBeGreaterThan((uint)2);
+            response.TotalNftTypes.ShouldBe((uint)2);
         }
 
         public async Task Should_Generate_NftTypesList()
@@ -76,7 +76,7 @@
                 //
             }
 
-            nftTypeList.Count.ShouldBeGreaterThan(5);
+            nftTypeList.Count.ShouldBeGreaterThan(1);
 
             //NftTypeList[3].Name.ShouldBe("TesterTemplate_0");
             //NftTypeDict[4].Name.ShouldBe("TesterTemplate_0");
@@ -113,7 +113,7 @@
                 //
             }
 
-            NftTypeList[3].NftId.ShouldBe((uint)4);
+            NftTypeList.Count.ShouldBe(2);
 
             //NftTypeList[3].Name.ShouldBe("TesterTemplate_0");
             //NftTypeDict[4].Name.ShouldBe("TesterTemplate_0");

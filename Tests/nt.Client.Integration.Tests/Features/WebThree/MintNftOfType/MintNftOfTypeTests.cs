@@ -1,33 +1,42 @@
 ﻿namespace nt.Client.Integration.Tests.Features.WebThree.MintNftOfType
 {
-  using System;
-  using Shouldly;
-  using nt.Client.Features.WebThree;
-  using nt.Client.Integration.Tests.Infrastructure;
-  using Microsoft.Extensions.DependencyInjection;
-  using MediatR;
-  using System.Threading.Tasks;
-  using System.Net.Http;
-  using nt.Client.Features.WebThree.Actions.MintNft;
-  using nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder;
   using global::AnySerializer;
+  using MediatR;
+  using Microsoft.Extensions.DependencyInjection;
+  using Nethereum.Contracts;
+  using nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder;
+  using nt.Client.Integration.Tests.Infrastructure;
+  using nt.Server.Services.WebThree.Contracts.Herc1155;
+  using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
+  using nt.Server.Services.WebThree.Instance;
+  using nt.Shared.Constants.ContractConstants.NftCreator;
+  using nt.Shared.Features.WebThree.Contracts.NftCreator.MintNftOfType;
+  using Shouldly;
+  using System;
+
+  using System.Threading.Tasks;
 
   internal class MintNftOfTypeTests
   {
     private IMediator Mediator { get; }
+    private NethWeb3 NethWeb3 { get; set; }
+    private NftCreatorInstance NftCreator { get; }
     private IServiceProvider ServiceProvider { get; }
+
     public MintNftOfTypeTests(TestFixture aTestFixture)
     {
       ServiceProvider = aTestFixture.ServiceProvider;
       Mediator = ServiceProvider.GetService<IMediator>();
+      NftCreator = ServiceProvider.GetService<NftCreatorInstance>();
+      NethWeb3 = ServiceProvider.GetService<NethWeb3>();
     }
 
-    public void ClientActionMintingTest()
+    public async Task ClientActionMintingTest()
     {
-      // Assert 
-      string MutableDataString = "Client Mutable Data String Minting Tester";
+      // A
+      string mutableDataString = "Client Mutable Data String Minting Tester";
 
-      var PurchaseOrData = new PurchaseOrderData()
+      var purchaseOrData = new PurchaseOrderData()
       {
         Department = "TestingDept",
         Notes = "Serialization Test With Data, This is some data.",
@@ -42,28 +51,33 @@
         Title = "Purchase Order Ropsten Test"
       };
 
-      byte[] serializedImmutableObject = Serializer.Serialize(PurchaseOrData);
+      byte[] serializedImmutableObject = Serializer.Serialize(purchaseOrData);
 
       string serializedObjectAsBase64String = Convert.ToBase64String(serializedImmutableObject);
 
-      var TesterPoNft = new MintNftOfTypeClientAction()
+      var aMintNftOfTypeFunctionMessage = new MintNftOfTypeFunctionInput
       {
         ImmutableDataString = serializedObjectAsBase64String,
-        MutableDataString = MutableDataString,
-        MintNftId = 1
+        MutableDataString = mutableDataString,
+        NftId = 1
       };
-      TesterPoNft.MutableDataString.ShouldBe("Client Mutable Data String Minting Tester");
-      //WebThreeState MintingResponse = await Mediator.Send(TesterPoNft);
-      //{
-      //  ImmutableDataString = serializedObjectAsBase64String,
-      //  MutableDataString = MutableDataString,
-      //  MintNftId = 1
-      //});
 
-      //MintingResponse.TransactionHash.ShouldNotBe(null);
+      Function<MintNftOfTypeFunctionInput> aMintNftOfTypeFunction = NftCreator.Instance.GetFunction<MintNftOfTypeFunctionInput>();
 
+      Nethereum.Contracts.ContractHandlers.IContractTransactionHandler<MintNftOfTypeFunctionInput> mintingHandler = NethWeb3.Instance.Eth.GetContractTransactionHandler<MintNftOfTypeFunctionInput>();
+      // serialization needed
+
+      Nethereum.Hex.HexTypes.HexBigInteger gasEstimate = await mintingHandler.EstimateGasAsync(NftCreatorAddresses.NewNftCreatorRopstenAddress, aMintNftOfTypeFunctionMessage);
+
+      aMintNftOfTypeFunctionMessage.Gas = gasEstimate.Value;
+
+      Nethereum.RPC.Eth.DTOs.TransactionReceipt mintingTransactionReceipt = await mintingHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NewNftCreatorRopstenAddress, aMintNftOfTypeFunctionMessage);
+
+      System.Collections.Generic.List<EventLog<MintNftOutputEventDto>> MintNftOutput = mintingTransactionReceipt.DecodeAllEvents<MintNftOutputEventDto>();
+
+      mintingTransactionReceipt.ShouldNotBeNull();
+
+      MintNftOutput.ShouldNotBeNull();
     }
-
-
   }
 }

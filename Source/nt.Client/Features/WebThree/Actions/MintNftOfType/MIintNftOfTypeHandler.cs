@@ -40,8 +40,9 @@
         //string uri = MintNftOfTypeSharedRequest.RouteFactory((int)aMintNftClientRequest.MintNftId, aMintNftClientRequest.MutableDataString, aMintNftClientRequest.ImmutableDataString);
         MintNftOfTypeSharedResponse mintingResponse = await HttpClient.SendJsonAsync<MintNftOfTypeSharedResponse>(HttpMethod.Post, MintNftOfTypeSharedRequest.Route, mintingRequest);
 
-        WebThreeState.TransactionHash = mintingResponse.TransactionHash;
-        WebThreeState.NewTokenId = mintingResponse.TokenId;
+        WebThreeState.MintingResponse.TransactionHash = mintingResponse.TransactionHash;
+        WebThreeState.MintingResponse.NewTokenId = mintingResponse.TokenId;
+        WebThreeState.MintingResponse.GasUsed = mintingResponse.GasUsed;
 
         return WebThreeState;
       }

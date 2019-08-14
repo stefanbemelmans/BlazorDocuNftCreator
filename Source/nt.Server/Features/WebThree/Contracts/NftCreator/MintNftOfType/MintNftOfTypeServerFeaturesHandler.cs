@@ -33,7 +33,8 @@
       return new MintNftOfTypeSharedResponse
       {
         TransactionHash = response.TransactionHash,
-        TokenId = response.TokenId
+        TokenId = response.TokenId,
+        GasUsed = response.GasUsed
       };
     }
   }

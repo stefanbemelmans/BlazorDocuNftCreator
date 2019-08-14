@@ -15,6 +15,7 @@
   using nt.Shared.Constants.ContractConstants.NftCreator;
   using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftTypes;
   using nt.Server.Services.WebThree.Contracts.Herc1155;
+  using nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder;
 
   // Below is nftType 4 for deserialization
   class ImmutableData
@@ -43,38 +44,41 @@
     private NftCreatorInstance NftCreator { get; }
     private NethWeb3 NethWeb3 { get; }
 
-    public async Task ShouldMintNftOfType()
+    public void ShouldMintNftOfType()
     {
       // Arrange
 
-      Function<MintNftOfTypeFunctionInput> aMintNftOfTypeFunction = NftCreator.Instance.GetFunction<MintNftOfTypeFunctionInput>();
+      string MutableDataString = "Server Services Mutable Data String Minting Tester";
 
-      Nethereum.Contracts.ContractHandlers.IContractTransactionHandler<MintNftOfTypeFunctionInput> MintNftOfTypeFunctionHandler = NethWeb3.Instance.Eth.GetContractTransactionHandler<MintNftOfTypeFunctionInput>();
-
-      //byte[] serializedImmutable = Serializer.Serialize(new ImmutableData());
-      //byte[] serializedMutable = Serializer.Serialize(new MutableData());
-
-      //string base64StringifiedSerializedImmutable = Convert.ToBase64String(serializedImmutable);
-      //string base64StringifiedSerializedMutable = Convert.ToBase64String(serializedMutable);
-
-      var aMintNftOfTypeFunctionMessage = new MintNftOfTypeFunctionInput
+      var PurchaseOrData = new PurchaseOrderData()
       {
-        Type = 4,
-        MutableDataString = "The Third Minted NFT!Take 3",
-        ImmutableDataString = "This Is MintingTest 3"
+        Department = "TestingDept",
+        Notes = "Serialization Test With Data, This is some data.",
+        Requester = "The Man",
+        Approver = "The Man's Man Approves",
+        Item_Code = "Item Code Here",
+        Item_Discount = 123,
+        Item_Name = "Fancy Product Name Test",
+        Item_Price = "Fancy Price Tester",
+        Item_Qty = 42,
+        Item_Total = 1234,
+        Title = "Purchase Order Ropsten Test"
       };
 
-      Nethereum.Hex.HexTypes.HexBigInteger gasEstimate = await MintNftOfTypeFunctionHandler.EstimateGasAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aMintNftOfTypeFunctionMessage);
+      byte[] serializedImmutableObject = Serializer.Serialize(PurchaseOrData);
 
-      aMintNftOfTypeFunctionMessage.Gas = gasEstimate.Value;
+      string serializedObjectAsBase64String = Convert.ToBase64String(serializedImmutableObject);
 
-      gasEstimate.Value.ShouldBeGreaterThan(0);
+      var TesterPoNft = new MintNftOfTypeServiceRequest()
+      {
+        ImmutableDataString = serializedObjectAsBase64String,
+        MutableDataString = MutableDataString,
+        MintNftId = 1
+      };
+      TesterPoNft.MutableDataString.ShouldBe("Server Services Mutable Data String Minting Tester");
+      //MintNftOfTypeServiceResponse MintingResponse = await Mediator.Send(TesterPoNft);
 
-      //Nethereum.RPC.Eth.DTOs.TransactionReceipt MintNftOfTypeTransactionReceipt = await MintNftOfTypeFunctionHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aMintNftOfTypeFunctionMessage);
-
-      //System.Collections.Generic.List<EventLog<MintNftOutputEventDto>> MintNftOutput = MintNftOfTypeTransactionReceipt.DecodeAllEvents<MintNftOutputEventDto>();
-      //MintNftOfTypeTransactionReceipt.ShouldNotBe(null);
-      //MintNftOutput.Count.ShouldBeGreaterThan(0);
+      //MintingResponse.TransactionHash.ShouldNotBeNull();
 
     }
   }

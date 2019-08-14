@@ -1,8 +1,7 @@
 ﻿namespace nt.Server.Services.WebThree.Contracts.NftCreator.Functions.MintNftOfType
 {
-  using Nethereum.RPC.Eth.DTOs;
+  using Nethereum.Hex.HexTypes;
   using nt.Shared.Features.Base;
-  using System.Numerics;
 
   public class MintNftOfTypeServiceResponse : BaseResponse
   {
@@ -12,5 +11,6 @@
 
     public int TokenId { get; set; }
     public string TransactionHash { get; set; }
+    public HexBigInteger GasUsed { get; set; }
   }
 }

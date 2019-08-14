@@ -75,7 +75,6 @@
           }
           WebThreeState.TokenDataList = TokenDataList;
           WebThreeState.CurrentTokenData = TokenDataList[0];
-          WebThreeState.CurrentTokenId = TokenDataList[0].TokenId;
           WebThreeState.CurrentTokenNftType = WebThreeState.CurrentTokenData.TemplateData.NftId;
         }
         return WebThreeState;

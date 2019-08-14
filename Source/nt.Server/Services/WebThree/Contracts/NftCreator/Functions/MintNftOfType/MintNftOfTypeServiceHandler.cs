@@ -2,6 +2,7 @@
 {
   using MediatR;
   using Nethereum.Contracts;
+  using Nethereum.Hex.HexTypes;
   using nt.Server.Services.WebThree.Contracts.Herc1155;
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
   using nt.Server.Services.WebThree.Instance;
@@ -31,16 +32,16 @@
 
       var aMintNftOfTypeFunctionMessage = new MintNftOfTypeFunctionInput
       {
-        Type = aMintNftOfTypeServiceRequest.MintNftId,
+        NftId = aMintNftOfTypeServiceRequest.MintNftId,
         ImmutableDataString = aMintNftOfTypeServiceRequest.ImmutableDataString,
-        MutableDataString = aMintNftOfTypeServiceRequest.MutableDataString
+        MutableDataString = aMintNftOfTypeServiceRequest.MutableDataString == null ? "" : aMintNftOfTypeServiceRequest.MutableDataString
       };
 
-      Nethereum.Hex.HexTypes.HexBigInteger gasEstimate = await mintingHandler.EstimateGasAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aMintNftOfTypeFunctionMessage);
+      Nethereum.Hex.HexTypes.HexBigInteger gasEstimate = await mintingHandler.EstimateGasAsync(NftCreatorAddresses.NewNftCreatorRopstenAddress, aMintNftOfTypeFunctionMessage);
 
       aMintNftOfTypeFunctionMessage.Gas = gasEstimate.Value;
 
-      Nethereum.RPC.Eth.DTOs.TransactionReceipt mintingTransactionReceipt = await mintingHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NftCreatorRinkebyAddress, aMintNftOfTypeFunctionMessage);
+      Nethereum.RPC.Eth.DTOs.TransactionReceipt mintingTransactionReceipt = await mintingHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddresses.NewNftCreatorRopstenAddress, aMintNftOfTypeFunctionMessage);
 
       System.Collections.Generic.List<EventLog<MintNftOutputEventDto>> MintNftOutput = mintingTransactionReceipt.DecodeAllEvents<MintNftOutputEventDto>();
 
@@ -48,7 +49,8 @@
       return new MintNftOfTypeServiceResponse
       {
         TransactionHash = mintingTransactionReceipt.TransactionHash,
-        TokenId = id
+        TokenId = id,
+        GasUsed = new HexBigInteger(mintingTransactionReceipt.GasUsed.Value)
       };
     }
   }

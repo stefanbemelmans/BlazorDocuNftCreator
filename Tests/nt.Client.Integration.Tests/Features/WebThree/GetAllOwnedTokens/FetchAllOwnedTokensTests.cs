@@ -53,78 +53,66 @@
       WebThreeState WebThree = await Mediator.Send(new GetNftTypesClientFeaturesAction());
 
       GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(GetAllOwnedTokensSharedRequest.Route);
-      aTokenList.TokenIdList.Count.ShouldBe(0);
+      aTokenList.TokenIdList.Count.ShouldBe(1);
       //aTokenList.TokenIdList.Count.ShouldBeGreaterThan(3);
       //aTokenList.TokenIdList.Contains(3).ShouldBe(true);
       //aTokenList.TokenIdList.Contains(4).ShouldBe(true);
       //aTokenList.TokenIdList.Contains(5).ShouldBe(true);
       //aTokenList.TokenIdList.Contains(6).ShouldBe(true);
-      //  foreach (uint token in aTokenList.TokenIdList)
-      //  {
-      //    // Start the list with TokenId
-      //    var ownedToken = new TokenBase() { TokenId = token };
-      //    //SeparateTokenDataList.Add(ownedToken);
+      foreach (uint token in aTokenList.TokenIdList)
+      {
+        // Start the list with TokenId
+        var ownedToken = new TokenBase() { TokenId = token };
+        //SeparateTokenDataList.Add(ownedToken);
 
-      //    string getNftTypeUri = GetTokenNftTypeSharedRequest.RouteFactory((int)token);
+        string getNftTypeUri = GetTokenNftTypeSharedRequest.RouteFactory((int)token);
 
-      //    GetTokenNftTypeSharedResponse aNftTypeSharedResponse = await HttpClient.GetJsonAsync<GetTokenNftTypeSharedResponse>(getNftTypeUri);
+        GetTokenNftTypeSharedResponse aNftTypeSharedResponse = await HttpClient.GetJsonAsync<GetTokenNftTypeSharedResponse>(getNftTypeUri);
 
-      //    // TokenNftTypeData Should already have the data in state so no need to make a service call
-      //    NftTemplate nftType = WebThree.TemplateDataList.Find(nft => nft.NftId == aNftTypeSharedResponse.NftType);
+        // TokenNftTypeData Should already have the data in state so no need to make a service call
+        NftTemplate nftType = WebThree.TemplateDataList.Find(nft => nft.NftId == aNftTypeSharedResponse.NftType);
 
-      //    ownedToken.TemplateData = nftType;
+        ownedToken.TemplateData = nftType;
 
-      //    // Token Balance
+        // Token Balance
 
-      //    BalanceOfSharedResponse aBalanceContainer = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(BalanceOfSharedRequest.RouteFactory((int)token));
+        BalanceOfSharedResponse aBalanceContainer = await HttpClient.GetJsonAsync<BalanceOfSharedResponse>(BalanceOfSharedRequest.RouteFactory((int)token));
 
-      //    ownedToken.Balance = aBalanceContainer.Balance;
+        ownedToken.Balance = aBalanceContainer.Balance;
 
-      //    // Token ImmutableData (Data)
+        // Token ImmutableData (Data)
 
-      //    ownedToken.TemplateData.ShouldBeOfType<NftTemplate>();
+        ownedToken.TemplateData.ShouldBeOfType<NftTemplate>();
 
-      //    ViewTokenDataSharedResponse dataString = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(ViewTokenDataSharedRequest.RouteFactory((int)token));
+        ViewTokenDataSharedResponse dataString = await HttpClient.GetJsonAsync<ViewTokenDataSharedResponse>(ViewTokenDataSharedRequest.RouteFactory((int)token));
 
-      //    dataString.TokenDataString.ShouldNotBe(null);
-      //    if (token == 3)
-      //    {
-      //      byte[] serializedImmutableData = Convert.FromBase64String(dataString.TokenDataString);
-      //      // need to figure out a way to get the type occording to the nftId
-      //      ImmutableData deserializedObject = Serializer.Deserialize<ImmutableData>(serializedImmutableData, options); // options == 0
+        dataString.TokenDataString.ShouldNotBe(null);
+        if (ownedToken.TemplateData.NftId == 1)
+        {
+          byte[] serializedImmutableData = Convert.FromBase64String(dataString.TokenDataString);
+          // need to figure out a way to get the type occording to the nftId
+         PurchaseOrderData deserializedPurchaseOrder = Serializer.Deserialize<PurchaseOrderData>(serializedImmutableData, 0); // options == 0
 
-      //      ownedToken.ImmDataObj = deserializedObject;
+          ownedToken.PurchaseOrderData = deserializedPurchaseOrder;
 
-      //      // Add to StateList
-      //      SeparateTokenDataList.Add(ownedToken);
-      //    }
-      //    if (token == 8)
-      //    {
-      //      byte[] serializedImmutableData = Convert.FromBase64String(dataString.TokenDataString);
-      //      // need to figure out a way to get the type occording to the nftId
-      //      PurchaseOrderData deserializedObject = Serializer.Deserialize<PurchaseOrderData>(serializedImmutableData, options); // options == 0
+          // Add to StateList
+          SeparateTokenDataList.Add(ownedToken);
+        }
+        else
+        {
+          ownedToken.Data = dataString.TokenDataString;
 
-      //      ownedToken.PurchaseOrderData = deserializedObject;
+          SeparateTokenDataList.Add(ownedToken);
+        }
+      }
 
-      //      // Add to StateList
-      //      SeparateTokenDataList.Add(ownedToken);
-      //    }
-      //    else
-      //    {
-      //      ownedToken.Data = dataString.TokenDataString;
-
-      //      SeparateTokenDataList.Add(ownedToken);
-      //    }
-      //  }
-
-      //  SeparateTokenDataList.Count.ShouldBeGreaterThan(3);
-      //}
-
-      //public async Task ShouldReturnWebThreeState()
-      //{
-      //  WebThreeState webThreeState = await Mediator.Send(new GetAllOwnedTokensAction());
-      //  webThreeState.ShouldNotBe(null);
-      //}
+      SeparateTokenDataList.Count.ShouldBe(1);
     }
+
+    //public async Task ShouldReturnWebThreeState()
+    //{
+    //  WebThreeState webThreeState = await Mediator.Send(new GetAllOwnedTokensAction());
+    //  webThreeState.ShouldNotBe(null);
+    //}
   }
-}
+  }

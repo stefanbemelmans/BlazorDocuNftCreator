@@ -9,7 +9,7 @@
   public class MintNftOfTypeFunctionInput : FunctionMessage
   {
     [Parameter(type: "uint", name: "type", 1)]
-    public int Type { get; set; }
+    public int NftId { get; set; }
 
     [Parameter("string", "data", 2)]
     public string ImmutableDataString { get; set; }

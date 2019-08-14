@@ -24,13 +24,13 @@
       var aFetchTokenNftTypeAction = 
         new FetchTokenNftTypeAction
       {
-        TokenId = 3
+        TokenId = 0
       };
 
       WebThreeState aFetchTokenNftTypeResponse = await Mediator.Send(aFetchTokenNftTypeAction);
 
       aFetchTokenNftTypeResponse.CurrentTokenNftType.ShouldNotBe((uint)0);
-      aFetchTokenNftTypeResponse.CurrentTokenNftType.ShouldBe((uint)4);
+      aFetchTokenNftTypeResponse.CurrentTokenNftType.ShouldBe((uint)1);
 
     }
        

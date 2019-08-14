@@ -18,18 +18,20 @@
         <div class="spinner-border">
           <span class="sr-only">Loading...</span>
         </div>
-        <button type="button" @onclick="@ToggleHasMinted">Hit it</button>
+        <button type="button" @onclick="@ToggleHasMinted">Toggle has MintedAction</button>
 
       }
       @if(HasMinted)
       {
-        <div class="p-2 m-2 bg-info text-center">
-          <h4>Check it out on EtherScan</h4>
-         @* <a href="https://rinkeby.etherscan.io/tx/?{TransactionHash}">@TransactionHash</a>*@
-          Your New Nft ID is @NewTokenId
+        @*<div class="p-2 m-2 bg-info text-center">
+          <h3>Success!</h3>
+          <a href="https://rinkeby.etherscan.io/tx/?{MintingResponse.TransactionHash}">Check it out on EtherScan</a>
+          Your New Nft ID is @MintingResponse.NewTokenId
+          Gas Used: @MintingResponse.GasUsed*@
+          <MintingSuccessComponent />
           <button type="button" @onclick="@ToggleHasMinted">ToggleHasMinted</button>
           <button type="button" @onclick="@ToggleIsMinting">ToggleIsMinting</button>
-        </div>
+      
 
       }
       @if(ShowMintingButton & FormData != null)
