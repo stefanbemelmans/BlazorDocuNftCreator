@@ -1,16 +1,16 @@
-﻿using System;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using Shouldly;
-using System.Threading.Tasks;
-using nt.Server.Services.WebThree.Contracts.Herc1155.ContractInstance;
-using nt.Server.Services.WebThree.Instance;
-using nt.Server.Services.WebThree.Contracts.Herc1155.BalanceOf;
-using nt.Shared.Features.WebThree.Contracts.Herc1155.BalanceOf;
-
-namespace nt.Server.Integration.Tests.Services.WebThree.Contracts.Herc1155
+﻿namespace nt.Server.Integration.Tests.Services.WebThree.Contracts.Herc1155
 {
-    class BalanceOfTests
+  using System;
+  using MediatR;
+  using Microsoft.Extensions.DependencyInjection;
+  using Shouldly;
+  using System.Threading.Tasks;
+  using nt.Server.Services.WebThree.Contracts.Herc1155.ContractInstance;
+  using nt.Server.Services.WebThree.Instance;
+  using nt.Server.Services.WebThree.Contracts.Herc1155.BalanceOf;
+  using nt.Shared.Features.WebThree.Contracts.Herc1155.BalanceOf;
+
+  class BalanceOfTests
     {
         public BalanceOfTests(TestFixture aTestFixture)
         {

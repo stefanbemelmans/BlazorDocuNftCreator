@@ -28,7 +28,7 @@
 
       return new GetTokenNftTypeSharedResponse(new System.Guid())
       {
-        NftType = response.TokensNftType
+        NftId = response.NftId
       };
       
     }

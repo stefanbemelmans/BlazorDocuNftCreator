@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Components;
-using nt.Client.Features.Base.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace nt.Client.Features.WebThree.Components
+﻿namespace nt.Client.Features.WebThree.Components
 {
+  using Microsoft.AspNetCore.Components;
+  using nt.Client.Features.Base.Components;
+
   public class MintingModalModel : BaseComponent
   {
     [Parameter]

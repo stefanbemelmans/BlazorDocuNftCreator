@@ -18,20 +18,15 @@
 
     public async Task<ViewMutableDataServiceResponse> Handle(ViewMutableDataServiceRequest aViewMutableDataServiceRequest, CancellationToken aCancellationToken)
     {
-      Function<ViewMutableDataFunctionInput> aViewMutableDataFunction = Herc1155Instance.Instance.GetFunction<ViewMutableDataFunctionInput>();
+      Function<ViewMutableDataServiceRequest> aViewMutableDataFunction = Herc1155Instance.Instance.GetFunction<ViewMutableDataServiceRequest>();
 
-      string response = await aViewMutableDataFunction.CallAsync<string>(
-        new ViewMutableDataFunctionInput
-        {
-          ViewTokenId = aViewMutableDataServiceRequest.ViewTokenId
-        }
-        );
-
-      return new ViewMutableDataServiceResponse
+      var viewMutableFunctionMessage = new ViewMutableDataServiceRequest()
       {
-        MutableDataString = response
+        ViewTokenId = aViewMutableDataServiceRequest.ViewTokenId
       };
+      ViewMutableDataServiceResponse response = await aViewMutableDataFunction.CallDeserializingToObjectAsync<ViewMutableDataServiceResponse>(viewMutableFunctionMessage);
 
+      return response;
     }
   }
 }

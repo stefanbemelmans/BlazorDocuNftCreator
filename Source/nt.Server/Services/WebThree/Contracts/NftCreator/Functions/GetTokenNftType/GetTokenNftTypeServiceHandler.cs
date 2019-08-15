@@ -5,8 +5,6 @@
   using Nethereum.Contracts;
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
   using MediatR;
-  using nt.Shared.Features.WebThree;
-  using nt.Shared.Constants.AccountAddresses;
 
   public class GetTokenNftTypeServerServiceHandler : IRequestHandler<GetTokenNftTypeServiceRequest, GetTokenNftTypeServiceResponse>
     {
@@ -24,7 +22,7 @@
       uint tokenType = await tokenTypeFunction.CallAsync<uint>(aGetTokenNftTypeServiceRequest.TokenId);
         
 
-      return new GetTokenNftTypeServiceResponse { TokensNftType = (uint)tokenType };
+      return new GetTokenNftTypeServiceResponse { NftId = (uint)tokenType };
     }
   }
 }

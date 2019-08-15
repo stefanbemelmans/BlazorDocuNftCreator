@@ -1,9 +1,12 @@
 ﻿namespace nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetTokenNftType
 {
-  using nt.Shared.Features.Base;
+  using Nethereum.ABI.FunctionEncoding.Attributes;
 
-  public class GetTokenNftTypeServiceResponse : BaseResponse
-    {
-    public uint TokensNftType { get; set; }
-    }
+  [FunctionOutput]
+  public class GetTokenNftTypeServiceResponse : IFunctionOutputDTO
+  {
+    [Parameter(type: "uint", 1)]
+    public uint NftId { get; set; }
+
+  }
 }

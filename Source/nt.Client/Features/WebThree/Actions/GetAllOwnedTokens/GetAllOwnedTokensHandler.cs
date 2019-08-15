@@ -128,7 +128,7 @@
       private async Task<NftTemplate> GetNft(uint aToken)
       {   // TokenNftTypeData Should already have the data in state so no need to make a service call
         GetTokenNftTypeSharedResponse nftContainer = await HttpClient.GetJsonAsync<GetTokenNftTypeSharedResponse>(GetTokenNftTypeSharedRequest.RouteFactory((int)aToken));
-        NftTemplate template = WebThreeState.TemplateDataList.Find(aNft => aNft.NftId == nftContainer.NftType);
+        NftTemplate template = WebThreeState.TemplateDataList.Find(aNft => aNft.NftId == nftContainer.NftId);
         return template;
       }
     }

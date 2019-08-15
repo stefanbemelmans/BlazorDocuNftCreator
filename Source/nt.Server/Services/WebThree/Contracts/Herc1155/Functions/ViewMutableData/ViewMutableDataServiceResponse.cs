@@ -1,9 +1,9 @@
 ﻿namespace nt.Server.Services.WebThree.Contracts.Herc1155
 {
-  using nt.Shared.Features.Base;
-  using nt.Shared.Features.WebThree;
-    public class ViewMutableDataServiceResponse : BaseResponse
-    {
+  using Nethereum.ABI.FunctionEncoding.Attributes;
+    public class ViewMutableDataServiceResponse : IFunctionOutputDTO
+  {
+    [Parameter(type: "string", 1)]
     public string MutableDataString { get; set; }
     }
 }

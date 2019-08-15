@@ -5,14 +5,9 @@
   using Microsoft.Extensions.DependencyInjection;
   using Shouldly;
   using System.Threading.Tasks;
-  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetTokenNftType;
   using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetTokenNftType;
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
   using Nethereum.Contracts;
-  using Nethereum.ABI.FunctionEncoding.Attributes;
-  using nt.Shared.Features.WebThree;
-  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
-  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetTokenNFtType;
   using nt.Shared.Constants.AccountAddresses;
 
   class GetTokenNftTypeTests
@@ -33,9 +28,9 @@
       // Arrange
 
 
-      Function<GetTokenNftTypeFunctionInput> getTokenNftTypeFunction = NftCreator.Instance.GetFunction<GetTokenNftTypeFunctionInput>();
+      Function<GetTokenNftTypeServiceRequest> getTokenNftTypeFunction = NftCreator.Instance.GetFunction<GetTokenNftTypeServiceRequest>();
 
-      var getTokenNftTypeInput = new GetTokenNftTypeFunctionInput()
+      var getTokenNftTypeInput = new GetTokenNftTypeServiceRequest()
       {
         FromAddress = TestEthAccounts.TestEthAccountAddress,
         TokenId = 2
@@ -43,8 +38,8 @@
 
       // Act
 
-      GetTokenNftTypeFunctionOutput nftType = await getTokenNftTypeFunction.CallDeserializingToObjectAsync<GetTokenNftTypeFunctionOutput>(getTokenNftTypeInput);
-     
+      GetTokenNftTypeServiceResponse nftType = await getTokenNftTypeFunction.CallDeserializingToObjectAsync<GetTokenNftTypeServiceResponse>(getTokenNftTypeInput);
+
       //Assert
       //response.TokensNftType.ShouldBe((uint)1);
       nftType.ShouldNotBeNull();
@@ -72,5 +67,5 @@
     //}
 
   }
-}
+  }
 

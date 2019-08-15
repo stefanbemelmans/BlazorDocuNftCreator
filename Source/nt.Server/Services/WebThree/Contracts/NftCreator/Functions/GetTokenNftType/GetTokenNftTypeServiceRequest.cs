@@ -1,9 +1,14 @@
 ﻿namespace nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetTokenNftType
 {
   using MediatR;
-  public class GetTokenNftTypeServiceRequest : IRequest<GetTokenNftTypeServiceResponse>
-    {
-      public uint TokenId { get; set; }
-    
-    }
+  using Nethereum.ABI.FunctionEncoding.Attributes;
+  using Nethereum.Contracts;
+
+  
+  [Function(name: "tokenType")]
+  public class GetTokenNftTypeServiceRequest : FunctionMessage, IRequest<GetTokenNftTypeServiceResponse>
+  {
+    [Parameter(type: "uint")]
+    public uint TokenId { get; set; }
+  }
 }

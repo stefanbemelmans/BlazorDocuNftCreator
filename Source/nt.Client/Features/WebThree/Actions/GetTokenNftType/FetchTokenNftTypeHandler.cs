@@ -33,7 +33,7 @@
 
         GetTokenNftTypeSharedResponse type = await HttpClient.GetJsonAsync<GetTokenNftTypeSharedResponse>(requestUri);
 
-        WebThreeState.CurrentTokenNftType = type.NftType;
+        WebThreeState.CurrentTokenNftType = type.NftId;
 
         return WebThreeState;
       }
