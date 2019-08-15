@@ -1,4 +1,4 @@
-﻿namespace nt.Server.Features.WebThree.Contracts.NftCreator.GetNftTypes
+﻿namespace nt.Server.Features.WebThree.Contracts.NftCreator.GetNftCount
 {
   using System.Threading.Tasks;
   using nt.Server.Features.Base;

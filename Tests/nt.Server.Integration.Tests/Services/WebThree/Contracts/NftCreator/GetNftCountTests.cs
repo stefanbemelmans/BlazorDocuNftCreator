@@ -2,11 +2,9 @@
 {
   using MediatR;
   using Microsoft.Extensions.DependencyInjection;
-  using Nethereum.Contracts;
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
   using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftCount;
-  using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftTypes;
-  using nt.Shared.Constants.AccountAddresses;
+  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftCount;
   using Shouldly;
   using System;
   using System.Threading.Tasks;
@@ -41,6 +39,20 @@
     }
 
 
+
+    public async Task ShouldGetNftCountFromShared()
+    {
+      // Arrange
+      var getNftRequest = new GetNftCountSharedRequest();
+
+      // Act
+      GetNftCountSharedResponse response = await Mediator.Send(getNftRequest);
+
+      //Assert
+      //response.TotalNftTypes.ShouldBeGreaterThan(2);
+      response.NftCount.ShouldNotBeNull();
+      response.NftCount.ShouldBe((uint)2);
+    }
     //public async Task ShouldGetTotalNftTypesFromContractVariable()
     //{
     //  // Arrange

@@ -4,17 +4,10 @@
   using MediatR;
   using Microsoft.Extensions.DependencyInjection;
   using Shouldly;
-  using System.Threading.Tasks;
-  using nt.Shared.Features.WebThree;
   using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.MintNftOfType;
-  using nt.Shared.Features.WebThree.Contracts.NftCreator.MintNftOfType;
-  using Nethereum.Contracts;
   using AnySerializer;
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
   using nt.Server.Services.WebThree.Instance;
-  using nt.Shared.Constants.ContractConstants.NftCreator;
-  using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftTypes;
-  using nt.Server.Services.WebThree.Contracts.Herc1155;
   using nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder;
 
   // Below is nftType 4 for deserialization

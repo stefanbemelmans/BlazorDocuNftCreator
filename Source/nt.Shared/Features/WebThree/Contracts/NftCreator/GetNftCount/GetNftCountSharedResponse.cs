@@ -5,6 +5,6 @@ namespace nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftCount
 
   public class GetNftCountSharedResponse : BaseResponse
   {
-    public uint NftCount{ get; set; }
+    public uint NftCount { get; set; }
   }
 }

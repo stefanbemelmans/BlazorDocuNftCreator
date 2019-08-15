@@ -32,10 +32,9 @@
     public List<TokenBase> TokenDataList { get; set; }
 
     public uint TotalNftTypes { get; set; }
+    public uint NftCount { get; set; }
 
     public uint TotalTokenTypes { get; set; }
-    public string TransactionHash { get; set; }
-    public int NewTokenId { get; set; }
 
     public WebThreeState() { }
 
@@ -47,6 +46,7 @@
       CurrentTokenData = null;
       CurrentTokenNftType = 0;
       TotalNftTypes = 0;
+      NftCount = 0;
       TemplateDataList = new List<NftTemplate>();
       CurrentNftTemplate = new NftTemplate();
     }
