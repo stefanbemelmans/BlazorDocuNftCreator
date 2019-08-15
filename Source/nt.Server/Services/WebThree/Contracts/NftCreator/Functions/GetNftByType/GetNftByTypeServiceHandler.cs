@@ -1,16 +1,15 @@
 ﻿namespace nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftByType
 {
-  using System.Threading.Tasks;
-  using System.Threading;
+  using MediatR;
   using Nethereum.Contracts;
   using nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance;
-  using nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType;
-  using MediatR;
   using nt.Shared.Features.WebThree;
+  using System.Threading;
+  using System.Threading.Tasks;
 
   public class GetNftByTypeServerServiceHandler : IRequestHandler<GetNftByTypeServiceRequest, GetNftByTypeServiceResponse>
-    {
-    NftCreatorInstance NftCreatorInstance { get; set; }
+  {
+    private NftCreatorInstance NftCreatorInstance { get; set; }
 
     public GetNftByTypeServerServiceHandler(NftCreatorInstance aNftCreatorInstance)
     {
@@ -19,24 +18,20 @@
 
     public async Task<GetNftByTypeServiceResponse> Handle(GetNftByTypeServiceRequest aGetNftByTypeServiceRequest, CancellationToken aCancellationToken)
     {
-      Function<GetNftByTypeFunctionInput> aGetNftByTypeFunction = NftCreatorInstance.Instance.GetFunction<GetNftByTypeFunctionInput>();
+      Function<GetNftByTypeServiceRequest> aGetNftByTypeFunction = NftCreatorInstance.Instance.GetFunction<GetNftByTypeServiceRequest>();
 
-      var aGetNftByTypeFunctionMessage = new GetNftByTypeFunctionInput { NftId = aGetNftByTypeServiceRequest.GetNftId };
+      var aGetNftByTypeFunctionMessage = new GetNftByTypeServiceRequest { GetNftId = aGetNftByTypeServiceRequest.GetNftId };
 
-      GetNftByTypeOutputDto aTemplate = await aGetNftByTypeFunction.CallDeserializingToObjectAsync<GetNftByTypeOutputDto>(aGetNftByTypeFunctionMessage);
+      GetNftByTypeServiceResponse aTemplate = await aGetNftByTypeFunction.CallDeserializingToObjectAsync<GetNftByTypeServiceResponse>(aGetNftByTypeFunctionMessage);
 
-      var response = new NftTemplate
+      return new GetNftByTypeServiceResponse()
       {
         Name = aTemplate.Name,
         Symbol = aTemplate.Symbol,
         MintLimit = (int)aTemplate.MintLimit,
         AttachedTokens = (int)aTemplate.AttachedTokens
-
       };
 
-      return new GetNftByTypeServiceResponse { NftTypeData = response };
     }
   }
 }
-
-

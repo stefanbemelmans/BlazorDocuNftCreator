@@ -5,6 +5,7 @@
   using nt.Server.Services.WebThree.Contracts.NftCreator.Functions.GetNftByType;
   using System.Threading;
   using System.Threading.Tasks;
+  using nt.Shared.Features.WebThree;
 
   public class GetNftByTypeServerFeaturesHandler : IRequestHandler<GetNftByTypeSharedRequest, GetNftByTypeSharedResponse>
   {
@@ -22,13 +23,20 @@
       CancellationToken aCancellationToken
     )
     {
-      var aNftRequest = new GetNftByTypeServiceRequest { GetNftId = aGetNftByTypeSharedRequest.GetNftType };
+      var aNftRequest = new GetNftByTypeServiceRequest { GetNftId = aGetNftByTypeSharedRequest.GetNftId };
 
       GetNftByTypeServiceResponse response = await Mediator.Send(aNftRequest);
-
+      var nftDto = new NftTemplate()
+      {
+        Name = response.Name,
+        Symbol = response.Symbol,
+        AttachedTokens = response.AttachedTokens,
+        MintLimit = response.MintLimit
+      
+      };
       return new GetNftByTypeSharedResponse(new System.Guid())
       {
-        NftTypeData = response.NftTypeData
+        NftTypeDto = nftDto
       };
       
     }

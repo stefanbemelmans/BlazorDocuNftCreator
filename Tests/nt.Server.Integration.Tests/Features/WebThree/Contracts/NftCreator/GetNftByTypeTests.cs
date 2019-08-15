@@ -21,13 +21,13 @@
     // this test is not working either
     public async Task GetNftByType()
     {
-      var getNftTypeRequest = new GetNftByTypeSharedRequest() { GetNftType = 2 };
+      var getNftTypeRequest = new GetNftByTypeSharedRequest() { GetNftId = 2 };
 
       GetNftByTypeSharedResponse response = await Mediator.Send(getNftTypeRequest);
 
-        response.NftTypeData.Name.ShouldMatch("Purchase Requeset");
-        response.NftTypeData.Symbol.ShouldMatch("PRQ");
-        response.NftTypeData.MintLimit.ShouldBe(1);
+        response.NftTypeDto.Name.ShouldMatch("Purchase Requeset");
+        response.NftTypeDto.Symbol.ShouldMatch("PRQ");
+        response.NftTypeDto.MintLimit.ShouldBe(1);
     }
   }
 }

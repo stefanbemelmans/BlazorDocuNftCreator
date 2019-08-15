@@ -37,7 +37,7 @@
 
                 GetNftByTypeSharedResponse aNftTemplate = await HttpClient.GetJsonAsync<GetNftByTypeSharedResponse>(requestUri);
 
-                WebThreeState.CurrentNftTemplate = aNftTemplate.NftTypeData;
+                WebThreeState.CurrentNftTemplate = aNftTemplate.NftTypeDto;
 
                 return WebThreeState;
             }

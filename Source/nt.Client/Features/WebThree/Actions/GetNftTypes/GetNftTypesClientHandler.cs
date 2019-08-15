@@ -47,10 +47,10 @@
                     var template = new NftTemplate()
                     {
                         NftId = ctr,
-                        Name = templateResponse.NftTypeData.Name,
-                        Symbol = templateResponse.NftTypeData.Symbol,
-                        MintLimit = templateResponse.NftTypeData.MintLimit,
-                        AttachedTokens = templateResponse.NftTypeData.AttachedTokens
+                        Name = templateResponse.NftTypeDto.Name,
+                        Symbol = templateResponse.NftTypeDto.Symbol,
+                        MintLimit = templateResponse.NftTypeDto.MintLimit,
+                        AttachedTokens = templateResponse.NftTypeDto.AttachedTokens
                     };
 
 

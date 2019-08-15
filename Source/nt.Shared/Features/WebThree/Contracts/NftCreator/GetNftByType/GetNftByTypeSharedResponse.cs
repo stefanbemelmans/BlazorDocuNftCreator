@@ -10,6 +10,6 @@ namespace nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType
     {
       RequestId = aRequestId;
     }
-    public NftTemplate NftTypeData { get; set; }
+    public NftTemplate NftTypeDto { get; set; }
   }
 }
