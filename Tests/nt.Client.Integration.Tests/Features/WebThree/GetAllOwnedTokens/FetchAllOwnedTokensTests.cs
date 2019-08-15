@@ -70,7 +70,7 @@
         GetTokenNftTypeSharedResponse aNftTypeSharedResponse = await HttpClient.GetJsonAsync<GetTokenNftTypeSharedResponse>(getNftTypeUri);
 
         // TokenNftTypeData Should already have the data in state so no need to make a service call
-        NftTemplate nftType = WebThree.TemplateDataList.Find(nft => nft.NftId == aNftTypeSharedResponse.NftId);
+        NftTemplate nftType = WebThree.TemplateDataList.Find(aNft => aNft.NftId == aNftTypeSharedResponse.NftId);
 
         ownedToken.TemplateData = nftType;
 

@@ -59,9 +59,12 @@
 
             var ownedToken = new TokenBase() { TokenId = token };
 
-            //TokenNFtTypeId
+            // TokenNFtTypeId
 
-            ownedToken.TemplateData = await GetNft(token);
+            ownedToken.TemplateData = await GetNft(ownedToken.TokenId);
+
+            // Get Token Nft Type Data
+
 
             // Token Balance
 
@@ -82,24 +85,13 @@
 
       private void DeserializeAndAddData(TokenBase aOwnedToken, string aDataString)
       {
-        if (aOwnedToken.TemplateData.NftId == 3)
+        if (aOwnedToken.TemplateData.NftId == 1)
         {
           byte[] serializedImmutableData = Convert.FromBase64String(aDataString);
 
           ImmutableData aDeserializedObject = Serializer.Deserialize<ImmutableData>(serializedImmutableData, options); // options == 0
 
           aOwnedToken.ImmDataObj = aDeserializedObject;
-
-          // Add to StateList
-          TokenDataList.Add(aOwnedToken);
-        }
-        if (aOwnedToken.TemplateData.NftId == 5)
-        {
-          byte[] serializedImmutableData = Convert.FromBase64String(aDataString);
-
-          PurchaseOrderData aDeserializedObject = Serializer.Deserialize<PurchaseOrderData>(serializedImmutableData, options); // options == 0
-
-          aOwnedToken.PurchaseOrderData = aDeserializedObject;
 
           // Add to StateList
           TokenDataList.Add(aOwnedToken);

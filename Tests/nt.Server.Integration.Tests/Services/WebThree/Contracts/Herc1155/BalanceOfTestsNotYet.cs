@@ -33,7 +33,7 @@
           //
       BalanceOfServiceResponse response = await Mediator.Send(new BalanceOfServiceRequest()
             {
-                TokenId = 5
+                TokenId = 2
             });
 
             response.ShouldNotBe(null);
@@ -44,7 +44,7 @@
         {
       BalanceOfSharedResponse response = await Mediator.Send(new BalanceOfSharedRequest()
             {
-                ViewTokenId = 5
+                ViewTokenId = 2
             });
 
             response.ShouldNotBe(null);

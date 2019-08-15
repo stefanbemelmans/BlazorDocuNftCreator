@@ -17,6 +17,7 @@
     public string MutableData { get; set; }
     public PurchaseOrderData PurchaseOrderData { get; set; }
     public NftTemplate TemplateData { get; set; }
+    public uint NftId { get; set; }
     public uint TokenId { get; set; }
   }
 }

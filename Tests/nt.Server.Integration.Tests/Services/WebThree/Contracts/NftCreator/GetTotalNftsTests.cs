@@ -39,6 +39,7 @@
       response.TotalNftTypes.ShouldBe((uint)2);
     }
 
+
     public async Task ShouldGetTotalNftTypesFromContractVariable()
     {
       // Arrange

@@ -24,7 +24,7 @@
       var aFetchTokenNftTypeAction = 
         new FetchTokenNftTypeAction
       {
-        TokenId = 0
+        TokenId = 2
       };
 
       WebThreeState aFetchTokenNftTypeResponse = await Mediator.Send(aFetchTokenNftTypeAction);
