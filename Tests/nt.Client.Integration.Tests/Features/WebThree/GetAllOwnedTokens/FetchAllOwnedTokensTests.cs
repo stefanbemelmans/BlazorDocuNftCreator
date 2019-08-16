@@ -54,14 +54,10 @@
 
       GetAllOwnedTokensSharedResponse aTokenList = await HttpClient.GetJsonAsync<GetAllOwnedTokensSharedResponse>(GetAllOwnedTokensSharedRequest.Route);
       aTokenList.TokenIdList.Count.ShouldBe(1);
-      //aTokenList.TokenIdList.Count.ShouldBeGreaterThan(3);
-      //aTokenList.TokenIdList.Contains(3).ShouldBe(true);
-      //aTokenList.TokenIdList.Contains(4).ShouldBe(true);
-      //aTokenList.TokenIdList.Contains(5).ShouldBe(true);
-      //aTokenList.TokenIdList.Contains(6).ShouldBe(true);
+     
       foreach (uint token in aTokenList.TokenIdList)
       {
-        // Start the list with TokenId
+        // Start the Token with TokenId
         var ownedToken = new TokenBase() { TokenId = token };
         //SeparateTokenDataList.Add(ownedToken);
 

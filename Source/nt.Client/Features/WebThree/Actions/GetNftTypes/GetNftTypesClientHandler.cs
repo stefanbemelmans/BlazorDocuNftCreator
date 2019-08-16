@@ -55,7 +55,7 @@
             AttachedTokens = templateResponse.NftTypeDto.AttachedTokens
           };
 
-          _TemplateList[ctr] = (template);
+          _TemplateList.Add(template);
         }
 
         WebThreeState.TemplateDataList = _TemplateList;

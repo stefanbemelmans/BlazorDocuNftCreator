@@ -1,4 +1,4 @@
-﻿namespace nt.Client.Integration.Tests.Features.WebThree.GetNftTypes
+﻿namespace nt.Client.Integration.Tests.Features.WebThree.WebThreeStateTests
 {
   using BlazorState;
   using MediatR;

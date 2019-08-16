@@ -89,7 +89,7 @@
         {
           byte[] serializedImmutableData = Convert.FromBase64String(aDataString);
 
-          ImmutableData aDeserializedObject = Serializer.Deserialize<ImmutableData>(serializedImmutableData, options); // options == 0
+          PurchaseOrderData aDeserializedObject = Serializer.Deserialize<PurchaseOrderData>(serializedImmutableData, options); // options == 0
 
           aOwnedToken.ImmDataObj = aDeserializedObject;
 
