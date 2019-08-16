@@ -9,6 +9,6 @@ namespace nt.Shared.Features.WebThree.Contracts.NftCreator.GetNftByType
 
     public uint GetNftId { get; set; }
 
-    public static string RouteFactory(int aId) => $"api/getNftByType?GetNftType={aId}";
+    public static string RouteFactory(int aId) => $"api/getNftByType?GetNftId={aId}";
   }
 }
