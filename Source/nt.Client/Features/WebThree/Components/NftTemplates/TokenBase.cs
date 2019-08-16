@@ -2,7 +2,6 @@
 {
   using nt.Client.Features.WebThree.Components.NftTemplates.PurchaseOrder;
   using nt.Shared.Features.WebThree;
-  using static nt.Client.Features.WebThree.Components.NftTemplates.ImmutableDataObjectBase;
 
   public class TokenBase
 
@@ -13,7 +12,6 @@
     // Changing Object to ImmutableObjectBase that contains the Immutable DataProperty
     public ImmutableObjectBase DataObject { get; set; }
 
-    public ImmutableData ImmDataObj { get; set; }
     public string MutableData { get; set; }
     public PurchaseOrderData PurchaseOrderData { get; set; }
     public NftTemplate TemplateData { get; set; }

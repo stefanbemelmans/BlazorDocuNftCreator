@@ -17,7 +17,6 @@
   using System.Net.Http;
   using System.Threading;
   using System.Threading.Tasks;
-  using static nt.Client.Features.WebThree.Components.NftTemplates.ImmutableDataObjectBase;
 
   internal partial class WebThreeState : State<WebThreeState>
   {
@@ -91,7 +90,7 @@
 
           PurchaseOrderData aDeserializedObject = Serializer.Deserialize<PurchaseOrderData>(serializedImmutableData, options); // options == 0
 
-          aOwnedToken.ImmDataObj = aDeserializedObject;
+          aOwnedToken.PurchaseOrderData = aDeserializedObject;
 
           // Add to StateList
           TokenDataList.Add(aOwnedToken);
